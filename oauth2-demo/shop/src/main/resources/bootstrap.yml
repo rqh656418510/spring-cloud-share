@@ -1,0 +1,33 @@
+server:
+  port: 8004
+
+spring:
+  application:
+    name: shop-server
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:admin@127.0.0.1:8001/eureka
+  instance:
+    instance-id: ${spring.application.name}-${server.port}
+    prefer-ip-address: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+logging:
+  level:
+    com.clay: debug
+  config: classpath:logback/logback-spring.xml
+
+auth:
+  client:
+    scope: user-api
+    resource: admin-resource

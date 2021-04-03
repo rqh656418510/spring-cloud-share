@@ -1,0 +1,36 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: eureka-server
+  security:
+    basic:
+      enabled: true
+    user:
+      name: "admin"             #Eureka的登录用户名
+      password: "admin"         #Eureka的登录密码
+
+eureka:
+  instance:
+    hostname: 127.0.0.1
+    instance-id: ${spring.application.name}-${server.port}
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://admin:admin@${eureka.instance.hostname}:${server.port}/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+logging:
+  level:
+    com.clay: debug
+  config: classpath:logback/logback-spring.xml
