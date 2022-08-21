@@ -8,7 +8,7 @@ import org.apache.kafka.common.serialization.StringSerializer;
 import java.util.Properties;
 
 /**
- * 普通的异步发送
+ * 普通的同步发送
  *
  * @author clay
  */
@@ -25,8 +25,12 @@ public class CustomerProducer {
         // 创建生产者对象
         KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
         for (int i = 0; i < 5; i++) {
-            // 异步发送消息
-            producer.send(new ProducerRecord<>("test", "hello kafka " + i));
+            // 同步发送消息
+            try {
+                producer.send(new ProducerRecord<>("test", "hello kafka " + i)).get();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         // 关闭资源
         producer.close();

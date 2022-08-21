@@ -34,6 +34,7 @@
 
     <modules>
         <module>kafka-lesson-1</module>
+        <module>kafka-lesson-2</module>
     </modules>
 
 </project>
