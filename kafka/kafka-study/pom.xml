@@ -33,8 +33,8 @@
     </dependencies>
 
     <modules>
-        <module>kafka-lesson-1</module>
-        <module>kafka-lesson-2</module>
+        <module>kafka-lesson-01</module>
+        <module>kafka-lesson-02</module>
     </modules>
 
 </project>
