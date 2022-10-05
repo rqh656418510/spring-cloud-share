@@ -13,7 +13,7 @@ import java.util.Map;
 public class CustomPartitioner implements Partitioner {
 
     /**
-     * 返回信息对应的分区
+     * 返回消息对应的分区
      *
      * @param topic      主题
      * @param key        消息的 key
