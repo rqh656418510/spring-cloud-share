@@ -1,0 +1,1 @@
+insert into t_user(id, username, pwd, create_time, update_time) values (0, 'zhhangsan', '1222', {ts '2022-07-27 18:47:52.69'}, {ts '2022-07-27 18:47:52.69'});

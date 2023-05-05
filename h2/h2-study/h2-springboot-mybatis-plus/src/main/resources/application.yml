@@ -1,0 +1,50 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: h2-springboot-mybatis-plus
+  # 数据源配置
+  datasource:
+    driver-class-name: org.h2.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    # mem 表示H2使用内存模式（应用重启会丢失数据）
+    url: jdbc:h2:mem:shopDb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: root
+    password: 123456
+  # 数据库初始化
+  sql:
+    init:
+      separator: ;
+      encoding: UTF-8
+      platform: h2
+      mode: always
+      continue-on-error: false
+      schema-locations:
+        - classpath:db/schema.sql
+      data-locations:
+        - classpath:db/data.sql
+  h2:
+    # H2 控制台界面
+    console:
+      enabled: true
+      settings:
+        path: /h2-console
+        trace: true
+        web-allow-others: false
+
+# Mybatis-Plus
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  # MyBatis-Plus 配置
+  global-config:
+    db-config:
+      id-type: AUTO
+    banner: false
+  # MyBatis 原生配置
+  configuration:
+    map-underscore-to-camel-case: true
+    call-setters-on-nulls: true
+    jdbc-type-for-null: 'null'
+    # 打印 SQL 语句
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
