@@ -24,8 +24,8 @@ spring:
         - classpath:db/schema.sql
       data-locations:
         - classpath:db/data.sql
+  # H2 控制台界面
   h2:
-    # H2 控制台界面
     console:
       enabled: true
       settings:
