@@ -8,7 +8,7 @@ spring:
   datasource:
     driver-class-name: org.h2.Driver
     type: com.zaxxer.hikari.HikariDataSource
-    # mem 表示H2使用内存模式（应用重启会丢失数据）
+    # mem 表示 H2 使用内存数据库（应用重启会丢失数据）
     url: jdbc:h2:mem:shopDb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     username: root
     password: 123456
@@ -24,7 +24,7 @@ spring:
         - classpath:db/schema.sql
       data-locations:
         - classpath:db/data.sql
-  # H2 控制台界面
+  # H2 的 Web 控制台
   h2:
     console:
       enabled: true
