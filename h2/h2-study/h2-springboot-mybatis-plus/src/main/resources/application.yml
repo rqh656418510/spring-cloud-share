@@ -9,7 +9,7 @@ spring:
     driver-class-name: org.h2.Driver
     type: com.zaxxer.hikari.HikariDataSource
     # mem 表示 H2 使用内存数据库（应用重启会丢失数据）
-    url: jdbc:h2:mem:shopDb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:mem:shopDb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE
     username: root
     password: 123456
   # 数据库初始化
