@@ -13,6 +13,7 @@
     <name>spring-boot3-01</name>
     <packaging>jar</packaging>
     <version>1.0</version>
+    <description>第一个SpringBoot3应用</description>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
