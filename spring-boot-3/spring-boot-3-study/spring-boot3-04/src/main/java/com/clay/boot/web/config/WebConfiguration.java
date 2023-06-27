@@ -1,10 +1,13 @@
 package com.clay.boot.web.config;
 
+import com.clay.boot.web.converter.YamlHttpMessageConverter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.CacheControl;
+import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -23,6 +26,12 @@ public class WebConfiguration implements WebMvcConfigurer {
             .addResourceLocations("classpath:/static/", "classpath:/public/", "classpath:/asset/")
             // 自定义HTTP缓存控制
             .setCacheControl(CacheControl.maxAge(7200, TimeUnit.SECONDS));
+    }
+
+    @Override
+    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+        // 添加一个支持将返回值对象转为 YAML 格式的 MessageConverter
+        converters.add(new YamlHttpMessageConverter());
     }
 
 }
