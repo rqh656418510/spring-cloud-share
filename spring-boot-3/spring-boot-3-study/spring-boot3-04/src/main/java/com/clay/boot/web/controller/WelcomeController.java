@@ -15,6 +15,9 @@ public class WelcomeController {
             name = "Thymeleaf";
         }
         model.addAttribute("name", name);
+        model.addAttribute("imgShow", true);
+        model.addAttribute("imgUrl", "/static/background.jpg");
+        model.addAttribute("imgStyle", "width:400px; height: 300px");
         return "welcome";
     }
 

@@ -5,6 +5,11 @@
     <title>Welcome</title>
 </head>
 <body>
-<h1>Hello <span th:text="${name}"></span></h1>
+    <h1>Hello <span th:text="${name}"></span></h1>
+    <img th:src="${imgUrl}" style="width:300px; height: 200px" th:if="${imgShow}">
+    <img th:attr="src=${imgUrl},style=${imgStyle}" th:if="${imgShow}">
+    <img th:src="@{/static/background.jpg}" style="width:300px; height: 200px">
+    <h2 th:text="${'前缀 ' + name + ' 后缀'}"></h2>
+    <h2 th:text="|前缀 ${name} 后缀|"></h2>
 </body>
 </html>
