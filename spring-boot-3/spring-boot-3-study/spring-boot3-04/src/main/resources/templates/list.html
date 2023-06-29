@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+</head>
+<body>
+<table border="1" cellspacing="0">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>邮箱</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="person : ${persons}">
+            <td th:text="${person.id}"></td>
+            <td th:text="${person.userName}"></td>
+            <td th:text="${person.age}"></td>
+            <td th:text="${person.email}"></td>
+        </tr>
+    </tbody>
+</table>
+<br>
+<table border="1" cellspacing="0">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>邮箱</th>
+        <th>成年人</th>
+        <th>职位</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr th:each="person, iterStat : ${persons}" th:class="${iterStat.odd} ? 'odd'" th:index="${iterStat.index}">
+            <td th:text="${person.id}"></td>
+            <td th:text="${person.userName}"></td>
+            <td th:text="${person.age}"></td>
+            <td th:text="${person.email}"></td>
+            <td th:text="${person.age >= 18 ? '是' : '否'}"></td>
+            <td th:switch="${person.role}">
+                <span th:case="pm">项目经理</span>
+                <span th:case="admin">管理员</span>
+                <span th:case="hr">HR</span>
+                <span th:case="*">其他</span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
