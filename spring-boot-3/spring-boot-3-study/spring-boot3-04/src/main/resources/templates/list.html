@@ -36,11 +36,11 @@
     </tr>
     </thead>
     <tbody>
-        <tr th:each="person, iterStat : ${persons}" th:class="${iterStat.odd} ? 'odd'" th:index="${iterStat.index}">
+        <tr th:each="person, iterStat : ${persons}" th:class="${iterStat.odd} ? 'odd'" th:index="${iterStat.index}" th:object="${person}">
             <td th:text="${person.id}"></td>
             <td th:text="${person.userName}"></td>
             <td th:text="${person.age}"></td>
-            <td th:text="${person.email}"></td>
+            <td th:text="*{email}"></td>
             <td th:text="${person.age >= 18 ? '是' : '否'}"></td>
             <td th:switch="${person.role}">
                 <span th:case="pm">项目经理</span>
@@ -51,5 +51,8 @@
         </tr>
     </tbody>
 </table>
+
+<div th:replace="~{footer :: copy}"></div>
+
 </body>
 </html>
