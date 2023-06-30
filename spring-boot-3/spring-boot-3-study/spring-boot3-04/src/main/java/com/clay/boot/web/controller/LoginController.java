@@ -24,7 +24,7 @@ public class LoginController {
         Locale local = request.getLocale();
         // 通过代码的方式获取国际化配置文件中指定的配置项的值
         String login = messageSource.getMessage("login", null, local);
-        log.info("==> {}", login);
+        log.info("login: {}", login);
         return "login";
     }
 
