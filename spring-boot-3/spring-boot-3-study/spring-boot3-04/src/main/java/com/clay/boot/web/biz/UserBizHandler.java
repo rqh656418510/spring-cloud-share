@@ -16,13 +16,13 @@ import java.util.List;
 @Component
 public class UserBizHandler {
 
-    public ServerResponse getUser(ServerRequest serverRequest) {
+    public ServerResponse getUser(ServerRequest serverRequest) throws Exception {
         Long id = Long.parseLong(serverRequest.pathVariable("id"));
         User user = new User(id, "Peter1", "peter@gmail.com", 18, "pm");
         return ServerResponse.ok().body(user);
     }
 
-    public ServerResponse listUser(ServerRequest serverRequest) {
+    public ServerResponse listUser(ServerRequest serverRequest) throws Exception {
         List<User> users = new ArrayList<>();
         users.add(new User(1L, "Peter1", "peter@gmail.com", 18, "pm"));
         users.add(new User(2L, "Peter2", "peter@gmail.com", 16, "admin"));
@@ -36,7 +36,7 @@ public class UserBizHandler {
         return ServerResponse.ok().build();
     }
 
-    public ServerResponse deleteUser(ServerRequest serverRequest) {
+    public ServerResponse deleteUser(ServerRequest serverRequest) throws Exception {
         Long id = Long.parseLong(serverRequest.pathVariable("id"));
         log.info("user {} delete success", id);
         return ServerResponse.ok().build();
