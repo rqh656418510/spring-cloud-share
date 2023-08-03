@@ -9,12 +9,6 @@
     <packaging>pom</packaging>
     <version>1.0</version>
 
-    <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-
     <modules>
         <module>spring-boot3-01</module>
         <module>spring-boot3-02</module>
@@ -22,6 +16,7 @@
         <module>spring-boot3-04</module>
         <module>spring-boot3-05</module>
         <module>spring-boot3-06</module>
+        <module>spring-boot3-07</module>
     </modules>
 
 </project>
