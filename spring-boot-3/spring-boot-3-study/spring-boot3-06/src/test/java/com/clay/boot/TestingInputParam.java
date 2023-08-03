@@ -14,6 +14,7 @@ import java.util.stream.Stream;
  * @author clay
  */
 @SpringBootTest
+@DisplayName("Input Param")
 public class TestingInputParam {
 
     @ParameterizedTest

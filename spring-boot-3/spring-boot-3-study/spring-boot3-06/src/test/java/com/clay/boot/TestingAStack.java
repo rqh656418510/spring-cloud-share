@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 @SpringBootTest
 @DisplayName("A stack")
-public class TestingAStackDemo {
+public class TestingAStack {
 
     Stack<Object> stack;
 
