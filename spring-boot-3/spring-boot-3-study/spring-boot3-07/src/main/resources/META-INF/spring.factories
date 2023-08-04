@@ -1,1 +1,2 @@
-org.springframework.boot.SpringApplicationRunListener=com.clay.boot.listener.CustomApplicationListener
+org.springframework.boot.SpringApplicationRunListener=com.clay.boot.listener.CustomApplicationRunListener
+org.springframework.context.ApplicationListener=com.clay.boot.listener.CustomApplicationListener
