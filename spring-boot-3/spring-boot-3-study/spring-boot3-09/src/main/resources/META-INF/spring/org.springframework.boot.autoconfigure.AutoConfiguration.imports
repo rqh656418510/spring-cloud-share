@@ -1,0 +1,2 @@
+# 暂时注释掉，使用 @EnableXxx 注解替代
+# com.clay.boot.starter.robot.config.RobotAutoConfiguration
