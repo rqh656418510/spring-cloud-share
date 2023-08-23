@@ -12,22 +12,22 @@ import org.springframework.web.bind.annotation.RestController;
 public class RedisController {
 
     @Autowired
-    private StringRedisTemplate redisTemplate;
+    private StringRedisTemplate stringRedisTemplate;
 
     @GetMapping("/get/{key}")
     public String get(@PathVariable("key") String key) {
-        return redisTemplate.opsForValue().get(key);
+        return stringRedisTemplate.opsForValue().get(key);
     }
 
     @GetMapping("/count")
     public String count() {
-        Long total = redisTemplate.opsForValue().increment("total");
+        Long total = stringRedisTemplate.opsForValue().increment("total");
         return "Access " + total + " times";
     }
 
     @GetMapping("/set/{key}/{value}")
     public String set(@PathVariable("key") String key, @PathVariable("value") String value) {
-        redisTemplate.opsForValue().set(key, value);
+        stringRedisTemplate.opsForValue().set(key, value);
         return "success";
     }
 
