@@ -10,11 +10,11 @@
     </parent>
 
     <groupId>com.clay.boot</groupId>
-    <artifactId>spring-boot3-10</artifactId>
-    <name>spring-boot3-10</name>
+    <artifactId>spring-boot3-11</artifactId>
+    <name>spring-boot3-11</name>
     <packaging>jar</packaging>
     <version>1.0</version>
-    <description>引入自定义 Starter</description>
+    <description>Redis 整合</description>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -23,15 +23,13 @@
     </properties>
 
     <dependencies>
-        <!-- 引入自定义 Starter -->
-        <dependency>
-            <groupId>com.clay.boot</groupId>
-            <artifactId>spring-boot3-09</artifactId>
-            <version>1.0</version>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
         <!-- Lombok -->
         <dependency>

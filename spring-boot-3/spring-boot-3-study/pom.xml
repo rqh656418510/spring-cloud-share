@@ -20,6 +20,7 @@
         <module>spring-boot3-08</module>
         <module>spring-boot3-09</module>
         <module>spring-boot3-10</module>
+        <module>spring-boot3-11</module>
     </modules>
 
 </project>
