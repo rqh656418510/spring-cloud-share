@@ -14,7 +14,7 @@
     <name>spring-boot3-14</name>
     <packaging>jar</packaging>
     <version>1.0</version>
-    <description>HttpInterface 使用</description>
+    <description>HttpInterface 整合</description>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

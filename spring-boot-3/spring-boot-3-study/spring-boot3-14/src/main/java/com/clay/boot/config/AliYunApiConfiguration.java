@@ -14,13 +14,17 @@ import org.springframework.web.service.invoker.HttpServiceProxyFactory;
 @Configuration
 public class AliYunApiConfiguration {
 
-    @Value("${aliyun.appcode:}")
+    @Value("${aliyun.api.baseurl:}")
+    private String baseurl;
+
+    @Value("${aliyun.api.appcode:}")
     private String appCode;
 
     @Bean
     public HttpServiceProxyFactory httpServiceProxyFactory() {
         // 创建客户端
         WebClient client = WebClient.builder()
+            .baseUrl(baseurl)
             .defaultHeader("Authorization", "APPCODE " + appCode)
             .codecs(clientCodecConfigurer -> {
                 // 响应数据量太大有可能会超出缓冲区，所以这里设置的大一点
