@@ -24,6 +24,7 @@
         <module>spring-boot3-12</module>
         <module>spring-boot3-13</module>
         <module>spring-boot3-14</module>
+        <module>spring-boot3-15</module>
     </modules>
 
 </project>
