@@ -22,14 +22,21 @@ public class WebSecurityConfiguration {
      */
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
+        // 请求认证
         http.authorizeHttpRequests(registry -> {
             registry
                 .requestMatchers(("/")).permitAll()         // 首页支持所有人访问
                 .anyRequest().authenticated();              // 其他任意请求都需要认证登录
         });
 
+        // 用户登录
         http.formLogin(formLoginConfigurer -> {
             formLoginConfigurer.loginPage("/login").permitAll();    // 自定义登录页面，且所有人都可以访问登录页面
+        });
+
+        // 退出登录
+        http.logout(logoutConfigurer -> {
+            logoutConfigurer.permitAll();       // 退出登录接口允许所有人访问
         });
 
         return http.build();
