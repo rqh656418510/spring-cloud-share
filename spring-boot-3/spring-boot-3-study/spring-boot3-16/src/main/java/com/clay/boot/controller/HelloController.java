@@ -1,5 +1,6 @@
 package com.clay.boot.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -15,6 +16,7 @@ public class HelloController {
      * @return
      */
     @GetMapping("/hello")
+    @PreAuthorize("hasAuthority('file_read')")
     public String hello() {
         return "/hello";
     }
