@@ -14,7 +14,7 @@
     <name>spring-boot3-17</name>
     <packaging>jar</packaging>
     <version>1.0</version>
-    <description>Actuator 整合</description>
+    <description>Actuator + Prometheus 整合</description>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -31,6 +31,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <!-- Prometheus -->
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+            <version>1.10.6</version>
         </dependency>
         <!-- Lombok -->
         <dependency>
