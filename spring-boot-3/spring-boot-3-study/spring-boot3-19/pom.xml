@@ -14,7 +14,7 @@
     <name>spring-boot3-19</name>
     <packaging>jar</packaging>
     <version>1.0</version>
-    <description>使用 AOT 特性</description>
+    <description>使用 Maven 插件编译原生镜像</description>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
