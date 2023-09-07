@@ -1,4 +1,4 @@
-package org.clay.security;
+package com.clay.security;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
