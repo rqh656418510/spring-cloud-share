@@ -11,6 +11,7 @@
 
     <modules>
         <module>spring-security-study-01</module>
+        <module>spring-security-study-02</module>
     </modules>
 
 </project>
