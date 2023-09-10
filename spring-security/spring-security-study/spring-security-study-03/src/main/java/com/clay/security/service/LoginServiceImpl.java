@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * @author clay
  */
-@Service
+@Service("userDetailsService")
 public class LoginServiceImpl implements UserDetailsService {
 
     @Override
