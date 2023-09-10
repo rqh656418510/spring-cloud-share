@@ -19,7 +19,7 @@ create table menu(
     id bigint primary key auto_increment,
     name varchar(20),
     url varchar(100),
-    parentid bigint,
+    parent_id bigint,
     permission varchar(20)
 );
 
@@ -47,4 +47,3 @@ insert into user_role values(2, 2);
 insert into role_menu values(1, 1);
 insert into role_menu values(1, 2);
 insert into role_menu values(2, 1);
-
