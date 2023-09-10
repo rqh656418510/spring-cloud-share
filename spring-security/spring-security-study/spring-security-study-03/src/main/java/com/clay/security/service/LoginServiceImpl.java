@@ -14,13 +14,15 @@ import java.util.List;
 /**
  * @author clay
  */
-@Service("userDetailsService")
+@Service
 public class LoginServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        List<GrantedAuthority> authors = AuthorityUtils.commaSeparatedStringToAuthorityList("admin");
-        return new User("clay", new BCryptPasswordEncoder().encode("123456"), authors);
+        List<GrantedAuthority> authors = AuthorityUtils.commaSeparatedStringToAuthorityList("manager");
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodePassword = passwordEncoder.encode("123456");
+        return new User("admin", encodePassword, authors);
     }
 
 }

@@ -15,7 +15,7 @@
     <artifactId>spring-security-study-02</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <description>用户认证（登录），使用配置类指定用户名和密码</description>
+    <description>用户认证（登录）</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
