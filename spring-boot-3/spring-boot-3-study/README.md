@@ -1,4 +1,4 @@
-## SpringBoot 3 入门案例代码
+                        ## SpringBoot 3 入门案例代码
 
 ### 课程大纲
 
@@ -22,3 +22,4 @@
 
 - [SpringBoot3 进阶教程之一整合 Prometheus](https://www.techgrow.cn/posts/1b2af7f9.html)
 - [SpringBoot 3 进阶教程之二 GraalVM 与 AOT](https://www.techgrow.cn/posts/885fde15.html)
+- [SpringBoot3 进阶教程之三整合 Spring Security](https://www.techgrow.cn/posts/2cc2991f.html)
