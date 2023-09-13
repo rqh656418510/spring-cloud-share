@@ -15,7 +15,7 @@
     <artifactId>spring-security5-study-04</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <description>用户认证（登录），读取数据库的方式</description>
+    <description>用户认证（登录），使用读取数据库的方式</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
