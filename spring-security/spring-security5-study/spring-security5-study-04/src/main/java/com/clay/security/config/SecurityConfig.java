@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -21,6 +22,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService);
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.formLogin()
+            .loginPage("/login.html")           // 配置哪个 URL 为登录页面
+            .loginProcessingUrl("/user/login")  // 配置哪个为登录接口的 URL
+            .defaultSuccessUrl("/hello")        // 登录成功之后跳转到哪个 URL
+            .and()
+            .authorizeRequests().antMatchers("/login.html", "/user/login").permitAll()     // 设置哪些 URL 不需要登录就可以直接访问
+            .anyRequest().authenticated()      // 设置其他 URL 需要登录才能访问
+            .and().csrf().disable();           // 关闭 CSRF 防护
     }
 
     @Bean
