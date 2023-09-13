@@ -1,0 +1,25 @@
+spring:
+  # 数据源配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://127.0.0.1:3306/spring_security_study?characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+
+# Mybatis-Plus
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  typeAliasesPackage: com.clay.security.**.entity
+  # MyBatis-Plus 配置
+  global-config:
+    db-config:
+      id-type: AUTO
+    banner: false
+  # MyBatis 原生配置
+  configuration:
+    map-underscore-to-camel-case: true
+    call-setters-on-nulls: true
+    jdbc-type-for-null: 'null'
+    # 打印 SQL 语句
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

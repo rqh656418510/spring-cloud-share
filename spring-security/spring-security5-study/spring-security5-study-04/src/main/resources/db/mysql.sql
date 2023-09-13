@@ -1,20 +1,22 @@
---- 创建数据库
+-- 创建数据库
 CREATE DATABASE `spring_security_study` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
---- 创建用户表
-create table users(
+USE `spring_security_study`;
+
+-- 创建用户表
+create table user(
     id bigint primary key auto_increment,
     username varchar(20) unique not null,
     password varchar(100)
 );
 
---- 创建角色表
+-- 创建角色表
 create table role(
     id bigint primary key auto_increment,
     name varchar(20)
 );
 
---- 创建权限表
+-- 创建权限表
 create table menu(
     id bigint primary key auto_increment,
     name varchar(20),
@@ -23,21 +25,21 @@ create table menu(
     permission varchar(20)
 );
 
---- 创建用户角色关联表
+-- 创建用户角色关联表
 create table user_role(
     uid bigint,
     rid bigint
 );
 
---- 创建角色权限关联表
+-- 创建角色权限关联表
 create table role_menu(
     rid bigint,
     mid bigint
 );
 
---- 插入初始化数据（用户密码是123456）
-insert into users values(1, 'wangwu', '$2a$10$IwvZiSm3vdhRtdyU8rJQz.pb9U/kYHorC2aQqwtFX.RVuFFHOpt82');
-insert into users values(2, 'zhangsan', '$2a$10$IwvZiSm3vdhRtdyU8rJQz.pb9U/kYHorC2aQqwtFX.RVuFFHOpt82');
+-- 插入初始化数据（用户密码是123456）
+insert into user values(1, 'wangwu', '$2a$10$IwvZiSm3vdhRtdyU8rJQz.pb9U/kYHorC2aQqwtFX.RVuFFHOpt82');
+insert into user values(2, 'zhangsan', '$2a$10$IwvZiSm3vdhRtdyU8rJQz.pb9U/kYHorC2aQqwtFX.RVuFFHOpt82');
 insert into menu values(1, '系统管理', '', 0, 'menu:system');
 insert into menu values(2, '用户管理', '', 0, 'menu:user');
 insert into role values(1, '管理员');

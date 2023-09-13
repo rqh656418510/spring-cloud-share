@@ -11,14 +11,18 @@ import java.io.Serializable;
  * @author clay
  */
 @Data
-@TableName(value = "user")
-public class User implements Serializable {
+@TableName(value = "menu")
+public class Menu implements Serializable {
 
     @TableId(type = IdType.AUTO)
     private Long id;
 
-    private String username;
+    private String name;
 
-    private String password;
+    private String url;
+
+    private Long parentId;
+
+    private String permission;
 
 }

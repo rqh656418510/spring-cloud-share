@@ -10,15 +10,13 @@ import java.io.Serializable;
 /**
  * @author clay
  */
+@TableName(value = "role")
 @Data
-@TableName(value = "user")
-public class User implements Serializable {
+public class Role implements Serializable {
 
     @TableId(type = IdType.AUTO)
     private Long id;
 
-    private String username;
-
-    private String password;
+    private String name;
 
 }
