@@ -14,6 +14,7 @@
         <module>spring-security5-study-02</module>
         <module>spring-security5-study-03</module>
         <module>spring-security5-study-04</module>
+        <module>spring-security5-study-05</module>
     </modules>
 
 </project>
