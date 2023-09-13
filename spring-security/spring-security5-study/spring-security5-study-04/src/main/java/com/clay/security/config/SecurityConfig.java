@@ -29,10 +29,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.formLogin()
             .loginPage("/login.html")           // 配置哪个 URL 为登录页面
             .loginProcessingUrl("/user/login")  // 配置哪个为登录接口的 URL
-            .defaultSuccessUrl("/hello")        // 登录成功之后跳转到哪个 URL
+            .defaultSuccessUrl("/hello")        // 配置登录成功之后跳转到哪个 URL
             .and()
-            .authorizeRequests().antMatchers("/login.html", "/user/login").permitAll()     // 设置哪些 URL 不需要登录就可以直接访问
-            .anyRequest().authenticated()      // 设置其他 URL 需要登录才能访问
+            .authorizeRequests().antMatchers("/login.html", "/user/login").permitAll()     // 配置哪些 URL 不需要登录就可以直接访问
+            .anyRequest().authenticated()      // 配置其他 URL 需要登录才能访问
             .and().csrf().disable();           // 关闭 CSRF 防护
     }
 
