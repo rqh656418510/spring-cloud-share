@@ -24,14 +24,15 @@ public class LoginServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        // 查询数据库
         LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(User::getUsername, username);
-        User user = userMapper.selectOne(queryWrapper);
-        if (user == null) {
+        User userEntity = userMapper.selectOne(queryWrapper);
+        if (userEntity == null) {
             throw new UsernameNotFoundException("User name not exist");
         }
         List<GrantedAuthority> authors = AuthorityUtils.commaSeparatedStringToAuthorityList("manager");
-        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), authors);
+        return new org.springframework.security.core.userdetails.User(userEntity.getUsername(), userEntity.getPassword(), authors);
     }
 
 }
