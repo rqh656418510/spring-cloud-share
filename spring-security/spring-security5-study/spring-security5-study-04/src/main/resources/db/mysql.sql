@@ -31,11 +31,11 @@ create table user_role(
 
 --- 创建角色权限关联表
 create table role_menu(
-    mid bigint,
-    rid bigint
+    rid bigint,
+    mid bigint
 );
 
---- 插入初始化数据
+--- 插入初始化数据（用户密码是123456）
 insert into users values(1, 'wangwu', '$2a$10$IwvZiSm3vdhRtdyU8rJQz.pb9U/kYHorC2aQqwtFX.RVuFFHOpt82');
 insert into users values(2, 'zhangsan', '$2a$10$IwvZiSm3vdhRtdyU8rJQz.pb9U/kYHorC2aQqwtFX.RVuFFHOpt82');
 insert into menu values(1, '系统管理', '', 0, 'menu:system');
