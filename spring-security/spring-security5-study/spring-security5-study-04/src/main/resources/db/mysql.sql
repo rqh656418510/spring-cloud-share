@@ -1,6 +1,7 @@
 -- 创建数据库
 CREATE DATABASE `spring_security_study` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
+-- 切换数据库
 USE `spring_security_study`;
 
 -- 创建用户表
