@@ -8,3 +8,4 @@
 
 - [Spring Security 5 基础教程之一](https://www.techgrow.cn/posts/935cdb32.html)
 - [Spring Security 5 基础教程之二](https://www.techgrow.cn/posts/1e45eb31.html)
+- [Spring Security 5 基础教程之三](https://www.techgrow.cn/posts/5c197d3c.html)
