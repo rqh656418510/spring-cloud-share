@@ -9,11 +9,11 @@ import java.io.Serializable;
  * @author clay
  */
 @Data
-@TableName(value = "role_menu")
-public class RoleMenu implements Serializable {
+@TableName(value = "role_permission")
+public class RolePermission implements Serializable {
 
     private Long rid;
 
-    private Long mid;
+    private Long pid;
 
 }

@@ -7,11 +7,12 @@
     <resultMap id="BaseResultMap" type="com.clay.security.entity.Role">
         <id property="id" column="id" jdbcType="BIGINT"/>
         <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="code" column="code" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         id
-        ,name
+        ,name,code
     </sql>
 
 </mapper>

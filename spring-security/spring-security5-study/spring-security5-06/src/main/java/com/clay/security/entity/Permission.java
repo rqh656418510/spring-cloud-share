@@ -11,8 +11,8 @@ import java.io.Serializable;
  * @author clay
  */
 @Data
-@TableName(value = "menu")
-public class Menu implements Serializable {
+@TableName(value = "permission")
+public class Permission implements Serializable {
 
     @TableId(type = IdType.AUTO)
     private Long id;
@@ -23,6 +23,6 @@ public class Menu implements Serializable {
 
     private Long parentId;
 
-    private String permission;
+    private String code;
 
 }

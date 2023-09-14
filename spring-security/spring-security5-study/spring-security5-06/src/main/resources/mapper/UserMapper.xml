@@ -15,4 +15,20 @@
         ,username,password
     </sql>
 
+    <select id="selectRoleByUserId" resultType="com.clay.security.entity.Role">
+        SELECT r.id, r.name, r.code
+        FROM role r
+                 INNER JOIN user_role ru ON r.id = ru.rid
+        where ru.rid = #{userId}
+    </select>
+
+    <select id="selectMenuById" resultType="com.clay.security.entity.Permission">
+        SELECT p.id, p.name, p.url, p.parent_id, p.code
+        FROM permission p
+                 INNER JOIN role_permission rp ON p.id = rp.pid
+                 INNER JOIN role r ON r.id = rp.rid
+                 INNER JOIN user_role ru ON r.id = ru.rid
+        where ru.rid = #{userId}
+    </select>
+
 </mapper>

@@ -2,15 +2,15 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.clay.security.mapper.RoleMenuMapper">
+<mapper namespace="com.clay.security.mapper.RolePermissionMapper">
 
-    <resultMap id="BaseResultMap" type="com.clay.security.entity.RoleMenu">
-        <result property="mid" column="mid" jdbcType="BIGINT"/>
+    <resultMap id="BaseResultMap" type="com.clay.security.entity.RolePermission">
+        <result property="pid" column="pid" jdbcType="BIGINT"/>
         <result property="rid" column="rid" jdbcType="BIGINT"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        mid
+        pid
         ,rid
     </sql>
 

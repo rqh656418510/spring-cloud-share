@@ -2,20 +2,20 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.clay.security.mapper.MenuMapper">
+<mapper namespace="com.clay.security.mapper.PermissionMapper">
 
-    <resultMap id="BaseResultMap" type="com.clay.security.entity.Menu">
+    <resultMap id="BaseResultMap" type="com.clay.security.entity.Permission">
         <id property="id" column="id" jdbcType="BIGINT"/>
         <result property="name" column="name" jdbcType="VARCHAR"/>
         <result property="url" column="url" jdbcType="VARCHAR"/>
         <result property="parentId" column="parent_id" jdbcType="BIGINT"/>
-        <result property="permission" column="permission" jdbcType="VARCHAR"/>
+        <result property="code" column="code" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         id
         ,name,url,
-        parent_id,permission
+        parent_id,code
     </sql>
 
 </mapper>
