@@ -1,4 +1,4 @@
-                        ## SpringBoot 3 入门案例代码
+## SpringBoot 3 入门案例代码
 
 ### 课程大纲
 
