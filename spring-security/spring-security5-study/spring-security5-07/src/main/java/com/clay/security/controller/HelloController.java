@@ -5,6 +5,7 @@ import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PostFilter;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.access.prepost.PreFilter;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -54,7 +55,7 @@ public class HelloController {
 
     @PreAuthorize("hasRole('ROLE_sale')")
     @PreFilter(value = "filterObject.id % 2 == 0")
-    @RequestMapping("/goodnight2")
+    @PostMapping("/goodnight2")
     public List<UserInfo> goodnight2(@RequestBody List<UserInfo> list) {
         list.forEach(t -> {
             System.out.println(t.getId() + " " + t.getUsername());
