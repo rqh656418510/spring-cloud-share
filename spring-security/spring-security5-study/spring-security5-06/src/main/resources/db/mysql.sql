@@ -42,12 +42,12 @@ create table role_permission(
 -- 插入初始化数据（用户密码是123456）
 insert into user values(1, 'wangwu', '$2a$10$IwvZiSm3vdhRtdyU8rJQz.pb9U/kYHorC2aQqwtFX.RVuFFHOpt82');
 insert into user values(2, 'zhangsan', '$2a$10$IwvZiSm3vdhRtdyU8rJQz.pb9U/kYHorC2aQqwtFX.RVuFFHOpt82');
+insert into role values(1, '管理员', 'ROLE_admin');
+insert into role values(2, '销售员', 'ROLE_sale');
 insert into permission values(1, '系统管理', '', 0, 'system');
-insert into permission values(2, '用户管理', '', 0, 'user');
-insert into role values(1, '管理员', 'ROLE_system');
-insert into role values(2, '普通用户', 'ROLE_user');
+insert into permission values(2, '销售产品', '', 0, 'sale_product');
 insert into user_role values(1, 1);
 insert into user_role values(2, 2);
 insert into role_permission values(1, 1);
 insert into role_permission values(1, 2);
-insert into role_permission values(2, 1);
+insert into role_permission values(2, 2);

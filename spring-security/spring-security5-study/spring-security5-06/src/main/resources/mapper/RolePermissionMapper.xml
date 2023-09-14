@@ -5,13 +5,13 @@
 <mapper namespace="com.clay.security.mapper.RolePermissionMapper">
 
     <resultMap id="BaseResultMap" type="com.clay.security.entity.RolePermission">
-        <result property="pid" column="pid" jdbcType="BIGINT"/>
         <result property="rid" column="rid" jdbcType="BIGINT"/>
+        <result property="pid" column="pid" jdbcType="BIGINT"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        pid
-        ,rid
+        rid
+        ,pid
     </sql>
 
 </mapper>

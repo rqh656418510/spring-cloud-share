@@ -22,7 +22,7 @@
         where ru.rid = #{userId}
     </select>
 
-    <select id="selectMenuById" resultType="com.clay.security.entity.Permission">
+    <select id="selectPermissionByUserId" resultType="com.clay.security.entity.Permission">
         SELECT p.id, p.name, p.url, p.parent_id, p.code
         FROM permission p
                  INNER JOIN role_permission rp ON p.id = rp.pid

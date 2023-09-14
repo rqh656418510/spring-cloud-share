@@ -41,8 +41,8 @@ public class MapperTest {
     }
 
     @Test
-    public void selectMenuById() {
-        List<Permission> permissions = userMapper.selectMenuById(1L);
+    public void selectPermissionByUserId() {
+        List<Permission> permissions = userMapper.selectPermissionByUserId(1L);
         permissions.forEach(permission -> {
             log.info("{} - {} - {}", permission.getId(), permission.getName(), permission.getCode());
         });

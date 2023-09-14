@@ -23,10 +23,10 @@ public interface UserMapper extends BaseMapper<User> {
     List<Role> selectRoleByUserId(@Param("userId") Long userId);
 
     /**
-     * 根据用户 ID 查询菜单
+     * 根据用户 ID 查询权限
      * @param userId
      * @return
      */
-    List<Permission> selectMenuById(@Param("userId") Long userId);
+    List<Permission> selectPermissionByUserId(@Param("userId") Long userId);
 
 }
