@@ -10,12 +10,12 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>spring-security5-study-01</module>
-        <module>spring-security5-study-02</module>
-        <module>spring-security5-study-03</module>
-        <module>spring-security5-study-04</module>
-        <module>spring-security5-study-05</module>
-        <module>spring-security5-study-06</module>
+        <module>spring-security5-01</module>
+        <module>spring-security5-02</module>
+        <module>spring-security5-03</module>
+        <module>spring-security5-04</module>
+        <module>spring-security5-05</module>
+        <module>spring-security5-06</module>
     </modules>
 
 </project>
