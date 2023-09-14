@@ -1,5 +1,6 @@
 package com.clay.security.controller;
 
+import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,6 +33,18 @@ public class HelloController {
     @RequestMapping("/goodbye2")
     public String goodbye2() {
         return "Goodbye Spring Security";
+    }
+
+    @PostAuthorize("hasRole('ROLE_sale')")
+    @RequestMapping("/goodnight")
+    public String goodnight() {
+        return "Goodnight Spring Security";
+    }
+
+    @PostAuthorize("hasAuthority('manager')")
+    @RequestMapping("/goodnight2")
+    public String goodnight2() {
+        return "Goodnight Spring Security";
     }
 
 }
