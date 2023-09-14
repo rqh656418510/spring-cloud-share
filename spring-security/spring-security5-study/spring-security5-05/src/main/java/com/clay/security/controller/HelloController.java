@@ -19,4 +19,9 @@ public class HelloController {
         return "Goodbye Spring Security";
     }
 
+    @RequestMapping("/goodnight")
+    public String goodnight() {
+        return "Goodnight Spring Security";
+    }
+
 }
