@@ -19,7 +19,7 @@ public class LoginServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        List<GrantedAuthority> authors = AuthorityUtils.commaSeparatedStringToAuthorityList("manager");
+        List<GrantedAuthority> authors = AuthorityUtils.commaSeparatedStringToAuthorityList("hr,manager");
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodePassword = passwordEncoder.encode("123456");
         return new User("admin", encodePassword, authors);

@@ -31,12 +31,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .loginProcessingUrl("/user/login")  // 配置哪个为登录接口的 URL
             .defaultSuccessUrl("/hello")        // 配置登录成功之后跳转到哪个 URL
             .and().authorizeRequests()
+            .antMatchers("/goodbye").hasAuthority("hr")           // 需要用户拥有 hr 权限才能访问对应的 URL
             .antMatchers("/hello").hasAuthority("manager")        // 需要用户拥有 manager 权限才能访问对应的 URL
             .antMatchers("/", "/login.html", "/user/login").permitAll()     // 配置哪些 URL 不需要登录就可以直接访问
             .anyRequest().authenticated()      // 配置其他 URL 需要登录才能访问
             .and().csrf().disable();           // 关闭 CSRF 防护
     }
-
+    
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
