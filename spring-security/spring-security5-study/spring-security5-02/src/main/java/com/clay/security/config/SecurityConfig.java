@@ -17,7 +17,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodePassword = passwordEncoder.encode("123456");
-        auth.inMemoryAuthentication().withUser("admin").password(encodePassword).roles("manager");
+        auth.inMemoryAuthentication().withUser("admin").password(encodePassword).authorities("manager");
     }
 
     @Bean
