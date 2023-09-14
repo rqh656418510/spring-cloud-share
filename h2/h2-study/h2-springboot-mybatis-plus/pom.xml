@@ -11,6 +11,7 @@
     </parent>
 
     <artifactId>h2-springboot-mybatis-plus</artifactId>
+    <description>SpringBoot整合MyBatis-Plus与H2</description>
     <packaging>jar</packaging>
 
     <dependencies>
