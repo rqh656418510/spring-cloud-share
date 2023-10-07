@@ -18,6 +18,7 @@
         <module>spring-security5-06</module>
         <module>spring-security5-07</module>
         <module>spring-security5-08</module>
+        <module>spring-security5-09</module>
     </modules>
 
 </project>
