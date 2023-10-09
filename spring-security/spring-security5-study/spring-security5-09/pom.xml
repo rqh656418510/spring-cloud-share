@@ -15,7 +15,7 @@
     <artifactId>spring-security5-09</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <description>用户自动登录</description>
+    <description>用户自动登录（记住密码）</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
