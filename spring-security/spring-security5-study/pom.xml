@@ -20,6 +20,8 @@
         <module>spring-security5-08</module>
         <module>spring-security5-09</module>
         <module>spring-security5-10</module>
+        <module>spring-security5-10/micro-service</module>
+        <module>spring-security5-10/micro-service/acl-service</module>
     </modules>
 
 </project>
