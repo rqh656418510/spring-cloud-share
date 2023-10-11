@@ -26,14 +26,14 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		// 根据用户名查询数据
 		User user = userService.selectByUsername(username);
-		// 判断用户不存在
+		// 判断用户是否存在
 		if (user == null) {
 			throw new UsernameNotFoundException("用户不存在");
 		}
 		com.clay.common.security.entity.User curUser = new com.clay.common.security.entity.User();
 		BeanUtils.copyProperties(user, curUser);
 
-		// 根据用户查询用户权限列表
+		// 获取用户的权限列表
 		List<String> permissionValueList = permissionService.selectPermissionValueByUserId(user.getId());
 		SecurityUser securityUser = new SecurityUser();
 		securityUser.setCurrentUserInfo(curUser);

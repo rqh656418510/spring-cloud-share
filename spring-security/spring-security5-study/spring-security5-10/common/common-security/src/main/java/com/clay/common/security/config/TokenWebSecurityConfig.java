@@ -14,6 +14,11 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
+/**
+ * 安全配置
+ *
+ * @author clay
+ */
 @Configuration
 public class TokenWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -36,7 +41,7 @@ public class TokenWebSecurityConfig extends WebSecurityConfigurerAdapter {
             .and().csrf().disable()
             .authorizeRequests()
             .anyRequest().authenticated()
-            .and().logout().logoutUrl("/admin/acl/logout")    // 配置退出登录的路径
+            .and().logout().logoutUrl("/admin/acl/index/logout")    // 配置退出登录的路径
             .addLogoutHandler(new TokenLogoutHandler(tokenManager,redisTemplate)).and()     // 配置退出登录处理器
             .addFilter(new TokenLoginFilter(authenticationManager(), tokenManager, redisTemplate))      // 配置认证过滤器
             .addFilter(new TokenAuthenticationFilter(authenticationManager(), tokenManager, redisTemplate)).httpBasic();    // 配置授权过滤器
@@ -50,7 +55,7 @@ public class TokenWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        // 配置可以不进行认证的路径，可以直接访问
+        // 配置哪些路径可以不进行认证，可以直接访问
         web.ignoring().antMatchers("/api/**");
     }
 

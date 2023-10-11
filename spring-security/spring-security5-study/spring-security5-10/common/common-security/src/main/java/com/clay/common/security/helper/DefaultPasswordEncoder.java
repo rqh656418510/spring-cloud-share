@@ -2,21 +2,15 @@ package com.clay.common.security.helper;
 
 import com.clay.common.base.utils.MD5;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 
 /**
  * 密码处理器
  *
  * @author clay
  */
+@Component
 public class DefaultPasswordEncoder implements PasswordEncoder {
-
-    public DefaultPasswordEncoder() {
-        this(-1);
-    }
-
-    public DefaultPasswordEncoder(int length) {
-
-    }
 
     @Override
     public String encode(CharSequence rawPassword) {

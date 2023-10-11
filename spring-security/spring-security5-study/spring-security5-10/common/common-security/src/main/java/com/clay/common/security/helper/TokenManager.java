@@ -3,6 +3,7 @@ package com.clay.common.security.helper;
 import io.jsonwebtoken.CompressionCodecs;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
@@ -11,6 +12,7 @@ import java.util.Date;
  *
  * @author clay
  */
+@Component
 public class TokenManager {
 
     /**
@@ -19,7 +21,7 @@ public class TokenManager {
     private String tokenSignKey = "123456";
 
     /**
-     * 有效时长
+     * Token的有效时长
      */
     private long tokenExpireSeconds = 24 * 60 * 60 * 1000;
 
