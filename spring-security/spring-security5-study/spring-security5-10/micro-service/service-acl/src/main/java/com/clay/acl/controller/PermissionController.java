@@ -22,28 +22,28 @@ import java.util.List;
 @RequestMapping("/admin/acl/permission")
 public class PermissionController {
 
-    @Autowired
-    private PermissionService permissionService;
+	@Autowired
+	private PermissionService permissionService;
 
-    @ApiOperation(value = "查询所有菜单")
-    @GetMapping
-    public R indexAllPermission() {
-        List<Permission> list = permissionService.queryAllMenu();
-        return R.ok().data("children", list);
-    }
+	@ApiOperation(value = "查询所有菜单")
+	@GetMapping
+	public R indexAllPermission() {
+		List<Permission> list = permissionService.queryAllMenu();
+		return R.ok().data("children", list);
+	}
 
-    @ApiOperation(value = "给角色分配权限")
-    @PostMapping("/doAssign")
-    public R doAssign(String roleId, String[] permissionId) {
-        permissionService.saveRolePermissionRealtionShipGuli(roleId, permissionId);
-        return R.ok();
-    }
+	@ApiOperation(value = "给角色分配权限")
+	@PostMapping("/doAssign")
+	public R doAssign(String roleId, String[] permissionId) {
+		permissionService.saveRolePermissionRealtionShipGuli(roleId, permissionId);
+		return R.ok();
+	}
 
-    @ApiOperation(value = "根据角色获取菜单")
-    @GetMapping("toAssign/{roleId}")
-    public R toAssign(@PathVariable String roleId) {
-        List<Permission> list = permissionService.selectAllMenu(roleId);
-        return R.ok().data("children", list);
-    }
+	@ApiOperation(value = "根据角色获取菜单")
+	@GetMapping("toAssign/{roleId}")
+	public R toAssign(@PathVariable String roleId) {
+		List<Permission> list = permissionService.selectAllMenu(roleId);
+		return R.ok().data("children", list);
+	}
 
 }

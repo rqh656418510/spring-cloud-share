@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
  * @author clay
  */
 @Service
-public class RolePermissionServiceImpl extends ServiceImpl<RolePermissionMapper, RolePermission> implements RolePermissionService {
+public class RolePermissionServiceImpl extends ServiceImpl<RolePermissionMapper, RolePermission>
+		implements RolePermissionService {
 
 }

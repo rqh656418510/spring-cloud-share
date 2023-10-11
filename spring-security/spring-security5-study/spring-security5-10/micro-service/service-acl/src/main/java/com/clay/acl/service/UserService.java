@@ -10,7 +10,7 @@ import com.clay.acl.entity.User;
  */
 public interface UserService extends IService<User> {
 
-    // 获取用户信息
-    User selectByUsername(String username);
+	// 获取用户信息
+	User selectByUsername(String username);
 
 }

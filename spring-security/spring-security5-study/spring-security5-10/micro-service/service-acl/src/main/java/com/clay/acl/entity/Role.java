@@ -25,21 +25,21 @@ import java.util.Date;
 @ApiModel(value = "Role对象", description = "角色")
 public class Role implements Serializable {
 
-    @TableId(value = "id", type = IdType.ID_WORKER_STR)
-    private String id;
+	@TableId(value = "id", type = IdType.ID_WORKER_STR)
+	private String id;
 
-    private String roleName;
+	private String roleName;
 
-    private String roleCode;
+	private String roleCode;
 
-    private String remark;
+	private String remark;
 
-    private Boolean isDeleted;
+	private Boolean isDeleted;
 
-    @TableField(fill = FieldFill.INSERT)
-    private Date gmtCreate;
+	@TableField(fill = FieldFill.INSERT)
+	private Date gmtCreate;
 
-    @TableField(fill = FieldFill.INSERT_UPDATE)
-    private Date gmtModified;
+	@TableField(fill = FieldFill.INSERT_UPDATE)
+	private Date gmtModified;
 
 }

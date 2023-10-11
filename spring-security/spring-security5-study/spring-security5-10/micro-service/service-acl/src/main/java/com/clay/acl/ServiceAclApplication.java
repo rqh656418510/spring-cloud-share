@@ -12,7 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @EnableDiscoveryClient
 @ComponentScan("com.clay")
-@MapperScan("com.clay.mapper")
+@MapperScan("com.clay.acl.mapper")
 public class ServiceAclApplication {
 
     public static void main(String[] args) {
