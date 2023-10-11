@@ -22,10 +22,17 @@
     </modules>
 
     <properties>
+        <hutool.version>4.0.11</hutool.version>
         <commons-pool2.version>2.6.0</commons-pool2.version>
     </properties>
 
     <dependencies>
+        <!-- HuTool -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>${hutool.version}</version>
+        </dependency>
         <!-- Swagger -->
         <dependency>
             <groupId>io.springfox</groupId>
@@ -35,6 +42,12 @@
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
+        </dependency>
+        <!-- Web -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <scope>provided</scope>
         </dependency>
         <!-- MyBatis-Plus -->
         <dependency>
