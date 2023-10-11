@@ -36,7 +36,7 @@ public class TokenLoginFilter extends UsernamePasswordAuthenticationFilter {
 
     private AuthenticationManager authenticationManager;
 
-    public TokenLoginFilter(TokenManager tokenManager, RedisTemplate redisTemplate, AuthenticationManager authenticationManager) {
+    public TokenLoginFilter(AuthenticationManager authenticationManager, TokenManager tokenManager, RedisTemplate redisTemplate) {
         this.tokenManager = tokenManager;
         this.redisTemplate = redisTemplate;
         this.authenticationManager = authenticationManager;
