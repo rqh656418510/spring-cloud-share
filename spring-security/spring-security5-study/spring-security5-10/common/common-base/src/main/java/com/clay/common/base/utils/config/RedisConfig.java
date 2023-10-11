@@ -1,4 +1,4 @@
-package com.clay.common.base.utils;
+package com.clay.common.base.utils.config;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;

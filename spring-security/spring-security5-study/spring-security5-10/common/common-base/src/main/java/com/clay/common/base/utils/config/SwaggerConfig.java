@@ -1,4 +1,4 @@
-package com.clay.common.base.utils;
+package com.clay.common.base.utils.config;
 
 import com.google.common.base.Predicates;
 import org.springframework.context.annotation.Bean;
