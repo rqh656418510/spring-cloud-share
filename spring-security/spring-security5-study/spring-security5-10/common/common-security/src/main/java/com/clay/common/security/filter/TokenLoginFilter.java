@@ -1,5 +1,7 @@
 package com.clay.common.security.filter;
 
+import com.clay.common.base.utils.utils.R;
+import com.clay.common.base.utils.utils.ResponseUtil;
 import com.clay.common.security.entity.User;
 import com.clay.common.security.helper.TokenManager;
 import com.clay.common.security.model.SecurityUser;
@@ -49,6 +51,7 @@ public class TokenLoginFilter extends UsernamePasswordAuthenticationFilter {
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         try {
+            // 获取表单提交的数据
             User user = new ObjectMapper().readValue(request.getInputStream(), User.class);
             return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword(), new ArrayList<>()));
         } catch (IOException e) {
@@ -71,8 +74,8 @@ public class TokenLoginFilter extends UsernamePasswordAuthenticationFilter {
         // 将用户权限列表存入缓存
         redisTemplate.opsForValue().set(user.getUsername(), user.getPermissionValueList());
 
-        // 回调父类的方法
-        super.successfulAuthentication(request, response, chain, authResult);
+        // 返回Token
+        ResponseUtil.out(response, R.ok().data("token", token));
     }
 
     /**
@@ -80,7 +83,7 @@ public class TokenLoginFilter extends UsernamePasswordAuthenticationFilter {
      */
     @Override
     protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failed) throws IOException, ServletException {
-        super.unsuccessfulAuthentication(request, response, failed);
+        ResponseUtil.out(response, R.error());
     }
 
 }
