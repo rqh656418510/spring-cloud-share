@@ -1,4 +1,4 @@
-package com.clay.common.base.utils.exceptionhandler;
+package com.clay.common.base.utils.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

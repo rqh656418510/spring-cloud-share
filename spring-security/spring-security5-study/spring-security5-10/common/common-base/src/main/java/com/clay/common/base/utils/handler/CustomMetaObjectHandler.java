@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 /**
- * 字段自动填充
+ * MyBatis-Plus 字段自动填充
  *
  * @author clay
  */

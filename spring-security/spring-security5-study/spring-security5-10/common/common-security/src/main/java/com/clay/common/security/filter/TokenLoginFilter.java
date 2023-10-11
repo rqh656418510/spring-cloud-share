@@ -1,7 +1,7 @@
 package com.clay.common.security.filter;
 
-import com.clay.common.base.utils.utils.R;
-import com.clay.common.base.utils.utils.ResponseUtil;
+import com.clay.common.base.utils.R;
+import com.clay.common.base.utils.ResponseUtil;
 import com.clay.common.security.entity.User;
 import com.clay.common.security.helper.TokenManager;
 import com.clay.common.security.model.SecurityUser;

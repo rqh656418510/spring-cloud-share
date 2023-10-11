@@ -1,8 +1,8 @@
 package com.clay.common.security.helper;
 
 import cn.hutool.core.util.StrUtil;
-import com.clay.common.base.utils.utils.R;
-import com.clay.common.base.utils.utils.ResponseUtil;
+import com.clay.common.base.utils.R;
+import com.clay.common.base.utils.ResponseUtil;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.LogoutHandler;

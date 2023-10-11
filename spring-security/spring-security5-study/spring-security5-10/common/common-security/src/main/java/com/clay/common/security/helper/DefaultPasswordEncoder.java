@@ -1,6 +1,6 @@
 package com.clay.common.security.helper;
 
-import com.clay.common.base.utils.utils.MD5;
+import com.clay.common.base.utils.MD5;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**

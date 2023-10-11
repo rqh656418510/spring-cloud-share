@@ -1,4 +1,4 @@
-package com.clay.common.base.utils.utils;
+package com.clay.common.base.utils;
 
 import lombok.Data;
 

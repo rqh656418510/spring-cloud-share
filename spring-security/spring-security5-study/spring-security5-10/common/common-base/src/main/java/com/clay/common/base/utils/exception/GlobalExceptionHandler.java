@@ -1,6 +1,6 @@
-package com.clay.common.base.utils.exceptionhandler;
+package com.clay.common.base.utils.exception;
 
-import com.clay.common.base.utils.utils.R;
+import com.clay.common.base.utils.R;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

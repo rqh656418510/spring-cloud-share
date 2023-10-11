@@ -1,4 +1,4 @@
-package com.clay.common.base.utils.utils;
+package com.clay.common.base.utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
