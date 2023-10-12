@@ -34,7 +34,7 @@ export const constantRoutes = [
     children: [{
       path: 'dashboard',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: '后台首页', icon: 'dashboard' }
+      meta: { title: '权限管理系统首页', icon: 'dashboard' }
     }]
   }]
 /**
