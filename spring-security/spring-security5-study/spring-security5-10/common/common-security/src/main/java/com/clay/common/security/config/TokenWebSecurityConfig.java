@@ -41,7 +41,7 @@ public class TokenWebSecurityConfig extends WebSecurityConfigurerAdapter {
             .and().csrf().disable()
             .authorizeRequests()
             .anyRequest().authenticated()
-            .and().logout().logoutUrl("/admin/acl/index/logout")    // 配置退出登录的路径
+            .and().logout().logoutUrl("/admin/acl/index/logout")    // 配置退出登录的  URL
             .addLogoutHandler(new TokenLogoutHandler(tokenManager,redisTemplate)).and()     // 配置退出登录处理器
             .addFilter(new TokenLoginFilter(authenticationManager(), tokenManager, redisTemplate))      // 配置认证过滤器
             .addFilter(new TokenAuthenticationFilter(authenticationManager(), tokenManager, redisTemplate)).httpBasic();    // 配置授权过滤器

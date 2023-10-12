@@ -36,7 +36,7 @@ public class TokenManager {
         return Jwts.builder()
             .setSubject(username)
             .setExpiration(expireDate)
-            .signWith(SignatureAlgorithm.ES512, tokenSignKey).compressWith(CompressionCodecs.GZIP).compact();
+            .signWith(SignatureAlgorithm.HS512, tokenSignKey).compressWith(CompressionCodecs.GZIP).compact();
     }
 
     /**

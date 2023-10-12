@@ -37,6 +37,13 @@ public class UserController {
 	@Autowired
 	private RoleService roleService;
 
+	@ApiOperation(value = "获取用户信息")
+	@GetMapping("/get/{id}")
+	public R get(@ApiParam(name = "id", value = "用户ID", required = true) @PathVariable String id) {
+		User user = userService.getById(id);
+		return R.ok().data("item", user);
+	}
+
 	@ApiOperation(value = "获取管理用户分页列表")
 	@GetMapping("{page}/{limit}")
 	public R index(@ApiParam(name = "page", value = "当前页码", required = true) @PathVariable Long page,

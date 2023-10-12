@@ -17,22 +17,25 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     @ResponseBody
     public R error(Exception e) {
+        e.printStackTrace();
         log.error(e.getMessage());
-        return R.error().message("执行了全局异常处理...");
+        return R.error().message("发生了全局异常处理...");
     }
 
     // 特定异常
     @ExceptionHandler(ArithmeticException.class)
     @ResponseBody
     public R error(ArithmeticException e) {
+        e.printStackTrace();
         log.error(e.getMessage());
-        return R.error().message("执行了ArithmeticException异常处理...");
+        return R.error().message("发生了ArithmeticException异常处理...");
     }
 
     // 自定义异常
     @ExceptionHandler(CustomException.class)
     @ResponseBody
     public R error(CustomException e) {
+        e.printStackTrace();
         log.error(e.getMessage());
         return R.error().code(e.getCode()).message(e.getMsg());
     }

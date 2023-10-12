@@ -28,6 +28,13 @@ public class RoleController {
 	@Autowired
 	private RoleService roleService;
 
+	@ApiOperation(value = "获取角色信息")
+	@GetMapping("/get/{id}")
+	public R get(@ApiParam(name = "id", value = "角色ID", required = true) @PathVariable String id) {
+		Role role = roleService.getById(id);
+		return R.ok().data("item", role);
+	}
+
 	@ApiOperation(value = "获取角色分页列表")
 	@GetMapping("{page}/{limit}")
 	public R index(@ApiParam(name = "page", value = "当前页码", required = true) @PathVariable Long page,
