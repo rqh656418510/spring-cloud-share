@@ -46,14 +46,14 @@ public class TokenLoginFilter extends UsernamePasswordAuthenticationFilter {
     }
 
     /**
-     * 获取表单提交的用户名和密码
+     * 执行认证
      */
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         try {
-            // 获取表单提交的数据
+            // 获取表单提交的数据（用户名和密码）
             User user = new ObjectMapper().readValue(request.getInputStream(), User.class);
-            return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword(), new ArrayList<>()));
+            return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
         } catch (IOException e) {
             log.error(e.getMessage());
             throw new RuntimeException();
@@ -83,7 +83,7 @@ public class TokenLoginFilter extends UsernamePasswordAuthenticationFilter {
      */
     @Override
     protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failed) throws IOException, ServletException {
-        ResponseUtil.out(response, R.error());
+        ResponseUtil.out(response, R.error().message("认证失败"));
     }
 
 }

@@ -19,7 +19,7 @@ public class GlobalExceptionHandler {
     public R error(Exception e) {
         e.printStackTrace();
         log.error(e.getMessage());
-        return R.error().message("发生了全局异常处理...");
+        return R.error().message("发生了全局异常...");
     }
 
     // 特定异常
@@ -28,7 +28,7 @@ public class GlobalExceptionHandler {
     public R error(ArithmeticException e) {
         e.printStackTrace();
         log.error(e.getMessage());
-        return R.error().message("发生了ArithmeticException异常处理...");
+        return R.error().message("发生了算数异常...");
     }
 
     // 自定义异常
