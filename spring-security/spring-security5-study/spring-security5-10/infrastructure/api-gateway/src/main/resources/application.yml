@@ -13,7 +13,8 @@ spring:
         locator:
           enabled: true   # 启用服务发现路由
           lower-case-service-id: true
-      routes[0]:
-        id: service-acl
-        uri: lb://service-acl
-        predicates: Path=/*/acl/**
+      routes:
+        - id: service-acl
+          uri: lb://service-acl
+          predicates:
+            - Path=/*/acl/**
