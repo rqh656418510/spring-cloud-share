@@ -29,8 +29,10 @@
         </el-button>
       </el-form-item>
       <div class="tips">
-        <span style="margin-right:20px;">用户名: admin</span>
-        <span>密码: 111111</span>
+        <span style="margin-right:20px;">管理员账号: admin / 111111</span>
+      </div>
+      <div class="tips">
+        <span style="margin-right:20px;">普通测试账号: test / 111111</span>
       </div>
     </el-form>
   </div>
