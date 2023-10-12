@@ -1,8 +1,8 @@
 server:
   port: 8009
 
-spring: 
-  application: 
+spring:
+  application:
     name: service-acl
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -13,17 +13,17 @@ spring:
     host: 127.0.0.1
     port: 6379
     password: 123456
-    database: ''
+    database: 0
     timeout: 1800000
-    lettuce: 
+    lettuce:
       pool:
         max-active: 20
         max-wait: -1
         max-idle: 5
-        min-idle: ''
+        min-idle: 2
   cloud:
-    nacos: 
-      discovery: 
+    nacos:
+      discovery:
         server-addr: '127.0.0.1:8848'
   jackson:
     date-format: 'yyyy-MM-dd HH:mm:ss'
@@ -32,3 +32,7 @@ spring:
 mybatis-plus:
   mapper-locations: classpath*:/mapper/**/*.xml
   typeAliasesPackage: com.clay.acl.**.entity
+  global-config:
+    banner: false
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
