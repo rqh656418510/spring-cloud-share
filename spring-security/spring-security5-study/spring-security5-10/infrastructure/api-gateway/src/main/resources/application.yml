@@ -8,3 +8,12 @@ spring:
     nacos:
       discovery:
         server-addr: '127.0.0.1:8848'
+    gateway:
+      discovery:
+        locator:
+          enabled: true   # 启用服务发现路由
+          lower-case-service-id: true
+      routes[0]:
+        id: service-acl
+        uri: lb://service-acl
+        predicates: Path=/*/acl/**
