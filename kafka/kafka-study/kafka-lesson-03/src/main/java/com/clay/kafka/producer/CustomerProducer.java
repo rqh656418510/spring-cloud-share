@@ -15,8 +15,8 @@ public class CustomerProducer {
 
     public static void main(String[] args) {
         Properties properties = new Properties();
-        // 指定Kafka集群的连接信息
-        properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:9092,127.0.0.1:9093");
+        // 指定Kafka的连接信息（若是Kafka集群，多个节点之间使用逗号分隔）
+        properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.2.127:9092");
         // 指定序列化器（必需）
         properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
