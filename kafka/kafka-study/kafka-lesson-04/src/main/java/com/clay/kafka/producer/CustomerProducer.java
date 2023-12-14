@@ -24,11 +24,11 @@ public class CustomerProducer {
 
         // 等待时间（默认 0ms）
         properties.put(ProducerConfig.LINGER_MS_CONFIG, 5);
-        // 批次大小（默认 16K）
+        // 批次大小（默认 16K），单位是字节
         properties.put(ProducerConfig.BATCH_SIZE_CONFIG, 16 * 1024);
         // 压缩方式（默认 none）
         properties.put(ProducerConfig.COMPRESSION_TYPE_CONFIG, "snappy");
-        // 缓冲区大小（默认 32M）
+        // 缓冲区大小（默认 32M），单位是字节
         properties.put(ProducerConfig.BUFFER_MEMORY_CONFIG, 64 * 1024 * 1024);
 
         // 创建生产者对象
