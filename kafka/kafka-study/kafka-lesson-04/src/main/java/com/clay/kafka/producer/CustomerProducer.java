@@ -22,13 +22,13 @@ public class CustomerProducer {
         properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
 
-        // 等待时间（默认0ms）
+        // 等待时间（默认 0ms）
         properties.put(ProducerConfig.LINGER_MS_CONFIG, 5);
-        // 批次大小（默认16K）
+        // 批次大小（默认 16K）
         properties.put(ProducerConfig.BATCH_SIZE_CONFIG, 16 * 1024);
-        // 压缩方式（默认none）
+        // 压缩方式（默认 none）
         properties.put(ProducerConfig.COMPRESSION_TYPE_CONFIG, "snappy");
-        // 缓冲区大小（默认32M）
+        // 缓冲区大小（默认 32M）
         properties.put(ProducerConfig.BUFFER_MEMORY_CONFIG, 64 * 1024 * 1024);
 
         // 创建生产者对象

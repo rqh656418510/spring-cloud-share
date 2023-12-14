@@ -27,7 +27,9 @@ public class CustomerProducer2 {
             producer.send(new ProducerRecord<>("test", "hello kafka " + i), new Callback() {
                 @Override
                 public void onCompletion(RecordMetadata recordMetadata, Exception exception) {
-                    if (exception == null) {
+                    if (exception != null) {
+                        exception.printStackTrace();
+                    } else {
                         System.out.println("topic: " + recordMetadata.topic() + ", partition: " + recordMetadata.partition());
                     }
                 }
