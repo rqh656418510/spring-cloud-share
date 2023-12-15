@@ -8,8 +8,7 @@ import org.apache.kafka.common.serialization.StringSerializer;
 import java.util.Properties;
 
 /**
- * 生产者提高吞吐量
- * <p> 吞吐量是指生产者发送消息的效率
+ * 生产者处理数据去重
  *
  * @author clay
  */
@@ -22,15 +21,6 @@ public class CustomerProducer {
         // 指定序列化器（必需）
         properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
-
-        // 等待时间（默认 0ms）
-        properties.put(ProducerConfig.LINGER_MS_CONFIG, 5);
-        // 批次大小（默认 16K），单位是字节
-        properties.put(ProducerConfig.BATCH_SIZE_CONFIG, 16 * 1024);
-        // 压缩方式（默认 none）
-        properties.put(ProducerConfig.COMPRESSION_TYPE_CONFIG, "snappy");
-        // 缓冲区大小（默认 32M），单位是字节
-        properties.put(ProducerConfig.BUFFER_MEMORY_CONFIG, 64 * 1024 * 1024);
 
         // 创建生产者对象
         KafkaProducer<String, String> producer = new KafkaProducer<>(properties);

@@ -9,6 +9,7 @@ import java.util.Properties;
 
 /**
  * 生产者保证数据可靠性
+ * <p> 数据可靠性是指生产者如何保证消息可以发送给 Kafka，并保证 Kafka 可以持久化消息内容
  *
  * @author clay
  */
