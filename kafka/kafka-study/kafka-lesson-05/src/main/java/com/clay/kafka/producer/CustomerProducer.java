@@ -22,9 +22,9 @@ public class CustomerProducer {
         properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
 
-        // 设置 ACK 应答机制，默认值是 "all"
+        // 设置 ACK 应答级别，默认值是 "all"
         properties.put(ProducerConfig.ACKS_CONFIG, "all");
-        // 重试次数，默认值是 int 类型的最大值 2147483647
+        // 设置重试次数，默认值是 int 类型的最大值 2147483647
         properties.put(ProducerConfig.RETRIES_CONFIG, 3);
 
         // 创建生产者对象
