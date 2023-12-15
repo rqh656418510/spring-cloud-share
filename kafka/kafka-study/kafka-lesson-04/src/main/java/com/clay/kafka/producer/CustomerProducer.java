@@ -8,7 +8,7 @@ import org.apache.kafka.common.serialization.StringSerializer;
 import java.util.Properties;
 
 /**
- * 普通的异步发送
+ * 生产者提高吞吐量（发送消息的效率）
  *
  * @author clay
  */

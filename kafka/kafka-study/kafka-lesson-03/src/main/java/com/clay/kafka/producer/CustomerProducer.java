@@ -7,7 +7,7 @@ import org.apache.kafka.common.serialization.StringSerializer;
 import java.util.Properties;
 
 /**
- * 异步发送
+ * 自定义分区器的使用
  *
  * @author clay
  */
