@@ -23,7 +23,7 @@ public class CustomerProducer {
         properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
 
-        // 设置事务 ID（全局唯一）
+        // 设置事务 ID（必须）
         properties.put(ProducerConfig.TRANSACTIONAL_ID_CONFIG, "transaction_id_01");
 
         // 创建生产者对象
