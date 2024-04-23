@@ -6,6 +6,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
@@ -49,10 +50,29 @@ public class GoodsController {
             response = "系统出错!";
             e.printStackTrace();
         } finally {
-            // 解锁，必须保证释放的是自己加的锁，而不是别人的锁
-            String lock = stringRedisTemplate.opsForValue().get(REDIS_LOCK);
-            if (lock != null && lock.equalsIgnoreCase(value)) {
-                stringRedisTemplate.delete(REDIS_LOCK);
+            while (true) {
+                // 添加监控器（乐观锁），防止自己加的锁被其他业务更改过
+                stringRedisTemplate.watch(REDIS_LOCK);
+
+                // 判断是否是自己加的锁
+                if (stringRedisTemplate.opsForValue().get(REDIS_LOCK).equalsIgnoreCase(value)) {
+                    // 开启事务
+                    stringRedisTemplate.setEnableTransactionSupport(true);
+                    stringRedisTemplate.multi();
+                    // 解锁
+                    stringRedisTemplate.delete(REDIS_LOCK);
+                    // 执行事务
+                    List<Object> list = stringRedisTemplate.exec();
+                    // 判断事务是否执行成功，如果执行失败，再次执行 while 循环来重新执行删除操作
+                    if (list == null || list.isEmpty()) {
+                        continue;
+                    }
+                }
+
+                // 释放监控器（乐观锁）
+                stringRedisTemplate.unwatch();
+                // 跳出当前循环
+                break;
             }
         }
 
