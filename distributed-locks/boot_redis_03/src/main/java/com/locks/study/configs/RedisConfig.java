@@ -1,5 +1,9 @@
 package com.locks.study.configs;
 
+import org.redisson.Redisson;
+import org.redisson.api.RedissonClient;
+import org.redisson.config.Config;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
@@ -11,6 +15,18 @@ import java.io.Serializable;
 
 @Configuration
 public class RedisConfig {
+
+    @Value("${spring.redis.host:}")
+    private String host;
+
+    @Value("${spring.redis.port:6379}")
+    private int port;
+
+    @Value("${spring.redis.password:}")
+    private String password;
+
+    @Value("${spring.redis.database:0}")
+    private int database;
 
     @Bean
     public RedisTemplate<String, Serializable> redisTemplate(LettuceConnectionFactory connectionFactory) {
@@ -24,6 +40,16 @@ public class RedisConfig {
         redisTemplate.setConnectionFactory(connectionFactory);
         // 返回 redisTemplate 对象
         return redisTemplate;
+    }
+
+    @Bean
+    public RedissonClient redisson() {
+        Config config = new Config();
+        config.useSingleServer()
+            .setAddress("redis://" + host + ":" + port)
+            .setPassword(password)
+            .setDatabase(database);
+        return Redisson.create(config);
     }
 
 }

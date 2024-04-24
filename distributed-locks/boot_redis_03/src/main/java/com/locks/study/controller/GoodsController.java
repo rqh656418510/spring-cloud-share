@@ -1,13 +1,12 @@
 package com.locks.study.controller;
 
+import org.redisson.api.RLock;
+import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.UUID;
-import java.util.concurrent.TimeUnit;
 
 @RestController
 public class GoodsController {
@@ -18,19 +17,16 @@ public class GoodsController {
     private static final String REDIS_LOCK = "buy_goods";
 
     @Autowired
+    private RedissonClient redissonClient;
+
+    @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
     @GetMapping("/buyGoods")
     public String buyGoods() {
-        // 锁的唯一标识
-        String value = UUID.randomUUID().toString() + Thread.currentThread().getName();
-
-        // 加锁并设置锁的过期时间（必须保证是原子性操作），防止因Redis宕机出现死锁
-        boolean locked = stringRedisTemplate.opsForValue().setIfAbsent(REDIS_LOCK, value, 10L, TimeUnit.SECONDS);
-
-        if (!locked) {
-            return "抢锁失败";
-        }
+        // 加分布式锁
+        RLock rlock = redissonClient.getLock(REDIS_LOCK);
+        rlock.lock();
 
         String response = null;
         try {
@@ -50,7 +46,8 @@ public class GoodsController {
             response = "系统出错!";
             e.printStackTrace();
         } finally {
-
+            // 释放分布式锁
+            rlock.unlock();
         }
 
         System.out.println(response);
