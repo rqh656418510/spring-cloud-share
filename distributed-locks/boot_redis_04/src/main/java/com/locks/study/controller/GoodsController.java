@@ -14,7 +14,7 @@ public class GoodsController {
     @Value("${server.port}")
     private String serverPort;
 
-    private static final String REDIS_LOCK = "buy_goods";
+    private static final String REDIS_LOCK = "lock_buy_goods";
 
     @Autowired
     private RedissonClient redissonClient;
@@ -47,7 +47,9 @@ public class GoodsController {
             e.printStackTrace();
         } finally {
             // 释放分布式锁
-            rlock.unlock();
+            if (rlock.isLocked() && rlock.isHeldByCurrentThread()) {
+                rlock.unlock();
+            }
         }
 
         System.out.println(response);

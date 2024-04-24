@@ -18,7 +18,7 @@ public class GoodsController {
     @Value("${server.port}")
     private String serverPort;
 
-    private static final String REDIS_LOCK = "buy_goods";
+    private static final String REDIS_LOCK = "lock_buy_goods";
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
@@ -28,7 +28,7 @@ public class GoodsController {
         // 锁的唯一标识
         String value = UUID.randomUUID().toString() + Thread.currentThread().getName();
 
-        // 加锁并设置锁的过期时间（必须保证是原子性操作），防止因Redis宕机出现死锁
+        // 加锁，并设置锁的过期时间（必须保证是原子性操作），防止因Redis宕机出现死锁
         boolean locked = stringRedisTemplate.opsForValue().setIfAbsent(REDIS_LOCK, value, 30L, TimeUnit.SECONDS);
 
         if (!locked) {
