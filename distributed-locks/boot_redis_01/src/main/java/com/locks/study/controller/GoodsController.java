@@ -29,7 +29,7 @@ public class GoodsController {
         String value = UUID.randomUUID().toString() + Thread.currentThread().getName();
 
         // 加锁并设置锁的过期时间（必须保证是原子性操作），防止因Redis宕机出现死锁
-        boolean locked = stringRedisTemplate.opsForValue().setIfAbsent(REDIS_LOCK, value, 10L, TimeUnit.SECONDS);
+        boolean locked = stringRedisTemplate.opsForValue().setIfAbsent(REDIS_LOCK, value, 30L, TimeUnit.SECONDS);
 
         if (!locked) {
             return "抢锁失败";

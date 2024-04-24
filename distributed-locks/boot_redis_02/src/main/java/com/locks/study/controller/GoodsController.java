@@ -27,7 +27,7 @@ public class GoodsController {
         String value = UUID.randomUUID().toString() + Thread.currentThread().getName();
 
         // 加锁并设置锁的过期时间（必须保证是原子性操作），防止因Redis宕机出现死锁
-        boolean locked = stringRedisTemplate.opsForValue().setIfAbsent(REDIS_LOCK, value, 10L, TimeUnit.SECONDS);
+        boolean locked = stringRedisTemplate.opsForValue().setIfAbsent(REDIS_LOCK, value, 30L, TimeUnit.SECONDS);
 
         if (!locked) {
             return "抢锁失败";
@@ -57,7 +57,10 @@ public class GoodsController {
                 stringRedisTemplate.watch(REDIS_LOCK);
 
                 // 判断是否是自己加的锁
-                if (stringRedisTemplate.opsForValue().get(REDIS_LOCK).equalsIgnoreCase(value)) {
+                String realValue = stringRedisTemplate.opsForValue().get(REDIS_LOCK);
+                if (realValue == null) {
+                    throw new RuntimeException("任务执行超时，锁被自动释放");
+                } else if (realValue.equalsIgnoreCase(value)) {
                     // 开启事务
                     stringRedisTemplate.setEnableTransactionSupport(true);
                     stringRedisTemplate.multi();
@@ -66,7 +69,7 @@ public class GoodsController {
                     // 执行事务
                     List<Object> list = stringRedisTemplate.exec();
                     // 判断事务是否执行成功，如果执行失败，再次执行 while 循环来重新执行删除操作
-                    if (list == null || list.isEmpty()) {
+                    if (list.isEmpty()) {
                         continue;
                     }
                 }
