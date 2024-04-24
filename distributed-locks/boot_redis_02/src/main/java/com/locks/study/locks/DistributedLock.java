@@ -7,7 +7,7 @@ import java.util.UUID;
 
 /**
  * 分布式锁
- * <p> 基于 Redis 的事务实现分布式锁
+ * <p> 基于 Redis 的事务，实现分布式锁
  */
 public class DistributedLock {
 

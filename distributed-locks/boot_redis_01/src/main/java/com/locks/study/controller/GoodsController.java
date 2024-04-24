@@ -12,6 +12,9 @@ import java.util.Collections;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 基于 Lua 脚本，实现分布式锁
+ */
 @RestController
 public class GoodsController {
 

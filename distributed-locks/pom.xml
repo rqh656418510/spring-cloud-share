@@ -25,7 +25,6 @@
         <module>boot_redis_01</module>
         <module>boot_redis_02</module>
         <module>boot_redis_03</module>
-        <module>boot_redis_04</module>
     </modules>
 
 </project>

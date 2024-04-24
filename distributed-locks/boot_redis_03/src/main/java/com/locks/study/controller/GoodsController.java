@@ -8,6 +8,9 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 基于 Redisson 的事务，实现分布式锁
+ */
 @RestController
 public class GoodsController {
 
