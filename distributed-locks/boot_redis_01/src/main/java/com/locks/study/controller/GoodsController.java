@@ -25,9 +25,10 @@ public class GoodsController {
 
     @GetMapping("/buyGoods")
     public String buyGoods() {
+        // 锁的唯一标识
         String value = UUID.randomUUID().toString() + Thread.currentThread().getName();
 
-        // 加锁并设置锁的过期时间（必须保证原子性操作），防止因Redis宕机出现死锁
+        // 加锁并设置锁的过期时间（必须保证是原子性操作），防止因Redis宕机出现死锁
         boolean locked = stringRedisTemplate.opsForValue().setIfAbsent(REDIS_LOCK, value, 10L, TimeUnit.SECONDS);
 
         if (!locked) {
@@ -52,12 +53,12 @@ public class GoodsController {
             response = "系统出错!";
             e.printStackTrace();
         } finally {
-            // 获取连接
-            Jedis jedis = RedisUtils.getJedis();
-
-            // Lua脚本
+            // Lua脚本，用于防止自己加的锁被其他业务更改过（保证释放锁的操作的原子性）
             String script = "if redis.call('get', KEYS[1]) == ARGV[1]" + "then "
                 + "return redis.call('del', KEYS[1])" + "else " + "  return 0 " + "end";
+
+            // 获取连接
+            Jedis jedis = RedisUtils.getJedis();
 
             try {
                 // 执行Lua脚本
