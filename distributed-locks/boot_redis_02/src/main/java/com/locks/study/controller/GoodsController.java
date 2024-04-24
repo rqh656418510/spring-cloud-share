@@ -51,8 +51,9 @@ public class GoodsController {
             response = "系统出错!";
             e.printStackTrace();
         } finally {
+            // 这里使用Redis的事务，用于防止自己加的锁被其他业务更改过（保证释放锁的操作的原子性）
             while (true) {
-                // 添加监控器（乐观锁），防止自己加的锁被其他业务更改过（保证释放锁的操作的原子性）
+                // 添加监控器（乐观锁）
                 stringRedisTemplate.watch(REDIS_LOCK);
 
                 // 判断是否是自己加的锁
