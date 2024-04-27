@@ -7,10 +7,10 @@ package com.jdk.source.map;
  */
 public class HashMap<K, V> implements Map<K, V> {
 
-    private static int defaultLength = 16;
-    private static float defaultLoader = 0.7f;
-    private Entry<K, V>[] table = null;
-    private int size = 0;
+    private static int defaultLength = 16;  // 默认容量
+    private static float defaultLoader = 0.7f;  // 加载因子
+    private Entry<K, V>[] table = null;  // 数组
+    private int size = 0;  // 元素数量
 
     public HashMap() {
         this(defaultLength, defaultLoader);
@@ -19,19 +19,30 @@ public class HashMap<K, V> implements Map<K, V> {
     public HashMap(int length, float loader) {
         defaultLength = length;
         defaultLoader = loader;
+        // 初始化数组
         table = new Entry[defaultLength];
     }
 
+    /**
+     * 哈希算法
+     * <p> 哈希算法决定了运行效率（时间复杂度）
+     */
     private int hash(K k) {
         int l = defaultLength;
         int i = k.hashCode() % l;
         return i > 0 ? i : -i;
     }
 
+    /**
+     * 创建节点
+     */
     private Entry<K, V> newEntry(K k, V v, Entry<K, V> next) {
         return new Entry<>(k, v, next);
     }
 
+    /**
+     * 查找节点（递归）
+     */
     private V find(K k, Entry<K, V> entry) {
         if (k == entry.getKey() || k.equals(entry.getKey())) {
             return entry.getValue();
@@ -71,11 +82,15 @@ public class HashMap<K, V> implements Map<K, V> {
         return size;
     }
 
+    /**
+     * 定义节点
+     * <p> 实现了单向链表的数据结构
+     */
     static class Entry<K, V> implements Map.Entry<K, V> {
 
-        K k;
-        V v;
-        Entry<K, V> next;
+        K k;    // 键
+        V v;    // 值
+        Entry<K, V> next;   // 下一个节点
 
         public Entry(K k, V v) {
             this.k = k;

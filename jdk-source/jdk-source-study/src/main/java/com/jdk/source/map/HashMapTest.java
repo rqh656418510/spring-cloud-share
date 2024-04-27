@@ -1,6 +1,6 @@
 package com.jdk.source.map;
 
-public class MapTest {
+public class HashMapTest {
 
     public static void main(String[] args) {
         test01();
