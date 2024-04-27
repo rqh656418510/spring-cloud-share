@@ -62,6 +62,7 @@ public class HashMap<K, V> implements Map<K, V> {
             size++;
             table[index] = newEntry(k, v, null);
         } else {
+            // 使用单向链表来解决哈希冲突问题
             table[index] = newEntry(k, v, entry);
         }
         return table[index].getValue();
