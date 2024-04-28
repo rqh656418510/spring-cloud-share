@@ -1,30 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration
-        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
 
-    <!-- 读取db.properties文件 -->
-    <properties resource="db.properties"/>
-
-    <environments default="development">
-        <environment id="development">
-            <!-- 配置事务 -->
-            <transactionManager type="JDBC"/>
-            <!-- 配置数据源 -->
-            <dataSource type="POOLED">
-                <property name="url" value="${dataSource.jdbcUrl}"/>
-                <property name="username" value="${dataSource.user}"/>
-                <property name="password" value="${dataSource.password}"/>
-                <property name="driver" value="${dataSource.driverClass}"/>
-            </dataSource>
-        </environment>
-    </environments>
-
-    <!-- SQL映射文件 -->
-    <mappers>
-        <mapper resource="com.distributed.db.dao/UserMapper.xml"/>
-    </mappers>
+	<settings>
+		<!-- 开启二级缓存 -->
+		<setting name="cacheEnabled" value="true" />
+		<!-- 开启驼峰命名自动映射 -->
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+	</settings>
 
 </configuration>
