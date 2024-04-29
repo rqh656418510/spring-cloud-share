@@ -33,61 +33,61 @@
     </bean>
 
     <bean id="dataSource02" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
-        <property name="url" value="${jdbc01.url}"/>
-        <property name="username" value="${jdbc01.user}"/>
-        <property name="password" value="${jdbc01.password}"/>
-        <property name="maxActive" value="${jdbc01.maxPoolSize}"/>
-        <property name="initialSize" value="${jdbc01.initialPoolSize}"/>
-        <property name="maxWait" value="${jdbc01.maxWait}"/>
-        <property name="minIdle" value="${jdbc01.miniPoolSize}"/>
-        <property name="timeBetweenEvictionRunsMillis" value="${jdbc01.timeBetweenEvictionRunsMillis}"/>
-        <property name="minEvictableIdleTimeMillis" value="${jdbc01.minEvictableIdleTimeMillis}"/>
-        <property name="validationQuery" value="${jdbc01.preferredTestQuery}"/>
+        <property name="url" value="${jdbc02.url}"/>
+        <property name="username" value="${jdbc02.user}"/>
+        <property name="password" value="${jdbc02.password}"/>
+        <property name="maxActive" value="${jdbc02.maxPoolSize}"/>
+        <property name="initialSize" value="${jdbc02.initialPoolSize}"/>
+        <property name="maxWait" value="${jdbc02.maxWait}"/>
+        <property name="minIdle" value="${jdbc02.miniPoolSize}"/>
+        <property name="timeBetweenEvictionRunsMillis" value="${jdbc02.timeBetweenEvictionRunsMillis}"/>
+        <property name="minEvictableIdleTimeMillis" value="${jdbc02.minEvictableIdleTimeMillis}"/>
+        <property name="validationQuery" value="${jdbc02.preferredTestQuery}"/>
         <property name="testWhileIdle" value="true"/>
         <property name="filters" value="stat"/>
     </bean>
 
     <bean id="dataSource03" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
-        <property name="url" value="${jdbc01.url}"/>
-        <property name="username" value="${jdbc01.user}"/>
-        <property name="password" value="${jdbc01.password}"/>
-        <property name="maxActive" value="${jdbc01.maxPoolSize}"/>
-        <property name="initialSize" value="${jdbc01.initialPoolSize}"/>
-        <property name="maxWait" value="${jdbc01.maxWait}"/>
-        <property name="minIdle" value="${jdbc01.miniPoolSize}"/>
-        <property name="timeBetweenEvictionRunsMillis" value="${jdbc01.timeBetweenEvictionRunsMillis}"/>
-        <property name="minEvictableIdleTimeMillis" value="${jdbc01.minEvictableIdleTimeMillis}"/>
-        <property name="validationQuery" value="${jdbc01.preferredTestQuery}"/>
+        <property name="url" value="${jdbc03.url}"/>
+        <property name="username" value="${jdbc03.user}"/>
+        <property name="password" value="${jdbc03.password}"/>
+        <property name="maxActive" value="${jdbc03.maxPoolSize}"/>
+        <property name="initialSize" value="${jdbc03.initialPoolSize}"/>
+        <property name="maxWait" value="${jdbc03.maxWait}"/>
+        <property name="minIdle" value="${jdbc03.miniPoolSize}"/>
+        <property name="timeBetweenEvictionRunsMillis" value="${jdbc03.timeBetweenEvictionRunsMillis}"/>
+        <property name="minEvictableIdleTimeMillis" value="${jdbc03.minEvictableIdleTimeMillis}"/>
+        <property name="validationQuery" value="${jdbc03.preferredTestQuery}"/>
         <property name="testWhileIdle" value="true"/>
         <property name="filters" value="stat"/>
     </bean>
 
     <bean id="dataSource04" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
-        <property name="url" value="${jdbc01.url}"/>
-        <property name="username" value="${jdbc01.user}"/>
-        <property name="password" value="${jdbc01.password}"/>
-        <property name="maxActive" value="${jdbc01.maxPoolSize}"/>
-        <property name="initialSize" value="${jdbc01.initialPoolSize}"/>
-        <property name="maxWait" value="${jdbc01.maxWait}"/>
-        <property name="minIdle" value="${jdbc01.miniPoolSize}"/>
-        <property name="timeBetweenEvictionRunsMillis" value="${jdbc01.timeBetweenEvictionRunsMillis}"/>
-        <property name="minEvictableIdleTimeMillis" value="${jdbc01.minEvictableIdleTimeMillis}"/>
-        <property name="validationQuery" value="${jdbc01.preferredTestQuery}"/>
+        <property name="url" value="${jdbc04.url}"/>
+        <property name="username" value="${jdbc04.user}"/>
+        <property name="password" value="${jdbc04.password}"/>
+        <property name="maxActive" value="${jdbc04.maxPoolSize}"/>
+        <property name="initialSize" value="${jdbc04.initialPoolSize}"/>
+        <property name="maxWait" value="${jdbc04.maxWait}"/>
+        <property name="minIdle" value="${jdbc04.miniPoolSize}"/>
+        <property name="timeBetweenEvictionRunsMillis" value="${jdbc04.timeBetweenEvictionRunsMillis}"/>
+        <property name="minEvictableIdleTimeMillis" value="${jdbc04.minEvictableIdleTimeMillis}"/>
+        <property name="validationQuery" value="${jdbc04.preferredTestQuery}"/>
         <property name="testWhileIdle" value="true"/>
         <property name="filters" value="stat"/>
     </bean>
 
     <bean id="dataSource05" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
-        <property name="url" value="${jdbc01.url}"/>
-        <property name="username" value="${jdbc01.user}"/>
-        <property name="password" value="${jdbc01.password}"/>
-        <property name="maxActive" value="${jdbc01.maxPoolSize}"/>
-        <property name="initialSize" value="${jdbc01.initialPoolSize}"/>
-        <property name="maxWait" value="${jdbc01.maxWait}"/>
-        <property name="minIdle" value="${jdbc01.miniPoolSize}"/>
-        <property name="timeBetweenEvictionRunsMillis" value="${jdbc01.timeBetweenEvictionRunsMillis}"/>
-        <property name="minEvictableIdleTimeMillis" value="${jdbc01.minEvictableIdleTimeMillis}"/>
-        <property name="validationQuery" value="${jdbc01.preferredTestQuery}"/>
+        <property name="url" value="${jdbc05.url}"/>
+        <property name="username" value="${jdbc05.user}"/>
+        <property name="password" value="${jdbc05.password}"/>
+        <property name="maxActive" value="${jdbc05.maxPoolSize}"/>
+        <property name="initialSize" value="${jdbc05.initialPoolSize}"/>
+        <property name="maxWait" value="${jdbc05.maxWait}"/>
+        <property name="minIdle" value="${jdbc05.miniPoolSize}"/>
+        <property name="timeBetweenEvictionRunsMillis" value="${jdbc05.timeBetweenEvictionRunsMillis}"/>
+        <property name="minEvictableIdleTimeMillis" value="${jdbc05.minEvictableIdleTimeMillis}"/>
+        <property name="validationQuery" value="${jdbc05.preferredTestQuery}"/>
         <property name="testWhileIdle" value="true"/>
         <property name="filters" value="stat"/>
     </bean>
