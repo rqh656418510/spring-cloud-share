@@ -3,6 +3,7 @@ create database distributed_database_study_02 default character set utf8;
 create database distributed_database_study_03 default character set utf8;
 create database distributed_database_study_04 default character set utf8;
 create database distributed_database_study_05 default character set utf8;
+create database distributed_database_study_06 default character set utf8;
 
 create table `t_employee` (
   `id` int(11) not null auto_increment,
