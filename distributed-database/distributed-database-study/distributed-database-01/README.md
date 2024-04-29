@@ -18,6 +18,10 @@ mvn install:install-file -Dfile=sharding.jar -DgroupId=com.caland -DartifactId=s
     - 可以采用 MySQL + Kafka + ElasticSearch 的方式，来解决数据异构问题
     - 本质也就是将 MySQL 所有库的数据通过 Kafka 同步到 ElasticSearch，然后再通过 ElasticSearch 检索数据
 
+## 参考项目
+
+- [uncode-framework-parent](https://github.com/doublexxxxxx/uncode-framework-parent/tree/master/uncode-framework-cluster_cloud)
+
 ## 参考教程
 
 - [数据库高并发解决方案](https://my.oschina.net/bigdataer/blog/486772)
