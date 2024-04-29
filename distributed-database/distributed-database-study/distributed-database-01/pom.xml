@@ -21,6 +21,8 @@
         <servlet.version>3.1.0</servlet.version>
         <spring.version>4.3.2.RELEASE</spring.version>
         <gson.version>2.7</gson.version>
+        <xstream.version>1.4.2</xstream.version>
+        <mvel2.version>2.1.0.Final</mvel2.version>
         <commons-lang.version>2.6</commons-lang.version>
         <commons-collections.version>3.2.2</commons-collections.version>
     </properties>
@@ -183,6 +185,18 @@
             <groupId>com.caland</groupId>
             <artifactId>sharding</artifactId>
             <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.thoughtworks.xstream</groupId>
+            <artifactId>xstream</artifactId>
+            <version>${xstream.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mvel</groupId>
+            <artifactId>mvel2</artifactId>
+            <version>${mvel2.version}</version>
         </dependency>
 
         <!-- Log -->
