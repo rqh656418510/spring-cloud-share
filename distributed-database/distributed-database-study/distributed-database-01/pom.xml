@@ -21,6 +21,7 @@
         <servlet.version>3.1.0</servlet.version>
         <spring.version>4.3.2.RELEASE</spring.version>
         <gson.version>2.7</gson.version>
+        <commons-lang.version>2.6</commons-lang.version>
         <commons-collections.version>3.2.2</commons-collections.version>
     </properties>
 
@@ -163,6 +164,12 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>${gson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>${commons-lang.version}</version>
         </dependency>
 
         <dependency>
