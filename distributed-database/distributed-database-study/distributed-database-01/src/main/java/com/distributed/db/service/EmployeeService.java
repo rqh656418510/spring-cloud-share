@@ -1,13 +1,13 @@
 package com.distributed.db.service;
 
-import java.util.List;
+import com.distributed.db.bean.Employee;
 
-import com.distributed.db.domain.Employee;
+import java.util.List;
 
 public interface EmployeeService {
 
-	public List<Employee> list();
+    List<Employee> list();
 
-	public boolean deleteEmployee(Long id);
+    boolean delete(Long id);
 
 }

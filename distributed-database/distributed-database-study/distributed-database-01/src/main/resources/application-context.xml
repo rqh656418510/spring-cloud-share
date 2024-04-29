@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
-       xmlns:tx="http://www.springframework.org/schema/tx"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
     <!-- 引入数据库配置文件 -->
     <context:property-placeholder location="classpath:db.properties"/>
@@ -172,24 +169,23 @@
     <!-- 开启基于注解的事务 -->
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
-    <!-- 定义 SqlSessionFactory -->
-    <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <!-- 数据源 -->
+    <!-- SQL Map 定义 -->
+    <bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+        <!-- 这里配置的dataSource01为默认的数据源，如果找不到数据库的话则到该数据源中查找 -->
         <property name="dataSource" ref="dataSource01"/>
-        <!-- 类型别名 -->
-        <property name="typeAliasesPackage" value="com.distributed.db.domain"/>
-        <!--指定 SQL 映射文件的位置 -->
-        <property name="mapperLocations" value="classpath*:mapper/**/*.xml"/>
-        <!-- 指定 MyBatis 全局配置文件的位置 -->
-        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <property name="configLocation" value="classpath:/sqlmap-config.xml"/>
     </bean>
 
-    <!-- 定义 SqlSessionTemplate -->
-    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
-        <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactoryBean"/>
+    <!-- 项目里一定要使用此工程模板，不能再使用 iBatis 原生的 API，不然有的情况会不经过的过滤 -->
+    <bean id="sqlMapClientTemplate" class="com.caland.sun.client.SunSqlMapClientTemplate">
+        <property name="sqlMapClient" ref="sqlMapClient"/>
+        <property name="dataSourceService" ref="dataSources"/>
+        <property name="router" ref="internalRouter"/>
+        <property name="sqlAuditor">
+            <bean class="com.caland.sun.client.audit.SimpleSqlAuditor"/>
+        </property>
+        <property name="profileLongTimeRunningSql" value="true"/>
+        <property name="longTimeRunningSqlIntervalThreshold" value="3600000"/>
     </bean>
-
-    <!-- 扫描 MyBatis 的 Mapper 接口 -->
-    <mybatis-spring:scan base-package="com.distributed.db.dao"/>
 
 </beans>

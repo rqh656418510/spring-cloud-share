@@ -1,28 +1,27 @@
 package com.distributed.db.service.impl;
 
-import java.util.List;
-
+import com.distributed.db.bean.Employee;
+import com.distributed.db.dao.EmployeeDao;
+import com.distributed.db.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.distributed.db.domain.Employee;
-import com.distributed.db.dao.EmployeeMapper;
-import com.distributed.db.service.EmployeeService;
+import java.util.List;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
-	@Autowired
-	private EmployeeMapper employeeMapper;
+    @Autowired
+    private EmployeeDao employeeDao;
 
-	@Override
-	public List<Employee> list() {
-		return this.employeeMapper.queryAll();
-	}
+    @Override
+    public List<Employee> list() {
+        return this.employeeDao.queryAll();
+    }
 
-	@Override
-	public boolean deleteEmployee(Long id) {
-		return this.employeeMapper.delEmpById(id);
-	}
+    @Override
+    public boolean delete(Long id) {
+        return this.employeeDao.delete(id);
+    }
 
 }

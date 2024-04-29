@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="Order">
+
+    <typeAlias alias="Employee" type="com.distributed.db.bean.Employee"/>
+
+    <resultMap id="employee" class="Employee">
+        <result property="id" column="id"/>
+        <result property="lastName" column="last_name"/>
+        <result property="gender" column="gender"/>
+        <result property="email" column="email"/>
+    </resultMap>
+
+    <select id="Employee.queryAll" resultMap="employee">
+        select id, last_name, gender, email
+        from t_employee
+    </select>
+
+    <delete id="Employee.deleteById" parameterClass="hashMap">
+        delete from t_employee
+        where id = #id#
+    </delete>
+
+</sqlMap>
