@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public class EmployeeDao {
 
-    @Resource
+    @Resource(name = "sqlMapClientTemplate")
     SunSqlMapClientTemplate sqlMapClientTemplate;
 
     public void insert(Employee employee) {
