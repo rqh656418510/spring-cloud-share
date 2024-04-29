@@ -1,60 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring" xmlns:tx="http://www.springframework.org/schema/tx"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
-	<!-- 引入数据库配置文件 -->
-	<context:property-placeholder location="classpath:db.properties" />
+    <!-- 引入数据库配置文件 -->
+    <context:property-placeholder location="classpath:db.properties"/>
 
-	<!-- 扫描组件 -->
-	<context:component-scan base-package="com.distributed.db">
-		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
-	</context:component-scan>
+    <!-- 扫描组件 -->
+    <context:component-scan base-package="com.distributed.db">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
 
-	<!-- 数据源 -->
-	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
-		<property name="url" value="${jdbc.url}" />
-		<property name="username" value="${jdbc.user}" />
-		<property name="password" value="${jdbc.password}" />
-		<property name="maxActive" value="${jdbc.maxPoolSize}" />
-		<property name="initialSize" value="${jdbc.initialPoolSize}" />
-		<property name="maxWait" value="${jdbc.maxWait}" />
-		<property name="minIdle" value="${jdbc.miniPoolSize}" />
-		<property name="timeBetweenEvictionRunsMillis" value="${jdbc.timeBetweenEvictionRunsMillis}" />
-		<property name="minEvictableIdleTimeMillis" value="${jdbc.minEvictableIdleTimeMillis}" />
-		<property name="validationQuery" value="${jdbc.preferredTestQuery}" />
-		<property name="testWhileIdle" value="true" />
-		<property name="filters" value="stat" />
-	</bean>
+    <!-- 数据源 -->
+    <bean id="dataSource01" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="url" value="${jdbc01.url}"/>
+        <property name="username" value="${jdbc01.user}"/>
+        <property name="password" value="${jdbc01.password}"/>
+        <property name="maxActive" value="${jdbc01.maxPoolSize}"/>
+        <property name="initialSize" value="${jdbc01.initialPoolSize}"/>
+        <property name="maxWait" value="${jdbc01.maxWait}"/>
+        <property name="minIdle" value="${jdbc01.miniPoolSize}"/>
+        <property name="timeBetweenEvictionRunsMillis" value="${jdbc01.timeBetweenEvictionRunsMillis}"/>
+        <property name="minEvictableIdleTimeMillis" value="${jdbc01.minEvictableIdleTimeMillis}"/>
+        <property name="validationQuery" value="${jdbc01.preferredTestQuery}"/>
+        <property name="testWhileIdle" value="true"/>
+        <property name="filters" value="stat"/>
+    </bean>
 
-	<!-- 事务管理 -->
-	<bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource" />
-	</bean>
+    <bean id="dataSource02" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="url" value="${jdbc01.url}"/>
+        <property name="username" value="${jdbc01.user}"/>
+        <property name="password" value="${jdbc01.password}"/>
+        <property name="maxActive" value="${jdbc01.maxPoolSize}"/>
+        <property name="initialSize" value="${jdbc01.initialPoolSize}"/>
+        <property name="maxWait" value="${jdbc01.maxWait}"/>
+        <property name="minIdle" value="${jdbc01.miniPoolSize}"/>
+        <property name="timeBetweenEvictionRunsMillis" value="${jdbc01.timeBetweenEvictionRunsMillis}"/>
+        <property name="minEvictableIdleTimeMillis" value="${jdbc01.minEvictableIdleTimeMillis}"/>
+        <property name="validationQuery" value="${jdbc01.preferredTestQuery}"/>
+        <property name="testWhileIdle" value="true"/>
+        <property name="filters" value="stat"/>
+    </bean>
 
-	<!-- 开启基于注解的事务 -->
-	<tx:annotation-driven transaction-manager="dataSourceTransactionManager" />
+    <bean id="dataSource03" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="url" value="${jdbc01.url}"/>
+        <property name="username" value="${jdbc01.user}"/>
+        <property name="password" value="${jdbc01.password}"/>
+        <property name="maxActive" value="${jdbc01.maxPoolSize}"/>
+        <property name="initialSize" value="${jdbc01.initialPoolSize}"/>
+        <property name="maxWait" value="${jdbc01.maxWait}"/>
+        <property name="minIdle" value="${jdbc01.miniPoolSize}"/>
+        <property name="timeBetweenEvictionRunsMillis" value="${jdbc01.timeBetweenEvictionRunsMillis}"/>
+        <property name="minEvictableIdleTimeMillis" value="${jdbc01.minEvictableIdleTimeMillis}"/>
+        <property name="validationQuery" value="${jdbc01.preferredTestQuery}"/>
+        <property name="testWhileIdle" value="true"/>
+        <property name="filters" value="stat"/>
+    </bean>
 
-	<!-- 定义 SqlSessionFactory -->
-	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<!-- 数据源 -->
-		<property name="dataSource" ref="dataSource" />
-		<!-- 类型别名 -->
-		<property name="typeAliasesPackage" value="com.distributed.db.bean" />
-		<!--指定 SQL 映射文件的位置 -->
-		<property name="mapperLocations" value="classpath*:mapper/**/*.xml" />
-		<!-- 指定 MyBatis 全局配置文件的位置 -->
-		<property name="configLocation" value="classpath:mybatis-config.xml" />
-	</bean>
+    <bean id="dataSource04" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="url" value="${jdbc01.url}"/>
+        <property name="username" value="${jdbc01.user}"/>
+        <property name="password" value="${jdbc01.password}"/>
+        <property name="maxActive" value="${jdbc01.maxPoolSize}"/>
+        <property name="initialSize" value="${jdbc01.initialPoolSize}"/>
+        <property name="maxWait" value="${jdbc01.maxWait}"/>
+        <property name="minIdle" value="${jdbc01.miniPoolSize}"/>
+        <property name="timeBetweenEvictionRunsMillis" value="${jdbc01.timeBetweenEvictionRunsMillis}"/>
+        <property name="minEvictableIdleTimeMillis" value="${jdbc01.minEvictableIdleTimeMillis}"/>
+        <property name="validationQuery" value="${jdbc01.preferredTestQuery}"/>
+        <property name="testWhileIdle" value="true"/>
+        <property name="filters" value="stat"/>
+    </bean>
 
-	<!-- 定义 SqlSessionTemplate -->
-	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactoryBean" />
-	</bean>
+    <bean id="dataSource05" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="url" value="${jdbc01.url}"/>
+        <property name="username" value="${jdbc01.user}"/>
+        <property name="password" value="${jdbc01.password}"/>
+        <property name="maxActive" value="${jdbc01.maxPoolSize}"/>
+        <property name="initialSize" value="${jdbc01.initialPoolSize}"/>
+        <property name="maxWait" value="${jdbc01.maxWait}"/>
+        <property name="minIdle" value="${jdbc01.miniPoolSize}"/>
+        <property name="timeBetweenEvictionRunsMillis" value="${jdbc01.timeBetweenEvictionRunsMillis}"/>
+        <property name="minEvictableIdleTimeMillis" value="${jdbc01.minEvictableIdleTimeMillis}"/>
+        <property name="validationQuery" value="${jdbc01.preferredTestQuery}"/>
+        <property name="testWhileIdle" value="true"/>
+        <property name="filters" value="stat"/>
+    </bean>
 
-	<!-- 扫描 MyBatis 的 Mapper 接口 -->
-	<mybatis-spring:scan base-package="com.distributed.db.dao" />
+    <!-- 事务管理 -->
+    <bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource01"/>
+    </bean>
+
+    <!-- 开启基于注解的事务 -->
+    <tx:annotation-driven transaction-manager="dataSourceTransactionManager"/>
+
+    <!-- 定义 SqlSessionFactory -->
+    <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 数据源 -->
+        <property name="dataSource" ref="dataSource01"/>
+        <!-- 类型别名 -->
+        <property name="typeAliasesPackage" value="com.distributed.db.domain"/>
+        <!--指定 SQL 映射文件的位置 -->
+        <property name="mapperLocations" value="classpath*:mapper/**/*.xml"/>
+        <!-- 指定 MyBatis 全局配置文件的位置 -->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+    </bean>
+
+    <!-- 定义 SqlSessionTemplate -->
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactoryBean"/>
+    </bean>
+
+    <!-- 扫描 MyBatis 的 Mapper 接口 -->
+    <mybatis-spring:scan base-package="com.distributed.db.dao"/>
 
 </beans>

@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.distributed.db.bean.Employee;
+import com.distributed.db.domain.Employee;
 import com.distributed.db.dao.EmployeeMapper;
 import com.distributed.db.service.EmployeeService;
 

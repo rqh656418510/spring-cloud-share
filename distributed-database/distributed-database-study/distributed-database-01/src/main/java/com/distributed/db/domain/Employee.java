@@ -1,4 +1,4 @@
-package com.distributed.db.bean;
+package com.distributed.db.domain;
 
 import java.io.Serializable;
 

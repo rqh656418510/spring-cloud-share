@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.distributed.db.bean.Employee;
+import com.distributed.db.domain.Employee;
 import com.distributed.db.service.EmployeeService;
 
 @Controller

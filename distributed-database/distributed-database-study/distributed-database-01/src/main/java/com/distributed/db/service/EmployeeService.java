@@ -2,7 +2,7 @@ package com.distributed.db.service;
 
 import java.util.List;
 
-import com.distributed.db.bean.Employee;
+import com.distributed.db.domain.Employee;
 
 public interface EmployeeService {
 
