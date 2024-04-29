@@ -1,17 +1,17 @@
 <rules>
     <rule>
         <namespace>Employee</namespace>
-        <shardingExpression>hash.employee(lastName) == 1</shardingExpression>
+        <shardingExpression>hash.applyemployee(employeeId) == 1</shardingExpression>
         <shards>partition1</shards>
     </rule>
     <rule>
         <namespace>Employee</namespace>
-        <shardingExpression>hash.employee(lastName) == 2</shardingExpression>
+        <shardingExpression>hash.applyemployee(employeeId) == 2</shardingExpression>
         <shards>partition2</shards>
     </rule>
     <rule>
         <namespace>Employee</namespace>
-        <shardingExpression>hash.employee(lastName) == 3</shardingExpression>
+        <shardingExpression>hash.applyemployee(employeeId) == 3</shardingExpression>
         <shards>partition3</shards>
     </rule>
 </rules>

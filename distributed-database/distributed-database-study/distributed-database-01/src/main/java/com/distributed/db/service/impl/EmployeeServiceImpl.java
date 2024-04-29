@@ -15,6 +15,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     private EmployeeDao employeeDao;
 
     @Override
+    public void add(Employee employee) {
+        this.employeeDao.insert(employee);
+    }
+
+    @Override
     public List<Employee> list() {
         return this.employeeDao.queryAll();
     }

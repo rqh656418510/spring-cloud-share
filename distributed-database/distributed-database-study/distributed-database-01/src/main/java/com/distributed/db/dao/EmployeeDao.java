@@ -13,6 +13,10 @@ public class EmployeeDao {
     @Resource
     SqlMapClientTemplate sqlMapClientTemplate;
 
+    public void insert(Employee employee) {
+        this.sqlMapClientTemplate.insert("Employee.insert", employee);
+    }
+
     public List<Employee> queryAll() {
         return (List<Employee>) this.sqlMapClientTemplate.queryForList("Employee.queryAll");
     }

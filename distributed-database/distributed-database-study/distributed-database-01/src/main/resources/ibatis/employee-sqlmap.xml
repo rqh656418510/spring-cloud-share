@@ -11,6 +11,39 @@
         <result property="email" column="email"/>
     </resultMap>
 
+    <insert id="Employee.insert" parameterClass="Employee">
+        insert into t_employee
+        <dynamic prepend="(" close=")">
+            <isNotEmpty prepend="," property="id">
+                id
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="lastName">
+                last_name
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="gender">
+                gender
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="email">
+                email
+            </isNotEmpty>
+        </dynamic>
+        values
+        <dynamic prepend="(" close=")">
+            <isNotEmpty prepend="," property="id">
+                #id#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="lastName">
+                #lastName#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="gender">
+                #gender#
+            </isNotEmpty>
+            <isNotEmpty prepend="," property="email">
+                #email#
+            </isNotEmpty>
+        </dynamic>
+    </insert>
+
     <select id="Employee.queryAll" resultMap="employee">
         select id, last_name, gender, email
         from t_employee
