@@ -2,8 +2,10 @@ package com.distributed.db.hash;
 
 public class HashFunction {
 
-    public int applyemployee(Long employeeId) {
+    public int applyEmployee(Long employeeId) {
         int result = Math.abs(employeeId.hashCode() % 1024);
+        System.out.println("hash : " + result);
+
         if (0 <= result && result < 341) {
             result = 1;
             System.out.println("在第1个数据库中");
