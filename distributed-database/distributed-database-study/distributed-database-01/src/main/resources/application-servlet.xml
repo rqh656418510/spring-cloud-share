@@ -20,6 +20,15 @@
         <property name="suffix" value=".jsp"></property>
     </bean>
 
+    <!-- 请求信息处理 -->
+    <bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"/>
+
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="messageConverters">
+            <ref bean="mappingJacksonHttpMessageConverter"/>
+        </property>
+    </bean>
+
     <!-- Spring MVC 注解驱动 -->
     <mvc:annotation-driven></mvc:annotation-driven>
 

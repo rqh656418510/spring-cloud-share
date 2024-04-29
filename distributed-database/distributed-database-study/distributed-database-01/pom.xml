@@ -23,6 +23,7 @@
         <javax.version>1.2</javax.version>
         <spring.version>3.2.4.RELEASE</spring.version>
         <gson.version>2.7</gson.version>
+        <jackson.version>1.9.12</jackson.version>
         <xstream.version>1.4.2</xstream.version>
         <mvel2.version>2.1.0.Final</mvel2.version>
         <commons-lang.version>2.6</commons-lang.version>
@@ -174,6 +175,18 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>${gson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-core-asl</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>${jackson.version}</version>
         </dependency>
 
         <dependency>
