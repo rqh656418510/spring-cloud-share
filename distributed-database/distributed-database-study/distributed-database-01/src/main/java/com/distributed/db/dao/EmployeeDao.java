@@ -1,7 +1,7 @@
 package com.distributed.db.dao;
 
+import com.caland.sun.client.SunSqlMapClientTemplate;
 import com.distributed.db.bean.Employee;
-import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
@@ -11,7 +11,7 @@ import java.util.List;
 public class EmployeeDao {
 
     @Resource
-    SqlMapClientTemplate sqlMapClientTemplate;
+    SunSqlMapClientTemplate sqlMapClientTemplate;
 
     public void insert(Employee employee) {
         this.sqlMapClientTemplate.insert("Employee.insert", employee);
