@@ -1,6 +1,6 @@
 package com.jdk.source.map;
 
-public class HashMapTest {
+public class MyHashMapTest {
 
     public static void main(String[] args) {
         test01();
@@ -8,7 +8,7 @@ public class HashMapTest {
     }
 
     public static void test01() {
-        Map<String, Integer> map = new HashMap<>();
+        MyMap<String, Integer> map = new MyHashMap<>();
         map.put("C++", 1);
         map.put("Java", 2);
         map.put("Python", 3);
@@ -21,7 +21,7 @@ public class HashMapTest {
     }
 
     private static void test02() {
-        Map<String, Integer> map = new HashMap<>();
+        MyMap<String, Integer> map = new MyHashMap<>();
         long star = System.currentTimeMillis();
         for (int i = 0; i < 1000; i++) {
             map.put("Java" + i, i);

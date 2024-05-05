@@ -5,18 +5,18 @@ package com.jdk.source.map;
  *
  * <p> 数组 + 单向链表
  */
-public class HashMap<K, V> implements Map<K, V> {
+public class MyHashMap<K, V> implements MyMap<K, V> {
 
     private static int defaultLength = 16;  // 默认容量
     private static float defaultLoader = 0.7f;  // 加载因子
     private Entry<K, V>[] table = null;  // 数组
     private int size = 0;  // 元素数量
 
-    public HashMap() {
+    public MyHashMap() {
         this(defaultLength, defaultLoader);
     }
 
-    public HashMap(int length, float loader) {
+    public MyHashMap(int length, float loader) {
         defaultLength = length;
         defaultLoader = loader;
         // 初始化数组
@@ -87,7 +87,7 @@ public class HashMap<K, V> implements Map<K, V> {
      * 定义节点
      * <p> 实现了单向链表的数据结构
      */
-    static class Entry<K, V> implements Map.Entry<K, V> {
+    static class Entry<K, V> implements MyMap.Entry<K, V> {
 
         K k;    // 键
         V v;    // 值
