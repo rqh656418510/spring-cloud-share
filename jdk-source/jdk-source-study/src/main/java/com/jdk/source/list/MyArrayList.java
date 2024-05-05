@@ -27,7 +27,7 @@ public class MyArrayList<E> implements MyList<E> {
     }
 
     /**
-     * 检测数组的容量是否足够
+     * 检查数组的容量是否足够
      */
     private void ensureCapacityInternal(int minCapacity) {
         minCapacity = Math.max(DEFAULT_CAPACITY, minCapacity);

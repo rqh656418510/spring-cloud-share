@@ -3,7 +3,7 @@ package com.jdk.source.map;
 /**
  * 手写 JDK 1.7 的 HashMap 实现
  *
- * <p> 数组 + 单向链表
+ * <p> 数组 + 链表（单向）
  */
 public class MyHashMap<K, V> implements MyMap<K, V> {
 
@@ -62,7 +62,7 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
             size++;
             table[index] = newEntry(k, v, null);
         } else {
-            // 使用单向链表来解决哈希冲突问题
+            // 使用链表（单向）来解决哈希冲突问题
             table[index] = newEntry(k, v, entry);
         }
         return table[index].getValue();
@@ -85,7 +85,7 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
 
     /**
      * 定义节点
-     * <p> 实现了单向链表的数据结构
+     * <p> 实现了链表（单向）的数据结构
      */
     static class Entry<K, V> implements MyMap.Entry<K, V> {
 
