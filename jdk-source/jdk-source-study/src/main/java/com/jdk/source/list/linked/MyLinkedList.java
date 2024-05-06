@@ -5,7 +5,7 @@ package com.jdk.source.list.linked;
  *
  * <p> 底层使用双向链表
  */
-public class MyLinkedList<E> implements List<E> {
+public class MyLinkedList<E> implements MyList<E> {
 
     private int size = 0;   // 链表节点的数量
 

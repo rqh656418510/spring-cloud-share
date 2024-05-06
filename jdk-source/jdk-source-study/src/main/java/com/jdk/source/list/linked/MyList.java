@@ -1,6 +1,6 @@
 package com.jdk.source.list.linked;
 
-public interface List<E> {
+public interface MyList<E> {
 
     /**
      * 添加节点
