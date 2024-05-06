@@ -3,7 +3,7 @@ package com.jdk.source.map;
 /**
  * 手写 JDK 1.7 的 HashMap 实现
  *
- * <p> 数组 + 链表（单向）
+ * <p> 底层使用数组 + 链表（单向）实现
  */
 public class MyHashMap<K, V> implements MyMap<K, V> {
 

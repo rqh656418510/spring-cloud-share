@@ -3,7 +3,7 @@ package com.jdk.source.list.linked;
 /**
  * 手写 LinkedList 的实现
  *
- * <p> 底层使用双向链表
+ * <p> 底层使用双向链表实现
  */
 public class MyLinkedList<E> implements MyList<E> {
 

@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * 手写 ArrayList 的实现
  *
- * <p> 底层使用数组
+ * <p> 底层使用数组实现
  */
 public class MyArrayList<E> implements MyList<E> {
 
