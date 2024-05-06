@@ -1,4 +1,4 @@
-package com.jdk.source.list;
+package com.jdk.source.list.array;
 
 public interface MyList<E> {
 
