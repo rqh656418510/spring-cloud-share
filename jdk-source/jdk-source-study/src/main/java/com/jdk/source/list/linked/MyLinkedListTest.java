@@ -23,12 +23,12 @@ public class MyLinkedListTest {
         list.remove(1);
         list.remove(1);
         list.remove(1);
-        System.out.println("size = " + list.size());
         System.out.println(list);
+        System.out.println("size = " + list.size());
 
         list.clear();
-        System.out.println("size = " + list.size());
         System.out.println(list);
+        System.out.println("size = " + list.size());
     }
 
 }

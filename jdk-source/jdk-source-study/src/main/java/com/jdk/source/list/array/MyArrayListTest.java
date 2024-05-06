@@ -27,9 +27,11 @@ public class MyArrayListTest {
         list.remove(1);
         list.remove(1);
         System.out.println(list);
+        System.out.println("size = " + list.size());
 
         list.clear();
         System.out.println(list);
+        System.out.println("size = " + list.size());
     }
 
 }
