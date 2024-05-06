@@ -3,28 +3,33 @@ package com.jdk.source.list.linked;
 public interface List<E> {
 
     /**
-     * 添加元素
+     * 添加节点
      */
     void add(E element);
 
     /**
-     * 设置元素
+     * 设置节点
      */
     E set(int index, E element);
 
     /**
-     * 获取元素
+     * 获取节点
      */
     E get(int index);
 
     /**
-     * 删除元素
+     * 删除节点
      */
     E remove(int index);
 
     /**
-     * 清空链表
+     * 清空链表节点
      */
     void clear();
+
+    /**
+     * 获取节点数量
+     */
+    int size();
 
 }

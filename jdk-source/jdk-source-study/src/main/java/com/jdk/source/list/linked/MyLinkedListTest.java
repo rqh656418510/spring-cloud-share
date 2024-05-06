@@ -14,10 +14,20 @@ public class MyLinkedListTest {
         System.out.println(list);
 
         Integer value = list.get(5);
-        System.out.println(value);
+        System.out.println("value = " + value);
 
         Integer oldValue = list.set(1, 23);
-        System.out.println(oldValue);
+        System.out.println("oldValue = " + oldValue);
+        System.out.println(list);
+
+        list.remove(1);
+        list.remove(1);
+        list.remove(1);
+        System.out.println("size = " + list.size());
+        System.out.println(list);
+
+        list.clear();
+        System.out.println("size = " + list.size());
         System.out.println(list);
     }
 

@@ -2,10 +2,12 @@ package com.jdk.source.list.linked;
 
 /**
  * 手写 LinkedList 的实现
+ *
+ * <p> 底层使用双向链表
  */
 public class MyLinkedList<E> implements List<E> {
 
-    private int size = 0;   // 链表元素的数量
+    private int size = 0;   // 链表节点的数量
 
     private Node<E> first;  // 头节点
 
@@ -16,18 +18,48 @@ public class MyLinkedList<E> implements List<E> {
     }
 
     /**
-     * 链接到链表的尾部
+     * 添加节点到链表的尾部
      */
     private void linkLast(E element) {
         Node<E> l = last;
         Node<E> newNode = new Node<>(l, element, null);
         last = newNode;
+        // 判断是否首次添加节点
         if (l == null) {
             first = newNode;
         } else {
             l.next = newNode;
         }
         size++;
+    }
+
+    /**
+     * 移除节点
+     */
+    private E unlink(Node<E> node) {
+        E data = node.data;
+        Node<E> prev = node.prev;
+        Node<E> next = node.next;
+
+        // 判断是否移除头节点
+        if (prev == null) {
+            first = next;
+        } else {
+            prev.next = next;
+            node.prev = null;
+        }
+
+        // 判断是否移除尾节点
+        if (next == null) {
+            last = prev;
+        } else {
+            next.prev = prev;
+            node.next = null;
+        }
+
+        node.data = null;
+        size--;
+        return data;
     }
 
     /**
@@ -47,7 +79,7 @@ public class MyLinkedList<E> implements List<E> {
     }
 
     /**
-     * 获取指定位置的元素
+     * 获取指定位置的节点
      */
     private Node<E> node(int index) {
         checkElementIndex(index);
@@ -79,12 +111,29 @@ public class MyLinkedList<E> implements List<E> {
 
     @Override
     public E remove(int index) {
-        return null;
+        Node<E> node = node(index);
+        return unlink(node);
     }
 
     @Override
     public void clear() {
+        Node<E> cur = first;
+        while (cur != null) {
+            Node<E> next = cur.next;
+            // GC
+            cur.prev = null;
+            cur.next = null;
+            cur.data = null;
+            cur = next;
+        }
+        first = null;
+        last = null;
+        size = 0;
+    }
 
+    @Override
+    public int size() {
+        return size;
     }
 
     @Override
