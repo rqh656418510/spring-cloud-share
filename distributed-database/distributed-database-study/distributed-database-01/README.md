@@ -2,21 +2,23 @@
 
 使用 Hash 取模算法实现数据库的分库。
 
+> 特别注意，此项目模块虽然可以正常运行，但却无法实现分库，原因暂时不明。
+
 ## 安装私有库
 
 ``` sh
 mvn install:install-file -Dfile=sharding.jar -DgroupId=com.caland -DartifactId=sharding -Dversion=1.0.0 -Dpackaging=jar
 ```
 
-## 未解决的问题
+## 分库后未解决的问题
 
 - SQL 改写问题
-- 分布式全局唯一 ID 生成问题
+- 生成分布式全局唯一 ID 
 - 跨库的事务支持（分布式事务）
 - 部分查询需要一次性查询多个库才能获取到完整的数据，比如查询当天的所有与订单
-    - 也就是常说的数据异构问题
+    - 也就是常说的数据异构问题（查询数据结果集的合并）
     - 可以采用 MySQL + Kafka + ElasticSearch 的方式，来解决数据异构问题
-    - 本质也就是将 MySQL 所有库的数据通过 Kafka 同步到 ElasticSearch，然后再通过 ElasticSearch 检索数据
+    - 本质也就是将 MySQL 所有库的数据通过 Kafka 同步到 ElasticSearch，然后再通过 ElasticSearch 来检索数据
 
 ## 参考项目
 
