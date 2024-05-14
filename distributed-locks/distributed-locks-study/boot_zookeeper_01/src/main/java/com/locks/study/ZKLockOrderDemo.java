@@ -9,6 +9,7 @@ import org.apache.curator.retry.ExponentialBackoffRetry;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**
  * ZooKeeper 分布式锁
@@ -26,7 +27,7 @@ public class ZKLockOrderDemo {
         return curatorFramework;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         CuratorFramework zkClient = getZKClient();
         zkClient.start();
 
@@ -43,6 +44,8 @@ public class ZKLockOrderDemo {
 
         countDownLatch.countDown();
         executorService.shutdown();
+
+        TimeUnit.SECONDS.sleep(5);
         zkClient.close();
     }
 

@@ -27,6 +27,7 @@ public class OrderTask implements Runnable {
             e.printStackTrace();
         } finally {
             try {
+                // 释放锁
                 globalLock.release();
             } catch (Exception exception) {
                 exception.printStackTrace();
