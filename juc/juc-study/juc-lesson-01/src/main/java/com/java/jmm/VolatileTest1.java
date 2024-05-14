@@ -2,6 +2,9 @@ package com.java.jmm;
 
 /**
  * volatile 解决内存可见性问题
+ *
+ * <p> 内存可见性问题是指：多个线程操作共享数据时，彼此不可见
+ * <p> volatile 三大特性：保证可见性、禁止指令重排、不保证原子性
  */
 class ThreadDemo1 implements Runnable {
 
@@ -36,7 +39,7 @@ public class VolatileTest1 {
         // 主线程读取共享数据
         while (true) {
             if (threadDemo.isFlag()) {
-                System.out.println(Thread.currentThread().getName() + " flag = " + threadDemo.isFlag());
+                System.out.println("-----" + Thread.currentThread().getName() + " flag = " + threadDemo.isFlag());
                 break;
             }
         }
