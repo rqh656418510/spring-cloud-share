@@ -1,5 +1,8 @@
 package com.jdk.source.map;
 
+/**
+ * Map 接口
+ */
 public interface MyMap<K, V> {
 
     public V put(K k, V v);

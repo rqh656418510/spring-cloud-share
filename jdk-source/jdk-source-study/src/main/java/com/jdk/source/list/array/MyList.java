@@ -1,5 +1,8 @@
 package com.jdk.source.list.array;
 
+/**
+ * List 接口
+ */
 public interface MyList<E> {
 
     /**

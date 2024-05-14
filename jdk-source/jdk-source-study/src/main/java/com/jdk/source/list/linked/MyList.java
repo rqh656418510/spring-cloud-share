@@ -1,5 +1,8 @@
 package com.jdk.source.list.linked;
 
+/**
+ * List 接口
+ */
 public interface MyList<E> {
 
     /**
