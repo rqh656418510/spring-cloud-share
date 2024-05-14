@@ -20,7 +20,7 @@ public class OrderTask implements Runnable {
     public void run() {
         try {
             countDownLatch.await();
-            // 加锁
+            // 获取锁
             globalLock.acquire();
             System.out.printf("线程名称：%s，订单号：%s\n", Thread.currentThread().getName(), orderService.getOrderNum());
         } catch (Exception e) {
