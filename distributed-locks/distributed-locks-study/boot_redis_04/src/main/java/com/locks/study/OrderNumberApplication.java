@@ -11,13 +11,13 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * 基于 Redis 实现分布式全局唯一 ID（无锁实现）
+ * 基于 Redis 实现分布式全局唯一 ID（分布式无锁实现）
  */
 @SpringBootApplication
-public class LocksApplication4 {
+public class OrderNumberApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(LocksApplication4.class, args);
+        SpringApplication.run(OrderNumberApplication.class, args);
         run();
     }
 
