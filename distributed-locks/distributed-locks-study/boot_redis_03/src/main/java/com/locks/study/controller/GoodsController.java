@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * 基于 Redisson 的事务，实现分布式锁
+ * 基于 Redisson，实现分布式锁
  */
 @RestController
 public class GoodsController {
@@ -27,8 +27,8 @@ public class GoodsController {
 
     @GetMapping("/buyGoods")
     public String buyGoods() {
-        // 加分布式锁
         RLock rlock = redissonClient.getLock(REDIS_LOCK);
+        // 加分布式锁
         rlock.lock();
 
         String response = null;

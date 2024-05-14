@@ -12,7 +12,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 /**
- * ZooKeeper 分布式锁
+ * 基于 ZooKeeper 实现分布式锁
  */
 public class ZKLockOrderDemo {
 
