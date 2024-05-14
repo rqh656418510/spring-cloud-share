@@ -3,5 +3,5 @@
 - `boot_redis_01`：基于 Lua 脚本，实现分布式锁
 - `boot_redis_02`：基于 Redis 的事务，实现分布式锁
 - `boot_redis_03`：基于 Redisson，实现分布式锁
-- `boot_redis_04`：基于 Redis 实现分布式全局唯一 ID（分布式无锁实现）
+- `boot_redis_04`：基于 Redis 实现分布式全局唯一ID（分布式无锁实现）
 - `boot_zookeeper_01`：基于 ZooKeeper 实现分布式锁

@@ -11,7 +11,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * 基于 Redis 实现分布式全局唯一 ID（分布式无锁实现）
+ * 基于 Redis 实现分布式全局唯一ID（分布式无锁实现）
  */
 @SpringBootApplication
 public class OrderNumberApplication {
@@ -22,6 +22,7 @@ public class OrderNumberApplication {
     }
 
     private static void run() {
+        // 使用线程池，模拟多个线程竞争获取订单ID
         ExecutorService executorService = Executors.newCachedThreadPool();
         OrderService orderService = new OrderLockService();
         CountDownLatch countDownLatch = new CountDownLatch(1);
