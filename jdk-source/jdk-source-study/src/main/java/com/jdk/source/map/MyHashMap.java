@@ -19,7 +19,7 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
     public MyHashMap(int length, float loader) {
         defaultLength = length;
         defaultLoader = loader;
-        // 初始化数组
+        // 初始化数组h
         table = new Entry[defaultLength];
     }
 
