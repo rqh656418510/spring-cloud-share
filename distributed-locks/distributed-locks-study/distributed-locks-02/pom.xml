@@ -12,6 +12,7 @@
 
     <artifactId>distributed-locks-02</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <description>基于 Redis 的事务，实现分布式锁</description>
 
     <dependencies>
         <dependency>

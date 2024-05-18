@@ -11,6 +11,8 @@
     </parent>
 
     <artifactId>distributed-locks-04</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <description>基于 ZooKeeper 实现分布式锁</description>
 
     <dependencies>
         <dependency>
