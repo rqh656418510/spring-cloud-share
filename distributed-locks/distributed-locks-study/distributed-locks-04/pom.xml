@@ -10,7 +10,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>boot_zookeeper_04</artifactId>
+    <artifactId>distributed-locks-04</artifactId>
 
     <dependencies>
         <dependency>

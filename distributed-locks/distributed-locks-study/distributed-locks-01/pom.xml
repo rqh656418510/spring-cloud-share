@@ -10,7 +10,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>boot_redis_02</artifactId>
+    <artifactId>distributed-locks-01</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>

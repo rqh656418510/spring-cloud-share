@@ -22,10 +22,10 @@
     </parent>
 
     <modules>
-        <module>boot_redis_01</module>
-        <module>boot_redis_02</module>
-        <module>boot_redis_03</module>
-        <module>boot_zookeeper_04</module>
+        <module>distributed-locks-01</module>
+        <module>distributed-locks-02</module>
+        <module>distributed-locks-03</module>
+        <module>distributed-locks-04</module>
     </modules>
 
 </project>
