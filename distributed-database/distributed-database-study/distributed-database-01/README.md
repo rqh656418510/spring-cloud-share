@@ -10,6 +10,11 @@
 mvn install:install-file -Dfile=sharding.jar -DgroupId=com.caland -DartifactId=sharding -Dversion=1.0.0 -Dpackaging=jar
 ```
 
+## 运行环境
+
+- JDK 1.7
+- Tomcat 7
+
 ## 分库后未解决的问题
 
 - SQL 改写问题
