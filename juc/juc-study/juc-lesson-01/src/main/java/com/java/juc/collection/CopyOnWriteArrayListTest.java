@@ -7,6 +7,12 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+/**
+ * CopyOnWriteArrayList 的使用（写时复制）
+ *
+ * <p> CopyOnWriteArrayList 默认支持并发迭代修改操作
+ * <p> Collections.synchronizedList() 不支持并发迭代修改操作，即使使用 ListIterator 进行迭代
+ */
 public class CopyOnWriteArrayListTest {
 
     public static void main(String[] args) {
