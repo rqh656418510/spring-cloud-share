@@ -30,6 +30,7 @@ class Clerk {
      */
     public synchronized void stock() {
         try {
+            // 使用 while 循环，而不是使用 if 判断，否则可能会导致虚假唤醒的现象
             while (product != 0) {
                 // 等待
                 this.wait();
@@ -48,6 +49,7 @@ class Clerk {
      */
     public synchronized void sale() {
         try {
+            // 使用 while 循环，而不是使用 if 判断，否则可能会导致虚假唤醒的现象
             while (product == 0) {
                 // 等待
                 this.wait();
