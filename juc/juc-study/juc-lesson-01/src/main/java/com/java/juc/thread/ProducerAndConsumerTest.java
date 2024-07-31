@@ -1,4 +1,4 @@
-package com.java.juc.locker;
+package com.java.juc.thread;
 
 /**
  * 线程通信之生产者消费者模式
