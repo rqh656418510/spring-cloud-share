@@ -29,9 +29,9 @@ class Clerk2 {
 
     private int product = 0;
 
-    private Lock locker = new ReentrantLock();
+    private final Lock locker = new ReentrantLock();
 
-    private Condition condition = locker.newCondition();
+    private final Condition condition = locker.newCondition();
 
     /**
      * 进货
