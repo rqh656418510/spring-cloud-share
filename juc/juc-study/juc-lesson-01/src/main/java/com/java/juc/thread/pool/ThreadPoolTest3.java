@@ -16,10 +16,10 @@ public class ThreadPoolTest3 {
         // 延迟执行任务（延迟 3 秒执行），任务只会执行一次
         // executorService.schedule(new MyRunnable3(), 1, TimeUnit.SECONDS);
 
-        // 以固定频率调用指定的任务（延迟5秒后执行，每隔3秒执行一次）
+        // 以固定频率调用指定的任务（延迟5秒后执行，每隔3秒执行一次），任务会重复执行
         // executorService.scheduleAtFixedRate(new MyRunnable3(), 5, 3, TimeUnit.SECONDS);
 
-        // 当任务执行完毕后，让其延迟固定时间后再次运行（延迟5秒后执行，每隔3秒执行一次）
+        // 当任务执行完毕后，让其延迟固定时间后再次运行（延迟5秒后执行，每隔3秒执行一次），任务会重复执行
         executorService.scheduleWithFixedDelay(new MyRunnable3(), 5, 3, TimeUnit.SECONDS);
 
         TimeUnit.MINUTES.sleep(1);
