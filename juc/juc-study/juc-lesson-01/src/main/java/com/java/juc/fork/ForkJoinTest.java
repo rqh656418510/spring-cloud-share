@@ -24,7 +24,7 @@ class ForkJoinSumCalculate extends RecursiveTask<Long> {
 
     private long start;
     private long end;
-    private static final long THURSHOLD = 10000L;   // 临界值
+    private static final long THURSHOLD = 100000L;   // 临界值
 
     public ForkJoinSumCalculate(long start, long end) {
         this.start = start;
@@ -43,12 +43,15 @@ class ForkJoinSumCalculate extends RecursiveTask<Long> {
             return sum;
         } else {
             long middle = (start + end) / 2;
+
             // 拆分大任务为小任务，并将小任务压入线程队列
             ForkJoinSumCalculate left = new ForkJoinSumCalculate(start, middle);
             left.fork();
+
             // 拆分大任务为小任务，并将小任务压入线程队列
             ForkJoinSumCalculate right = new ForkJoinSumCalculate(middle + 1, end);
             right.fork();
+
             // 合并多个小任务的执行结果
             return left.join() + right.join();
         }
