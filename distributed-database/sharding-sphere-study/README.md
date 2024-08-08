@@ -1,2 +1,1 @@
-## ShardingSphere 案例代码
-
+# ShardingSphere - 入门案例代码

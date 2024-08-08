@@ -1,4 +1,4 @@
-# 案例代码
+# 分布式锁 - 入门案例代码
 
 - `distributed-locks-01`：基于 Redis + Lua 脚本，实现分布式锁
 - `distributed-locks-02`：基于 Redis 的事务，实现分布式锁

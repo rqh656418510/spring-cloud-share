@@ -1,12 +1,12 @@
-## SpringBoot 3 入门案例代码
+# SpringBoot 3 入门案例代码
 
-### 课程大纲
+## 课程大纲
 
 - [课程大纲](./docs/课程大纲.md)
 
-### 博客教程
+## 博客教程
 
-#### 基础教程
+### 基础教程
 
 - [SpringBoot 3 基础教程之一快速入门](https://www.techgrow.cn/posts/79ae6590.html)
 - [SpringBoot 3 基础教程之二常规配置](https://www.techgrow.cn/posts/e7a270a6.html)
@@ -18,7 +18,7 @@
 - [SpringBoot 3 基础教程之八场景整合](https://www.techgrow.cn/posts/27928f6f.html)
 - [SpringBoot 3 基础教程之九核心原理](https://www.techgrow.cn/posts/1dfe3056.html)
 
-#### 进阶教程
+### 进阶教程
 
 - [SpringBoot 3 进阶教程之一整合 Prometheus](https://www.techgrow.cn/posts/1b2af7f9.html)
 - [SpringBoot 3 进阶教程之二 GraalVM 与 AOT](https://www.techgrow.cn/posts/885fde15.html)
