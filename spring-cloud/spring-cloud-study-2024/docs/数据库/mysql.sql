@@ -11,4 +11,4 @@ CREATE TABLE `t_pay` (
     PRIMARY KEY (`id`)
 ) ENGINE = INNODB AUTO_INCREMENT = 1 DEFAULT CHARSET = utf8mb4 COMMENT = '支付交易表';
 
-INSERT INTO t_pay(pay_no,order_no) VALUES('pay17203699', '6544bafb424a');
+INSERT INTO t_pay(pay_no,order_no) VALUES('17203699', '6544bafb424a');

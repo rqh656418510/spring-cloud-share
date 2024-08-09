@@ -1,13 +1,18 @@
 package com.clay.cloud.entities;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.util.Date;
-import javax.persistence.*;
 
 /**
- * 表名：t_pay
- * 表注释：支付交易表
-*/
+ * 支付交易表
+ *
+ * @author clay
+ * @version 1.0
+ */
 @Table(name = "t_pay")
 public class Pay {
     @Id
