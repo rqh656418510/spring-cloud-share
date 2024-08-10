@@ -1,11 +1,11 @@
-package com.clay.cloud.service;
+package com.turing.cloud.service;
 
-import com.clay.cloud.entities.Pay;
+import com.turing.cloud.entities.Pay;
 
 import java.util.List;
 
 /**
- * @author clay
+ * @author turing
  * @version 1.0
  */
 public interface PayService {

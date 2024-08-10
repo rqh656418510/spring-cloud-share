@@ -1,15 +1,15 @@
-package com.clay.cloud.service.impl;
+package com.turing.cloud.service.impl;
 
-import com.clay.cloud.entities.Pay;
-import com.clay.cloud.mapper.PayMapper;
-import com.clay.cloud.service.PayService;
+import com.turing.cloud.entities.Pay;
+import com.turing.cloud.mapper.PayMapper;
+import com.turing.cloud.service.PayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
- * @author clay
+ * @author turing
  * @version 1.0
  */
 @Service

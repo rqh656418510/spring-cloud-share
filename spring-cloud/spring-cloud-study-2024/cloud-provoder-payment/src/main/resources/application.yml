@@ -15,6 +15,6 @@ spring:
 # MyBatis
 mybatis:
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.clay.cloud.entities
+  type-aliases-package: com.turing.cloud.entities
   configuration:
     map-underscore-to-camel-case: true

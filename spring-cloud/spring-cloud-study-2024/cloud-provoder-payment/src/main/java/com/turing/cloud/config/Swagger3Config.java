@@ -1,4 +1,4 @@
-package com.clay.cloud.config;
+package com.turing.cloud.config;
 
 import io.swagger.v3.oas.models.ExternalDocumentation;
 import io.swagger.v3.oas.models.OpenAPI;
@@ -9,9 +9,9 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * Swagger 3 的配置类
- * <p> 浏览器访问地址：http://127.0.0.1:8001/swagger-ui/index.html
+ * <p> Swagger 3 浏览器访问地址：http://127.0.0.1:8001/swagger-ui/index.html
  *
- * @author clay
+ * @author turing
  * @version 1.0
  */
 @Configuration

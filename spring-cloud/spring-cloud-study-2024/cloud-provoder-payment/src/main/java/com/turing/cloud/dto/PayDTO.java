@@ -1,4 +1,4 @@
-package com.clay.cloud.dto;
+package com.turing.cloud.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 /**
  * 支付交易
  *
- * @author clay
+ * @author turing
  * @version 1.0
  */
 @Data

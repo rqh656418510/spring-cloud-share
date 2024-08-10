@@ -1,10 +1,10 @@
-package com.clay.cloud.mapper;
+package com.turing.cloud.mapper;
 
-import com.clay.cloud.entities.Pay;
+import com.turing.cloud.entities.Pay;
 import tk.mybatis.mapper.common.Mapper;
 
 /**
- * @author clay
+ * @author turing
  * @version 1.0
  */
 public interface PayMapper extends Mapper<Pay> {

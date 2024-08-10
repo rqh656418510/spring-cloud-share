@@ -1,4 +1,4 @@
-package com.clay.cloud.entities;
+package com.turing.cloud.entities;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
@@ -12,7 +12,7 @@ import java.util.Date;
 /**
  * 支付交易表
  *
- * @author clay
+ * @author turing
  * @version 1.0
  */
 @Table(name = "t_pay")

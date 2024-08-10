@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.clay.cloud.mapper.PayMapper">
+<mapper namespace="com.turing.cloud.mapper.PayMapper">
 
-    <resultMap id="BaseResultMap" type="com.clay.cloud.entities.Pay">
+    <resultMap id="BaseResultMap" type="com.turing.cloud.entities.Pay">
         <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="pay_no" jdbcType="VARCHAR" property="payNo"/>
         <result column="order_no" jdbcType="VARCHAR" property="orderNo"/>

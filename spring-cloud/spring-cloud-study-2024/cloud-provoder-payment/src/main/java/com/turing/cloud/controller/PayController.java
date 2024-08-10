@@ -1,8 +1,8 @@
-package com.clay.cloud.controller;
+package com.turing.cloud.controller;
 
-import com.clay.cloud.dto.PayDTO;
-import com.clay.cloud.entities.Pay;
-import com.clay.cloud.service.PayService;
+import com.turing.cloud.dto.PayDTO;
+import com.turing.cloud.entities.Pay;
+import com.turing.cloud.service.PayService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * @author clay
+ * @author turing
  * @version 1.0
  */
 @Slf4j
