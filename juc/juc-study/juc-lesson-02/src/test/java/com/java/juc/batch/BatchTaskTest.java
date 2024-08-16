@@ -17,7 +17,7 @@ public class BatchTaskTest {
 
     @Test
     public void sendCoupons() {
-        couponServcie.batchTaskAction();
+        couponServcie.batchTaskActionV1();
     }
 
 }

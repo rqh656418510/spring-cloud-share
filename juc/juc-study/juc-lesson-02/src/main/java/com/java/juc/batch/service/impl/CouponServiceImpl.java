@@ -1,6 +1,7 @@
 package com.java.juc.batch.service.impl;
 
 import com.java.juc.batch.service.CouponServcie;
+import com.java.juc.batch.util.TaskBatchSendUtils;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;
 
@@ -18,13 +19,13 @@ public class CouponServiceImpl implements CouponServcie {
     @Resource
     private ThreadPoolTaskExecutor threadPool;
 
+    /**
+     * 第一种写法，简单但不通用
+     */
     @Override
-    public void batchTaskAction() {
+    public void batchTaskActionV1() {
         // 模拟要下发的优惠卷
-        List<String> coupons = new ArrayList<>(COUPON_NUMBER);
-        for (int i = 1; i <= COUPON_NUMBER; i++) {
-            coupons.add("优惠卷-" + i);
-        }
+        List<String> coupons = getCoupons();
 
         long startTime = System.currentTimeMillis();
 
@@ -53,6 +54,38 @@ public class CouponServiceImpl implements CouponServcie {
 
         long endTime = System.currentTimeMillis();
         System.out.println("任务处理完毕，总耗时: " + (endTime - startTime) + " 毫秒");
+    }
+
+    /**
+     * 第二种写法，比较通用
+     */
+    @Override
+    public void batchTaskActionV2() {
+        // 模拟要下发的优惠卷
+        List<String> coupons = getCoupons();
+
+        long startTime = System.currentTimeMillis();
+
+        // 执行批量发送
+        try {
+            TaskBatchSendUtils.send(coupons, threadPool, TaskBatchSendUtils::couponTask);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        long endTime = System.currentTimeMillis();
+        System.out.println("任务处理完毕，总耗时: " + (endTime - startTime) + " 毫秒");
+    }
+
+    /**
+     * 模拟要下发的优惠卷
+     */
+    private List<String> getCoupons() {
+        List<String> coupons = new ArrayList<>(COUPON_NUMBER);
+        for (int i = 1; i <= COUPON_NUMBER; i++) {
+            coupons.add("优惠卷-" + i);
+        }
+        return coupons;
     }
 
 }
