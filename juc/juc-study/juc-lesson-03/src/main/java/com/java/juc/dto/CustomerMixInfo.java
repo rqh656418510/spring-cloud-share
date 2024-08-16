@@ -1,4 +1,4 @@
-package com.java.juc.entity;
+package com.java.juc.dto;
 
 import lombok.Data;
 

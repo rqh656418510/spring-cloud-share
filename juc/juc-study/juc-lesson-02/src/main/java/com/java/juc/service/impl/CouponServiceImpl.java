@@ -2,6 +2,7 @@ package com.java.juc.service.impl;
 
 import com.java.juc.service.CouponServcie;
 import com.java.juc.util.TaskBatchSendUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
+@Slf4j
 @Service
 public class CouponServiceImpl implements CouponServcie {
 
@@ -39,7 +41,7 @@ public class CouponServiceImpl implements CouponServcie {
                         System.out.println(String.format("【%s】发送成功", coupon));
                     });
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    log.error(e.getMessage());
                 } finally {
                     // 发送一个优惠券，计数器减一
                     countDownLatch.countDown();
@@ -49,7 +51,7 @@ public class CouponServiceImpl implements CouponServcie {
             // 阻塞当前线程，直到所有优惠券发送完成
             countDownLatch.await();
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
 
         long endTime = System.currentTimeMillis();
@@ -70,7 +72,7 @@ public class CouponServiceImpl implements CouponServcie {
         try {
             TaskBatchSendUtils.send(coupons, threadPool, TaskBatchSendUtils::couponTask);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
 
         long endTime = System.currentTimeMillis();

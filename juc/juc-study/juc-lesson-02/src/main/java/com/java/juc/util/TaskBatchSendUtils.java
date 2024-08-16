@@ -1,5 +1,7 @@
 package com.java.juc.util;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.CountDownLatch;
@@ -9,6 +11,7 @@ import java.util.function.Consumer;
 /**
  * 批量发送工具类
  */
+@Slf4j
 public class TaskBatchSendUtils {
 
     public static <T> void send(List<T> taskList, Executor threadPool, Consumer<? super T> consumer)
@@ -29,7 +32,7 @@ public class TaskBatchSendUtils {
                 try {
                     consumer.accept(task);
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    log.error(e.getMessage());
                 } finally {
                     countDownLatch.countDown();
                 }

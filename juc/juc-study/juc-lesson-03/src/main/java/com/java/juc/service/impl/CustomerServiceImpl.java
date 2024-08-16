@@ -1,6 +1,6 @@
 package com.java.juc.service.impl;
 
-import com.java.juc.entity.CustomerMixInfo;
+import com.java.juc.dto.CustomerMixInfo;
 import com.java.juc.service.CustomerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
