@@ -1,6 +1,6 @@
-package com.java.juc.batch;
+package com.java.juc;
 
-import com.java.juc.batch.service.CouponServcie;
+import com.java.juc.service.CouponServcie;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,8 +16,13 @@ public class BatchTaskTest {
     private CouponServcie couponServcie;
 
     @Test
-    public void sendCoupons() {
+    public void sendCoupons1() {
         couponServcie.batchTaskActionV1();
+    }
+
+    @Test
+    public void sendCoupons2() {
+        couponServcie.batchTaskActionV2();
     }
 
 }

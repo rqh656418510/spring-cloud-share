@@ -1,4 +1,4 @@
-package com.java.juc.batch.util;
+package com.java.juc.util;
 
 import java.util.List;
 import java.util.Objects;

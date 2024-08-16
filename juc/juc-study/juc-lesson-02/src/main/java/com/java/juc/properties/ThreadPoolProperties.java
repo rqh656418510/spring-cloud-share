@@ -1,4 +1,4 @@
-package com.java.juc.batch.properties;
+package com.java.juc.properties;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

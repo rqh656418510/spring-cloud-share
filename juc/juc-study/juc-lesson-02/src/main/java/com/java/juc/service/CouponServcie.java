@@ -1,4 +1,4 @@
-package com.java.juc.batch.service;
+package com.java.juc.service;
 
 public interface CouponServcie {
 

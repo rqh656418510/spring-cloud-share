@@ -1,7 +1,7 @@
-package com.java.juc.batch.service.impl;
+package com.java.juc.service.impl;
 
-import com.java.juc.batch.service.CouponServcie;
-import com.java.juc.batch.util.TaskBatchSendUtils;
+import com.java.juc.service.CouponServcie;
+import com.java.juc.util.TaskBatchSendUtils;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;
 

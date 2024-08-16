@@ -1,4 +1,4 @@
-package com.java.juc.batch;
+package com.java.juc;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

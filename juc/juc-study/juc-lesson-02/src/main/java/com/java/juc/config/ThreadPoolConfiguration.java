@@ -1,6 +1,6 @@
-package com.java.juc.batch.config;
+package com.java.juc.config;
 
-import com.java.juc.batch.properties.ThreadPoolProperties;
+import com.java.juc.properties.ThreadPoolProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
@@ -28,7 +28,7 @@ public class ThreadPoolConfiguration {
         // 线程池维护线程所允许的空闲时间
         threadPool.setKeepAliveSeconds(threadPoolProperties.getKeepAliveSeconds());
         // 异步方法内部线程的名称前缀
-        threadPool.setThreadNamePrefix("Spring默认线程池 - ");
+        threadPool.setThreadNamePrefix("Spring 自定义线程池 - ");
         // 线程池对拒绝任务的处理策略
         threadPool.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
         // 任务都执行完成再关闭线程池
