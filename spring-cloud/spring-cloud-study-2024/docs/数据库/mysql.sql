@@ -1,3 +1,5 @@
+CREATE DATABASE `spring_cloud` default character set utf8mb4;
+
 DROP TABLE IF EXISTS `t_pay`;
 CREATE TABLE `t_pay` (
     `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
