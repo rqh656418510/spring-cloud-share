@@ -65,7 +65,7 @@ public class PayController {
         return ResultData.success("Success to update, result value is " + i);
     }
 
-    @GetMapping("/pay/get/{id}")
+    @GetMapping("/get/{id}")
     @Operation(summary = "按照 ID 查流水", description = "查询支付流水方法")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
@@ -76,7 +76,7 @@ public class PayController {
         return ResultData.success(payService.getById(id));
     }
 
-    @GetMapping("/pay/getAll")
+    @GetMapping("/getAll")
     @Operation(summary = "获取所有支付流水", description = "查询所有支付流水方法")
     public ResultData<List<Pay>> getAll() {
         return ResultData.success(payService.getAll());
