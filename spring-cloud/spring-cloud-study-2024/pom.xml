@@ -13,6 +13,7 @@
     <modules>
         <module>mybatis-generator</module>
         <module>cloud-provoder-payment</module>
+        <module>cloud-consumer-order</module>
     </modules>
 
     <properties>
