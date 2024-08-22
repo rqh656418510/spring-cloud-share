@@ -1,6 +1,7 @@
 package com.turing.cloud.controller;
 
-import org.springframework.beans.factory.annotation.Value;
+import com.turing.cloud.AppProperties;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,12 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/config")
 public class ConfigController {
 
-    @Value("${env.info}")
-    private String info;
+    @Autowired
+    private AppProperties properties;
 
     @GetMapping("/info")
     public String info() {
-        return info;
+        return properties.getInfo();
     }
 
 }
