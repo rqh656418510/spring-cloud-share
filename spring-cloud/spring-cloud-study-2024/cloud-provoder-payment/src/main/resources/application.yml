@@ -22,7 +22,8 @@ spring:
       port: 8500
       discovery:
         service-name: ${spring.application.name}
-        ip-address: 192.168.2.130
+        heartbeat:
+          enabled: true
 
 # MyBatis
 mybatis:
