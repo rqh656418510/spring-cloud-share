@@ -2,6 +2,7 @@ package com.turing.cloud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import tk.mybatis.spring.annotation.MapperScan;
 
 /**
@@ -9,6 +10,7 @@ import tk.mybatis.spring.annotation.MapperScan;
  * @version 1.0
  */
 @SpringBootApplication
+@EnableDiscoveryClient
 @MapperScan("com.turing.cloud.mapper")
 public class PaymentApplication {
 
