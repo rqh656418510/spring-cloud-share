@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: cloud-payment-service
+  cloud:
+    # Consul
+    consul:
+      host: 192.168.56.112
+      port: 8500
+      # 注册中心
+      discovery:
+        service-name: ${spring.application.name}
+        heartbeat:
+          enabled: true
+      # 配置中心
+      config:
+        profile-separator: '-'
+        format: YAML

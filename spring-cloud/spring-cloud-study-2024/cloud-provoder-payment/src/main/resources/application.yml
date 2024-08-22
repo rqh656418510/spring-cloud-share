@@ -2,8 +2,9 @@ server:
   port: 8001
 
 spring:
-  application:
-    name: cloud-payment-service
+  # 激活配置环境
+  profiles:
+    active: dev
   # 日期序列化格式
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
@@ -15,15 +16,6 @@ spring:
     url: jdbc:mysql://192.168.56.112:3306/spring_cloud?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true
     username: cloud
     password: 123456
-  cloud:
-    # Consul
-    consul:
-      host: 192.168.56.112
-      port: 8500
-      discovery:
-        service-name: ${spring.application.name}
-        heartbeat:
-          enabled: true
 
 # MyBatis
 mybatis:
