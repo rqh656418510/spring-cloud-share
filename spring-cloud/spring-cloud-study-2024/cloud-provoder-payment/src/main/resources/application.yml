@@ -2,7 +2,7 @@ server:
   port: 8001
 
 spring:
-  # 激活配置环境
+  # 激活不同的配置环境
   profiles:
     active: dev
   # 日期序列化格式
