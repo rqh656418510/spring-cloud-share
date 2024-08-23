@@ -1,6 +1,6 @@
 package com.turing.cloud.controller;
 
-import com.turing.cloud.AppProperties;
+import com.turing.cloud.properties.AppProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

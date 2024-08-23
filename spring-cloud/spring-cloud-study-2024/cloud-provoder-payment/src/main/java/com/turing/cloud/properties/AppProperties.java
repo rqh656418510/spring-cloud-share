@@ -1,4 +1,4 @@
-package com.turing.cloud;
+package com.turing.cloud.properties;
 
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
