@@ -16,5 +16,5 @@ spring:
         format: YAML              # Consul 中 Value 的配置格式为 YAML
         prefix: config            # Consul 中的配置文件目录，默认为 config
         default-context: app      # 去该目录下查找缺省配置，默认为 application
-        profile-separator: '-'    # profiles 配置分隔符，默认为 ','
+        profile-separator: '-'    # profiles 配置的分隔符，默认为 ','
         data-key: data            # 如果指定配置格式为 YAML 或者 Properties，则需要该值作为 key，默认为 data
