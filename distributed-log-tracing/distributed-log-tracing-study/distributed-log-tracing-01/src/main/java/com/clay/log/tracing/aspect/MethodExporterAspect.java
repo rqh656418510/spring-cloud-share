@@ -22,6 +22,7 @@ public class MethodExporterAspect {
      */
     @Around("@annotation(com.clay.log.tracing.annotations.MethodExporter)")
     public Object methodExporter(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+        // 方法的返回结果
         Object retValue = null;
 
         log.info("----- @Around before");
@@ -42,12 +43,12 @@ public class MethodExporterAspect {
 
         if (methodExporterAnnotation != null) {
             // 获得方法里面的形参信息
-            StringBuffer jsonInputParam = new StringBuffer();
-            Object[] args = proceedingJoinPoint.getArgs();
+            StringBuilder jsonParam = new StringBuilder();
+            Object[] parameterValues = proceedingJoinPoint.getArgs();
             DefaultParameterNameDiscoverer discoverer = new DefaultParameterNameDiscoverer();
             String[] parameterNames = discoverer.getParameterNames(method);
             for (int i = 0; i < parameterNames.length; i++) {
-                jsonInputParam.append(parameterNames[i] + " = " + args[i].toString() + "; ");
+                jsonParam.append(parameterNames[i] + " = " + parameterValues[i].toString() + "; ");
             }
             // 将返回结果序列化
             String jsonResult = null;
@@ -61,7 +62,7 @@ public class MethodExporterAspect {
                 "\n类名方法名: " + proceedingJoinPoint.getTarget().getClass().getName() + "." +
                 proceedingJoinPoint.getSignature().getName() + "()" +
                 "\n执行耗时: " + costTime + "毫秒" +
-                "\n输入参数: " + jsonInputParam + "" +
+                "\n输入参数: " + jsonParam + "" +
                 "\n返回结果: " + jsonResult + "" +
                 "\n方法分析上报结束"
             );
