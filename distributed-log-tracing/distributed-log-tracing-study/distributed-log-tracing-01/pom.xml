@@ -10,7 +10,7 @@
         <relativePath/>
     </parent>
 
-    <groupId>org.example</groupId>
+    <groupId>com.clay</groupId>
     <artifactId>distributed-log-tracing-01</artifactId>
     <version>1.0-SNAPSHOT</version>
     <description>基于 AOP + 反射 + 自定义注解来统计接口的性能</description>
