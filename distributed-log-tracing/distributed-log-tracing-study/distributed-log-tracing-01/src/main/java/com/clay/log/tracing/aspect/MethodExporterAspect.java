@@ -23,13 +23,13 @@ public class MethodExporterAspect {
     @Around("@annotation(com.clay.log.tracing.annotations.MethodExporter)")
     public Object methodExporter(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         // 方法的返回结果
-        Object retValue = null;
+        Object resultValue = null;
 
         log.info("----- @Around before");
         long startTime = System.currentTimeMillis();
 
         // 执行目标方法
-        retValue = proceedingJoinPoint.proceed();
+        resultValue = proceedingJoinPoint.proceed();
 
         long endTime = System.currentTimeMillis();
         long costTime = endTime - startTime;
@@ -52,8 +52,8 @@ public class MethodExporterAspect {
             }
             // 将返回结果序列化
             String jsonResult = null;
-            if (retValue != null) {
-                jsonResult = new ObjectMapper().writeValueAsString(retValue);
+            if (resultValue != null) {
+                jsonResult = new ObjectMapper().writeValueAsString(resultValue);
             } else {
                 jsonResult = "null";
             }
@@ -69,7 +69,7 @@ public class MethodExporterAspect {
             log.info("----- @Around after");
         }
 
-        return retValue;
+        return resultValue;
     }
 
 }
