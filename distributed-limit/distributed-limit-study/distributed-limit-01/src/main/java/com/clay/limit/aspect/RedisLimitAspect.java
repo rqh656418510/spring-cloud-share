@@ -44,11 +44,11 @@ public class RedisLimitAspect {
     public Object around(ProceedingJoinPoint joinPoint) {
         System.out.println("---------@Around before");
 
-        // 获取目标方法
+        // 通过反射获取目标方法
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();
 
-        // 获取目标方法上的RedisLimitAnnotation注解，如果存在，则说明需要限流
+        // 通过反射获取目标方法上的RedisLimitAnnotation注解，如果存在，则说明需要限流
         RedisLimitAnnotation redisLimitAnnotation = method.getAnnotation(RedisLimitAnnotation.class);
 
         if (redisLimitAnnotation != null) {

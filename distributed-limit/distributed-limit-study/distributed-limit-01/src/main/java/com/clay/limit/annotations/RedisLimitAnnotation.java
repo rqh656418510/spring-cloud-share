@@ -31,6 +31,6 @@ public @interface RedisLimitAnnotation {
     /**
      * 限流的提示语
      */
-    String msg() default "接口调用过于频繁，请稍后再试";
+    String msg() default "当前接口的负载过高，请稍后再试";
 
 }

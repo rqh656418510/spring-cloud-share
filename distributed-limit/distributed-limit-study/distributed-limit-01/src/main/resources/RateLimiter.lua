@@ -7,7 +7,7 @@ local limit = tonumber(ARGV[1])
 -- 获取当前已访问接口的次数
 local curentLimit = tonumber(redis.call('get', key) or "0")
 
--- 超过限流次数直接返回零，否则递增访问次数
+-- 超过限流次数直接返回-1，否则递增访问次数
 if curentLimit + 1 > limit
 then return -1
 else
