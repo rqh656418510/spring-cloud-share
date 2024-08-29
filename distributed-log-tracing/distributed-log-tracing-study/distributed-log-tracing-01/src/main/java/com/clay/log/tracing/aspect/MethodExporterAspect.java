@@ -34,11 +34,11 @@ public class MethodExporterAspect {
         long endTime = System.currentTimeMillis();
         long costTime = endTime - startTime;
 
-        // 获得重写后的方法名
+        // 通过反射获取目标方法
         MethodSignature signature = (MethodSignature) proceedingJoinPoint.getSignature();
         Method method = signature.getMethod();
 
-        // 确定方法名后，获得该方法上面配置的注解标签
+        // 通过反射获取目标方法上的注解标签，如果存在，则说明需要统计性能
         MethodExporter methodExporterAnnotation = method.getAnnotation(MethodExporter.class);
 
         if (methodExporterAnnotation != null) {
