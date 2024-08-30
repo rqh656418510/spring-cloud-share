@@ -1,11 +1,13 @@
 package com.clay.cache.entity;
 
 import lombok.Data;
-import tk.mybatis.mapper.annotation.KeySql;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.Date;
 
 @Data
 @Table(name = "t_user")
@@ -15,7 +17,7 @@ public class User implements Serializable {
      * ID
      */
     @Id
-    @KeySql(useGeneratedKeys = true)
+    @GeneratedValue(generator = "JDBC")
     private Long id;
 
     /**
@@ -34,8 +36,20 @@ public class User implements Serializable {
     private Integer age;
 
     /**
-     * 有效状态
+     * 有效状态，1有效，0无效
      */
     private Integer status = 1;
+
+    /**
+     * 更新时间
+     */
+    @Column(name = "update_time")
+    private Date updateTime;
+
+    /**
+     * 创建时间
+     */
+    @Column(name = "create_time")
+    private Date createTime;
 
 }
