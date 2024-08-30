@@ -19,16 +19,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void delete(Long id) {
-        userMapper.deleteByPrimaryKey(id);
-    }
-
-    @Override
-    public void update(User user) {
-        userMapper.updateByPrimaryKeySelective(user);
-    }
-
-    @Override
     @RedisCacheable(keyPrefix = "User", matchValue = "#id")
     public User get(Long id) {
         return userMapper.selectByPrimaryKey(id);
