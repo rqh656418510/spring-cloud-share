@@ -58,7 +58,7 @@ public class RedisCacheableAspect {
                 context.setVariable(parameterNames[i], parameterValues[i].toString());
             }
 
-            // 拼接 Redis 的最终 key 形式
+            // 解析 SpringEL 表达式，拼接 Redis 的最终 key 形式
             String key = keyPrefix + ":" + expression.getValue(context).toString();
             if (StrUtil.isBlank(key)) {
                 throw new RuntimeException("it's danger, redis key cannot be empty");
