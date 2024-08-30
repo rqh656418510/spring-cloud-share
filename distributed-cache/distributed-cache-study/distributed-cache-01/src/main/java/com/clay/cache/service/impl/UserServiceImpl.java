@@ -1,5 +1,6 @@
 package com.clay.cache.service.impl;
 
+import com.clay.cache.annotations.RedisCacheable;
 import com.clay.cache.entity.User;
 import com.clay.cache.mapper.UserMapper;
 import com.clay.cache.service.UserService;
@@ -28,6 +29,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @RedisCacheable(keyPrefix = "User", matchValue = "#id")
     public User get(Long id) {
         return userMapper.selectByPrimaryKey(id);
     }
