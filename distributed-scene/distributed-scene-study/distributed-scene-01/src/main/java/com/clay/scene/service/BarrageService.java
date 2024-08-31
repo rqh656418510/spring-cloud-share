@@ -22,7 +22,7 @@ public interface BarrageService {
     List<Barrage> getRoomNewest(Long roomId, Long userId);
 
     /**
-     * 根据时间范围进行拉取特定直播间的弹幕数据
+     * 根据时间范围拉取特定直播间的弹幕数据
      * <p> 适用于用户持续观看直播时拉取弹幕数据
      *
      * @param roomId 直播间 ID
