@@ -69,7 +69,7 @@ public class BarrageServiceImpl implements BarrageService {
             lastTime = Long.parseLong(lastValue.toString());
         }
 
-        // 获取从上次拉取到现在的弹幕数据，对应的 Redis 命令 "zrange room:100 1725093501 1725093606 withscores"
+        // 获取从上次拉取到现在的弹幕数据，对应的 Redis 命令 "zrangebyscore room:100 1725093501 1725093606 withscores"
         Set<ZSetOperations.TypedTuple<Barrage>> set = this.redisTemplate.opsForZSet().rangeByScoreWithScores(roomKey, lastTime, now);
         for (ZSetOperations.TypedTuple<Barrage> item : set) {
             list.add(item.getValue());
