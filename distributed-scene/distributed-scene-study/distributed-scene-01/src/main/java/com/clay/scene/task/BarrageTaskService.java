@@ -26,7 +26,7 @@ public class BarrageTaskService {
     private BarrageService barrageService;
 
     /**
-     * 模拟直播间的弹幕数据
+     * 模拟在直播间内发送弹幕
      */
     @PostConstruct
     public void init() {
@@ -37,6 +37,7 @@ public class BarrageTaskService {
             AtomicInteger atomicInteger = new AtomicInteger();
 
             while (true) {
+                // 控制直播间的关闭
                 if (atomicInteger.get() == 100) {
                     break;
                 }
