@@ -14,7 +14,7 @@
     <groupId>com.clay</groupId>
     <version>1.0-SNAPSHOT</version>
     <artifactId>distributed-scene-01</artifactId>
-    <description>直播弹幕业务场景的实现</description>
+    <description>抖音直播卖货和B站的弹幕实现</description>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
