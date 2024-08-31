@@ -9,9 +9,9 @@ public class Constants {
     public static final String ROOM_KEY = "room:";
 
     /**
-     * 用户获取弹幕数据的时间点
-     * <p> 比如，user:room:time:12，其中的 12 就是用户 ID
+     * 用户获取弹幕数据的时间戳 Key
+     * <p> 比如，room:user:time:100_12，其中的 100 是直播间的房间号，12 就是用户的 ID
      */
-    public static final String ROOM_USER_TIME_KEY = "user:room:time:";
+    public static final String ROOM_USER_TIME_KEY = "room:user:time:";
 
 }
