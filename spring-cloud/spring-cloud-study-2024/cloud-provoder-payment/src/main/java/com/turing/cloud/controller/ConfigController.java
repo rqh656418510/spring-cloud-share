@@ -17,9 +17,9 @@ public class ConfigController {
     @Autowired
     private AppProperties properties;
 
-    @GetMapping("/info")
-    public String info() {
-        return properties.getInfo();
+    @GetMapping("/envInfo")
+    public String envInfo() {
+        return properties.getEnvInfo();
     }
 
 }
