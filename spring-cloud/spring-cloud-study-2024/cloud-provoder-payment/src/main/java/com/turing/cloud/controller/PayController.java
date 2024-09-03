@@ -2,6 +2,7 @@ package com.turing.cloud.controller;
 
 import com.turing.cloud.dto.PayDTO;
 import com.turing.cloud.entities.Pay;
+import com.turing.cloud.properties.AppProperties;
 import com.turing.cloud.resp.ResultData;
 import com.turing.cloud.service.PayService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -37,6 +38,9 @@ public class PayController {
 
     @Autowired
     private PayService payService;
+
+    @Autowired
+    private AppProperties appProperties;
 
     @PostMapping("/add")
     @Operation(summary = "新增", description = "新增支付流水方法，JSON串作参数")
@@ -80,6 +84,13 @@ public class PayController {
     @Operation(summary = "获取所有支付流水", description = "查询所有支付流水方法")
     public ResultData<List<Pay>> getAll() {
         return ResultData.success(payService.getAll());
+    }
+
+    @GetMapping("/get/appinfo")
+    @Operation(summary = "获取微服务应用的信息", description = "查询微服务应用的信息")
+    public ResultData<String> getAppInfo() {
+        String info = "From " + appProperties.getApplicationName() + "-" + appProperties.getServerPort();
+        return ResultData.success(info);
     }
 
 }

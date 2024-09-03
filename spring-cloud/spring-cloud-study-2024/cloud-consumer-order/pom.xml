@@ -48,6 +48,11 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!--LoadBalance-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+        </dependency>
         <!--Lombok-->
         <dependency>
             <groupId>org.projectlombok</groupId>

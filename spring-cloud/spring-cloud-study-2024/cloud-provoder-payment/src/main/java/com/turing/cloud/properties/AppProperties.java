@@ -14,6 +14,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppProperties {
 
+    @Value("${spring.application.name:}")
+    private String applicationName;
+
+    @Value("${server.port:}")
+    private Integer serverPort;
+
     @Value("${env.info:}")
     private String envInfo;
 
