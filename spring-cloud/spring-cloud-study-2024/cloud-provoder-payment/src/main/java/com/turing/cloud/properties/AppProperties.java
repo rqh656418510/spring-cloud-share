@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppProperties {
 
-    @Value("${env.info}")
+    @Value("${env.info:}")
     private String info;
 
 }
