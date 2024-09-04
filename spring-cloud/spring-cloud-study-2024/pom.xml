@@ -15,6 +15,7 @@
         <module>cloud-provoder-payment</module>
         <module>cloud-consumer-order</module>
         <module>cloud-api-commons</module>
+        <module>cloud-consumer-feign-order</module>
     </modules>
 
     <properties>
