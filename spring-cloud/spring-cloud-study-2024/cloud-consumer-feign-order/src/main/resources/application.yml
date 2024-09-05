@@ -18,3 +18,15 @@ spring:
         service-name: ${spring.application.name}
         heartbeat:
           enabled: true
+    # OpenFeign
+    openfeign:
+      client:
+        config:
+          # 全局配置
+          default:
+            connectTimeout: 5000
+            readTimeout: 5000
+          # 为特定的服务单独配置
+          cloud-payment-service:
+            connectTimeout: 10000
+            readTimeout: 10000
