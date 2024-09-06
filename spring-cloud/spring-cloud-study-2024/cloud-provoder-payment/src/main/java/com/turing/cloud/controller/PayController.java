@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author turing
@@ -89,6 +90,11 @@ public class PayController {
     @GetMapping("/get/appinfo")
     @Operation(summary = "获取微服务应用的信息", description = "查询微服务应用的信息")
     public ResultData<String> getAppInfo() {
+        try {
+            TimeUnit.SECONDS.sleep(5);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         String info = "From " + appProperties.getApplicationName() + "-" + appProperties.getServerPort();
         return ResultData.success(info);
     }

@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * @author turing
  * @version 1.0
@@ -48,13 +51,25 @@ public class OrderController {
 
     /**
      * 获取微服务应用的信息
-     * <p> OpenFeign天然支持负载均衡
+     * <p> OpenFeign默认集成LoadBalancer负载均衡
      *
      * @return
      */
     @GetMapping("/get/appinfo")
     public ResultData<String> getAppInfo() {
-        return payFeignApi.getAppInfo();
+        ResultData<String> result = null;
+
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+        System.out.println("--- 开始调用 --- " + sdf.format(new Date()));
+
+        try {
+            result = payFeignApi.getAppInfo();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("--- 结束调用 --- " + sdf.format(new Date()));
+        return result;
     }
 
 }

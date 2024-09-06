@@ -24,9 +24,9 @@ spring:
         config:
           # 全局配置
           default:
-            connectTimeout: 5000
-            readTimeout: 5000
+            connectTimeout: 2000
+            readTimeout: 2000
           # 为特定的服务单独配置
           cloud-payment-service:
-            connectTimeout: 10000
-            readTimeout: 10000
+            connectTimeout: 3000
+            readTimeout: 3000
