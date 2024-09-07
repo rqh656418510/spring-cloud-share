@@ -42,3 +42,8 @@ spring:
           cloud-payment-service:
             connectTimeout: 3000
             readTimeout: 3000
+
+# 日志输出
+logging:
+  level:
+    com.turing.cloud.api.PayFeignApi: debug
