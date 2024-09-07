@@ -17,6 +17,8 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <apache.http.client.version>5.3</apache.http.client.version>
+        <feign.hc5.version>13.1</feign.hc5.version>
     </properties>
 
     <dependencies>
@@ -56,6 +58,18 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <!--Feign Http Client 5-->
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-hc5</artifactId>
+            <version>${feign.hc5.version}</version>
+        </dependency>
+        <!--Apache Http Client 5-->
+        <dependency>
+            <groupId>org.apache.httpcomponents.client5</groupId>
+            <artifactId>httpclient5</artifactId>
+            <version>${apache.http.client.version}</version>
         </dependency>
         <!--Lombok-->
         <dependency>

@@ -91,7 +91,9 @@ public class PayController {
     @Operation(summary = "获取微服务应用的信息", description = "查询微服务应用的信息")
     public ResultData<String> getAppInfo() {
         try {
-            TimeUnit.SECONDS.sleep(5);
+            System.out.println("--- invoke getAppInfo() ---");
+            // 模拟业务处理耗时
+            TimeUnit.MILLISECONDS.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

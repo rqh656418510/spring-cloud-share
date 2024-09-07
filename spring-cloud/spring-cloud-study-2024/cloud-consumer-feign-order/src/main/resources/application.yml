@@ -20,6 +20,10 @@ spring:
           enabled: true
     # OpenFeign
     openfeign:
+      # 使用 Apache HttpClient 5 替换
+      httpclient:
+        hc5:
+          enabled: true
       client:
         config:
           # 全局配置
