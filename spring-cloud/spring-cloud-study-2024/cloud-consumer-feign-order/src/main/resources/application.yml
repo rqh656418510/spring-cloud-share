@@ -24,6 +24,14 @@ spring:
       httpclient:
         hc5:
           enabled: true
+      # 启用请求/响应压缩
+      compression:
+        request:
+          enabled: true
+          min-request-size: 2048
+          mime-types: text/xml,application/xml,application/json
+        response:
+          enabled: true
       client:
         config:
           # 全局配置
