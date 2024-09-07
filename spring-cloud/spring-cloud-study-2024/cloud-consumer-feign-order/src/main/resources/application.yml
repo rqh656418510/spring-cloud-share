@@ -46,4 +46,5 @@ spring:
 # 日志输出
 logging:
   level:
+    # OpenFeign日志以什么级别监控哪个接口
     com.turing.cloud.api.PayFeignApi: debug
