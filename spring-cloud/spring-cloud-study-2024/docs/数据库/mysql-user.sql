@@ -1,7 +1,7 @@
-drop user cloud;
+DROP USER cloud;
 
-create user 'cloud'@'%' identified by '123456';
+CREATE USER 'cloud'@'%' identified BY '123456';
 
-grant all privileges on spring_cloud_2024.* to 'cloud'@'%';
+GRANT ALL PRIVILEGES ON spring_cloud_2024.* TO 'cloud'@'%';
 
-flush privileges;
+FLUSH PRIVILEGES;
