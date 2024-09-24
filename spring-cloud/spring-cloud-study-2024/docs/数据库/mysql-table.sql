@@ -1,4 +1,4 @@
-CREATE DATABASE `spring_cloud` default character set utf8mb4;
+CREATE DATABASE `spring_cloud_2024` default character set utf8mb4 collate utf8mb4_unicode_ci;
 
 DROP TABLE IF EXISTS `t_pay`;
 CREATE TABLE `t_pay` (
