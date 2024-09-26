@@ -33,4 +33,10 @@ public interface PayFeignApi {
     @GetMapping("/pay/get/appinfo")
     ResultData<String> getAppInfo();
 
+    /**
+     * Resilience4j CircuitBreaker 的使用例子
+     */
+    @GetMapping(value = "/pay/circuit/{id}")
+    ResultData<String> circuit(@PathVariable("id") Integer id);
+
 }
