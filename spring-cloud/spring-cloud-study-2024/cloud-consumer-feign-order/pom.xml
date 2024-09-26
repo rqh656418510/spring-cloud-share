@@ -71,7 +71,7 @@
             <artifactId>httpclient5</artifactId>
             <version>${apache.http.client.version}</version>
         </dependency>
-        <!--Resilience4j Circuitbreaker-->
+        <!--Resilience4j CircuitBreaker-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-circuitbreaker-resilience4j</artifactId>

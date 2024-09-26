@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 public class PayCircuitController {
 
     /**
-     * Resilience4j CircuitBreaker 的使用例子
+     * 该接口用于测试服务调用方（消费者）的断路器
      */
     @GetMapping(value = "/circuit/{id}")
     public ResultData<String> circuit(@PathVariable("id") Integer id) {

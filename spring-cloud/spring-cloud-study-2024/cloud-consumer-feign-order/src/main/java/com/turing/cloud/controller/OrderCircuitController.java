@@ -21,7 +21,7 @@ public class OrderCircuitController {
     private PayFeignApi payFeignApi;
 
     /**
-     * Resilience4j CircuitBreaker 的使用例子
+     * 该接口用于测试服务调用方（消费者）的断路器
      * <p> @CircuitBreaker 注解是写在服务调用方（消费者）一侧
      */
     @GetMapping(value = "/feign/pay/circuit/{id}")
