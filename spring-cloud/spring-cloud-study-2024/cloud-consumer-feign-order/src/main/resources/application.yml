@@ -79,7 +79,7 @@ resilience4j:
         maxConcurrentCalls: 2  # 隔离允许并发执行的最大线程数
         maxWaitDuration: 1s  # 当达到最大并发执行数量时，新的线程执行时将会被阻塞，这个属性表示线程最长的阻塞等待时间；如果等待超时，直接走 Fallback 兜底处理
     instances:
-      # 指定特定的服务使用哪个隔离（舱壁）配置
+      # 指定特定的服务实例或者方法使用哪个隔离（舱壁）配置，还可以在每个实例下进行自定义配置
       cloud-payment-service:
         baseConfig: default
 
