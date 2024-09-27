@@ -36,7 +36,7 @@ public class PayCircuitController {
     }
 
     /**
-     * 该接口用于测试服务调用方（消费者）的隔离（舱壁）
+     * 该接口用于测试 Resilience4j 的隔离（舱壁）
      */
     @GetMapping(value = "/bulkhead/{id}")
     public ResultData<String> bulkhead(@PathVariable("id") Integer id) {

@@ -40,8 +40,8 @@ public class OrderCircuitController {
     }
 
     /**
-     * 该接口用于测试服务调用方（消费者）的隔离（舱壁）
-     * <p> @Bulkhead 注解是写在服务调用方（消费者）一侧
+     * 该接口用于测试 Resilience4j 的隔离（舱壁）
+     * <p> @Bulkhead 注解写在需要限制并发访问的一侧
      */
     @GetMapping(value = "/feign/pay/bulkhead/{id}")
     @Bulkhead(name = "cloud-payment-service-bulkhead", fallbackMethod = "bulkheadFallback", type = Bulkhead.Type.SEMAPHORE)
