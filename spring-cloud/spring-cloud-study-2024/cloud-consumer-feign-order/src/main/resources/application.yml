@@ -58,6 +58,7 @@ resilience4j:
   # 断路器
   circuitbreaker:
     configs:
+      # 断路器的默认配置
       default:
         failureRateThreshold: 50  # 设置 50% 的调用失败时打开断路器，超过失败请求百分⽐ CircuitBreaker 将切换为 OPEN 状态
         slidingWindowType: COUNT_BASED  # 滑动窗口的类型，可选 COUNT_BASED 和 TIME_BASED，默认为 COUNT_BASED
@@ -75,6 +76,7 @@ resilience4j:
   # 隔离（舱壁）
   bulkhead:
     configs:
+      # 隔离（舱壁）的默认配置
       default:
         maxConcurrentCalls: 2  # 隔离允许并发执行的最大线程数
         maxWaitDuration: 1s  # 当达到最大并发执行数量时，新的线程执行时将会被阻塞，这个属性表示线程最长的阻塞等待时间；如果等待超时，直接走 Fallback 兜底处理
