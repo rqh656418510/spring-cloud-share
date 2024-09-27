@@ -54,7 +54,7 @@ resilience4j:
   timelimiter:
     configs:
       default:
-        timeout-duration: 20s
+        timeout-duration: 20s  # 神坑的位置，timelimiter 默认限制请求处理耗时为 1s，超过 1s 就抛出超时异常，如果配置了降级，就会走降级逻辑
   # 断路器
   circuitbreaker:
     configs:

@@ -26,7 +26,7 @@ public class OrderCircuitController {
      * <p> @CircuitBreaker 注解是写在服务调用方（消费者）一侧
      */
     @GetMapping(value = "/feign/pay/circuit/{id}")
-    @CircuitBreaker(name = "cloud-payment-service-circuit", fallbackMethod = "circuitFallback")
+    @CircuitBreaker(name = "cloud-payment-service", fallbackMethod = "circuitFallback")
     public ResultData<String> circuitBreaker(@PathVariable("id") Integer id) {
         return payFeignApi.circuit(id);
     }
@@ -44,7 +44,7 @@ public class OrderCircuitController {
      * <p> @Bulkhead 注解写在需要限制并发访问的一侧
      */
     @GetMapping(value = "/feign/pay/bulkhead/{id}")
-    @Bulkhead(name = "cloud-payment-service-bulkhead", fallbackMethod = "bulkheadFallback", type = Bulkhead.Type.SEMAPHORE)
+    @Bulkhead(name = "cloud-payment-service", fallbackMethod = "bulkheadFallback", type = Bulkhead.Type.SEMAPHORE)
     public ResultData<String> bulkhead(@PathVariable("id") Integer id) {
         return payFeignApi.bulkhead(id);
     }
