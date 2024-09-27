@@ -25,7 +25,7 @@ public class OrderCircuitController {
      * <p> @CircuitBreaker 注解是写在服务调用方（消费者）一侧
      */
     @GetMapping(value = "/feign/pay/circuit/{id}")
-    @CircuitBreaker(name = "cloud-payment-service", fallbackMethod = "circuitFallback")
+    @CircuitBreaker(name = "cloud-payment-service-circuit", fallbackMethod = "circuitFallback")
     public ResultData<String> circuitBreaker(@PathVariable("id") Integer id) {
         return payFeignApi.circuit(id);
     }
