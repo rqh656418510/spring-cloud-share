@@ -23,7 +23,7 @@ public class PayCircuitController {
     @GetMapping(value = "/circuit/{id}")
     public ResultData<String> circuit(@PathVariable("id") Integer id) {
         if (id == -4) {
-            throw new RuntimeException("Circuit id 不能负数");
+            throw new RuntimeException("Circuit id 不能为负数");
         }
         if (id == 9999) {
             try {
@@ -33,6 +33,24 @@ public class PayCircuitController {
             }
         }
         return ResultData.success("Hello, circuit! inputId :  " + id + " \t " + UUID.fastUUID());
+    }
+
+    /**
+     * 该接口用于测试服务调用方（消费者）的隔离（舱壁）
+     */
+    @GetMapping(value = "/bulkhead/{id}")
+    public ResultData<String> bulkhead(@PathVariable("id") Integer id) {
+        if (id == -4) {
+            throw new RuntimeException("Bulkhead id 不能为负数");
+        }
+        if (id == 9999) {
+            try {
+                TimeUnit.SECONDS.sleep(5);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        return ResultData.success("Hello, bulkhead! inputId :  " + id + " \t " + UUID.fastUUID());
     }
 
 }

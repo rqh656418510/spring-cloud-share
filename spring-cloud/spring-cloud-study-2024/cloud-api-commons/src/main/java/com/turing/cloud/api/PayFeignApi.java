@@ -34,9 +34,15 @@ public interface PayFeignApi {
     ResultData<String> getAppInfo();
 
     /**
-     * Resilience4j CircuitBreaker 的使用例子
+     * 该接口用于测试服务调用方（消费者）的断路器
      */
     @GetMapping(value = "/pay/circuit/{id}")
     ResultData<String> circuit(@PathVariable("id") Integer id);
+
+    /**
+     * 该接口用于测试服务调用方（消费者）的隔离（舱壁）
+     */
+    @GetMapping(value = "/pay/bulkhead/{id}")
+    ResultData<String> bulkhead(@PathVariable("id") Integer id);
 
 }
