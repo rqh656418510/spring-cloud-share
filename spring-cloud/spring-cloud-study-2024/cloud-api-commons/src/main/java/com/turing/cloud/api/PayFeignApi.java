@@ -45,4 +45,10 @@ public interface PayFeignApi {
     @GetMapping(value = "/pay/bulkhead/{id}")
     ResultData<String> bulkhead(@PathVariable("id") Integer id);
 
+    /**
+     * 该接口用于测试 Resilience4j 的限流
+     */
+    @GetMapping(value = "/pay/ratelimit/{id}")
+    ResultData<String> rateLimit(@PathVariable("id") Integer id);
+
 }

@@ -70,7 +70,7 @@ resilience4j:
         recordExceptions:
           - java.lang.Exception
     instances:
-      # 指定特定的服务使用哪个断路器配置
+      # 指定特定的服务实例或者方法使用哪个断路器配置，还可以在每个实例下进行自定义配置
       cloud-payment-service:
         baseConfig: default
   # 隔离（舱壁）
@@ -82,6 +82,18 @@ resilience4j:
         maxWaitDuration: 1s  # 当达到最大并发执行数量时，新的线程执行时将会被阻塞，这个属性表示线程最长的阻塞等待时间；如果等待超时，直接走 Fallback 兜底处理
     instances:
       # 指定特定的服务实例或者方法使用哪个隔离（舱壁）配置，还可以在每个实例下进行自定义配置
+      cloud-payment-service:
+        baseConfig: default
+  ## 限流
+  ratelimiter:
+    configs:
+      # 限流的默认配置
+      default:
+        limitForPeriod: 2  # 在一次刷新周期内，允许执行的最大请求数
+        limitRefreshPeriod: 1s  # 限流器每隔 limitRefreshPeriod 刷新一次，并将允许处理的最大请求数量重置为 limitForPeriod
+        timeout-duration: 1  # 线程等待权限的默认等待时间
+    instances:
+      # 指定特定的服务实例或者方法使用哪个限流配置，还可以在每个实例下进行自定义配置
       cloud-payment-service:
         baseConfig: default
 

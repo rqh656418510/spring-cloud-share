@@ -86,6 +86,11 @@
             <groupId>io.github.resilience4j</groupId>
             <artifactId>resilience4j-bulkhead</artifactId>
         </dependency>
+        <!--Resilience4j Ratelimiter-->
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-ratelimiter</artifactId>
+        </dependency>
         <!--Lombok-->
         <dependency>
             <groupId>org.projectlombok</groupId>

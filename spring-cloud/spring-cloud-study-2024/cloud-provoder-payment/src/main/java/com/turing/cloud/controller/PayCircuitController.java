@@ -53,4 +53,12 @@ public class PayCircuitController {
         return ResultData.success("Hello, bulkhead! inputId :  " + id + " \t " + UUID.fastUUID());
     }
 
+    /**
+     * 该接口用于测试 Resilience4j 的限流
+     */
+    @GetMapping(value = "/ratelimit/{id}")
+    public ResultData<String> rateLimit(@PathVariable("id") Integer id) {
+        return ResultData.success("Hello, ratelimiter! inputId :  " + id + " \t " + UUID.fastUUID());
+    }
+
 }

@@ -4,6 +4,7 @@ import com.turing.cloud.api.PayFeignApi;
 import com.turing.cloud.resp.ResultData;
 import io.github.resilience4j.bulkhead.annotation.Bulkhead;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -55,6 +56,23 @@ public class OrderCircuitController {
     public ResultData<String> bulkheadFallback(Integer id, Throwable t) {
         // 这里是容错处理逻辑，返回备用结果
         return ResultData.success("BulkheadFallback，系统繁忙，请稍后再试 /(ㄒoㄒ)/~~");
+    }
+
+    /**
+     * 该接口用于测试 Resilience4j 的限流
+     */
+    @GetMapping(value = "/feign/pay/ratelimit/{id}")
+    @RateLimiter(name = "cloud-payment-service", fallbackMethod = "rateLimitFallback")
+    public ResultData<String> rateLimit(@PathVariable("id") Integer id) {
+        return payFeignApi.rateLimit(id);
+    }
+
+    /**
+     * 服务降级后的兜底处理方法
+     */
+    public ResultData<String> rateLimitFallback(Integer id, Throwable t) {
+        // 这里是容错处理逻辑，返回备用结果
+        return ResultData.success("RateLimiterFallback，系统繁忙，请稍后再试 /(ㄒoㄒ)/~~");
     }
 
 }
