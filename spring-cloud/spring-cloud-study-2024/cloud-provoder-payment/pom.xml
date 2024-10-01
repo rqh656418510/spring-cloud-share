@@ -56,6 +56,36 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-bootstrap</artifactId>
         </dependency>
+        <!--Micrometer 指标追踪-->
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-tracing</artifactId>
+            <version>${micrometer-tracing.version}</version>
+        </dependency>
+        <!--Micrometer 适配 Zipkin 的桥接包-->
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-tracing-bridge-brave</artifactId>
+            <version>${micrometer-tracing.version}</version>
+        </dependency>
+        <!--Micrometer Observation-->
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-observation</artifactId>
+            <version>${micrometer-observation.version}</version>
+        </dependency>
+        <!--Feign Micrometer-->
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-micrometer</artifactId>
+            <version>${feign-micrometer.version}</version>
+        </dependency>
+        <!--Zipkin Reporter Brave-->
+        <dependency>
+            <groupId>io.zipkin.reporter2</groupId>
+            <artifactId>zipkin-reporter-brave</artifactId>
+            <version>${zipkin-reporter-brave.version}</version>
+        </dependency>
         <!--MySQL数据库驱动-->
         <dependency>
             <groupId>mysql</groupId>

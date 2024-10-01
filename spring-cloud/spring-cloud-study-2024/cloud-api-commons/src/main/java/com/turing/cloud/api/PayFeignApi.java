@@ -51,4 +51,10 @@ public interface PayFeignApi {
     @GetMapping(value = "/pay/ratelimit/{id}")
     ResultData<String> rateLimit(@PathVariable("id") Integer id);
 
+    /**
+     * 该接口用于测试 Micrometer 链路监控
+     */
+    @GetMapping("/pay/micrometer/{id}")
+    ResultData<String> micrometer(@PathVariable("id") Integer id);
+
 }
