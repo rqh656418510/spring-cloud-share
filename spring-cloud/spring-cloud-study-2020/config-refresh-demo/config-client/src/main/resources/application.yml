@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: config-client
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    health:
+      show-details: always

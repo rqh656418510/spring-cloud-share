@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    config:
+      name: config-client                 #需要从远程Git仓库读取的配置文件的名称，注意没有"yml"文件后缀，可以写多个，通过逗号隔开
+      profile: dev                        #本次访问的配置项
+      label: master                       #Git分支的名称
+      discovery:
+        enabled: true
+        service-id: config-server
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka
+  instance:
+    instance-id: config-client-${server.port}        #自定义服务名称
+    prefer-ip-address: true                          #将IP注册到Eureka Server上，若不配置默认使用机器的主机名

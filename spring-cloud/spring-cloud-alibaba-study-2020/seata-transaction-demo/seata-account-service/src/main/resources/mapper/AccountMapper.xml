@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.seata.study.dao.AccountMapper">
+    <resultMap id="BaseResultMap" type="com.seata.study.domain.Account">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <id column="user_id" property="userId" jdbcType="BIGINT"/>
+        <id column="total" property="total" jdbcType="DECIMAL"/>
+        <id column="used" property="used" jdbcType="DECIMAL"/>
+        <id column="residue" property="residue" jdbcType="DECIMAL"/>
+    </resultMap>
+
+    <select id="findByUser" resultMap="BaseResultMap">
+        select * from t_account where user_id = #{userId}
+    </select>
+
+    <update id="update">
+        update t_account set total = #{total}, used = #{used}, residue = #{residue}
+        where id = #{id} and user_id = #{userId}
+    </update>
+</mapper>

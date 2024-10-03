@@ -1,0 +1,25 @@
+
+-- 创建数据库
+create database `spring-cloud-config` default character set utf8;
+
+-- 创建类型表
+CREATE TABLE `PROPERTIES` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `KEY` TEXT DEFAULT NULL,
+  `VALUE` TEXT DEFAULT NULL,
+  `APPLICATION` TEXT DEFAULT NULL,
+  `PROFILE` TEXT DEFAULT NULL,
+  `LABLE` TEXT DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+
+
+
+
+
+
+
+
+
+

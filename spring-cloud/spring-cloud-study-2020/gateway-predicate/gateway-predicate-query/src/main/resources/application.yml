@@ -1,0 +1,13 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: gateway-server
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: query_route
+#          uri: http://baidu.com
+#          predicates:
+#            - Query=book, java

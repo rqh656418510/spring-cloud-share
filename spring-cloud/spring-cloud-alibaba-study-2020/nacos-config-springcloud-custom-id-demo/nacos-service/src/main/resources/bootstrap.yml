@@ -1,0 +1,19 @@
+server:
+  port: 56010
+
+spring:
+  application:
+    name: service
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848       #配置中心的地址
+        namespace: 4bfcbae8-8c37-417d-89e4-d5134e23eb18   #命名空间
+        extension-configs[0]:
+          data-id: extension-config-01.yaml
+          group: GLOBAL_GROUP
+          refresh: true
+        extension-configs[1]:
+          data-id: extension-config-02.yaml
+          group: DEFAULT_GROUP
+          refresh: true

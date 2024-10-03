@@ -1,0 +1,23 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: git@github.com:rqh656418510/spring-cloud-config-study-repo.git
+          search-paths: spring-cloud-config-study-repo/
+          strictHostKeyChecking: false
+          private_key_file: /root/.ssh/id_rsa.pub
+          label: master
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka
+  instance:
+    instance-id: ${spring.application.name}-${server.port}       #自定义服务名称
+    prefer-ip-address: true                                    #将IP注册到Eureka Server上，若不配置默认使用机器的主机名

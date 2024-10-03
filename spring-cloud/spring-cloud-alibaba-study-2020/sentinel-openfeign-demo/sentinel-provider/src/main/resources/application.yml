@@ -1,0 +1,14 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /provider
+
+spring:
+  application:
+    name: sentinel-provider
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: 4bfcbae8-8c37-417d-89e4-d5134e23eb18
+        cluster-name: DEFAULT

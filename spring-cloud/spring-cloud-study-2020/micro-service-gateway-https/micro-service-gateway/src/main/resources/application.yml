@@ -1,0 +1,28 @@
+server:
+  port: 9001
+  ssl:
+    enabled: true
+    key-alias: spring
+    key-password: spring
+    key-store: classpath:self-signed.jks
+    key-store-type: JKS
+    key-store-provider: SUN
+    key-store-password: spring
+
+spring:
+  application:
+    name: gateway-server
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:9000/eureka
+  instance:
+    instance-id: gateway-server-${server.port}
+    prefer-ip-address: true

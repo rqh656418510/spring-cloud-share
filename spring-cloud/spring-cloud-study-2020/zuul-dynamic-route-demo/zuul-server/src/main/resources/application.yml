@@ -1,0 +1,22 @@
+server:
+  port: 8092
+
+spring:
+  application:
+    name: zuul-server
+  datasource:
+    url: jdbc:mysql://localhost:3306/zuul-test?useUnicode=true&characterEncoding=utf-8
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8090/eureka
+  instance:
+    prefer-ip-address: true
+
+ribbon:
+  eureka:
+    enabled: true

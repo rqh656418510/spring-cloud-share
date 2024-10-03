@@ -1,0 +1,25 @@
+server:
+  port: 8083
+  servlet:
+    context-path: gateway
+
+spring:
+  application:
+    name: sentinel-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: 4bfcbae8-8c37-417d-89e4-d5134e23eb18
+        cluster-name: DEFAULT
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:9000
+    gateway:
+      routes:
+        - id: sentinel-gateway-route
+          uri: lb://sentinel-consumer
+          predicates:
+            - Path=/${server.servlet.context-path}/consumer/hello/**
+          filters:
+            - StripPrefix=1

@@ -1,0 +1,31 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: config-server
+  rabbitmq:
+    port: 5672
+    host: localhost
+    username: admin
+    password: admin
+  cloud:
+    bus:
+      trace:
+        enabled: true
+    config:
+      server:
+        git:
+          uri: git@github.com:rqh656418510/spring-cloud-config-study-repo.git
+          search-paths: spring-cloud-config-study-repo/
+          strictHostKeyChecking: false
+          private_key_file: /root/.ssh/id_rsa.pub
+          label: master
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    health:
+      show-details: always

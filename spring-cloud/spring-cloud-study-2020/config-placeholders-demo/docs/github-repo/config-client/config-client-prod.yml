@@ -1,0 +1,6 @@
+server:
+  port: 10002
+
+cn:
+  springcloud:
+    config: I am the git configuration file from prod environment

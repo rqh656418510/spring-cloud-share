@@ -1,0 +1,13 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: gateway-server
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: after_route
+#          uri: http://baidu.com
+#          predicates:
+#            - After=2019-10-01T21:55:18.146+08:00[Asia/Shanghai]

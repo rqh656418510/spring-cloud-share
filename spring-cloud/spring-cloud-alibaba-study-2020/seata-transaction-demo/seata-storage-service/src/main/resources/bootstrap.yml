@@ -1,0 +1,61 @@
+nacos:
+  # Nacos的地址
+  server-addr: 127.0.0.1:8848
+  # Nacos的命名空间
+  namespace: 6473c28e-9c60-4c5d-bb09-519ebfee502a
+  # Nacos的配置分组
+  group: seata_demo
+  # Seata Server的配置
+  seata:
+    application: seata-server
+    tx-service-group: seata-storage-service-tx-group
+
+####### 以上是自定义配置中心和注册中心的共同属性，方便其他地方直接引用 #######
+
+server:
+  port: 2000
+
+spring:
+  application:
+    name: seata-storage-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${nacos.server-addr}
+        namespace: ${nacos.namespace}
+        group: ${nacos.group}
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/seata_storage?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=false
+    username: root
+    password: 123456
+
+mybatis:
+  mapperLocations: classpath*:mapper/*.xml
+  type-aliases-package: com.seata.study.domain
+
+seata:
+  enabled: true
+  application-id: ${spring.application.name}
+  tx-service-group: ${nacos.seata.tx-service-group}
+  enable-auto-data-source-proxy: false
+  registry:
+    type: nacos
+    nacos:
+      application: ${nacos.seata.application}
+      server-addr: ${nacos.server-addr}
+      namespace: ${nacos.namespace}
+      group: ${nacos.group}
+      username: ""
+      password: ""
+  config:
+    type: file
+
+feign:
+  hystrix:
+    enabled: false
+
+logging:
+  level:
+    io:
+      seata: info

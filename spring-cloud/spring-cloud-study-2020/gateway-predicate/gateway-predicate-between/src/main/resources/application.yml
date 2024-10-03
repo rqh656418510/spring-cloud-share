@@ -1,0 +1,13 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: gateway-server
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: between_route
+#          uri: http://baidu.com
+#          predicates:
+#            - Between=2019-11-10T11:11:11.111 08:00[Asia/Shanghai], 2019-11-12T11:11:11.111 08:00[Asia/Shanghai]

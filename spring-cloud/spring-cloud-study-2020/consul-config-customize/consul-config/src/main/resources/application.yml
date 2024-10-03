@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: consul-config-customize
+  profiles:
+    active: dev

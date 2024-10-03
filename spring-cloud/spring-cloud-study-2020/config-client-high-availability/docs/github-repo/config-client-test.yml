@@ -1,0 +1,6 @@
+server:
+  port: 9003
+
+cn:
+  springcloud:
+    config: I am the git configuration file from test environment

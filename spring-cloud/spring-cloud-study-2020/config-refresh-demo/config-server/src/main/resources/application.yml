@@ -1,0 +1,15 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: git@github.com:xxxx/spring-cloud-config-study-repo.git
+          search-paths: spring-cloud-config-study-repo/
+          strictHostKeyChecking: false
+          private_key_file: /root/.ssh/id_rsa.pub
+          label: master

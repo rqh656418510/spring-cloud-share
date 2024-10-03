@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.seata.study.dao.StorageMapper">
+
+    <resultMap id="BaseResultMap" type="com.seata.study.domain.Storage">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <id column="product_id" property="productId" jdbcType="BIGINT"/>
+        <id column="total" property="total" jdbcType="BIGINT"/>
+        <id column="used" property="used" jdbcType="BIGINT"/>
+        <id column="residue" property="residue" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <select id="findByProduct" resultMap="BaseResultMap">
+        select * from t_storage where product_id = #{productId}
+    </select>
+
+    <update id="update">
+        update t_storage set total = #{total}, used = #{used}, residue = #{residue}
+        where id = #{id} and product_id = #{productId}
+    </update>
+</mapper>

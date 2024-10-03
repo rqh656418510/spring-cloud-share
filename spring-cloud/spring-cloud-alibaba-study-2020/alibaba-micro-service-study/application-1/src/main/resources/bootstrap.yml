@@ -1,0 +1,23 @@
+server:
+  port: ${port:56020}
+  servlet:
+    context‐path: /application1
+
+spring:
+  application:
+    name: application1
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: 4bfcbae8-8c37-417d-89e4-d5134e23eb18    # 开发环境
+        cluster-name: DEFAULT
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+        namespace: 4bfcbae8-8c37-417d-89e4-d5134e23eb18     # 开发环境
+        group: NACOS_MICRO_SERVICE_GROUP                    # xxx业务组
+
+dubbo:
+  consumer:
+    check: false      # 启动时就否检查依赖的服务

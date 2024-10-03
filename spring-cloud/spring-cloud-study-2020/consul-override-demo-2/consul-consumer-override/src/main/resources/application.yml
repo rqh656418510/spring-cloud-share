@@ -1,0 +1,12 @@
+server:
+  port: 9004
+
+spring:
+  application:
+    name: consul-consumer-discovery-client
+  cloud:
+    consul:
+      host: 127.0.0.1    # consul 启动地址
+      port: 8500         # consul 启动端口
+      ribbon:
+        enabled: false   # 此处配置很重要,为 true 时走原有逻辑, 为 false 时走重写逻辑

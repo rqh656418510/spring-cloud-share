@@ -1,0 +1,36 @@
+server:
+  port: 8092
+
+spring:
+  application:
+    name: zuul-server
+  redis:
+    host: 172.175.0.3
+    port: 6379
+    password:
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8090/eureka
+  instance:
+    prefer-ip-address: true
+
+zuul:
+  routes:
+    provider-service:
+      path: /provider/service/**
+      serviceId: provider-service
+  ratelimit:
+    enabled: true
+    key-prefix: ratelimit
+    repository: REDIS
+    behind-proxy: true          #表示代理之后
+    policy-list:
+      provider-service:         #单独细化到服务粒度
+        - limit: 2              #在一个单位时间窗口（秒）的请求数量
+          quota: 1              #在一个单位时间窗口（秒）的请求时间限制
+          refresh-interval: 3   #刷新时间（秒）
+          type:
+            - url               #指定url粒度
+

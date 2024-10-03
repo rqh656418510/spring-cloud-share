@@ -1,0 +1,32 @@
+server:
+  port: ${port:56040}
+  servlet:
+    context‐path: /service2
+
+spring:
+  application:
+    name: service2
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: 4bfcbae8-8c37-417d-89e4-d5134e23eb18    # 开发环境
+        cluster-name: DEFAULT
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+        namespace: 4bfcbae8-8c37-417d-89e4-d5134e23eb18     # 开发环境
+        group: NACOS_MICRO_SERVICE_GROUP                    # xxx业务组
+
+dubbo:
+  scan:
+    base-packages: com.alibaba.micro.study
+  protocol:
+    name: dubbo
+    port: 20891
+  registry:
+    address: nacos://127.0.0.1:8848       # 注册中心地址
+  application:
+    qos-enable: false        # Dubbo运维服务是否开启
+  consumer:
+    check: false      # 启动时就否检查依赖的服务

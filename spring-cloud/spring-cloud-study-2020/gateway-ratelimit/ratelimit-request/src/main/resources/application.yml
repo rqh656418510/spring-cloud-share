@@ -1,0 +1,27 @@
+server:
+  port: 9092
+
+spring:
+  application:
+    name: gateway-server
+  redis:
+    host: 172.175.0.3
+    port: 6379
+  cloud:
+    gateway:
+      routes:
+        - id: rateLimit_route
+          uri: http://127.0.0.1:9091/sayHello/peter/
+          order: 0
+          predicates:
+            - Path=/rateLimit
+          filters:
+            #Filter名称必须是RequestRateLimiter
+            - name: RequestRateLimiter
+              args:
+                #使用SpEL按名称引用bean
+                key-resolver: "#{@remoteAddrKeyResolver}"
+                #允许用户每秒处理多少个请求
+                redis-rate-limiter.replenishRate: 1
+                #令牌桶的容量，允许在一秒钟内完成的最大请求数
+                redis-rate-limiter.burstCapacity: 5

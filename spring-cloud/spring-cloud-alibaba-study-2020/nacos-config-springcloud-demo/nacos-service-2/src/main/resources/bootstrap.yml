@@ -1,0 +1,13 @@
+server:
+  port: 56011
+
+spring:
+  application:
+    name: service-2
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848       #配置中心的地址
+        namespace: 4bfcbae8-8c37-417d-89e4-d5134e23eb18   #命名空间
+        group: TEST_GROUP       #配置分组
+        file-extension: yaml      #由于当前环境对应的profile为空，这里的Data ID的名称就是application的name加上file-extension，即service-2.yaml

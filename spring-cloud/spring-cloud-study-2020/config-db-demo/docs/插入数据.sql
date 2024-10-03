@@ -1,0 +1,3 @@
+INSERT INTO `spring-cloud-config`.`properties` (`ID`, `KEY`, `VALUE`, `APPLICATION`, `PROFILE`, `LABLE`) VALUES ('3', 'cn.springcloud.config', 'I am the mysql configuration file from dev environment.', 'config-client', 'dev', 'master');
+INSERT INTO `spring-cloud-config`.`properties` (`ID`, `KEY`, `VALUE`, `APPLICATION`, `PROFILE`, `LABLE`) VALUES ('4', 'cn.springcloud.config', 'I am the mysql configuration file from test environment.', 'config-client', 'test', 'master');
+INSERT INTO `spring-cloud-config`.`properties` (`ID`, `KEY`, `VALUE`, `APPLICATION`, `PROFILE`, `LABLE`) VALUES ('5', 'cn.springcloud.config', 'I am the mysql configuration file from prod environment.', 'config-client', 'prod', 'master');

@@ -1,0 +1,40 @@
+server:
+  port: 8092
+
+spring:
+  application:
+    name: zuul-server
+  servlet:
+    multipart:
+      enabled: true               #使用http multipart上传处理
+      max-file-size: 100MB        #设置单个文件的最大长度，默认1M，如不限制配置为-1
+      max-request-size: 100MB     #设置最大的请求文件的大小，默认10M，如不限制配置为-1
+      file-size-threshold: 1MB    #当上传文件达到1MB的时候进行磁盘写入
+      location: /tmp              #上传的临时目录
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8090/eureka
+  instance:
+    prefer-ip-address: true
+
+zuul:
+  routes:
+    provider-service:
+      path: /provider/service/**
+      serviceId: provider-service
+
+##### 设置Ribbon的超时时间，如果要上传大文件，为避免超时，稍微设大一点
+ribbon:
+  ConnectTimeout: 3000
+  ReadTimeout: 30000
+
+##### Hystrix默认超时时间为1秒，如果要上传大文件，为避免超时，稍微设大一点
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 30000

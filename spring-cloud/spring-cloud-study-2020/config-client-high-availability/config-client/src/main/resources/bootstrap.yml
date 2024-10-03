@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    config:
+      name: config-client                 #需要从远程Git仓库读取的配置文件的名称，注意没有"yml"文件后缀，可以写多个，通过逗号隔开
+      profile: dev                        #本次访问的配置项
+      label: master                       #Git分支的名称
+      uri: http://127.0.0.1:8001          #Config Server的地址
+      backup:
+        enable: true
+        fallbackLocation: /tmp/config/config-client-dev/fallback.properties

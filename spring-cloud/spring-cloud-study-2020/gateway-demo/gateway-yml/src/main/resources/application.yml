@@ -1,0 +1,28 @@
+server:
+  port: 9091
+
+spring:
+  application:
+    name: gateway-server
+  cloud:
+    gateway:
+      routes:                         #当访问到 http://127.0.0.1:9090/baidu 直接跳转到百度的首页
+        - id: baidu_route
+          uri: http://baidu.com:80/
+          predicates:
+            - Path=/baidu
+
+logging:
+  level:
+    org.springframework.cloud.gateway: TRACE
+    org.springframework.http.server.reactive: DEBUG
+    org.springframework.web.reactive: DEBUG
+    reactor.ipc.netty: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  security:
+    enabled: false

@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: config-client
+  rabbitmq:
+    port: 5672
+    host: localhost
+    username: admin
+    password: admin
+  cloud:
+    bus:
+      trace:
+        enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    health:
+      show-details: always

@@ -1,0 +1,6 @@
+server:
+  port: 9001
+
+cn:
+  springcloud:
+    config: I am the git configuration file from dev environment
