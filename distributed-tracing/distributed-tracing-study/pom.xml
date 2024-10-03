@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.clay</groupId>
-    <artifactId>distributed-log-tracing-study</artifactId>
+    <artifactId>distributed-tracing-study</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
@@ -15,7 +15,7 @@
     </properties>
 
     <modules>
-        <module>distributed-log-tracing-01</module>
+        <module>distributed-tracing-01</module>
     </modules>
 
 </project>
