@@ -1,0 +1,42 @@
+server:
+  port: 8003
+
+spring:
+  application:
+    name: consumer-service
+  cloud:
+    # Consul
+    consul:
+      host: 192.168.56.112
+      port: 8500
+      # 注册中心
+      discovery:
+        service-name: ${spring.application.name}
+        heartbeat:
+          enabled: true
+    # OpenFeign
+    openfeign:
+      # 开启断路器和分组激活
+      circuitbreaker:
+        enabled: true
+        group:
+          enabled: true  # 没有开启分组则永远不用分组的配置。精确优先、分组次之（开了分组）、默认最后
+
+# Resilience4j
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        failureRateThreshold: 50  # 设置 50% 的调用失败时打开断路器，超过失败请求百分⽐ CircuitBreaker 将切换为 OPEN 状态
+        slidingWindowType: COUNT_BASED  # 滑动窗口的类型，可选 COUNT_BASED 和 TIME_BASED，默认为 COUNT_BASED
+        slidingWindowSize: 6  # 滑动窗⼝的⼤⼩，配置 COUNT_BASED 时表示 6 个请求，配置 TIME_BASED 时表示 6 秒
+        minimumNumberOfCalls: 6  # 断路器计算失败率或慢调用率之前所需的最小样本（每个滑动窗口周期）。如果 minimumNumberOfCalls 为 10，则必须最少记录 10 个样本，然后才能计算失败率。如果只记录了 9 次调用，即使所有 9 次调用都失败，断路器也不会开启
+        automaticTransitionFromOpenToHalfOpenEnabled: true  # 是否启用自动从开启状态切换到半开状态，默认值为 true。如果启用，CircuitBreaker 将自动从开启状态切换到半开状态，并允许一些请求通过以测试服务是否恢复正常
+        waitDurationInOpenState: 5s  # 断路器从 OPEN 状态到 HALF_OPEN 状态需要等待的时间
+        permittedNumberOfCallsInHalfOpenState: 2  # 半开状态允许的最大请求数，默认值为 10。在半开状态下，CircuitBreaker 将允许最多 N 个请求通过，如果其中有任何一个请求失败，CircuitBreaker 将重新进入开启状态
+        recordExceptions:
+          - java.lang.Exception
+    instances:
+      # 指定特定的服务使用哪个断路器配置
+      provider-service:
+        baseConfig: default

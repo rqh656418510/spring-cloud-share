@@ -1,0 +1,36 @@
+server:
+  port: 8003
+
+spring:
+  application:
+    name: consumer-service
+  cloud:
+    # Consul
+    consul:
+      host: 192.168.56.112
+      port: 8500
+      # 注册中心
+      discovery:
+        service-name: ${spring.application.name}
+        heartbeat:
+          enabled: true
+    # OpenFeign
+    openfeign:
+      ## 使用 Apache Http Client 替换
+      httpclient:
+        hc5:
+          enabled: true
+      client:
+        config:
+          # 全局配置
+          default:
+            # 连接超时时间（单位为毫秒）
+            connectTimeout: 2000
+            # 请求处理超时时间（单位为毫秒）
+            readTimeout: 2000
+          # 为特定的服务单独配置
+          provider-service:
+            # 连接超时时间（单位为毫秒）
+            connectTimeout: 3000
+            # 请求处理超时时间（单位为毫秒）
+            readTimeout: 3000

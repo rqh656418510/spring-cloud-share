@@ -1,0 +1,25 @@
+server:
+  port: 8003
+
+spring:
+  application:
+    name: consumer-service
+  cloud:
+    # Consul
+    consul:
+      host: 192.168.56.112
+      port: 8500
+      # 注册中心
+      discovery:
+        service-name: ${spring.application.name}
+        heartbeat:
+          enabled: true
+
+management:
+  # Zipkin
+  zipkin:
+    tracing:
+      endpoint: http://192.168.56.112:9411/api/v2/spans
+  tracing:
+    sampling:
+      probability: 1.0  # 采样率默认为 0.1（这里的 0.1 表示 10 次只能有一次被记录下来)，值越大收集越实时

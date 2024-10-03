@@ -1,0 +1,31 @@
+server:
+  port: 8003
+
+spring:
+  application:
+    name: consumer-service
+  cloud:
+    # Consul
+    consul:
+      host: 192.168.56.112
+      port: 8500
+      # 注册中心
+      discovery:
+        service-name: ${spring.application.name}
+        heartbeat:
+          enabled: true
+
+# Resilience4j
+resilience4j:
+  ## 限流
+  ratelimiter:
+    configs:
+      # 限流的默认配置
+      default:
+        limitForPeriod: 2  # 在一次刷新周期内，允许执行的最大请求数
+        limitRefreshPeriod: 1s  # 限流器每隔 limitRefreshPeriod 刷新一次，并将允许处理的最大请求数量重置为 limitForPeriod
+        timeout-duration: 1  # 线程等待权限的默认等待时间
+    instances:
+      # 指定特定的服务实例或者方法使用哪个限流配置，还可以在每个实例下进行自定义配置
+      provider-service:
+        baseConfig: default

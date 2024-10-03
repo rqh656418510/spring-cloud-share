@@ -1,0 +1,41 @@
+server:
+  port: 8003
+
+spring:
+  application:
+    name: consumer-service
+  cloud:
+    # Consul
+    consul:
+      host: 192.168.56.112
+      port: 8500
+      # 注册中心
+      discovery:
+        service-name: ${spring.application.name}
+        heartbeat:
+          enabled: true
+    # OpenFeign
+    openfeign:
+      # 开启断路器和分组激活
+      circuitbreaker:
+        enabled: true
+        group:
+          enabled: false  # 设置为 false，这样新启动的线程和原来的主线程是脱离的
+
+# Resilience4j
+resilience4j:
+  # 超时处理
+  timelimiter:
+    configs:
+      default:
+        timeout-duration: 20s  # 神坑的位置，timelimiter 默认限制请求处理耗时为 1s，超过 1s 就会认为请求超时，如果配置了降级，就会走降级逻辑
+  # 固定线程池隔离
+  thread-pool-bulkhead:
+    configs:
+      default:
+        core-thread-pool-size: 1
+        max-thread-pool-size: 1
+        queue-capacity: 1
+    instances:
+      provider-service:
+        baseConfig: default
