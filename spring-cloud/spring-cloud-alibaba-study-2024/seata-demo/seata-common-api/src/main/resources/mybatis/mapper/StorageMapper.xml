@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.clay.mapper.StorageMapper">
+
+    <resultMap id="BaseResultMap" type="com.clay.entities.Storage">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="product_id" jdbcType="BIGINT" property="productId"/>
+        <result column="total" jdbcType="INTEGER" property="total"/>
+        <result column="used" jdbcType="INTEGER" property="used"/>
+        <result column="residue" jdbcType="INTEGER" property="residue"/>
+    </resultMap>
+
+    <select id="selectByProductId" resultType="com.clay.entities.Storage">
+        SELECT *
+        FROM t_storage
+        WHERE product_id = #{productId}
+    </select>
+
+    <update id="decrease">
+        UPDATE
+            t_storage
+        SET used    = used + #{count},
+            residue = residue - #{count}
+        WHERE product_id = #{productId}
+    </update>
+
+</mapper>

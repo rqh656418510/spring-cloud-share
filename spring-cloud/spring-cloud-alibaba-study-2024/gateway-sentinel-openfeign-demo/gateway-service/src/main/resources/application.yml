@@ -1,0 +1,21 @@
+server:
+  port: 8005
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    # Nacos
+    nacos:
+      discovery:
+        server-addr: 192.168.56.112:8848
+    # Gateway
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: consumer_route
+          uri: lb://consumer-service
+          predicates:
+            - Path=/consumer/pay/get/**

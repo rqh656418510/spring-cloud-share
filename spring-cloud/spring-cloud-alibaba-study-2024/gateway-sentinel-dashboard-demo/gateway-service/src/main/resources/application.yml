@@ -1,0 +1,35 @@
+server:
+  port: 8005
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    # Nacos
+    nacos:
+      discovery:
+        server-addr: 192.168.56.112:8848
+    # Sentinel
+    sentinel:
+      transport:
+        dashboard: 192.168.56.112:8858   # 配置 Sentinel Dashboard 控制台的访问地址
+        port: 8719                       # 默认 8719 端口，假如被占用会自动从 8719 开始依次 + 1 扫描，直至找到未被占用的端口
+        client-ip: 192.168.2.140         # 指定客户端的 IP
+      filter:
+        enabled: false   # 若在 Sentinel 控制台上看到了相应的 URL 资源，就说明此配置项没有置为 false
+    # Gateway
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: consumer_route
+          uri: lb://consumer-service
+          predicates:
+            - Path=/consumer/pay/get/**
+        - id: baidu_route
+          uri: https://www.baidu.com
+          predicates:
+            - Path=/baidu/**
+          filters:
+            - RewritePath=/baidu/(?<segment>.*), /$\{segment}

@@ -1,0 +1,14 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: sentinel-advanced-service
+  cloud:
+    # Sentinel
+    sentinel:
+      transport:
+        dashboard: 192.168.56.112:8858  # 配置 Sentinel Dashboard 控制台的访问地址
+        port: 8719  # 默认 8719 端口，假如被占用会自动从 8719 开始依次 + 1 扫描，直至找到未被占用的端口
+        client-ip: 192.168.2.140 # 指定客户端的 IP
+      web-context-unify: false  # 设置 Controller 层的方法对 Service 层的方法调用不认为是同一个根链路

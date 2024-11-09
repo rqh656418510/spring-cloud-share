@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.clay.mapper.AccountMapper">
+
+    <resultMap id="BaseResultMap" type="com.clay.entities.Account">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="user_id" jdbcType="BIGINT" property="userId"/>
+        <result column="total" jdbcType="DECIMAL" property="total"/>
+        <result column="used" jdbcType="DECIMAL" property="used"/>
+        <result column="residue" jdbcType="DECIMAL" property="residue"/>
+    </resultMap>
+
+    <select id="selectByUserId" resultType="com.clay.entities.Account">
+        SELECT *
+        FROM t_account
+        WHERE user_id = #{userId};
+    </select>
+
+    <update id="decrease">
+        UPDATE
+            t_account
+        SET residue = residue - #{money},
+            used    = used + #{money}
+        WHERE user_id = #{userId};
+    </update>
+
+</mapper>
