@@ -8,8 +8,7 @@ import org.apache.kafka.common.serialization.StringSerializer;
 import java.util.Properties;
 
 /**
- * 生产者使用事务
- * <p> 使用事务之前，必须开启幂等性
+ * 生产者启用幂等性
  *
  * @author clay
  */
@@ -18,37 +17,28 @@ public class CustomerProducer {
     public static void main(String[] args) {
         Properties properties = new Properties();
         // 指定Kafka的连接信息（若是Kafka集群，多个节点之间使用逗号分隔）
-        properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.2.127:9092");
+        properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:9092");
         // 指定序列化器（必需）
         properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
-        // 设置事务 ID（必需）
-        properties.put(ProducerConfig.TRANSACTIONAL_ID_CONFIG, "transaction_id_01");
+
+        // 设置启用幂等性
+        properties.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, "true");
+        // 设置单个连接上最多可以发送的未确认（ACK）请求的数量
+        properties.put(ProducerConfig.MAX_IN_FLIGHT_REQUESTS_PER_CONNECTION, 5);
+        // 设置 ACK 应答级别，默认值是 all
+        properties.put(ProducerConfig.ACKS_CONFIG, "all");
+        // 设置重试次数，默认值是 int 类型的最大值 2147483647
+        properties.put(ProducerConfig.RETRIES_CONFIG, Integer.MAX_VALUE);
 
         // 创建生产者对象
         KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
-
-        // 初始化事务
-        producer.initTransactions();
-
-        // 开启事务
-        producer.beginTransaction();
-
-        try {
-            // 发送数据
-            for (int i = 0; i < 5; i++) {
-                producer.send(new ProducerRecord<>("test", "hello kafka " + i));
-            }
-            // 提交事务
-            producer.commitTransaction();
-        } catch (Exception e) {
-            // 放弃事务
-            producer.abortTransaction();
-        } finally {
-            // 关闭资源
-            producer.close();
+        for (int i = 0; i < 5; i++) {
+            // 异步发送消息
+            producer.send(new ProducerRecord<>("test", "hello kafka " + i));
         }
-
+        // 关闭资源
+        producer.close();
     }
 
 }
