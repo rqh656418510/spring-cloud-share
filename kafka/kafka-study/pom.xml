@@ -48,6 +48,8 @@
         <module>kafka-lesson-07</module>
         <module>kafka-lesson-08</module>
         <module>kafka-lesson-09</module>
+        <module>kafka-lesson-10</module>
+        <module>kafka-lesson-11</module>
     </modules>
 
 </project>
