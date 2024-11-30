@@ -4,7 +4,6 @@ import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
-import org.apache.kafka.common.TopicPartition;
 import org.apache.kafka.common.serialization.StringDeserializer;
 
 import java.time.Duration;
@@ -28,8 +27,10 @@ public class CustomerConsumer {
         properties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         // 指定消费者组 ID（必须，可以任意定义）
         properties.put(ConsumerConfig.GROUP_ID_CONFIG, "test3");
-        // 指定分区分配策略
-        properties.put(ConsumerConfig.PARTITION_ASSIGNMENT_STRATEGY_CONFIG, "org.apache.kafka.clients.consumer.StickyAssignor");
+        // 是否自动提交 offset
+        properties.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, true);
+        // 指定自动提交 offset 的时间间隔，默认值是 5 秒
+        properties.put(ConsumerConfig.AUTO_COMMIT_INTERVAL_MS_CONFIG, 1000);
 
         // 创建消费者对象
         KafkaConsumer<String, String> consumer = new KafkaConsumer<String, String>(properties);

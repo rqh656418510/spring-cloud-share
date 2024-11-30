@@ -28,7 +28,7 @@ public class CustomerConsumer1 {
         properties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         // 指定消费者组 ID（必须，可以任意定义）
         properties.put(ConsumerConfig.GROUP_ID_CONFIG, "test3");
-        // 指定分区分配策略
+        // 指定消费者组的分区分配策略
         properties.put(ConsumerConfig.PARTITION_ASSIGNMENT_STRATEGY_CONFIG, "org.apache.kafka.clients.consumer.StickyAssignor");
 
         // 创建消费者对象
