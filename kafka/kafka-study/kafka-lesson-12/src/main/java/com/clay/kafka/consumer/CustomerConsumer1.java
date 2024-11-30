@@ -4,6 +4,7 @@ import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.apache.kafka.common.TopicPartition;
 import org.apache.kafka.common.serialization.StringDeserializer;
 
 import java.time.Duration;
@@ -12,11 +13,11 @@ import java.util.List;
 import java.util.Properties;
 
 /**
- * 消费者组的分区分配策略 - Range
+ * 消费者组的分区分配策略 - RoundRobin
  *
  * @author clay
  */
-public class CustomerConsumer2 {
+public class CustomerConsumer1 {
 
     public static void main(String[] args) {
         Properties properties = new Properties();
@@ -26,7 +27,9 @@ public class CustomerConsumer2 {
         properties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         properties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         // 指定消费者组 ID（必须，可以任意定义）
-        properties.put(ConsumerConfig.GROUP_ID_CONFIG, "test");
+        properties.put(ConsumerConfig.GROUP_ID_CONFIG, "test2");
+        // 指定分区分配策略
+        properties.put(ConsumerConfig.PARTITION_ASSIGNMENT_STRATEGY_CONFIG, "org.apache.kafka.clients.consumer.RoundRobinAssignor");
 
         // 创建消费者对象
         KafkaConsumer<String, String> consumer = new KafkaConsumer<String, String>(properties);

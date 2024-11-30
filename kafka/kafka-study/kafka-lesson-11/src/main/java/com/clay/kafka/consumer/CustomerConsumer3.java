@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Properties;
 
 /**
- * 消费者的分区分配策略 - Range
+ * 消费者组的分区分配策略 - Range
  *
  * @author clay
  */

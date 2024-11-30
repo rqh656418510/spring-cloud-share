@@ -10,7 +10,7 @@ import org.apache.kafka.common.serialization.StringSerializer;
 import java.util.Properties;
 
 /**
- * 消费者组的分区分配策略 - Range
+ * 消费者组的分区分配策略 - RoundRobin
  *
  * @author clay
  */
