@@ -61,6 +61,7 @@ public class CustomerConsumer {
 
         // 遍历每个分区，对每个分区指定从哪个时间开始消费
         for (TopicPartition topicPartition : assignment) {
+            // 获取分区的 offset 和时间信息
             OffsetAndTimestamp offsetAndTimestamp = offsets.get(topicPartition);
             // 根据时间指定从哪个位置开始消费
             if (offsetAndTimestamp != null) {

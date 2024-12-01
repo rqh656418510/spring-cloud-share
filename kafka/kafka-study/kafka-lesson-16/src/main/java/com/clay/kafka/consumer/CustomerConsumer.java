@@ -47,7 +47,7 @@ public class CustomerConsumer {
             assignment = consumer.assignment();
         }
 
-        // 遍历所有分区分配信息，并指定从各个分区 offset 为 23 的位置开始消费
+        // 遍历每个分区，对每个分区指定从哪个 offset 开始消费
         for (TopicPartition topicPartition : assignment) {
             consumer.seek(topicPartition, 23);
         }
