@@ -27,7 +27,7 @@ public class FlinkKafkaProducerTest2 {
         list.add("flink");
         DataStream<String> dataStream = env.fromCollection(list);
 
-        // 配置 KafkaSink（相当于 Kafak 生产者）
+        // 配置 KafkaSink（相当于 Kafka 生产者）
         KafkaSink<String> kafkaSink = KafkaSink.<String>builder()
             .setBootstrapServers("127.0.0.1:9092")
             .setRecordSerializer(
@@ -40,7 +40,7 @@ public class FlinkKafkaProducerTest2 {
             .setDeliveryGuarantee(DeliveryGuarantee.AT_LEAST_ONCE)
             .build();
 
-        // 关联 KafkaSink
+        // Flink 流关联 KafkaSink
         dataStream.sinkTo(kafkaSink);
 
         // 执行

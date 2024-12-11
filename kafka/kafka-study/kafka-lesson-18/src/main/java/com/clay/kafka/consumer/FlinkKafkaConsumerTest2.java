@@ -27,8 +27,9 @@ public class FlinkKafkaConsumerTest2 {
             .setValueOnlyDeserializer(new SimpleStringSchema())
             .build();
 
+        // Flink 流关联 KafkaSource
         DataStreamSource<String> stream = env.fromSource(kafkaSource, WatermarkStrategy.noWatermarks(), "kafka-source");
-        stream.print("kafka");
+        stream.print();
 
         // 执行
         env.execute();

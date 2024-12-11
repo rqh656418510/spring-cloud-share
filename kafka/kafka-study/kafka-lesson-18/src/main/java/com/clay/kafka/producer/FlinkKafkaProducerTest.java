@@ -34,7 +34,7 @@ public class FlinkKafkaProducerTest {
         // 创建 Kafka 生产者
         FlinkKafkaProducer<String> kafkaProducer = new FlinkKafkaProducer("first", new SimpleStringSchema(), properties);
 
-        // Kafka 生产者和 Flink 流关联
+        // Flink 流关联 Kafka 生产者
         stream.addSink(kafkaProducer);
 
         // 执行

@@ -28,7 +28,7 @@ public class FlinkKafkaConsumerTest1 {
         FlinkKafkaConsumer<String> kafkaConsumer = new FlinkKafkaConsumer("first", new SimpleStringSchema(), properties);
         kafkaConsumer.setStartFromLatest();
 
-        // Kafka 消费者和 Flink 流关联
+        // Flink 流关联 Kafka 消费者
         DataStream<String> dataStream = env.addSource(kafkaConsumer);
         dataStream.print();
 
