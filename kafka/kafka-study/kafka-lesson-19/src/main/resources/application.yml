@@ -33,6 +33,7 @@ spring:
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       # 消费者每次调用 poll() 方法时，最多能拉取的消息数量，默认值为 500
       max-poll-records: 100
+      # 消费者的其他核心配置
       properties:
         # 如果在这个时间内(默认45秒)， 协调器没有收到心跳，该消费者会被踢出消费者组并触发分区再平衡
         session.timeout.ms: 120000
