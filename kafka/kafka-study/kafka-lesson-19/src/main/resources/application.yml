@@ -1,0 +1,66 @@
+server:
+  port: 9999
+
+spring:
+  kafka:
+    # Kafka 集群的地址
+    bootstrap-servers: localhost:9092
+    producer:
+      # 设置生产者需要等待多少个分区副本收到消息的确认,可选值： 0 | 1 | all,其中 all 表示所有分区副本都需要确认，确保消息不丢失
+      acks: all
+      # 单次发送消息的批量大小（以字节为单位,默认16K）当多个消息累积到指定大小时，生产者会批量发送以提升效率
+      batch-size: 16384
+      # 生产者内存缓冲区的大小（以字节为单位,默认32M），用于存储等待发送的消息
+      buffer-memory: 33554432
+      # Key 的序列化器
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      # Value 的序列化器
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      # 设置生产者在遇到发送失败时的重试次数0 表示不进行重试
+      retries: 0
+    consumer:
+      # 消费者组 ID
+      group-id: test
+      # 从哪个偏移量 offset 开始消费,可选值：earliest | latest
+      auto-offset-reset: earliest
+      # 是否自动提交偏移量 offset
+      enable-auto-commit: false
+      # 自动提交的频率,生效的前提是 enable-auto-commit=true
+      auto-commit-interval: 1s
+      # Key 的反序列化器
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      # Value 的反序列化器
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      # 消费者每次调用 poll() 方法时，最多能拉取的消息数量，默认值为 500
+      max-poll-records: 100
+      properties:
+        # 如果在这个时间内(默认45秒)， 协调器没有收到心跳，该消费者会被踢出消费者组并触发分区再平衡
+        session.timeout.ms: 120000
+        # 最大消费时间，该参数决定了获取消息后提交偏移量的最长时间，超过设定的时间（默认5分钟），服务端会认为该消费者失效，然后将其踢出消费者组并触发分区再平衡
+        max.poll.interval.ms: 300000
+        # 客户端等待请求响应的最长时间如果在超时之前没有收到响应，客户端将在必要时重新发送请求，或者如果重试次数用尽，则请求失败
+        request.timeout.ms: 60000
+        # 订阅或分配主题时，是否允许自动创建主题（生产环境建议设置为 false）
+        allow.auto.create.topics: false
+        # poll() 方法向协调器发送心跳的频率(默认每隔3秒发送一次)，建议设置为 session.timeout.ms 的三分之一
+        heartbeat.interval.ms: 40000
+        # 指定每个分区里返回的记录最多不超的字节数
+        # max.partition.fetch.bytes=1048576
+    listener:
+      # 消费者的消息确认模式
+      # 当 enable.auto.commit 设置为 false 时，此配置才会生效
+      # 当设置为 manual_immediate,则表示手动确认消息,即调用 Acknowledgment.acknowledge() 后立即提交偏移量
+      ack-mode: manual_immediate
+      # 是否严格检查 topic 的存在性
+      # true: 如果配置的 topic 不存在，则启动失败
+      # false: 忽略不存在的 topic，继续启动
+      missing-topics-fatal: true
+      # 消费者的消费模式
+      # single: 单条消费，每次拉取一条消息
+      # batch: 批量消费，每次拉取多条消息，需要配合 consumer.max-poll-records 参数设置拉取的消息数量
+      type: batch
+      # 并发线程数，决定消费者实例创建的线程数量
+      # 每个线程可消费一个分区，线程数多于分区时，多余的线程将处于空闲状态
+      concurrency: 3
+    template:
+      default-topic: "test"

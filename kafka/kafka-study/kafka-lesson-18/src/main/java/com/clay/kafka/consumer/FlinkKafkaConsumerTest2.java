@@ -18,7 +18,7 @@ public class FlinkKafkaConsumerTest2 {
         // 初始化 Flink 执行环境
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
-        // Kafka 数据源（相当于 Kafka 消费者）
+        // 配置 KafkaSource（相当于 Kafka 消费者）
         KafkaSource<String> kafkaSource = KafkaSource.<String>builder()
             .setBootstrapServers("127.0.0.1:9092")
             .setTopics("first")
