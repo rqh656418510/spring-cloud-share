@@ -1,6 +1,6 @@
 package com.clay.kafka.consumer;
 
-import com.clay.kafka.config.KafkaConfig;
+import com.clay.kafka.config.KafkaConstants;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.Acknowledgment;
@@ -14,12 +14,12 @@ public class KafkaMsgConsumer {
     /**
      * 消费消息（批量消费）
      */
-    @KafkaListener(topics = KafkaConfig.TOPIC_TEST, groupId = KafkaConfig.GROUP_ID)
+    @KafkaListener(topics = KafkaConstants.TOPIC_TEST, groupId = KafkaConstants.GROUP_ID)
     public void receive(List<ConsumerRecord<String, String>> records, Acknowledgment acknowledgment) {
         try {
             for (ConsumerRecord<String, String> record : records) {
                 // 处理消息
-                System.out.println("Group: " + KafkaConfig.GROUP_ID + ", Topic: " + record.topic() + ", Msg: " + record.value());
+                System.out.println("Group: " + KafkaConstants.GROUP_ID + ", Topic: " + record.topic() + ", Msg: " + record.value());
             }
             // 手动提交偏移量
             acknowledgment.acknowledge();

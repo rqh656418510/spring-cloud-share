@@ -1,5 +1,6 @@
 package com.clay.kafka.controller;
 
+import com.clay.kafka.config.KafkaConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,8 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/kafka")
 public class KafkaProducercontroller {
 
-    private static final String TOPIC = "test";
-
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
 
@@ -21,7 +20,7 @@ public class KafkaProducercontroller {
     @GetMapping("/produce")
     public String produce(String msg) {
         try {
-            kafkaTemplate.send(TOPIC, msg);
+            kafkaTemplate.send(KafkaConstants.TOPIC_TEST, msg);
         } catch (Exception e) {
             e.printStackTrace();
         }
