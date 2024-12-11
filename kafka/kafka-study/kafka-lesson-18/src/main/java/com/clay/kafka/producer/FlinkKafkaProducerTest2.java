@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Kafka 集成 Flink
+ * Kafka 集成 Flink（生产者）
  *
  * @author clay
  */
@@ -20,7 +20,6 @@ public class FlinkKafkaProducerTest2 {
     public static void main(String[] args) throws Exception {
         // 初始化 Flink 执行环境
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
-        env.setParallelism(3);
 
         // 模拟源数据
         List<String> list = new ArrayList<>();
@@ -44,7 +43,7 @@ public class FlinkKafkaProducerTest2 {
         // 关联 KafkaSink
         dataStream.sinkTo(kafkaSink);
 
-        // 执行（发送消息）
+        // 执行
         env.execute();
     }
 

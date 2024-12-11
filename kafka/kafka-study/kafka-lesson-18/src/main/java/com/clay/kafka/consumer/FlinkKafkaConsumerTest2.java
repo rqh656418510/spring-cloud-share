@@ -8,22 +8,21 @@ import org.apache.flink.streaming.api.datastream.DataStreamSource;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 
 /**
- * Kafka 集成 Flink
+ * Kafka 集成 Flink（消费者）
  *
  * @author clay
  */
-public class FlinkKafkaConsumerTest {
+public class FlinkKafkaConsumerTest2 {
 
     public static void main(String[] args) throws Exception {
-        // 初始化 Flink 环境
+        // 初始化 Flink 执行环境
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
-        env.setParallelism(3);
 
-        // Kafka 数据源
+        // Kafka 数据源（相当于 Kafka 消费者）
         KafkaSource<String> kafkaSource = KafkaSource.<String>builder()
             .setBootstrapServers("127.0.0.1:9092")
             .setTopics("first")
-            .setGroupId("flink")
+            .setGroupId("flink2")
             .setStartingOffsets(OffsetsInitializer.latest())
             .setValueOnlyDeserializer(new SimpleStringSchema())
             .build();
