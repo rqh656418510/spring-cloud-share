@@ -1,4 +1,4 @@
-package com.clay.kafka.consumer;
+package com.clay.kafka.producer;
 
 import org.apache.kafka.clients.producer.Callback;
 import org.apache.kafka.clients.producer.KafkaProducer;
@@ -10,7 +10,7 @@ import org.apache.kafka.common.serialization.StringSerializer;
 import java.util.Properties;
 
 /**
- * 带回调函数的异步发送
+ * 消费者按照时间消费
  *
  * @author clay
  */
@@ -26,11 +26,9 @@ public class CustomerProducer {
 
         // 创建生产者对象
         KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
-        for (int i = 0; i < 200; i++) {
-            // 分区号（假设只有两个分区）
-            int partition = i % 2;
+        for (int i = 0; i < 7; i++) {
             // 异步发送消息（带回调函数）
-            producer.send(new ProducerRecord<>("first", partition, "", "hello kafka " + i), new Callback() {
+            producer.send(new ProducerRecord<>("first", i, "", "hello kafka " + i), new Callback() {
                 @Override
                 public void onCompletion(RecordMetadata recordMetadata, Exception exception) {
                     if (exception != null) {

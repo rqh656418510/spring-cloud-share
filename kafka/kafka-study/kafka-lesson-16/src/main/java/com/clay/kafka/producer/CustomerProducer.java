@@ -1,4 +1,4 @@
-package com.clay.kafka.consumer;
+package com.clay.kafka.producer;
 
 import org.apache.kafka.clients.producer.Callback;
 import org.apache.kafka.clients.producer.KafkaProducer;
@@ -10,7 +10,7 @@ import org.apache.kafka.common.serialization.StringSerializer;
 import java.util.Properties;
 
 /**
- * 消费者组的分区分配策略 - RoundRobin
+ * 消费者指定 offset 消费
  *
  * @author clay
  */

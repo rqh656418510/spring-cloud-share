@@ -1,4 +1,4 @@
-package com.clay.kafka.consumer;
+package com.clay.kafka.producer;
 
 import org.apache.kafka.clients.producer.Callback;
 import org.apache.kafka.clients.producer.KafkaProducer;
@@ -10,7 +10,7 @@ import org.apache.kafka.common.serialization.StringSerializer;
 import java.util.Properties;
 
 /**
- * 消费者组的分区分配策略 - Range
+ * 消费者组的分区分配策略 - Sticky
  *
  * @author clay
  */
@@ -26,9 +26,15 @@ public class CustomerProducer {
 
         // 创建生产者对象
         KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < Integer.MAX_VALUE; i++) {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
             // 异步发送消息（带回调函数）
-            producer.send(new ProducerRecord<>("first", i, "", "hello kafka " + i), new Callback() {
+            producer.send(new ProducerRecord<>("first", "hello kafka " + i), new Callback() {
                 @Override
                 public void onCompletion(RecordMetadata recordMetadata, Exception exception) {
                     if (exception != null) {
