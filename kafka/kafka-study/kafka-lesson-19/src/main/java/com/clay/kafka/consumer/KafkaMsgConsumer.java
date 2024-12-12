@@ -19,7 +19,7 @@ public class KafkaMsgConsumer {
         try {
             for (ConsumerRecord<String, String> record : records) {
                 // 处理消息
-                System.out.println("Group: " + KafkaConstants.GROUP_ID + ", Topic: " + record.topic() + ", Msg: " + record.value());
+                System.out.println("Receive Msg ==> Group: " + KafkaConstants.GROUP_ID + ", Topic: " + record.topic() + ", Msg: " + record.value());
             }
             // 手动提交偏移量
             acknowledgment.acknowledge();

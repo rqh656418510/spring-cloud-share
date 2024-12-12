@@ -1,0 +1,27 @@
+server:
+  port: 9999
+
+spring:
+  application:
+    name: kafka-test
+  cloud:
+    stream:
+      kafka:
+        binder:
+          # Kafka 集群的地址
+          brokers: 127.0.0.1:9092,127.0.0.1:9093,127.0.0.1:9094
+          # 是否允许自动创建主题
+          auto-create-topics: false
+      bindings:
+        receiveMsg-in-0:
+          # 指定 Topic
+          destination: test
+          # 指定消息的格式
+          content-type: application/json
+        sendMsg-out-0:
+          # 指定 Topic
+          destination: test
+          # 指定消息的格式
+          content-type: application/json
+      functions:
+        definition: receiveMsg;sendMsg
