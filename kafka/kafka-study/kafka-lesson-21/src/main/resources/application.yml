@@ -4,7 +4,7 @@ server:
 spring:
   kafka:
     # Kafka 集群的地址
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: 127.0.0.1:9092
     producer:
       # 设置生产者需要等待多少个分区副本收到消息的确认,可选值： 0 | 1 | all,其中 all 表示所有分区副本都需要确认,确保消息不丢失
       acks: all

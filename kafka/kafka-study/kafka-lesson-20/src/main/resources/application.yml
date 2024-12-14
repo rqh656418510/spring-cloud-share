@@ -14,14 +14,23 @@ spring:
           auto-create-topics: false
       bindings:
         receiveMsg-in-0:
-          # 指定 Topic
+          # 指定 Binder
+          binder: kafka
+          # Topic 的名称
           destination: test
-          # 指定消息的格式
+          # 消息的格式
           content-type: application/json
+          # 消费组的名称
+          group: test
         sendMsg-out-0:
-          # 指定 Topic
+          # 绑定 Kafka
+          binder: kafka
+          # Topic 的名称
           destination: test
-          # 指定消息的格式
+          # 消息的格式
           content-type: application/json
-      functions:
-        definition: receiveMsg;sendMsg
+          # 消费组的名称
+          group: test
+    function:
+      # 指定要绑定的函数(多个函数使用分号分隔)
+      definition: receiveMsg;sendMsg

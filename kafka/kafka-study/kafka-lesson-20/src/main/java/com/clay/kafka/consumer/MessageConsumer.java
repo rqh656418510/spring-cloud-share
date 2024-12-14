@@ -1,7 +1,7 @@
 package com.clay.kafka.consumer;
 
-import com.clay.kafka.domain.Person;
 import org.springframework.context.annotation.Bean;
+import org.springframework.messaging.Message;
 import org.springframework.stereotype.Component;
 
 import java.util.function.Consumer;
@@ -13,15 +13,13 @@ import java.util.function.Consumer;
 public class MessageConsumer {
 
     /**
-     * 消费消息
+     * 消费消息（基于函数式编程定义 Consumer）
      * <p> 对应 YML 配置文件中的 receiveMsg-in-0
      */
     @Bean
-    public Consumer<Person> receiveMsg() {
-        return person -> {
-            if (person != null) {
-                System.out.println("name: " + person.getName() + ", age: " + person.getAge());
-            }
+    public Consumer<Message<String>> receiveMsg() {
+        return message -> {
+            System.out.println("Receive Msg: " + message.getPayload());
         };
     }
 
