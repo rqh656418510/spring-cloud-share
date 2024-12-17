@@ -12,3 +12,4 @@
 - [Kafka 入门教程之四](https://www.techgrow.cn/posts/c61757ff.html)
 - [Kafka 入门教程之五](https://www.techgrow.cn/posts/ed9d5bd.html)
 - [Kafka 入门教程之六](https://www.techgrow.cn/posts/e73bffc6.html)
+- [Kafka 入门教程之七](https://www.techgrow.cn/posts/50c7d080.html)
