@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+    <!-- 配置服务应用名 -->
+    <dubbo:application name="dubbo-consumer-application">
+        <dubbo:parameter key="qos.enable" value="true"/>
+        <dubbo:parameter key="qos.port" value="22223"/>
+        <dubbo:parameter key="qos.accept.foreign.ip" value="false"/>
+    </dubbo:application>
+
+    <!-- 注册中心配置 -->
+    <dubbo:registry address="zookeeper://127.0.0.1:2181" timeout="5000"/>
+
+    <!-- 引用远程服务 -->
+    <dubbo:reference id="demoService" interface="com.clay.dubbo.service.DemoService"/>
+
+</beans>
