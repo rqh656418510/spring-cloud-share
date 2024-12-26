@@ -20,3 +20,6 @@ dubbo:
     retries: 0
     # 默认情况下限制请求必须在 1000 毫秒内完成，对于具体服务可以在代码中单独配置
     timeout: 1000
+  # 扫描 Dubbo 相关的注解
+  scan:
+    base-packages: com.clay.dubbo.consumer

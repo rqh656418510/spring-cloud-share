@@ -16,3 +16,6 @@ dubbo:
   protocol:
     name: dubbo
     port: 20880
+  # 扫描 Dubbo 相关的注解
+  scan:
+    base-packages: com.clay.dubbo.provider
