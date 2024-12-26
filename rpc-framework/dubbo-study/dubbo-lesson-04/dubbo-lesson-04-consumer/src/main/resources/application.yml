@@ -5,7 +5,9 @@ spring:
   application: dubbo-consumer-application
 
 dubbo:
+  # 服务信息
   application:
     name: ${spring.application}
+  # 注册中心地址
   registry:
-    address: zookeeper://192.168.56.112:2181
+    address: zookeeper://127.0.0.1:2181
