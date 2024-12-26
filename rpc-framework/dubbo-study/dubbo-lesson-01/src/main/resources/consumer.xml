@@ -17,6 +17,6 @@
     <dubbo:registry address="zookeeper://127.0.0.1:2181" timeout="5000"/>
 
     <!-- 引用远程服务 -->
-    <dubbo:reference id="demoService" interface="com.clay.dubbo.service.DemoService"/>
+    <dubbo:reference id="demoService" interface="com.clay.service.DemoService"/>
 
 </beans>

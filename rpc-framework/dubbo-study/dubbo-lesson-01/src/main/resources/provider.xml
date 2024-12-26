@@ -20,7 +20,7 @@
     <dubbo:protocol name="dubbo" port="20880"/>
 
     <!-- 声明要暴露的服务 -->
-    <dubbo:service interface="com.clay.dubbo.service.DemoService" ref="demoService"/>
+    <dubbo:service interface="com.clay.service.DemoService" ref="demoService"/>
 
     <!-- 服务实现 Bean -->
     <bean id="demoService" class="com.clay.dubbo.provider.service.DemoServiceImpl"/>
