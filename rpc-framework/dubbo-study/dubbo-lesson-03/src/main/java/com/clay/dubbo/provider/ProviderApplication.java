@@ -18,6 +18,9 @@ public class ProviderApplication {
         // 服务信息
         ApplicationConfig applicationConfig = new ApplicationConfig();
         applicationConfig.setName("dubbo-provider-application");
+        applicationConfig.setQosEnable(true);
+        applicationConfig.setQosPort(22222);
+        applicationConfig.setQosAcceptForeignIp(false);
 
         // 注册中心配置
         RegistryConfig registryConfig = new RegistryConfig();

@@ -13,6 +13,9 @@ public class ConsumerApplication {
         // 服务信息
         ApplicationConfig applicationConfig = new ApplicationConfig();
         applicationConfig.setName("dubbo-consumer-application");
+        applicationConfig.setQosEnable(true);
+        applicationConfig.setQosPort(22223);
+        applicationConfig.setQosAcceptForeignIp(false);
 
         // 注册中心配置
         RegistryConfig registryConfig = new RegistryConfig();
