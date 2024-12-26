@@ -1,4 +1,4 @@
-package com.clay.dubbo.service.impl;
+package com.clay.dubbo.provider.service;
 
 import com.clay.dubbo.service.DemoService;
 

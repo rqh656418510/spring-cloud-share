@@ -17,6 +17,7 @@
 
     <modules>
         <module>dubbo-lesson-01</module>
+        <module>dubbo-lesson-02</module>
     </modules>
 
 </project>

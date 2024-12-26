@@ -23,6 +23,6 @@
     <dubbo:service interface="com.clay.dubbo.service.DemoService" ref="demoService"/>
 
     <!-- 服务实现 Bean -->
-    <bean id="demoService" class="com.clay.dubbo.service.impl.DemoServiceImpl"/>
+    <bean id="demoService" class="com.clay.dubbo.provider.service.DemoServiceImpl"/>
 
 </beans>
