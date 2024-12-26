@@ -7,3 +7,4 @@
 ## 博客教程
 
 - [Dubbo 入门教程之一](https://www.techgrow.cn/posts/d484ffa3.html)
+- [Dubbo 入门教程之二](https://www.techgrow.cn/posts/ef04d10a.html)
