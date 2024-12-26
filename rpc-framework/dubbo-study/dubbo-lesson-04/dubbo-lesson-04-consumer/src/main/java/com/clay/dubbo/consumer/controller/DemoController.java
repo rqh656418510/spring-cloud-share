@@ -12,9 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class DemoController {
 
     /**
-     * 引用服务
+     * 引用远程服务
+     * <p> 可以指定版本、负载均衡算法、重试次数、超时毫秒等。
+     * <p> 负载均衡默认为 random，还可以配置为：roundrobin 、leastactive 、consistenthash
+     * <p> 重试次数 retries 可以统一在 application.yml 进行配置，对于增删改等非幂等操作，建议不要重试
+     * <p> 超时毫秒数 timeout 可以统一在 application.yml 进行配置，也可以在具体服务上做个性化配置
      */
-    @DubboReference
+    @DubboReference(loadbalance = "random")
     private DemoService demoService;
 
     @GetMapping("/sayHello/{name}")
