@@ -25,7 +25,7 @@ public class ProviderApplication {
         // 注册中心配置
         RegistryConfig registryConfig = new RegistryConfig();
         registryConfig.setProtocol("zookeeper");
-        registryConfig.setAddress("127.0.0.1");
+        registryConfig.setAddress("192.168.56.112");
         registryConfig.setPort(2181);
         registryConfig.setTimeout(5000);
 

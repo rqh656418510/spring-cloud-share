@@ -14,13 +14,13 @@
     </dubbo:application>
 
     <!-- 注册中心配置 -->
-    <dubbo:registry address="zookeeper://127.0.0.1:2181" timeout="5000"/>
+    <dubbo:registry address="zookeeper://192.168.56.112:2181" timeout="5000"/>
 
     <!-- 配置服务协议 -->
     <dubbo:protocol name="dubbo" port="20880"/>
 
     <!-- 声明要暴露的服务 -->
-    <dubbo:service interface="com.clay.service.DemoService" ref="demoService"/>
+    <dubbo:service interface="com.clay.dubbo.service.DemoService" ref="demoService"/>
 
     <!-- 服务实现 Bean -->
     <bean id="demoService" class="com.clay.dubbo.provider.service.DemoServiceImpl"/>
