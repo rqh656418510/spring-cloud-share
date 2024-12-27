@@ -1,11 +1,11 @@
 package com.clay.dubbo.provider;
 
-import com.alibaba.dubbo.config.ApplicationConfig;
-import com.alibaba.dubbo.config.ProtocolConfig;
-import com.alibaba.dubbo.config.RegistryConfig;
-import com.alibaba.dubbo.config.ServiceConfig;
 import com.clay.dubbo.provider.service.DemoServiceImpl;
 import com.clay.dubbo.service.DemoService;
+import org.apache.dubbo.config.ApplicationConfig;
+import org.apache.dubbo.config.ProtocolConfig;
+import org.apache.dubbo.config.RegistryConfig;
+import org.apache.dubbo.config.ServiceConfig;
 
 import java.io.IOException;
 
