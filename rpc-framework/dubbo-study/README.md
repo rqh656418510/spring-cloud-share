@@ -38,7 +38,7 @@
 
 <dependency>
     <groupId>org.apache.curator</groupId>
-    <artifactId>curator-framework</artifactId>
+    <artifactId>curator-recipes</artifactId>
     <version>2.12.0</version>
 </dependency>
 ```
