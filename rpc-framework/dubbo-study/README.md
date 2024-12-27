@@ -11,22 +11,6 @@
 
 ## 版本说明
 
-- 案例代码兼容的兼容低版本
-
-``` xml
-<dependency>
-    <groupId>com.alibaba</groupId>
-    <artifactId>dubbo</artifactId>
-    <dubbo.version>2.6.6</dubbo.version>
-</dependency>
-
-<dependency>
-    <groupId>org.apache.curator</groupId>
-    <artifactId>curator-framework</artifactId>
-    <version>2.12.0</version>
-</dependency>
-```
-
 - 案例代码兼容的高版本
 
 ``` xml
@@ -40,5 +24,21 @@
     <groupId>org.apache.curator</groupId>
     <artifactId>curator-recipes</artifactId>
     <version>3.3.0</version>
+</dependency>
+```
+
+- 案例代码兼容的低版本
+
+``` xml
+<dependency>
+    <groupId>com.alibaba</groupId>
+    <artifactId>dubbo</artifactId>
+    <dubbo.version>2.6.6</dubbo.version>
+</dependency>
+
+<dependency>
+    <groupId>org.apache.curator</groupId>
+    <artifactId>curator-framework</artifactId>
+    <version>2.12.0</version>
 </dependency>
 ```
