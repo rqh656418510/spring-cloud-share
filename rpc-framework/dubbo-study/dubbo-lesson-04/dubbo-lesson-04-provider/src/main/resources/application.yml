@@ -11,7 +11,7 @@ dubbo:
     name: ${spring.application.name}
   # 注册中心地址
   registry:
-    address: zookeeper://192.168.56.112:2181
+    address: zookeeper://192.168.2.235:2181
   # 服务提供者的协议
   protocol:
     name: dubbo

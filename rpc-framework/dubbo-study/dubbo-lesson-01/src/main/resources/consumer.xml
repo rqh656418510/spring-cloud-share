@@ -14,7 +14,7 @@
     </dubbo:application>
 
     <!-- 注册中心配置 -->
-    <dubbo:registry address="zookeeper://192.168.56.112:2181" timeout="5000"/>
+    <dubbo:registry address="zookeeper://192.168.2.235:2181" timeout="5000"/>
 
     <!-- 引用远程服务 -->
     <dubbo:reference id="demoService" interface="com.clay.dubbo.service.DemoService"/>

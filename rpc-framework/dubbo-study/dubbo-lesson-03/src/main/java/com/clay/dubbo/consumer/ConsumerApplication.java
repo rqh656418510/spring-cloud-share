@@ -20,7 +20,7 @@ public class ConsumerApplication {
         // 注册中心配置
         RegistryConfig registryConfig = new RegistryConfig();
         registryConfig.setProtocol("zookeeper");
-        registryConfig.setAddress("192.168.56.112");
+        registryConfig.setAddress("192.168.2.235");
         registryConfig.setPort(2181);
         registryConfig.setTimeout(5000);
 
