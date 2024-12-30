@@ -18,6 +18,12 @@ spring:
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
       # 设置生产者在遇到发送失败时的重试次数0 表示不进行重试
       retries: 3
+      # 压缩类型,支持的压缩类型：none、gzip、snappy、lz4、zstd
+      compression-type: gzip
+      # 生产者的其他核心配置
+      properties:
+        # 如果数据量迟迟未达到 batch.size 大小,Sender 线程等待 linger.ms 之后就会发送数据。单位是 ms,默认值为 0ms,表示没有延迟。生产环境建议该值大小为 5 ~ 100ms 之间
+        linger.ms: 100
     consumer:
       # 消费者组 ID
       group-id: test
