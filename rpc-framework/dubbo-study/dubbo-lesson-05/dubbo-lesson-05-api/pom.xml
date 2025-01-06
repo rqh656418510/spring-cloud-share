@@ -5,12 +5,12 @@
 
     <parent>
         <groupId>com.clay.dubbo</groupId>
-        <artifactId>dubbo-lesson-04</artifactId>
+        <artifactId>dubbo-lesson-05</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>dubbo-lesson-04-api</artifactId>
-    <name>dubbo-lesson-04-api</name>
+    <artifactId>dubbo-lesson-05-api</artifactId>
+    <name>dubbo-lesson-05-api</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

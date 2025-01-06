@@ -3,19 +3,24 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>com.clay.dubbo</groupId>
-        <artifactId>dubbo-lesson-04</artifactId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
+    <groupId>com.clay.dubbo</groupId>
+    <artifactId>dubbo-lesson-05</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
-    <artifactId>dubbo-lesson-04-api</artifactId>
-    <name>dubbo-lesson-04-api</name>
+    <name>dubbo-lesson-05</name>
+    <description>Spring + Spring MVC 基于 XML 整合 Dubbo</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
+
+    <modules>
+        <module>dubbo-lesson-05-api</module>
+        <module>dubbo-lesson-05-consumer</module>
+        <module>dubbo-lesson-05-producer</module>
+    </modules>
 
 </project>
