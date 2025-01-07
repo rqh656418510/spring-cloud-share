@@ -12,6 +12,16 @@
     <!-- 启用 Spring MVC 的注解驱动功能 -->
     <mvc:annotation-driven/>
 
+    <!-- 配置服务应用名 -->
+    <dubbo:application name="dubbo-consumer-application">
+        <dubbo:parameter key="qos.enable" value="true"/>
+        <dubbo:parameter key="qos.port" value="22223"/>
+        <dubbo:parameter key="qos.accept.foreign.ip" value="false"/>
+    </dubbo:application>
+
+    <!-- 注册中心配置 -->
+    <dubbo:registry address="zookeeper://192.168.2.235:2181" timeout="5000"/>
+
     <!-- 特别注意，在消费者模块中，必须先扫描 Dubbo 注解，然后再扫描 Web 控制器，否则 Web 控制器中的 @Reference 注解将无法实现注入 -->
 
     <!-- 开启 Dubbo 注解扫描-->
