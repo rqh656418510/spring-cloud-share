@@ -9,7 +9,7 @@
         http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd
         http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!-- 启用 Spring MVC 的注解驱动功能 -->
+    <!-- 启用 SpringMVC 的注解驱动功能 -->
     <mvc:annotation-driven/>
 
     <!-- 配置服务应用名 -->
