@@ -1,21 +1,25 @@
 package com.clay.dubbo.consumer.controller;
 
-import com.clay.dubbo.service.DemoService;
+import com.clay.dubbo.service.UserService;
+import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
-
 @RestController
-public class DemoController {
+@RequestMapping("/user")
+public class UserController {
 
-    @Resource
-    private DemoService demoService;
+    /**
+     * 引用 Dubbo 服务
+     */
+    @Reference
+    private UserService userService;
 
     @GetMapping("/sayHello/{name}")
     public String sayHello(@PathVariable("name") String name) {
-        return demoService.sayHello(name);
+        return userService.sayHello(name);
     }
 
 }

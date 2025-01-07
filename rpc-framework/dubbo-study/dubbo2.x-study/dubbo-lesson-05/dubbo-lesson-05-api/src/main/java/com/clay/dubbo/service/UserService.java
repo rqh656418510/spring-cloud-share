@@ -1,6 +1,6 @@
 package com.clay.dubbo.service;
 
-public interface DemoService {
+public interface UserService {
 
     String sayHello(String name);
 

@@ -17,9 +17,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <spring.version>5.1.9.RELEASE</spring.version>
-        <dubbo.version>2.7.4.1</dubbo.version>
-        <curator.version>4.0.0</curator.version>
+        <spring.version>5.3.31</spring.version>
+        <dubbo.version>2.7.6</dubbo.version>
+        <curator.version>3.3.0</curator.version>
+        <commons.version>3.4</commons.version>
     </properties>
 
     <dependencies>
@@ -48,17 +49,6 @@
             <version>3.1.0</version>
             <scope>provided</scope>
         </dependency>
-        <!--日志-->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.21</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.21</version>
-        </dependency>
         <!--Dubbo-->
         <dependency>
             <groupId>org.apache.dubbo</groupId>
@@ -70,6 +60,23 @@
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-recipes</artifactId>
             <version>${curator.version}</version>
+        </dependency>
+        <!--Commons-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons.version}</version>
+        </dependency>
+        <!--日志-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.21</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.21</version>
         </dependency>
     </dependencies>
 
