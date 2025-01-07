@@ -12,9 +12,7 @@
     <!-- 启用 Spring MVC 的注解驱动功能 -->
     <mvc:annotation-driven/>
 
-    <!-- 特别注意，在消费者模块中，必须先扫描 Dubbo 注解，然后再扫描 Web 控制器，否则 Web 控制器中的 @Reference 注解将无法实现注入 -->
-
-    <!-- 开启 Dubbo 注解扫描-->
+    <!-- 开启 Dubbo 注解扫描 -->
     <dubbo:annotation package="com.clay.dubbo.consumer"/>
 
     <!-- 扫描 Web 控制器 -->
