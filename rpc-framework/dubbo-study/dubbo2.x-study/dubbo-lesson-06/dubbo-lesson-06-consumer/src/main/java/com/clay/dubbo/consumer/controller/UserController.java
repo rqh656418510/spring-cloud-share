@@ -15,7 +15,7 @@ public class UserController {
     /**
      * 引用 Dubbo 服务
      */
-    @DubboReference
+    @DubboReference(version = "2.0")
     private UserService userService;
 
     @GetMapping("/sayHello/{name}")
