@@ -1,5 +1,6 @@
 package com.clay.dubbo.consumer.controller;
 
+import com.clay.dubbo.domain.User;
 import com.clay.dubbo.service.UserService;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,11 @@ public class UserController {
     @GetMapping("/sayHello/{name}")
     public String sayHello(@PathVariable("name") String name) {
         return userService.sayHello(name);
+    }
+
+    @GetMapping("/getById/{id}")
+    public User getById(@PathVariable("id") Long id) {
+        return userService.getById(id);
     }
 
 }
