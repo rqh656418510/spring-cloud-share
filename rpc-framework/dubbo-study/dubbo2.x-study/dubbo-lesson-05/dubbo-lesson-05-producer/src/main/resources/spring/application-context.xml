@@ -20,6 +20,9 @@
     <!-- 注册中心配置 -->
     <dubbo:registry address="zookeeper://192.168.2.235:2181" timeout="5000"/>
 
+    <!-- 元数据中心配置 -->
+    <dubbo:metadata-report address="zookeeper://192.168.2.235:2181"/>
+
     <!-- 配置服务协议 -->
     <dubbo:protocol name="dubbo" port="20880"/>
 
