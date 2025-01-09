@@ -1,0 +1,25 @@
+server:
+  port: 9091
+
+spring:
+  application:
+    name: dubbo-consumer-application
+
+dubbo:
+  # 服务信息
+  application:
+    name: ${spring.application.name}
+  # 注册中心地址
+  registry:
+    address: zookeeper://192.168.2.235:2181
+  # 扫描 Dubbo 相关的注解
+  scan:
+    base-packages: com.clay.dubbo.consumer
+  # 消费行为配置
+  consumer:
+    # 关闭了启动检查，这样消费者启动时，不会到注册中心里面检查服务提供者是否存在
+    check: false
+    # 建议统一配置为不重试请求，对于查询等幂等操作来说可以在代码中单独配置重试次数
+    retries: 0
+    # 默认情况下限制请求必须在 1000 毫秒内完成，对于具体服务可以在代码中单独配置
+    timeout: 1000
