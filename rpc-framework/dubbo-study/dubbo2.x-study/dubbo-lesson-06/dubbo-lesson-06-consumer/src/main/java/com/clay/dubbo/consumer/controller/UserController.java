@@ -2,7 +2,7 @@ package com.clay.dubbo.consumer.controller;
 
 import com.clay.dubbo.domain.User;
 import com.clay.dubbo.service.UserService;
-import org.apache.dubbo.config.annotation.Reference;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +15,7 @@ public class UserController {
     /**
      * 引用 Dubbo 服务
      */
-    @Reference
+    @DubboReference
     private UserService userService;
 
     @GetMapping("/sayHello/{name}")

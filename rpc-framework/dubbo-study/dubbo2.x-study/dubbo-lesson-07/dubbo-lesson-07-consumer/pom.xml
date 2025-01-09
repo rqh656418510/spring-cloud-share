@@ -18,7 +18,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <spring.version>5.2.25.RELEASE</spring.version>
-        <dubbo.version>2.7.6</dubbo.version>
+        <dubbo.version>2.7.7</dubbo.version>
         <curator.version>3.3.0</curator.version>
         <commons.version>3.4</commons.version>
     </properties>

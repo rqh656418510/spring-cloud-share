@@ -2,12 +2,12 @@ package com.clay.dubbo.producer.service.impl;
 
 import com.clay.dubbo.domain.User;
 import com.clay.dubbo.service.UserService;
-import org.apache.dubbo.config.annotation.Service;
+import org.apache.dubbo.config.annotation.DubboService;
 
 /**
  * 暴露 Dubbo 服务
  */
-@Service(timeout = 1000, retries = 0)
+@DubboService(timeout = 1000, retries = 0)
 public class UserServiceImpl implements UserService {
 
     @Override
