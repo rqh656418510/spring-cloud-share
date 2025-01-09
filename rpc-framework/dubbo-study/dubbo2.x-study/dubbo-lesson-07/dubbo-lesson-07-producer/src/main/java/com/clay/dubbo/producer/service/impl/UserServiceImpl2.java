@@ -7,7 +7,7 @@ import org.apache.dubbo.config.annotation.DubboService;
 /**
  * 暴露 Dubbo 服务
  */
-@DubboService(timeout = 1000, retries = 3, version = "2.0")
+@DubboService(version = "2.0")
 public class UserServiceImpl2 implements UserService {
 
     @Override
