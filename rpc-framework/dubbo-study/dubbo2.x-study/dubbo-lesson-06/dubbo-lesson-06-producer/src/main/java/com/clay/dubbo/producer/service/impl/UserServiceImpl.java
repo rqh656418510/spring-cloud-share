@@ -7,7 +7,7 @@ import org.apache.dubbo.config.annotation.DubboService;
 /**
  * 暴露 Dubbo 服务
  */
-@DubboService(timeout = 1000, retries = 3)
+@DubboService(timeout = 1000, retries = 3, version = "1.0")
 public class UserServiceImpl implements UserService {
 
     @Override
@@ -17,6 +17,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getById(Long id) {
+        System.out.println("===> invoke getById() v1.0");
         try {
             // 模拟业务耗时处理
             Thread.sleep(500);

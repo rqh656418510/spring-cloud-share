@@ -7,8 +7,8 @@ import org.apache.dubbo.config.annotation.DubboService;
 /**
  * 暴露 Dubbo 服务
  */
-@DubboService(version = "1.0")
-public class UserServiceImpl implements UserService {
+@DubboService(timeout = 1000, retries = 3, version = "2.0")
+public class UserServiceImpl2 implements UserService {
 
     @Override
     public String sayHello(String name) {
@@ -17,10 +17,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getById(Long id) {
-        System.out.println("===> invoke getById() v1.0");
+        System.out.println("===> invoke getById() v2.0");
         try {
             // 模拟业务耗时处理
-            Thread.sleep(500);
+            Thread.sleep(5000);
         } catch (Exception e) {
             e.printStackTrace();
         }
