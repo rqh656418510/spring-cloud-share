@@ -20,7 +20,7 @@ public class UserServiceImpl2 implements UserService {
         System.out.println("===> invoke getById() v2.0");
         try {
             // 模拟业务耗时处理
-            Thread.sleep(5000);
+            Thread.sleep(500);
         } catch (Exception e) {
             e.printStackTrace();
         }
