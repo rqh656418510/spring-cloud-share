@@ -38,7 +38,7 @@ public class DistributeLockTest2 {
     }
 
     @Test
-    public void lock() throws InterruptedException {
+    public void lockTest() throws InterruptedException {
         // 创建分布式锁
         InterProcessMutex lock1 = new InterProcessMutex(getCuratorFramework(), ROOT_PATH);
         InterProcessMutex lock2 = new InterProcessMutex(getCuratorFramework(), ROOT_PATH);
