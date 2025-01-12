@@ -18,6 +18,7 @@
         <module>zookeeper-lesson-01</module>
         <module>zookeeper-lesson-02</module>
         <module>zookeeper-lesson-03</module>
+        <module>zookeeper-lesson-04</module>
     </modules>
 
 </project>
