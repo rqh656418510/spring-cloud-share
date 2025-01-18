@@ -106,6 +106,8 @@ public class DistributeLockTest2 {
         }).start();
 
         Thread.sleep(Integer.MAX_VALUE);
+
+        // TODO 释放资源（关闭 ZooKeeper 客户端）
     }
 
 }
