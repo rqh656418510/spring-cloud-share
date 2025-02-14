@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 /**
  * Redis 自定义缓存注解
  *
- * <p> 将方法运行的结果进行缓存，在缓存时效内再次调用该方法时不会调用方法本身，而是直接从缓存获取结果并返回给调用方
+ * <p> 将方法执行的结果进行缓存，在缓存时效内再次调用该方法时不会调用方法本身，而是直接从缓存获取结果并返回给调用方
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
