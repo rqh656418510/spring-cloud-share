@@ -21,6 +21,7 @@
         <dubbo.version>2.7.23</dubbo.version>
         <curator.version>5.5.0</curator.version>
         <commons.version>3.4</commons.version>
+        <slf4j.version>1.7.21</slf4j.version>
     </properties>
 
     <dependencies>
@@ -71,12 +72,12 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.21</version>
+            <version>${slf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.21</version>
+            <version>${slf4j.version}</version>
         </dependency>
     </dependencies>
 
@@ -86,7 +87,7 @@
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.1</version>
+                <version>2.2</version>
                 <configuration>
                     <port>9000</port>
                     <path>/</path>
