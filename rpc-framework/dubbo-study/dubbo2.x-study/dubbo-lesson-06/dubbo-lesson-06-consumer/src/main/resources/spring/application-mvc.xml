@@ -22,7 +22,10 @@
     <!-- 注册中心配置 -->
     <dubbo:registry address="zookeeper://192.168.2.235:2181" timeout="5000"/>
 
-    <!-- 特别注意，在消费者模块中，必须先扫描 Dubbo 注解，然后再扫描 Web 控制器，否则 Web 控制器中的 @Reference 注解将无法实现注入 -->
+    <!-- 元数据中心配置 -->
+    <dubbo:metadata-report address="zookeeper://192.168.2.235:2181"/>
+
+    <!-- 特别注意，在消费者模块中，必须先扫描 Dubbo 注解，然后再扫描 Web 控制器，否则 Web 控制器中的 @DubboReference 注解将无法实现注入 -->
 
     <!-- 开启 Dubbo 注解扫描-->
     <dubbo:annotation package="com.clay.dubbo.consumer"/>
