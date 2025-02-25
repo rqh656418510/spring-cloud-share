@@ -24,6 +24,7 @@
         </init-param>
     </servlet>
 
+    <!-- Servlet -->
     <servlet-mapping>
         <servlet-name>springmvc</servlet-name>
         <url-pattern>/</url-pattern>
