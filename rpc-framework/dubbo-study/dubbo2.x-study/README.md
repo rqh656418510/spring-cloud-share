@@ -12,7 +12,23 @@
 
 ## 版本说明
 
-- 案例代码兼容的高版本（依赖 JDK 1.8）
+- 案例代码兼容的高版本（依赖 JDK 1.8+）
+
+``` xml
+<dependency>
+    <groupId>org.apache.dubbo</groupId>
+    <artifactId>dubbo</artifactId>
+    <version>2.7.23</version>
+</dependency>
+
+<dependency>
+    <groupId>org.apache.curator</groupId>
+    <artifactId>curator-recipes</artifactId>
+    <version>5.5.0</version>
+</dependency>
+```
+
+- 案例代码兼容的中间版本（依赖 JDK 1.8）
 
 ``` xml
 <dependency>
