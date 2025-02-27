@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class SystemController {
 
     /**
-     * 引用远程服务
+     * 引用 Dubbo 服务
      */
     @DubboReference(protocol = "rest")
     private UserService userService;
