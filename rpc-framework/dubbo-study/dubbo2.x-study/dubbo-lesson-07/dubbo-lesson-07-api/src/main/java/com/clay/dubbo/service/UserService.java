@@ -15,13 +15,13 @@ public interface UserService {
 
     @POST
     @Path("/add")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces({MediaType.APPLICATION_JSON})
+    @Consumes(MediaType.APPLICATION_JSON)       // 接收 JSON 格式的数据
+    @Produces({MediaType.APPLICATION_JSON})     // 返回 JSON 格式的数据
     Boolean add(User user);
 
     @GET
     @Path("/getById/{id}")
-    @Produces({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})     // 返回 JSON 格式的数据
     User getById(@PathParam("id") Long id);
 
 }
