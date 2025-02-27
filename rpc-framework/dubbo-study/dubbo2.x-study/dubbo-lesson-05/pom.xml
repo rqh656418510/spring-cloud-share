@@ -9,7 +9,7 @@
     <packaging>pom</packaging>
 
     <name>dubbo-lesson-05</name>
-    <description>Spring + SpringMVC 基于 XML 整合 Dubbo</description>
+    <description>Spring + SpringMVC 整合 Dubbo</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
