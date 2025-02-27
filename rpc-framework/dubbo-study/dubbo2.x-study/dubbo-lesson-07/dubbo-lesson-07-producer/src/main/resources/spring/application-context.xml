@@ -24,7 +24,7 @@
     <dubbo:metadata-report address="zookeeper://192.168.2.235:2181"/>
 
     <!-- 配置服务协议 -->
-    <dubbo:protocol name="rest" port="8080" server="tomcat" />
+    <dubbo:protocol name="rest" port="8080" server="netty"/>
 
     <!-- 开启 Dubbo 的注解扫描 -->
     <dubbo:annotation package="com.clay.dubbo.producer"/>
