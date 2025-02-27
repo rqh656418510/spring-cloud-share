@@ -19,7 +19,7 @@ public class SystemController {
     /**
      * 引用远程服务
      */
-    @DubboReference(loadbalance = "random")
+    @DubboReference(protocol = "rest")
     private UserService userService;
 
     @GetMapping("/getUser/{id}")

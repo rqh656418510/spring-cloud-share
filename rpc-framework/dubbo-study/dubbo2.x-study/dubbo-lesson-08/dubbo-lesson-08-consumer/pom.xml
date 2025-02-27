@@ -17,7 +17,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <spring-boot.version>2.7.18</spring-boot.version>
-        <dubbo-springboot.version>2.7.23</dubbo-springboot.version>
+        <dubbo.version>2.7.23</dubbo.version>
         <curator.version>5.5.0</curator.version>
     </properties>
 
@@ -47,7 +47,12 @@
         <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-spring-boot-starter</artifactId>
-            <version>${dubbo-springboot.version}</version>
+            <version>${dubbo.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-rpc-rest</artifactId>
+            <version>${dubbo.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.curator</groupId>
