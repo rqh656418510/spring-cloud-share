@@ -23,10 +23,7 @@
     <!-- 元数据中心配置 -->
     <dubbo:metadata-report address="zookeeper://192.168.2.235:2181"/>
 
-    <!-- 配置服务协议（Dubbo） -->
-    <dubbo:protocol name="dubbo" port="20880"/>
-
-    <!-- 配置服务协议（REST） -->
+    <!-- 配置服务协议 -->
     <dubbo:protocol name="rest" port="8080" server="netty"/>
 
     <!-- 开启 Dubbo 的注解扫描 -->
