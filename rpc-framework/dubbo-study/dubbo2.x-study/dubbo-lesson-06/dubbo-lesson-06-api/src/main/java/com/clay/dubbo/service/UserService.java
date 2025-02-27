@@ -6,6 +6,6 @@ public interface UserService {
 
     String sayHello(String name);
 
-    public User getById(Long id);
+    User getById(Long id);
 
 }
