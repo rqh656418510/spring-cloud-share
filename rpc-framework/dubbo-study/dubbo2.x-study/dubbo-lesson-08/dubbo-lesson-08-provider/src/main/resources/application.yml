@@ -16,7 +16,7 @@ dubbo:
   protocol:
     name: rest
     port: 8080
-    server: netty
+    server: tomcat
   # 扫描 Dubbo 相关的注解
   scan:
     base-packages: com.clay.dubbo.provider
