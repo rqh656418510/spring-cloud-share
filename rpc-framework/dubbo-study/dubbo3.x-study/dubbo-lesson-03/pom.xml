@@ -4,10 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.clay.dubbo</groupId>
-    <artifactId>dubbo-study</artifactId>
+    <artifactId>dubbo-lesson-03</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>dubbo-study</name>
+
+    <name>dubbo-lesson-03</name>
+    <description>Dubbo 实现 REST 服务（基于 REST 协议）</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -16,9 +18,9 @@
     </properties>
 
     <modules>
-        <module>dubbo-lesson-01</module>
-        <module>dubbo-lesson-02</module>
-        <module>dubbo-lesson-03</module>
+        <module>dubbo-lesson-03-api</module>
+        <module>dubbo-lesson-03-provider</module>
+        <module>dubbo-lesson-03-consumer</module>
     </modules>
 
 </project>
