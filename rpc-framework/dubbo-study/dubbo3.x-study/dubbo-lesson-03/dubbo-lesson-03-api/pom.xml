@@ -16,7 +16,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <dubbo.version>3.2.0</dubbo.version>
+        <dubbo.version>3.2.16</dubbo.version>
         <jackson-version>1.9.13</jackson-version>
         <lombok.version>1.18.36</lombok.version>
     </properties>

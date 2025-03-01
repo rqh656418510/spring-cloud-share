@@ -17,7 +17,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <spring-boot.version>3.4.2</spring-boot.version>
-        <dubbo.version>3.2.0</dubbo.version>
+        <dubbo.version>3.2.16</dubbo.version>
         <jackson-version>1.9.13</jackson-version>
     </properties>
 
