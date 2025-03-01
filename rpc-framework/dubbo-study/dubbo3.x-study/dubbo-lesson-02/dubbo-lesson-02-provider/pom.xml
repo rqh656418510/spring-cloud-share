@@ -17,8 +17,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <spring-boot.version>3.4.2</spring-boot.version>
-        <dubbo-springboot.version>3.3.2</dubbo-springboot.version>
-        <dubbo-nacos.version>3.3.2</dubbo-nacos.version>
+        <dubbo.version>3.3.2</dubbo.version>
     </properties>
 
     <dependencyManagement>
@@ -47,12 +46,12 @@
         <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-spring-boot-starter</artifactId>
-            <version>${dubbo-springboot.version}</version>
+            <version>${dubbo.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-registry-nacos</artifactId>
-            <version>${dubbo-nacos.version}</version>
+            <version>${dubbo.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
