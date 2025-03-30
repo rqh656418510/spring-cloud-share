@@ -6,4 +6,5 @@
 
 ## 博客教程
 
-- [RabbitMQ 入门教程之二](https://www.techgrow.cn/posts/ec623f8b.html)
+- [RabbitMQ 入门教程之一](https://www.techgrow.cn/posts/ec623f8b.html)
+- [RabbitMQ 入门教程之二](https://www.techgrow.cn/posts/39a63bd3.html)
