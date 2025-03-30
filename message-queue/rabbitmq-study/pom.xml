@@ -9,6 +9,10 @@
     <version>1.0-SNAPSHOT</version>
     <name>rabbitmq-study</name>
 
+    <modules>
+        <module>rabbitmq-lesson-01</module>
+    </modules>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
