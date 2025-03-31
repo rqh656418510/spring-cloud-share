@@ -42,7 +42,7 @@ public class MQProducer {
             // routingKey – 路由 Key
             // props – 消息的其他属性，比如：使用 MessageProperties.PERSISTENT_TEXT_PLAIN 属性确保消息持久化，配合持久化队列可避免服务器重启导致消息丢失
             // body – 消息内容
-            channel.basicPublish("", QUEUE_NAME, MessageProperties.PERSISTENT_TEXT_PLAIN, "hello".getBytes(StandardCharsets.UTF_8));
+            channel.basicPublish("", QUEUE_NAME, null, "hello".getBytes(StandardCharsets.UTF_8));
         }
     }
 
