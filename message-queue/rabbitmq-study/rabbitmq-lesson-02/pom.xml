@@ -9,8 +9,8 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>rabbitmq-lesson-01</artifactId>
-    <description>简单队列模式的使用</description>
+    <artifactId>rabbitmq-lesson-02</artifactId>
+    <description>工作队列模式的使用</description>
 
     <dependencies>
         <!-- Rabbitmq 的客户端 -->
