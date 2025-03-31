@@ -19,30 +19,34 @@ public class MQConsumer {
         factory.setUsername("admin");
         factory.setPassword("admin");
 
-        // 创建连接
-        Connection connection = factory.newConnection();
+        // 使用 try-with-resources 自动关闭连接和通道，确保资源释放
+        try (
+            // 创建连接
+            Connection connection = factory.newConnection();
+            // 创建信道
+            Channel channel = connection.createChannel()
+        ) {
+            // 消费消息时的回调
+            DeliverCallback deliverCallback = (consumerTag, message) -> {
+                System.out.println("Successed to consumer message : " + new String(message.getBody()));
+            };
 
-        // 创建信道
-        Channel channel = connection.createChannel();
+            // 取消消费消息时的回调
+            CancelCallback cancelCallback = (consumerTag) -> {
+                System.out.println("Failed to consumer message : " + consumerTag);
+            };
 
-        // 消费消息时的回调
-        DeliverCallback deliverCallback = (consumerTag, message) -> {
-            System.out.println("Successed to consumer message : " + new String(message.getBody()));
-        };
+            // 消费消息
+            // 参数说明：
+            // queue – 队列的名称
+            // autoAck – 如果需要服务器在消息投递后自动确认消息，则为 true；如果需要服务器手动确认消息，则为 false
+            // deliverCallback – 消费消息时的回调
+            // cancelCallback – 取消消费消息时的回调
+            channel.basicConsume(QUEUE_NAME, true, deliverCallback, cancelCallback);
 
-        // 取消消费消息时的回调
-        CancelCallback cancelCallback = (consumerTag) -> {
-            System.out.println("Failed to consumer message : " + consumerTag);
-        };
-
-        // 消费消息
-        // 参数说明：
-        // queue – 队列的名称
-        // autoAck – 如果需要服务器在消息投递后自动确认消息，则为 true；如果需要服务器手动确认消息，则为 false
-        // deliverCallback – 消费消息时的回调
-        // cancelCallback – 取消消费消息时的回调
-        channel.basicConsume(QUEUE_NAME, true, deliverCallback, cancelCallback);
-
+            // 让客户端一直运行
+            Thread.sleep(Integer.MAX_VALUE);
+        }
     }
 
 }
