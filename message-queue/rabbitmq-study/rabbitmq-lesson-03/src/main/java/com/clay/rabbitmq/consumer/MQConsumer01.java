@@ -30,7 +30,20 @@ public class MQConsumer01 {
         // 消费消息时的回调
         DeliverCallback deliverCallback = (consumerTag, message) -> {
             String msg = new String(message.getBody(), StandardCharsets.UTF_8);
-            System.out.println("Successed to consume message : " + msg);
+
+            // 模拟消息的耗时处理
+            try {
+                Thread.sleep(5000);
+                System.out.println("Successed to consume message : " + msg);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            // 手动应答消息
+            // 参数说明：
+            // deliveryTag – 消息的标记
+            // multiple – true 表示确认所有消息，包括提供的送达标签为止的所有消息；false 仅确认提供的投放标记
+            channel.basicAck(message.getEnvelope().getDeliveryTag(), false);
         };
 
         // 取消消费时的回调（比如，在消费的时候队列已被删除掉）
@@ -38,7 +51,10 @@ public class MQConsumer01 {
             System.out.println("Failed to consume message : " + consumerTag);
         };
 
-        System.out.println("消费者一等待接收消息...");
+        System.out.println("消费者一等待接收消息，处理消息较快...");
+
+        // 关闭自动应答机制
+        boolean autoAck = false;
 
         // 消费消息
         // 参数说明：
@@ -46,7 +62,7 @@ public class MQConsumer01 {
         // autoAck – 如果需要服务器在消息投递后自动确认消息，则为 true；如果需要客户端手动确认消息，则为 false
         // deliverCallback – 消费消息时的回调
         // cancelCallback – 取消消费时的回调
-        channel.basicConsume(QUEUE_NAME, true, deliverCallback, cancelCallback);
+        channel.basicConsume(QUEUE_NAME, autoAck, deliverCallback, cancelCallback);
 
         // 让消费者持续运行
         System.out.println("按回车键退出程序：");

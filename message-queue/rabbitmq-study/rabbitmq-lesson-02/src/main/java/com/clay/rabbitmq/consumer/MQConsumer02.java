@@ -22,7 +22,7 @@ public class MQConsumer02 {
         // queue – 队列的名称
         // durable – 如果需要声明一个持久队列，则为 true（队列将在服务器重启后继续存在）
         // exclusive – 如果需要声明一个独占队列（仅限于此连接使用，连接关闭后队列自动删除），则为 true。
-        // autoDelete – 如果需要声明 autoDelete 队列，则为 true（服务器将在不再使用队列时将其删除）
+        // autoDelete – 如果需要声明 autoDelete 队列，则为 true（服务器将在最后一个消费者断开连接以后，自动删除该队列）
         // arguments – 队列的其他属性（构造参数）
         // 特别注意：如果确定队列已存在，消费者可以不声明队列。但是，强烈建议无论生产者还是消费者，都应该声明队列，确保参数可控
         channel.queueDeclare(QUEUE_NAME, true, false, false, null);
