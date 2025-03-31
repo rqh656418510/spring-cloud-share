@@ -1,31 +1,21 @@
 package com.clay.rabbitmq.consumer;
 
+import com.clay.rabbitmq.utils.RabbitMQUtils;
 import com.rabbitmq.client.CancelCallback;
 import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DeliverCallback;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
-public class MQConsumer {
+public class MQConsumer01 {
 
     // 队列名称
     public static final String QUEUE_NAME = "test";
 
     public static void main(String[] args) throws Exception {
-        // 创建连接工厂
-        ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("192.168.2.127");
-        factory.setPort(5672);
-        factory.setUsername("admin");
-        factory.setPassword("admin");
-
-        // 创建连接
-        Connection connection = factory.newConnection();
         // 创建信道
-        Channel channel = connection.createChannel();
+        Channel channel = RabbitMQUtils.createChannel();
 
         // 声明队列
         // 参数说明：
@@ -40,20 +30,22 @@ public class MQConsumer {
         // 消费消息时的回调
         DeliverCallback deliverCallback = (consumerTag, message) -> {
             String msg = new String(message.getBody(), StandardCharsets.UTF_8);
-            System.out.println("Successed to consumer message : " + msg);
+            System.out.println("Successed to consume message : " + msg);
         };
 
-        // 取消消费消息时的回调
+        // 取消消费时的回调（比如，在消费的时候队列已被删除掉）
         CancelCallback cancelCallback = (consumerTag) -> {
-            System.out.println("Failed to consumer message : " + consumerTag);
+            System.out.println("Failed to consume message : " + consumerTag);
         };
+
+        System.out.println("消费者一等待接收消息...");
 
         // 消费消息
         // 参数说明：
         // queue – 队列的名称
         // autoAck – 如果需要服务器在消息投递后自动确认消息，则为 true；如果需要客户端手动确认消息，则为 false
         // deliverCallback – 消费消息时的回调
-        // cancelCallback – 取消消费消息时的回调
+        // cancelCallback – 取消消费时的回调
         channel.basicConsume(QUEUE_NAME, true, deliverCallback, cancelCallback);
 
         // 让消费者持续运行
@@ -62,7 +54,6 @@ public class MQConsumer {
 
         // 关闭连接
         channel.close();
-        connection.close();
     }
 
 }

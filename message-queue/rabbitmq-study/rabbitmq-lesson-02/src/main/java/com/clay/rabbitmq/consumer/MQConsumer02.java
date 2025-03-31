@@ -1,31 +1,21 @@
 package com.clay.rabbitmq.consumer;
 
+import com.clay.rabbitmq.utils.RabbitMQUtils;
 import com.rabbitmq.client.CancelCallback;
 import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DeliverCallback;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
-public class MQConsumer {
+public class MQConsumer02 {
 
     // 队列名称
     public static final String QUEUE_NAME = "test";
 
     public static void main(String[] args) throws Exception {
-        // 创建连接工厂
-        ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("192.168.2.127");
-        factory.setPort(5672);
-        factory.setUsername("admin");
-        factory.setPassword("admin");
-
-        // 创建连接
-        Connection connection = factory.newConnection();
         // 创建信道
-        Channel channel = connection.createChannel();
+        Channel channel = RabbitMQUtils.createChannel();
 
         // 声明队列
         // 参数说明：
@@ -48,6 +38,8 @@ public class MQConsumer {
             System.out.println("Failed to consume message : " + consumerTag);
         };
 
+        System.out.println("消费者二等待接收消息...");
+
         // 消费消息
         // 参数说明：
         // queue – 队列的名称
@@ -62,7 +54,6 @@ public class MQConsumer {
 
         // 关闭连接
         channel.close();
-        connection.close();
     }
 
 }
