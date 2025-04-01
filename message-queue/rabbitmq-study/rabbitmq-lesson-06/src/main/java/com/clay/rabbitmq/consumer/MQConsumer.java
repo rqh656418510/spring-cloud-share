@@ -53,7 +53,7 @@ public class MQConsumer {
                 e.printStackTrace();
             }
 
-            // 手动应答消息
+            // 手动确认消息
             // 参数说明：
             // deliveryTag – 消息的标记
             // multiple – true 表示确认所有消息，包括提供的送达标签为止的所有消息；false 仅确认提供的投放标记
@@ -65,7 +65,7 @@ public class MQConsumer {
             System.out.println("Failed to consume message : " + consumerTag);
         };
 
-        // 关闭自动应答机制
+        // 关闭自动确认机制
         boolean autoAck = false;
 
         // 消费消息

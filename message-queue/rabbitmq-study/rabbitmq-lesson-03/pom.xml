@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>rabbitmq-lesson-03</artifactId>
-    <description>消息手动应答机制的使用</description>
+    <description>消息手动确认机制的使用</description>
 
     <dependencies>
         <!-- Rabbitmq 的客户端 -->
