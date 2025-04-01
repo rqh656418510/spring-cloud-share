@@ -28,6 +28,9 @@ public class MQConsumer {
         // 创建信道
         Channel channel = connection.createChannel();
 
+        // 让队列持久化
+        boolean durable = true;
+
         // 声明队列
         // 参数说明：
         // queue – 队列的名称
@@ -36,7 +39,7 @@ public class MQConsumer {
         // autoDelete – 如果需要声明 autoDelete 队列，则为 true（服务器将在最后一个消费者断开连接以后，自动删除该队列）
         // arguments – 队列的其他属性（构造参数）
         // 特别注意：如果确定队列已存在，消费者可以不声明队列。但是，强烈建议无论生产者还是消费者，都应该声明队列，确保参数可控
-        channel.queueDeclare(QUEUE_NAME, true, false, false, null);
+        channel.queueDeclare(QUEUE_NAME, durable, false, false, null);
 
         // 消费消息时的回调
         DeliverCallback deliverCallback = (consumerTag, message) -> {
