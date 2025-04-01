@@ -33,7 +33,7 @@ public class MQConsumer02 {
 
             // 模拟消息的耗时处理
             try {
-                Thread.sleep(8000);
+                Thread.sleep(10000);
                 System.out.println("Successed to consume message : " + msg);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -53,8 +53,8 @@ public class MQConsumer02 {
 
         System.out.println("消费者二等待接收消息，处理消息较慢...");
 
-        // 设置预取计数值（当值为 1，其运行效果就是不公平分发，即能者多劳）
-        int prefetchCount = 1;
+        // 设置预取值
+        int prefetchCount = 4;
         channel.basicQos(prefetchCount);
 
         // 关闭自动应答机制
