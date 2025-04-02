@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>rabbitmq-lesson-01</artifactId>
-    <description>简单队列模式的使用</description>
+    <description>简单队列模式</description>
 
     <dependencies>
         <!-- Rabbitmq 的客户端 -->

@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>rabbitmq-lesson-05</artifactId>
-    <description>预取值的使用</description>
+    <description>预取计数值</description>
 
     <dependencies>
         <!-- Rabbitmq 的客户端 -->
