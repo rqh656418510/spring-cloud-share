@@ -4,6 +4,7 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.ConfirmCallback;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.MessageProperties;
 
 import java.nio.charset.StandardCharsets;
 import java.util.UUID;
@@ -31,8 +32,8 @@ public class MQProducer3 {
         ) {
             String queueName = UUID.randomUUID().toString();
 
-            // 声明队列
-            channel.queueDeclare(queueName, false, false, false, null);
+            // 声明队列（支持持久化）
+            channel.queueDeclare(queueName, true, false, false, null);
 
             // 开启发布确认
             channel.confirmSelect();
@@ -82,18 +83,23 @@ public class MQProducer3 {
             int total = 1000;
             long begin = System.currentTimeMillis();
             for (int i = 0; i < total; i++) {
+                // 发布消息（支持持久化）
                 String message = "消息" + i;
                 /**
                  * channel.getNextPublishSeqNo() 获取下一个消息的消息序列号
                  * 使用 Map 存储全部未确认的消息体，通过消息序列号与消息体进行关联
                  */
                 outstandingConfirms.put(channel.getNextPublishSeqNo(), message);
-                channel.basicPublish("", queueName, null, message.getBytes(StandardCharsets.UTF_8));
+                channel.basicPublish("", queueName, MessageProperties.PERSISTENT_TEXT_PLAIN, message.getBytes(StandardCharsets.UTF_8));
             }
 
             long end = System.currentTimeMillis();
             System.out.println("发布" + total + "个异步确认消息，耗时" + (end - begin) + "ms");
         }
+    }
+
+    public static void main(String[] args) throws Exception {
+        publishMessageAsync();
     }
 
 }

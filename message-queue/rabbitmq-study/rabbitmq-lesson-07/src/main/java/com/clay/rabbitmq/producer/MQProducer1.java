@@ -3,6 +3,7 @@ package com.clay.rabbitmq.producer;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.MessageProperties;
 
 import java.nio.charset.StandardCharsets;
 import java.util.UUID;
@@ -28,8 +29,8 @@ public class MQProducer1 {
         ) {
             String queueName = UUID.randomUUID().toString();
 
-            // 声明队列
-            channel.queueDeclare(queueName, false, false, false, null);
+            // 声明队列（支持持久化）
+            channel.queueDeclare(queueName, true, false, false, null);
 
             // 开启发布确认
             channel.confirmSelect();
@@ -37,9 +38,9 @@ public class MQProducer1 {
             int total = 1000;
             long begin = System.currentTimeMillis();
             for (int i = 0; i < total; i++) {
-                // 发布消息
-                String message = i + "";
-                channel.basicPublish("", queueName, null, message.getBytes(StandardCharsets.UTF_8));
+                // 发布消息（支持持久化）
+                String message = "消息" + i;
+                channel.basicPublish("", queueName, MessageProperties.PERSISTENT_TEXT_PLAIN, message.getBytes(StandardCharsets.UTF_8));
 
                 // 单个确认发布，当服务端返回 false 或超时时间内未返回，生产者可以重发消息
                 boolean flag = channel.waitForConfirms();
@@ -53,6 +54,10 @@ public class MQProducer1 {
             long end = System.currentTimeMillis();
             System.out.println("发布" + total + "个单独确认消息，耗时" + (end - begin) + "ms");
         }
+    }
+
+    public static void main(String[] args) throws Exception {
+        publishMessageIndividually();
     }
 
 }

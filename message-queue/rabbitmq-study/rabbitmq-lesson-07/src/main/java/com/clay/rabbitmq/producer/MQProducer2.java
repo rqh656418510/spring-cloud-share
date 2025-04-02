@@ -3,6 +3,7 @@ package com.clay.rabbitmq.producer;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.MessageProperties;
 
 import java.nio.charset.StandardCharsets;
 import java.util.UUID;
@@ -28,24 +29,24 @@ public class MQProducer2 {
         ) {
             String queueName = UUID.randomUUID().toString();
 
-            // 声明队列
-            channel.queueDeclare(queueName, false, false, false, null);
+            // 声明队列（支持持久化）
+            channel.queueDeclare(queueName, true, false, false, null);
 
             // 开启发布确认
             channel.confirmSelect();
 
-            // 批量确认消息数量
+            // 批量确认消息的数量
             int batchSize = 100;
 
-            // 未确认消息个数
+            // 未确认消息的数量
             int outstandingMessageCount = 0;
 
             int total = 1000;
             long begin = System.currentTimeMillis();
             for (int i = 0; i < total; i++) {
-                // 发布消息
-                String message = i + "";
-                channel.basicPublish("", queueName, null, message.getBytes(StandardCharsets.UTF_8));
+                // 发布消息（支持持久化）
+                String message = "消息" + i;
+                channel.basicPublish("", queueName, MessageProperties.PERSISTENT_TEXT_PLAIN, message.getBytes(StandardCharsets.UTF_8));
 
                 // 批量确认发布
                 outstandingMessageCount++;
@@ -63,6 +64,10 @@ public class MQProducer2 {
             long end = System.currentTimeMillis();
             System.out.println("发布" + total + "个批量确认消息，耗时" + (end - begin) + "ms");
         }
+    }
+
+    public static void main(String[] args) throws Exception {
+        publishMessageBatch();
     }
 
 }
