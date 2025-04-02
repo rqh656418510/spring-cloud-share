@@ -48,7 +48,7 @@ public class MQProducer2 {
                 String message = "消息" + i;
                 channel.basicPublish("", queueName, MessageProperties.PERSISTENT_TEXT_PLAIN, message.getBytes(StandardCharsets.UTF_8));
 
-                // 批量确认发布
+                // 批量确认发布（比如每发送 100 条消息就批量确认一次）
                 outstandingMessageCount++;
                 if (outstandingMessageCount == batchSize) {
                     channel.waitForConfirms();

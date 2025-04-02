@@ -48,35 +48,38 @@ public class MQProducer3 {
 
             /**
              * 收到确认消息的回调
-             * 1. sequenceNumber 表示消息序列号
+             * 1. deliveryTag 表示消息序列号
              * 2. multiple = true，表示可以确认小于等于当前消息序列号的消息
              * 3. multiple = false，表示仅确认当前消息序列号的消息
              */
-            ConfirmCallback ackCallback = (sequenceNumber, multiple) -> {
+            ConfirmCallback ackCallback = (deliveryTag, multiple) -> {
                 if (multiple) {
                     // 返回的是小于等于当前消息序列号的未确认消息，是一个 Map
-                    ConcurrentNavigableMap<Long, String> confirmed = outstandingConfirms.headMap(sequenceNumber, true);
+                    ConcurrentNavigableMap<Long, String> confirmed = outstandingConfirms.headMap(deliveryTag, true);
                     // 清除该部分未确认的消息
                     confirmed.clear();
                 } else {
                     // 只清除当前消息序列号的消息
-                    outstandingConfirms.remove(sequenceNumber);
+                    outstandingConfirms.remove(deliveryTag);
                 }
             };
 
             /**
              * 未收到确认消息的回调
+             * 1. deliveryTag 表示消息序列号
+             * 2. multiple = true，表示可以确认小于等于当前消息序列号的消息
+             * 3. multiple = false，表示仅确认当前消息序列号的消息
              */
-            ConfirmCallback nackCallback = (sequenceNumber, multiple) -> {
+            ConfirmCallback nackCallback = (deliveryTag, multiple) -> {
                 // 异步处理未确认的消息，比如重新发送消息
-                String message = outstandingConfirms.get(sequenceNumber);
-                System.out.println("发布的消息" + message + "未被确认，消息序列号" + sequenceNumber);
+                String message = outstandingConfirms.get(deliveryTag);
+                System.out.println("发布的消息" + message + "未被确认，消息序列号" + deliveryTag);
             };
 
             /**
              * 添加一个异步确认的监听器
-             * 1. 收到确认消息的回调
-             * 2. 未收到确认消息的回调
+             * 1. 监听哪些消息发送成功
+             * 2. 监听哪些消息发送失败
              */
             channel.addConfirmListener(ackCallback, nackCallback);
 
@@ -85,10 +88,8 @@ public class MQProducer3 {
             for (int i = 0; i < total; i++) {
                 // 发布消息（支持持久化）
                 String message = "消息" + i;
-                /**
-                 * channel.getNextPublishSeqNo() 获取下一个消息的消息序列号
-                 * 使用 Map 存储全部未确认的消息体，通过消息序列号与消息体进行关联
-                 */
+                // channel.getNextPublishSeqNo() 获取下一个消息的消息序列号
+                // 使用 Map 存储全部未确认的消息体，通过消息序列号与消息体进行关联
                 outstandingConfirms.put(channel.getNextPublishSeqNo(), message);
                 channel.basicPublish("", queueName, MessageProperties.PERSISTENT_TEXT_PLAIN, message.getBytes(StandardCharsets.UTF_8));
             }
