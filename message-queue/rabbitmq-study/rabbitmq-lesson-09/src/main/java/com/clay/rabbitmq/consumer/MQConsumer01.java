@@ -15,7 +15,7 @@ public class MQConsumer01 {
     public static final String EXCHANGE_NAME = "logs";
 
     // 队列名称
-    public static final String QUEUE_NAME = "error";
+    public static final String QUEUE_NAME = "disk";
 
     public static void main(String[] args) throws Exception {
         // 创建信道

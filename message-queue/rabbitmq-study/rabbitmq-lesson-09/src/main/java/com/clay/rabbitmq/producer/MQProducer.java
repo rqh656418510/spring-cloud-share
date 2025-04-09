@@ -27,15 +27,15 @@ public class MQProducer {
         // arguments – 交换的其他属性（构造参数）
         channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.DIRECT, true, false, null);
 
-        Map<String, String> bindingKeyMap = new HashMap<>();
-        bindingKeyMap.put("debug", "调试 Debug 信息");
-        bindingKeyMap.put("info", "普通 Info 信息");
-        bindingKeyMap.put("warning", "警告 Warning 信息");
-        bindingKeyMap.put("error", "错误 Error 信息");
+        Map<String, String> routingKeyMap = new HashMap<>();
+        routingKeyMap.put("debug", "调试 Debug 信息");
+        routingKeyMap.put("info", "普通 Info 信息");
+        routingKeyMap.put("warning", "警告 Warning 信息");
+        routingKeyMap.put("error", "错误 Error 信息");
 
         // 发送消息
-        for (Map.Entry<String, String> bindingKeyEntry : bindingKeyMap.entrySet()) {
-            String bindingKey = bindingKeyEntry.getKey();
+        for (Map.Entry<String, String> bindingKeyEntry : routingKeyMap.entrySet()) {
+            String routingKey = bindingKeyEntry.getKey();
             String message = bindingKeyEntry.getValue();
 
             // 发送消息
@@ -44,11 +44,14 @@ public class MQProducer {
             // routingKey – 路由 Key
             // props – 消息的其他属性，比如：使用 MessageProperties.PERSISTENT_TEXT_PLAIN 属性确保消息持久化，配合持久化队列可避免服务器重启导致消息丢失
             // body – 消息内容
-            channel.basicPublish(EXCHANGE_NAME, bindingKey, MessageProperties.PERSISTENT_TEXT_PLAIN, message.getBytes(StandardCharsets.UTF_8));
+            channel.basicPublish(EXCHANGE_NAME, routingKey, MessageProperties.PERSISTENT_TEXT_PLAIN, message.getBytes(StandardCharsets.UTF_8));
         }
 
-        // 关闭连接
+        // 关闭通道
         channel.close();
+
+        // 关闭连接
+        channel.getConnection().close();
     }
 
 }
