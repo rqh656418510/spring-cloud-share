@@ -17,6 +17,8 @@
         <module>rabbitmq-lesson-05</module>
         <module>rabbitmq-lesson-06</module>
         <module>rabbitmq-lesson-07</module>
+        <module>rabbitmq-lesson-08</module>
+        <module>rabbitmq-lesson-09</module>
     </modules>
 
     <properties>
