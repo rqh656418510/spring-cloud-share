@@ -47,7 +47,7 @@ public class MQProducer {
             channel.basicPublish(EXCHANGE_NAME, routingKey, MessageProperties.PERSISTENT_TEXT_PLAIN, message.getBytes(StandardCharsets.UTF_8));
         }
 
-        // 关闭通道
+        // 关闭信道
         channel.close();
 
         // 关闭连接
