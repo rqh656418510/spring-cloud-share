@@ -19,6 +19,7 @@
         <module>rabbitmq-lesson-07</module>
         <module>rabbitmq-lesson-08</module>
         <module>rabbitmq-lesson-09</module>
+        <module>rabbitmq-lesson-10</module>
     </modules>
 
     <properties>
