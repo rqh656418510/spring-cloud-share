@@ -42,7 +42,7 @@ public class MQProducer {
             channel.basicPublish(EXCHANGE_NAME, "", null, message.getBytes(StandardCharsets.UTF_8));
         }
 
-        // 关闭连接
+        // 关闭信道
         channel.close();
     }
 

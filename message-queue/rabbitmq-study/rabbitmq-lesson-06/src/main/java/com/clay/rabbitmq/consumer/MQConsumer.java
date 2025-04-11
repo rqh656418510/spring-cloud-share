@@ -80,7 +80,7 @@ public class MQConsumer {
         System.out.println("按回车键退出程序：");
         new Scanner(System.in).nextLine();
 
-        // 关闭连接
+        // 关闭信道
         channel.close();
         connection.close();
     }

@@ -1,46 +1,45 @@
 package com.clay.rabbitmq.producer;
 
 import com.clay.rabbitmq.utils.RabbitMQUtils;
+import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.BuiltinExchangeType;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.MessageProperties;
 
 import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.Map;
 
 public class MQProducer {
 
-    // 交换机名称
-    public static final String EXCHANGE_NAME = "logs";
+    // 普通交换机的名称
+    public static final String NORMAL_EXCHANGE_NAME = "normal_exchange";
 
     public static void main(String[] args) throws Exception {
         // 创建信道
         Channel channel = RabbitMQUtils.createChannel();
 
-        // 声明交换机
+        // 声明普通交换机
         // 参数说明：
         // exchange – 交换机的名称
         // type – 交换机类型
         // durable – 如果需要声明一个持久交换机，则为 true（交换机将在服务器重启后继续存在）
         // autoDelete – 如果需要声明 autoDelete 交换机，则为 true（当最后一个绑定队列解除绑定后，自动删除该交换机）
         // arguments – 交换的其他属性（构造参数）
-        channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.TOPIC, true, false, null);
+        channel.exchangeDeclare(NORMAL_EXCHANGE_NAME, BuiltinExchangeType.DIRECT, true, false, null);
 
-        Map<String, String> routingKeyMap = new HashMap<>();
-        routingKeyMap.put("quick.orange.rabbit", "被队列 Q1 和 队列 Q2 接收到");
-        routingKeyMap.put("lazy.orange.elephant", "被队列 Q1 和 队列 Q2 接收到");
-        routingKeyMap.put("quick.orange.fox", "被队列 Q1 接收到");
-        routingKeyMap.put("lazy.brown.fox", "被队列 Q2 接收到");
-        routingKeyMap.put("lazy.pink.rabbit", "虽然满足两个绑定，但只被队列 Q2 接收一次");
-        routingKeyMap.put("quick.brown.fox", "不匹配任何绑定，不会被任何队列接收到，消息会被丢弃");
-        routingKeyMap.put("quick.orange.male.rabbit", "包含四个单词，不匹配任何绑定，消息会被丢弃");
-        routingKeyMap.put("lazy.orange.male.rabbit", "包含四个单词，被队列 Q2 接收到");
+        // 设置消息属性
+        AMQP.BasicProperties properties = new AMQP.BasicProperties()
+            .builder()
+            // 消息的过期时间（TTL），单位是毫秒
+            .expiration("10000")
+            // 消息的持久化
+            .deliveryMode(MessageProperties.PERSISTENT_TEXT_PLAIN.getDeliveryMode())
+            .build();
 
         // 发送消息
-        for (Map.Entry<String, String> bindingKeyEntry : routingKeyMap.entrySet()) {
-            String routingKey = bindingKeyEntry.getKey();
-            String message = bindingKeyEntry.getValue();
+        for (int i = 0; i < 5; i++) {
+            // 消息内容
+            String message = "info" + i;
+            System.out.println("发送消息：" + message);
 
             // 发送消息
             // 参数说明：
@@ -48,14 +47,11 @@ public class MQProducer {
             // routingKey – 路由 Key
             // props – 消息的其他属性，比如：使用 MessageProperties.PERSISTENT_TEXT_PLAIN 属性确保消息持久化，配合持久化队列可避免服务器重启导致消息丢失
             // body – 消息内容
-            channel.basicPublish(EXCHANGE_NAME, routingKey, MessageProperties.PERSISTENT_TEXT_PLAIN, message.getBytes(StandardCharsets.UTF_8));
+            channel.basicPublish(NORMAL_EXCHANGE_NAME, "zhangsan", properties, message.getBytes(StandardCharsets.UTF_8));
         }
 
         // 关闭信道
         channel.close();
-
-        // 关闭连接
-        channel.getConnection().close();
     }
 
 }
