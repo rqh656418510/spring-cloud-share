@@ -74,6 +74,8 @@ public class MQConsumer01 {
         normalArguments.put("x-dead-letter-exchange", DEAD_EXCHANGE_NAME);
         // 普通队列设置死信队列的 RoutingKey，参数 key 是固定值
         normalArguments.put("x-dead-letter-routing-key", "lisi");
+        // 设置队列的最大长度
+        // normalArguments.put("x-max-length", 3);
 
         // 声明普通队列
         // 参数说明：
