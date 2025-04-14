@@ -3,9 +3,10 @@ server:
 
 spring:
   application:
-    name: rabbitmq-application
+    name: rabbit-application
   rabbitmq:
     host: 192.168.2.127
     port: 5672
     password: admin
     username: admin
+    virtual-host: /
