@@ -30,9 +30,10 @@ public class SendMsgController {
     @GetMapping("/sendExpireMsg/{msg}/{ttl}")
     public String sendExpireMsg(@PathVariable("msg") String message, @PathVariable("ttl") String ttl) {
         log.info("当前时间: {}, 发送一条时长 {} 毫秒 的 TTL 信息给队列: {}", new Date(), ttl, message);
-        rabbitTemplate.convertAndSend(QueueConfig.NORMAL_EXCHANGE, QueueConfig.ROUTING_KEY_QUEUE_C, message, correlationData -> {
-            correlationData.getMessageProperties().setExpiration(ttl);
-            return correlationData;
+        rabbitTemplate.convertAndSend(QueueConfig.NORMAL_EXCHANGE, QueueConfig.ROUTING_KEY_QUEUE_C, message, msg -> {
+            // 指定消息的 TTL（生存时间）
+            msg.getMessageProperties().setExpiration(ttl);
+            return msg;
         });
         return "success";
     }
