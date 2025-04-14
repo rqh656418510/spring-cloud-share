@@ -33,10 +33,12 @@ public class QueueConfig {
     // 普通队列的名称
     public static final String QUEUE_A = "QA";
     public static final String QUEUE_B = "QB";
+    public static final String QUEUE_C = "QC";
 
     // 普通队列的路由键（绑定键）
     public static final String ROUTING_KEY_QUEUE_A = "XA";
     public static final String ROUTING_KEY_QUEUE_B = "XB";
+    public static final String ROUTING_KEY_QUEUE_C = "XC";
 
     /**
      * 声明死信交换机
@@ -92,6 +94,20 @@ public class QueueConfig {
         return QueueBuilder.durable(QUEUE_B).withArguments(args).build();
     }
 
+    /**
+     * 声明普通队列 QC
+     */
+    @Bean("queueC")
+    public Queue queueC() {
+        Map<String, Object> args = new HashMap<>(3);
+        // 声明当前队列绑定的死信交换机
+        args.put("x-dead-letter-exchange", DEAD_LETTER_EXCHANGE);
+        // 声明当前队列的死信队列的路由键（RoutingKey）
+        args.put("x-dead-letter-routing-key", DEAD_LETTER_ROUTING_KEY);
+        // 不声明当前队列的 TTL
+        return QueueBuilder.durable(QUEUE_C).withArguments(args).build();
+    }
+
     // 绑定死信交换机和死信队列
     @Bean
     public Binding bindingDeadLetter(@Qualifier("queueD") Queue queueD, @Qualifier("yExchange") DirectExchange yExchange) {
@@ -108,6 +124,12 @@ public class QueueConfig {
     @Bean
     public Binding BindingQueueB(@Qualifier("queueB") Queue queueB, @Qualifier("xExchange") DirectExchange xExchange) {
         return BindingBuilder.bind(queueB).to(xExchange).with(ROUTING_KEY_QUEUE_B);
+    }
+
+    // 绑定普通交换机和普通队列 QC
+    @Bean
+    public Binding BindingQueueC(@Qualifier("queueC") Queue queueC, @Qualifier("xExchange") DirectExchange xExchange) {
+        return BindingBuilder.bind(queueC).to(xExchange).with(ROUTING_KEY_QUEUE_C);
     }
 
 }

@@ -19,11 +19,21 @@ public class SendMsgController {
     @Resource
     private RabbitTemplate rabbitTemplate;
 
-    @GetMapping("/send/{msg}")
+    @GetMapping("/sendMsg/{msg}")
     public String sendMsg(@PathVariable("msg") String message) {
         log.info("当前时间: {}, 发送一条信息给两个 TTL 队列: {}", new Date(), message);
         rabbitTemplate.convertAndSend(QueueConfig.NORMAL_EXCHANGE, QueueConfig.ROUTING_KEY_QUEUE_A, "消息来自 TTL 为 10s 的队列: " + message);
         rabbitTemplate.convertAndSend(QueueConfig.NORMAL_EXCHANGE, QueueConfig.ROUTING_KEY_QUEUE_B, "消息来自 TTL 为 40s 的队列: " + message);
+        return "success";
+    }
+
+    @GetMapping("/sendExpireMsg/{msg}/{ttl}")
+    public String sendExpireMsg(@PathVariable("msg") String message, @PathVariable("ttl") String ttl) {
+        log.info("当前时间: {}, 发送一条时长 {} 毫秒 的 TTL 信息给队列: {}", new Date(), ttl, message);
+        rabbitTemplate.convertAndSend(QueueConfig.NORMAL_EXCHANGE, QueueConfig.ROUTING_KEY_QUEUE_C, message, correlationData -> {
+            correlationData.getMessageProperties().setExpiration(ttl);
+            return correlationData;
+        });
         return "success";
     }
 

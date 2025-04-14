@@ -19,7 +19,7 @@ public class SendMsgController {
     @Resource
     private RabbitTemplate rabbitTemplate;
 
-    @GetMapping("/send/{msg}")
+    @GetMapping("/sendMsg/{msg}")
     public String sendMsg(@PathVariable("msg") String message) {
         log.info("当前时间: {}, 发送一条信息给两个 TTL 队列: {}", new Date(), message);
         rabbitTemplate.convertAndSend(QueueConfig.NORMAL_EXCHANGE, QueueConfig.ROUTING_KEY_QUEUE_A, "消息来自 TTL 为 10s 的队列: " + message);
