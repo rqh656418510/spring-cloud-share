@@ -12,12 +12,12 @@ import java.util.Date;
 
 @Slf4j
 @Component
-public class DeadLetterQueueConsumer {
+public class DelayedQueueConsumer {
 
-    @RabbitListener(queues = QueueConfig.DEAD_LETER_QUEUE)
-    public void receiveDeadLetter(Message message, Channel channel) {
+    @RabbitListener(queues = QueueConfig.DELAYED_QUEUE_NAME)
+    public void receiveDelayedQueue(Message message, Channel channel) {
         String msg = new String(message.getBody(), StandardCharsets.UTF_8);
-        log.info("当前时间: {}, 接收到死信队列信息: {}", new Date(), msg);
+        log.info("当前时间: {}, 接收到延迟队列信息: {}", new Date(), msg);
     }
 
 }
