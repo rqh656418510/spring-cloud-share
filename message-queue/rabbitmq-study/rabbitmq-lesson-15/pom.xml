@@ -9,8 +9,8 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>rabbitmq-lesson-13</artifactId>
-    <description>延迟队列的使用，基于 TTL（生存时间）+ DLX（死信交换机）实现</description>
+    <artifactId>rabbitmq-lesson-15</artifactId>
+    <description>延迟队列的使用，基于延迟队列插件实现</description>
 
     <properties>
         <spring-boot.version>2.7.18</spring-boot.version>
