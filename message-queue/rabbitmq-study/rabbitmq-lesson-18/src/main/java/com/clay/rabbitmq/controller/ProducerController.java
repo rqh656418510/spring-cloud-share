@@ -36,7 +36,7 @@ public class ProducerController {
         log.info("当前时间: {}, 发送一条信息给队列: {}", new Date(), message);
         // 指定消息 ID
         CorrelationData correlationData = new CorrelationData(UUID.randomUUID().toString());
-        // 发送消息（特意不指定 RoutingKey，让消息被备份交换机处理）
+        // 发送消息（特意不指定 RoutingKey，让交换机无法将消息路由到任何队列，从而验证消息是否会被备份交换机处理）
         rabbitTemplate.convertAndSend(QueueConfig.CONFIRM_EXCHANGE_NAME, "", message, correlationData);
         return "success";
     }
