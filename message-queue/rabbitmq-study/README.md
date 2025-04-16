@@ -13,3 +13,4 @@
 - [RabbitMQ 入门教程之五](https://www.techgrow.cn/posts/ff0ea7dd.html)
 - [RabbitMQ 入门教程之六](https://www.techgrow.cn/posts/f9176fde.html)
 - [RabbitMQ 入门教程之七](https://www.techgrow.cn/posts/4eeb4098.html)
+- [RabbitMQ 入门教程之八](https://www.techgrow.cn/posts/1074caeb.html)
