@@ -9,8 +9,8 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>rabbitmq-lesson-17</artifactId>
-    <description>消息发布确认机制 + 消息退回机制</description>
+    <artifactId>rabbitmq-lesson-18</artifactId>
+    <description>消息发布确认机制 + 消息退回机制 + 备份交换机</description>
 
     <properties>
         <spring-boot.version>2.7.18</spring-boot.version>
