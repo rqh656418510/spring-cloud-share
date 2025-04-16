@@ -6,7 +6,7 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Component;
 
 /**
- * 消息发送确认的回调类
+ * 发送确认的回调类
  */
 @Slf4j
 @Component
@@ -14,7 +14,7 @@ public class CustomConfirmCallback implements RabbitTemplate.ConfirmCallback {
 
     /**
      * 消息发送到交换机后的回调函数，用于确认消息是否成功到达交换机
-     * <p> 特别注意：如果消息成功发送交换机，但是交换机根据 RoutingKey 无法将消息路由到匹配的队列，消息会被丢弃，但 ack 参数的值仍然为 true
+     * <p> 特别注意：如果消息成功发送到交换机，但是交换机根据 RoutingKey 无法将消息路由到匹配的队列，消息会被丢弃，但 ack 参数的值仍然为 true
      *
      * @param correlationData 关联数据，用于唯一标识发送的消息，可以在发送消息时设置，用于跟踪消息的状态
      * @param ack             表示消息是否成功到达交换机。true 表示成功，false 表示失败
