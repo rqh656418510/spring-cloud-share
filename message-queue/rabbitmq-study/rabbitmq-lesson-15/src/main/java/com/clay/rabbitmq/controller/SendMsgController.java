@@ -20,7 +20,7 @@ public class SendMsgController {
     private RabbitTemplate rabbitTemplate;
 
     @GetMapping("/sendDelayMsg/{msg}/{delayTime}")
-    public String sendExpireMsg(@PathVariable("msg") String message, @PathVariable("delayTime") Integer delayTime) {
+    public String sendDelayMsg(@PathVariable("msg") String message, @PathVariable("delayTime") Integer delayTime) {
         log.info("当前时间: {}, 发送一条时长 {} 毫秒的信息给延迟队列: {}", new Date(), delayTime, message);
         rabbitTemplate.convertAndSend(QueueConfig.DELAYED_EXCHANGE_NAME, QueueConfig.DELAYED_QUEUE_ROUTING_KEY, message, msg -> {
             // 指定消息的延迟时间（单位毫秒）
