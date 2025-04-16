@@ -17,7 +17,7 @@ public class WarningQueueConsumer {
     @RabbitListener(queues = QueueConfig.WARNING_QUEUE_NAME)
     public void receiveMsg(Message message, Channel channel) {
         String msg = new String(message.getBody(), StandardCharsets.UTF_8);
-        log.info("当前时间: {}, 报警发现不可路由消息: {}", new Date(), msg);
+        log.error("当前时间: {}, 报警发现不可路由消息: {}", new Date(), msg);
     }
 
 }

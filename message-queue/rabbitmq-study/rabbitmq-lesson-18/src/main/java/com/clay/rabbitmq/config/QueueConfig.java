@@ -56,6 +56,8 @@ public class QueueConfig {
         return BindingBuilder.bind(confirmQueue).to(confirmExchange).with(CONFIRM_QUEUE_ROUTING_KEY);
     }
 
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     // 声明备份交换机
     @Bean("backupExchange")
     public FanoutExchange backupExchange() {
@@ -75,11 +77,13 @@ public class QueueConfig {
     }
 
     // 绑定备份交换机和备份队列
+    @Bean
     public Binding bindingBackupQueue(@Qualifier("backupQueue") Queue backupQueue, @Qualifier("backupExchange") FanoutExchange backupExchange) {
         return BindingBuilder.bind(backupQueue).to(backupExchange);
     }
 
     // 绑定备份交换机和报警队列
+    @Bean
     public Binding bindingWarningQueue(@Qualifier("warningQueue") Queue warningQueue, @Qualifier("backupExchange") FanoutExchange backupExchange) {
         return BindingBuilder.bind(warningQueue).to(backupExchange);
     }
