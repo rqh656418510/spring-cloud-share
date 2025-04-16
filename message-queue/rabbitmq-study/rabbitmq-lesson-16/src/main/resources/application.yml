@@ -11,4 +11,3 @@ spring:
     username: admin
     virtual-host: /
     publisher-confirm-type: correlated
-    publisher-returns: true
