@@ -5,23 +5,12 @@ import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
-
+/**
+ * 消息发送确认的回调类
+ */
 @Slf4j
 @Component
 public class CustomConfirmCallback implements RabbitTemplate.ConfirmCallback {
-
-    @Resource
-    private RabbitTemplate rabbitTemplate;
-
-    /**
-     * 设置 RabbitTemplate 的回调对象
-     */
-    @PostConstruct
-    public void init() {
-        rabbitTemplate.setConfirmCallback(this);
-    }
 
     /**
      * 消息发送到交换机后的回调函数，用于确认消息是否成功到达交换机
@@ -37,7 +26,7 @@ public class CustomConfirmCallback implements RabbitTemplate.ConfirmCallback {
         if (ack) {
             log.info("ID 为 {} 的消息成功发送到交换机", msgId);
         } else {
-            log.error("ID 为 {} 的消息无法发送到交换机，错误原因：{}", msgId, cause);
+            log.error("ID 为 {} 的消息发送到交换机失败，原因：{}", msgId, cause);
         }
     }
 
