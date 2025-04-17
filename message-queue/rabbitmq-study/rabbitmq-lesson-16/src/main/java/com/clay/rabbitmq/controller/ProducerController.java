@@ -31,4 +31,14 @@ public class ProducerController {
         return "success";
     }
 
+    @GetMapping("/sendNoExchangeMsg/{msg}")
+    public String sendNoExchangeMsg(@PathVariable("msg") String message) {
+        log.info("当前时间: {}, 发送一条信息给队列: {}", new Date(), message);
+        // 指定消息 ID
+        CorrelationData correlationData = new CorrelationData(UUID.randomUUID().toString());
+        // 发送消息（特意不指定错误的交换机，从而验证消息是否会被确认发布）
+        rabbitTemplate.convertAndSend("xxxx", QueueConfig.CONFIRM_QUEUE_ROUTING_KEY, message, correlationData);
+        return "success";
+    }
+
 }
