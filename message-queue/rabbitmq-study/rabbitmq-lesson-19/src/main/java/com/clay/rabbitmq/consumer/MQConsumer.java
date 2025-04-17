@@ -82,7 +82,7 @@ public class MQConsumer {
             System.out.println("Failed to consume message : " + consumerTag);
         };
 
-        // 消费者延后启动（让所有消息发送完毕再消费）
+        // 消费者延后启动（等待生产者将所有消息发送完再消费）
         try {
             System.out.println("消费者等待消息发送完毕...");
             Thread.sleep(20000);
