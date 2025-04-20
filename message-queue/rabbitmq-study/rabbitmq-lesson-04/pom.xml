@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>rabbitmq-lesson-04</artifactId>
-    <description>不公平分发消息</description>
+    <description>非公平分发消息</description>
 
     <dependencies>
         <!-- Rabbitmq 的客户端 -->

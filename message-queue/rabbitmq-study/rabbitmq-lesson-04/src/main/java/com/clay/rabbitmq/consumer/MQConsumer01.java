@@ -53,7 +53,7 @@ public class MQConsumer01 {
 
         System.out.println("消费者一等待接收消息，处理消息较快...");
 
-        // 设置预取计数值（当值为 1，其运行效果就是不公平分发，即能者多劳）
+        // 设置预取计数值（当值为 1，其运行效果就是非公平分发，即能者多劳）
         int prefetchCount = 1;
         channel.basicQos(prefetchCount);
 
