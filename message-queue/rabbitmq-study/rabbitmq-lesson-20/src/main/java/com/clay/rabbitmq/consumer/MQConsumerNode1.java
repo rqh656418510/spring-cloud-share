@@ -8,23 +8,27 @@ import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DeliverCallback;
 
 import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
-public class MQConsumer {
+/**
+ * RabbitMQ 独立节点一的消费者
+ */
+public class MQConsumerNode1 {
 
     // 交换机的名称
-    public static final String EXCHANGE_NAME = "priority.exchange";
+    public static final String EXCHANGE_NAME = "fed_exchange";
 
     // 队列的名称
-    public static final String QUEUE_NAME = "priority.queue";
+    public static final String QUEUE_NAME = "node1_queue";
+
+    // 队列的路由键（绑定键）
+    public static final String QUEUE_ROUTING_KEY = "routekey";
 
     public static void main(String[] args) throws Exception {
         // 创建连接工厂
         ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("192.168.2.127");
-        factory.setPort(5672);
+        factory.setHost("192.168.2.148");
+        factory.setPort(5673);
         factory.setUsername("admin");
         factory.setPassword("admin");
 
@@ -41,12 +45,7 @@ public class MQConsumer {
         // durable – 如果需要声明一个持久交换机，则为 true（交换机将在服务器重启后继续存在）
         // autoDelete – 如果需要声明 autoDelete 交换机，则为 true（当最后一个绑定队列解除绑定后，自动删除该交换机）
         // arguments – 交换的其他属性（构造参数）
-        channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.FANOUT, true, false, null);
-
-        // 设置队列属性
-        Map<String, Object> queueArguments = new HashMap<>();
-        // 队列的最大优先级，范围在 0 ~ 255 之间的整数
-        queueArguments.put("x-max-priority", 10);
+        channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.DIRECT, true, false, null);
 
         // 声明队列
         // 参数说明：
@@ -56,14 +55,14 @@ public class MQConsumer {
         // autoDelete – 如果需要声明 autoDelete 队列，则为 true（服务器将在最后一个消费者断开连接以后，自动删除该队列）
         // arguments – 队列的其他属性（构造参数）
         // 特别注意：如果确定队列已存在，消费者可以不声明队列。但是，强烈建议无论生产者还是消费者，都应该声明队列，确保参数可控
-        channel.queueDeclare(QUEUE_NAME, true, false, false, queueArguments);
+        channel.queueDeclare(QUEUE_NAME, true, false, false, null);
 
         // 绑定交换机和队列
         // 参数说明：
         // queue – 队列的名称
         // exchange – 交换机的名称
         // routingKey – 用于绑定的 RoutingKey（如果不使用 Routingkey，可填空字符串）
-        channel.queueBind(QUEUE_NAME, EXCHANGE_NAME, "");
+        channel.queueBind(QUEUE_NAME, EXCHANGE_NAME, QUEUE_ROUTING_KEY);
 
         // 消费消息时的回调
         DeliverCallback deliverCallback = (consumerTag, message) -> {
@@ -81,14 +80,6 @@ public class MQConsumer {
         CancelCallback cancelCallback = (consumerTag) -> {
             System.out.println("Failed to consume message : " + consumerTag);
         };
-
-        // 消费者延后启动（等待生产者将所有消息发送完再消费）
-        try {
-            System.out.println("消费者等待消息发送完毕...");
-            Thread.sleep(20000);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
         System.out.println("消费者开始消费消息...");
 
