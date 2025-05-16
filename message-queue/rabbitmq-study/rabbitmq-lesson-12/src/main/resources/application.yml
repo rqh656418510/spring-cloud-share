@@ -10,3 +10,7 @@ spring:
     password: admin
     username: admin
     virtual-host: /
+    # 启用发布确认机制
+    publisher-confirm-type: correlated
+    # 启用消息退回机制
+    publisher-returns: true
