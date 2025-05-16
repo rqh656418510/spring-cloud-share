@@ -52,7 +52,7 @@ public class ProducerController {
         log.info("当前时间: {}, 发送一条信息给队列: {}", new Date(), message);
 
         // 发送消息（第二种写法），特意指定错误的交换机，从而验证消息是否会被确认发布
-        rabbitTemplate.convertAndSend("xxxxx", QueueConfig.ORDER_QUEUE_ROUTING_KEY, message, msg -> {
+        rabbitTemplate.convertAndSend("xxxx", QueueConfig.ORDER_QUEUE_ROUTING_KEY, message, msg -> {
             // 设置消息持久化
             msg.getMessageProperties().setDeliveryMode(MessageDeliveryMode.PERSISTENT);
             // 设置消息 ID
@@ -71,7 +71,7 @@ public class ProducerController {
         log.info("当前时间: {}, 发送一条信息给队列: {}", new Date(), message);
 
         // 发送消息（第二种写法），特意指定错误的路由键，从而验证消息是否会被退回
-        rabbitTemplate.convertAndSend(QueueConfig.ORDER_EXCHANGE_NAME, "xxx", message, msg -> {
+        rabbitTemplate.convertAndSend(QueueConfig.ORDER_EXCHANGE_NAME, "xxxx", message, msg -> {
             // 设置消息持久化
             msg.getMessageProperties().setDeliveryMode(MessageDeliveryMode.PERSISTENT);
             // 设置消息 ID
