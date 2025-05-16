@@ -17,7 +17,7 @@ public class QueueConsumer {
     /**
      * 监听队列
      *
-     * <p> 通过 ackMode = "MANUAL" 使用手动确认消费机制
+     * <p> 参数 ackMode = "MANUAL" 表示使用手动确认消费机制
      */
     @RabbitListener(queues = QueueConfig.ORDER_QUEUE_NAME, ackMode = "MANUAL")
     public void receiveMsg(Message message, Channel channel) throws Exception {
@@ -29,7 +29,7 @@ public class QueueConsumer {
 
         try {
             // 模拟消息处理耗时
-            Thread.sleep(1000);
+            Thread.sleep(5000);
             log.info("当前时间: {}, 接收到信息: {}", new Date(), content);
 
             // 手动确认消息

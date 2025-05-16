@@ -22,6 +22,9 @@ public class ProducerController {
     @Resource
     private RabbitTemplate rabbitTemplate;
 
+    /**
+     * 正常发送消息
+     */
     @GetMapping("/sendMsg/{message}")
     public String sendMsg(@PathVariable("message") String message) {
         log.info("当前时间: {}, 发送一条信息给队列: {}", new Date(), message);
@@ -41,6 +44,9 @@ public class ProducerController {
         return "success";
     }
 
+    /**
+     * 发送消息到错误的交换机
+     */
     @GetMapping("/sendErrorExchangeMsg/{message}")
     public String sendErrorExchangeMsg(@PathVariable("message") String message) {
         log.info("当前时间: {}, 发送一条信息给队列: {}", new Date(), message);
@@ -57,6 +63,9 @@ public class ProducerController {
         return "success";
     }
 
+    /**
+     * 发送消息到错误的队列
+     */
     @GetMapping("/sendErrorRoutingKeyMsg/{message}")
     public String sendErrorRoutingKeyMsg(@PathVariable("message") String message) {
         log.info("当前时间: {}, 发送一条信息给队列: {}", new Date(), message);
