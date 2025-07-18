@@ -8,7 +8,7 @@ import org.apache.dubbo.config.annotation.DubboService;
  * 暴露服务
  */
 
-@DubboService(protocol = "tri")
+@DubboService
 public class UserServiceImpl implements UserService {
 
     @Override

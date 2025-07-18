@@ -19,7 +19,7 @@ public class SystemController {
     /**
      * 引用 Dubbo 服务
      */
-    @DubboReference(protocol = "tri")
+    @DubboReference
     private UserService userService;
 
     @GetMapping("/getUser/{id}")
