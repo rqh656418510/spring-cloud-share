@@ -1,0 +1,25 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: dubbo-provider-application
+
+dubbo:
+  # 服务信息
+  application:
+    name: ${spring.application.name}
+    qos-enable: false
+    qos-port: 22222
+    qos-accept-foreign-ip: false
+  # 注册中心地址
+  registry:
+    address: nacos://192.168.2.235:8848
+  # 服务提供者的协议
+  protocol:
+    name: tri
+    port: 50052
+    preferred-protocol: tri  # 优先使用 Triple 协议，以避免输出 WARN 信息
+  # 扫描 Dubbo 相关的注解
+  scan:
+    base-packages: com.clay.dubbo.provider
