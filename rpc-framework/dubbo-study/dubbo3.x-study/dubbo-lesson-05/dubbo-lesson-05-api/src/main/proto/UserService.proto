@@ -1,20 +1,33 @@
+// 指定 proto 文件的语法版本
 syntax = "proto3";
 
+// 是否将每个 message / service / enum 生成到单独的 Java 文件中
 option java_multiple_files = true;
+
+// 指定生成的 Java 包名
 option java_package = "com.clay.dubbo";
+
+// 如果没有开启 java_multiple_files，所有代码会生成在 UserServiceProto.java 文件中
 option java_outer_classname = "UserServiceProto";
+
+// iOS Objective-C 的类名前缀（可选，只有 iOS 需要，防止类名冲突）
 option objc_class_prefix = "USERSRV";
 
+// Proto 的包名（逻辑命名空间，不影响 Java 包）
 package userservice;
 
+// 请求消息体
 message HelloRequest {
   string name = 1;
 }
 
+// 响应消息体
 message HelloReply {
   string message = 1;
 }
 
-service DemoService {
+// 定义 RPC 服务接口
+service UserService {
+  // 定义一个 RPC 方法 SayHello
   rpc SayHello (HelloRequest) returns (HelloReply) {}
 }
