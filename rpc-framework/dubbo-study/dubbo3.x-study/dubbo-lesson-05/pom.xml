@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <name>dubbo-lesson-05</name>
-    <description>SpringBoot 整合 Dubbo（基于 Triple 协议 + Protobuf）</description>
+    <description>SpringBoot 整合 Dubbo（基于 Triple 协议 + Protobuf + IDL）</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
