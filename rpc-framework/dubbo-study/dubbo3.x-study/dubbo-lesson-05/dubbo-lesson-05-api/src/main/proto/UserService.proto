@@ -22,12 +22,12 @@ message HelloRequest {
 }
 
 // 响应消息体
-message HelloReply {
+message HelloResponse {
   string message = 1;
 }
 
 // 定义 RPC 服务接口
 service UserService {
   // 定义一个 RPC 方法 SayHello
-  rpc SayHello (HelloRequest) returns (HelloReply) {}
+  rpc SayHello (HelloRequest) returns (HelloResponse) {}
 }

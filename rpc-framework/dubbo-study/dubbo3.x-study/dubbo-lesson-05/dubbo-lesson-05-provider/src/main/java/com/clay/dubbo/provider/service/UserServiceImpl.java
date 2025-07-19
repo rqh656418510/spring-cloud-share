@@ -1,25 +1,30 @@
 package com.clay.dubbo.provider.service;
 
-import com.clay.dubbo.domain.User;
-import com.clay.dubbo.service.UserService;
+import com.clay.dubbo.HelloRequest;
+import com.clay.dubbo.HelloResponse;
+import com.clay.dubbo.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboService;
+import org.apache.dubbo.rpc.RpcContext;
+
+import java.util.concurrent.CompletableFuture;
 
 /**
- * 暴露服务
+ * 服务提供者（暴露服务）
  */
-
-@DubboService
+@Slf4j
+@DubboService(serialization = "protobuf")
 public class UserServiceImpl implements UserService {
 
     @Override
-    public Boolean add(User user) {
-        System.out.println(user);
-        return true;
+    public HelloResponse sayHello(HelloRequest request) {
+        log.info("request from consumer: {}", RpcContext.getContext().getRemoteAddress());
+        return HelloResponse.newBuilder().setMessage("Hello " + request.getName()).build();
     }
 
     @Override
-    public User getById(Long id) {
-        return new User(id, "Peter", 18);
+    public CompletableFuture<HelloResponse> sayHelloAsync(HelloRequest request) {
+        return CompletableFuture.completedFuture(sayHello((request)));
     }
 
 }

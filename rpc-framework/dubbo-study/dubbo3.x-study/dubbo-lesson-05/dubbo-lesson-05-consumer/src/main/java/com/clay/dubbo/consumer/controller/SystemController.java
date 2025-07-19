@@ -1,16 +1,18 @@
 package com.clay.dubbo.consumer.controller;
 
-import com.clay.dubbo.domain.User;
-import com.clay.dubbo.service.UserService;
+import com.clay.dubbo.HelloRequest;
+import com.clay.dubbo.HelloResponse;
+import com.clay.dubbo.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 服务消费者
+ */
 @Slf4j
 @RestController
 @RequestMapping("/system")
@@ -22,14 +24,12 @@ public class SystemController {
     @DubboReference
     private UserService userService;
 
-    @GetMapping("/getUser/{id}")
-    public User getUser(@PathVariable("id") Long id) {
-        return userService.getById(id);
-    }
-
-    @PostMapping("/addUser")
-    public Boolean addUser(@RequestBody User user) {
-        return userService.add(user);
+    @GetMapping("/sayHello/{name}")
+    public String getUser(@PathVariable("name") String name) {
+        HelloRequest request = HelloRequest.newBuilder().setName(name).build();
+        HelloResponse response = userService.sayHello(request);
+        log.info("result: {}", response.getMessage());
+        return response.getMessage();
     }
 
 }

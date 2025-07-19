@@ -102,7 +102,7 @@
                     <protoSourceRoot>src/main/proto</protoSourceRoot>
                     <!-- Maven 会自动下载对应平台的 protoc 可执行文件，用于根据 .proto 文件生成 Protobuf 的 Java 类（DTO、Message）代码 -->
                     <protocArtifact>com.google.protobuf:protoc:${protoc.version}:exe:${os.detected.classifier}</protocArtifact>
-                    <!-- Maven 会自动下载对应平台的 protoc-gen-grpc 可执行文件，用于根据 .proto 文件生成 gRPC 的 Java Stub 代码 -->
+                    <!-- Maven 会自动下载对应平台的 protoc-gen-grpc 可执行文件，用于根据 .proto 文件生成 gRPC 的服务接口（Stub）代码 -->
                     <pluginId>grpc</pluginId>
                     <pluginArtifact>io.grpc:protoc-gen-grpc-java:${grpc.version}:exe:${os.detected.classifier}</pluginArtifact>
                     <!-- 用来给 protoc 添加自定义代码生成插件（比如 Dubbo Triple 的 Stub 代码生成器）-->
