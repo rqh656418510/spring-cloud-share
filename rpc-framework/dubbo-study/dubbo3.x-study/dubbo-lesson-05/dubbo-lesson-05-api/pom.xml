@@ -98,6 +98,8 @@
                 <artifactId>protobuf-maven-plugin</artifactId>
                 <version>0.6.1</version>
                 <configuration>
+                    <!-- 自定义 .proto 文件所在的路径（可选）-->
+                    <protoSourceRoot>src/main/proto</protoSourceRoot>
                     <!-- Maven 会自动下载对应平台的 protoc 可执行文件，用于根据 .proto 文件生成 Protobuf 的 Java 类（DTO、Message）代码 -->
                     <protocArtifact>com.google.protobuf:protoc:${protoc.version}:exe:${os.detected.classifier}</protocArtifact>
                     <!-- Maven 会自动下载对应平台的 protoc-gen-grpc 可执行文件，用于根据 .proto 文件生成 gRPC 的 Java Stub 代码 -->
@@ -124,7 +126,6 @@
                             <goal>compile-custom</goal>
                         </goals>
                     </execution>
-
                     <execution>
                         <id>compile-test-protobuf</id>
                         <goals>
