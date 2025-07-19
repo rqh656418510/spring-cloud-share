@@ -1,8 +1,8 @@
 package com.clay.dubbo.provider.service;
 
-import com.clay.dubbo.HelloRequest;
-import com.clay.dubbo.HelloResponse;
-import com.clay.dubbo.UserService;
+import com.clay.dubbo.api.HelloRequest;
+import com.clay.dubbo.api.HelloResponse;
+import com.clay.dubbo.api.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.rpc.RpcContext;

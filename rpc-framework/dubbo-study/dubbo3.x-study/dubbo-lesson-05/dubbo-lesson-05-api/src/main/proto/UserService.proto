@@ -5,7 +5,7 @@ syntax = "proto3";
 option java_multiple_files = true;
 
 // 指定生成的 Java 包名
-option java_package = "com.clay.dubbo";
+option java_package = "com.clay.dubbo.api";
 
 // 如果没有开启 java_multiple_files，所有代码会生成在 UserServiceProto.java 文件中
 option java_outer_classname = "UserServiceProto";
