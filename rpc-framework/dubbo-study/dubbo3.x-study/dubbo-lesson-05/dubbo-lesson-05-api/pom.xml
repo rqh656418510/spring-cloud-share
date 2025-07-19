@@ -122,7 +122,7 @@
                         <goals>
                             <!-- 生成 main 下的 Protobuf 的 Java 类（DTO、Message）-->
                             <goal>compile</goal>
-                            <!-- 生成 main 下的 gRPC 的接口代码（客户端、服务端 Stub） -->
+                            <!-- 生成 main 下的 gRPC 或自定义代码生成插件的接口代码（客户端、服务端 Stub） -->
                             <goal>compile-custom</goal>
                         </goals>
                     </execution>
@@ -131,7 +131,7 @@
                         <goals>
                             <!-- 生成 test 下的 Protobuf 的 Java 类（DTO、Message）-->
                             <goal>test-compile</goal>
-                            <!-- 生成 test 下的 gRPC 的接口代码（客户端、服务端 Stub） -->
+                            <!-- 生成 test 下的 gRPC 或自定义代码生成插件的接口代码（客户端、服务端 Stub） -->
                             <goal>test-compile-custom</goal>
                         </goals>
                     </execution>
