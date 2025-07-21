@@ -10,7 +10,7 @@ import org.apache.dubbo.config.annotation.DubboService;
  * 服务提供者（暴露服务）
  */
 @Slf4j
-@DubboService(serialization = "protobuf")
+@DubboService
 public class UserServiceImpl extends DubboUserServiceTriple.UserServiceImplBase {
 
     @Override
