@@ -91,7 +91,7 @@
                         <configuration>
                             <sources>
                                 <!-- 添加 protoc 生成 Java 文件的存放目录 -->
-                                <source>build/generated/source/proto/main/java</source>
+                                <source>${basedir}/build/generated/source/proto/main/java</source>
                             </sources>
                         </configuration>
                     </execution>
