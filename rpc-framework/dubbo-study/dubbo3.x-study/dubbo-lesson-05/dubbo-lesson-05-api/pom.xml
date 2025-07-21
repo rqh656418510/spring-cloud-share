@@ -58,6 +58,12 @@
             <!-- 建议和 protoc 版本保持一致 -->
             <version>${protoc.version}</version>
         </dependency>
+        <!-- Protobuf JSON 转换工具，为了支持 application/json 格式请求直接调用服务 -->
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java-util</artifactId>
+            <version>${protoc.version}</version>
+        </dependency>
         <!-- gRPC 相关 -->
         <dependency>
             <groupId>io.grpc</groupId>
@@ -104,7 +110,8 @@
                     <protocArtifact>com.google.protobuf:protoc:${protoc.version}:exe:${os.detected.classifier}</protocArtifact>
                     <!-- Maven 会自动下载对应平台的 protoc-gen-grpc 可执行文件，用于根据 .proto 文件生成 gRPC 的服务接口（Stub）代码 -->
                     <pluginId>grpc</pluginId>
-                    <pluginArtifact>io.grpc:protoc-gen-grpc-java:${grpc.version}:exe:${os.detected.classifier}</pluginArtifact>
+                    <pluginArtifact>io.grpc:protoc-gen-grpc-java:${grpc.version}:exe:${os.detected.classifier}
+                    </pluginArtifact>
                     <!-- 用来给 protoc 添加自定义代码生成插件（比如 Dubbo Triple 的 Stub 代码生成器）-->
                     <protocPlugins>
                         <protocPlugin>
