@@ -29,9 +29,9 @@ public class SystemController {
         return userService.getById(id);
     }
 
-    @PostMapping("/addUser")
-    public Boolean addUser(@RequestBody User user) {
-        return userService.add(user);
+    @PostMapping("/updateUser")
+    public Boolean updateUser(@RequestBody User user) {
+        return userService.update(user);
     }
 
 }

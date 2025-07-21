@@ -4,7 +4,7 @@ import com.clay.dubbo.domain.User;
 
 public interface UserService {
 
-    Boolean add(User user);
+    Boolean update(User user);
 
     User getById(Long id);
 

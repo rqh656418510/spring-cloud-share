@@ -12,7 +12,7 @@ import org.apache.dubbo.config.annotation.DubboService;
 public class UserServiceImpl implements UserService {
 
     @Override
-    public Boolean add(User user) {
+    public Boolean update(User user) {
         System.out.println(user);
         return true;
     }
