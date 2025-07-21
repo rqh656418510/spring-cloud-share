@@ -19,7 +19,6 @@
         <spring-boot.version>3.4.2</spring-boot.version>
         <dubbo.version>3.3.2</dubbo.version>
         <protoc.version>3.25.3</protoc.version>
-        <grpc.version>1.73.0</grpc.version>
     </properties>
 
     <dependencyManagement>
@@ -84,9 +83,9 @@
                 <version>0.6.1</version>
                 <configuration>
                     <!-- 自定义 .proto 文件所在的路径（可选）-->
-                    <protoSourceRoot>src/main/proto</protoSourceRoot>
+                    <protoSourceRoot>${basedir}/src/main/proto</protoSourceRoot>
                     <!-- 自定义 protoc 生成 Java 文件的存放目录（可选） -->
-                    <outputDirectory>build/generated/source/proto/main/java</outputDirectory>
+                    <outputDirectory>${basedir}/build/generated/source/proto/main/java</outputDirectory>
                     <!-- Maven 会自动下载对应平台的 protoc 可执行文件，用于根据 .proto 文件生成 Protobuf 的 Java 类（DTO、Message）代码 -->
                     <protocArtifact>com.google.protobuf:protoc:${protoc.version}:exe:${os.detected.classifier}</protocArtifact>
                     <!-- 用来给 protoc 添加自定义代码生成插件（比如 Dubbo Triple 的 Stub 代码生成器）-->
