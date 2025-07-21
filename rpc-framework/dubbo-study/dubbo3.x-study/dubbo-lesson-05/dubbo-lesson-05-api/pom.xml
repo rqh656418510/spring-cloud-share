@@ -34,13 +34,6 @@
             <!-- 建议和 protoc 版本保持一致 -->
             <version>${protoc.version}</version>
         </dependency>
-        <!-- Protobuf JSON 转换工具，为了支持 application/json 格式请求直接调用服务 -->
-        <dependency>
-            <groupId>com.google.protobuf</groupId>
-            <artifactId>protobuf-java-util</artifactId>
-            <!-- 建议和 protoc 版本保持一致 -->
-            <version>${protoc.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
