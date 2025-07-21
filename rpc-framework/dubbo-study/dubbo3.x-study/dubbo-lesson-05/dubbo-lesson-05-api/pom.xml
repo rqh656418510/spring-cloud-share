@@ -52,6 +52,8 @@
                 <artifactId>protobuf-maven-plugin</artifactId>
                 <version>0.6.1</version>
                 <configuration>
+                    <!-- 是否在代码生成前清空输出目录（可选） -->
+                    <clearOutputDirectory>false</clearOutputDirectory>
                     <!-- 自定义 .proto 文件所在的路径（可选）-->
                     <protoSourceRoot>${basedir}/src/main/proto</protoSourceRoot>
                     <!-- 自定义 protoc 生成 Java 文件的存放目录（可选） -->
