@@ -64,28 +64,6 @@
             <artifactId>protobuf-java-util</artifactId>
             <version>${protoc.version}</version>
         </dependency>
-        <!-- gRPC 相关 -->
-        <dependency>
-            <groupId>io.grpc</groupId>
-            <artifactId>grpc-api</artifactId>
-            <version>${grpc.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.grpc</groupId>
-            <artifactId>grpc-stub</artifactId>
-            <version>${grpc.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.grpc</groupId>
-            <artifactId>grpc-protobuf</artifactId>
-            <version>${grpc.version}</version>
-        </dependency>
-        <!-- 兼容 JDK 8 -->
-        <dependency>
-            <groupId>javax.annotation</groupId>
-            <artifactId>javax.annotation-api</artifactId>
-            <version>1.3.2</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -106,18 +84,17 @@
                 <configuration>
                     <!-- 自定义 .proto 文件所在的路径（可选）-->
                     <protoSourceRoot>src/main/proto</protoSourceRoot>
+                    <!-- 自定义 protoc 生成 Java 文件的存放目录 -->
+                    <outputDirectory>build/generated/source/proto/main/java</outputDirectory>
                     <!-- Maven 会自动下载对应平台的 protoc 可执行文件，用于根据 .proto 文件生成 Protobuf 的 Java 类（DTO、Message）代码 -->
                     <protocArtifact>com.google.protobuf:protoc:${protoc.version}:exe:${os.detected.classifier}</protocArtifact>
-                    <!-- Maven 会自动下载对应平台的 protoc-gen-grpc 可执行文件，用于根据 .proto 文件生成 gRPC 的服务接口（Stub）代码 -->
-                    <pluginId>grpc</pluginId>
-                    <pluginArtifact>io.grpc:protoc-gen-grpc-java:${grpc.version}:exe:${os.detected.classifier}
-                    </pluginArtifact>
                     <!-- 用来给 protoc 添加自定义代码生成插件（比如 Dubbo Triple 的 Stub 代码生成器）-->
                     <protocPlugins>
                         <protocPlugin>
                             <id>dubbo</id>
                             <groupId>org.apache.dubbo</groupId>
                             <artifactId>dubbo-compiler</artifactId>
+                            <!-- dubbo-compiler 的版本必须与使用的 dubbo 版本一致 -->
                             <version>${dubbo.version}</version>
                             <mainClass>org.apache.dubbo.gen.tri.Dubbo3TripleGenerator</mainClass>
                         </protocPlugin>
@@ -125,22 +102,28 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <id>compile-protobuf</id>
                         <goals>
-                            <!-- 生成 main 下的 Protobuf 的 Java 类（DTO、Message）-->
                             <goal>compile</goal>
-                            <!-- 生成 main 下的 gRPC 或自定义代码生成插件的接口代码（客户端、服务端 Stub） -->
-                            <goal>compile-custom</goal>
                         </goals>
                     </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.3.0</version>
+                <executions>
                     <execution>
-                        <id>compile-test-protobuf</id>
+                        <phase>generate-sources</phase>
                         <goals>
-                            <!-- 生成 test 下的 Protobuf 的 Java 类（DTO、Message）-->
-                            <goal>test-compile</goal>
-                            <!-- 生成 test 下的 gRPC 或自定义代码生成插件的接口代码（客户端、服务端 Stub） -->
-                            <goal>test-compile-custom</goal>
+                            <goal>add-source</goal>
                         </goals>
+                        <configuration>
+                            <sources>
+                                <!-- 添加 protoc 生成 Java 文件的存放目录 -->
+                                <source>build/generated/source/proto/main/java</source>
+                            </sources>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
