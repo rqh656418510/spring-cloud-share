@@ -8,7 +8,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <name>dubbo-lesson-02</name>
-    <description>注解方式使用 Dubbo</description>
+    <description>Spring + 注解方式使用 Dubbo</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
