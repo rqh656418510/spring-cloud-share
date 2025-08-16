@@ -3,14 +3,14 @@ package com.clay.zookeeper;
 public class DistributeLockTest {
 
     public static void main(String[] args) throws Exception {
-        DistributeLock lock1 = new DistributeLock();
-        DistributeLock lock2 = new DistributeLock();
+        DistributeFairLock lock1 = new DistributeFairLock();
+        DistributeFairLock lock2 = new DistributeFairLock();
 
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    // 获取锁
+                    // 抢占锁
                     lock1.lock();
                     System.out.println("Thread 1 启动，获得锁");
                     Thread.sleep(10000);
@@ -28,7 +28,7 @@ public class DistributeLockTest {
             @Override
             public void run() {
                 try {
-                    // 获取锁
+                    // 抢占锁
                     lock2.lock();
                     System.out.println("Thread 2 启动，获得锁");
                     Thread.sleep(10000);

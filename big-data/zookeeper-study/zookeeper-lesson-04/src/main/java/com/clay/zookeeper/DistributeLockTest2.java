@@ -47,11 +47,11 @@ public class DistributeLockTest2 {
             @Override
             public void run() {
                 try {
-                    // 获取锁
+                    // 抢占锁
                     lock1.acquire();
                     System.out.println("Thread 1 获得锁");
 
-                    // 再次获取锁（测试锁重入）
+                    // 再次抢占锁（测试锁重入）
                     lock1.acquire();
                     System.out.println("Thread 1 再次获得锁");
 
@@ -78,11 +78,11 @@ public class DistributeLockTest2 {
             @Override
             public void run() {
                 try {
-                    // 获取锁
+                    // 抢占锁
                     lock2.acquire();
                     System.out.println("Thread 2 获得锁");
 
-                    // 再次获取锁（测试锁重入）
+                    // 再次抢占锁（测试锁重入）
                     lock2.acquire();
                     System.out.println("Thread 2 再次获得锁");
 

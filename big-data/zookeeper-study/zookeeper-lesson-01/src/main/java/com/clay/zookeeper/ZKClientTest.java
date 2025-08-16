@@ -53,7 +53,7 @@ public class ZKClientTest {
     }
 
     /**
-     * 创建节点
+     * 创建临时节点
      */
     @Test
     public void createNode() throws Exception {

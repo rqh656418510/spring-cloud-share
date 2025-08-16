@@ -10,7 +10,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
-public class DistributeLock {
+/**
+ * 基于 ZooKeeper 临时顺序节点实现分布式锁（公平锁），先到先得，可以避免 "饥饿问题" 和 "惊群效应"
+ */
+public class DistributeFairLock {
 
     // ZooKeeper 连接地址（多个集群节点使用逗号分割）
     private static final String ADDRESS = "192.168.2.235:2181,192.168.2.235:2182,192.168.2.235:2183";
@@ -39,7 +42,7 @@ public class DistributeLock {
     // 当前客户端监听的前一个节点的路径
     private String preChildNodePath;
 
-    public DistributeLock() throws Exception {
+    public DistributeFairLock() throws Exception {
         // 初始化客户端
         client = new ZooKeeper(ADDRESS, SESSION_TIMEOUT, new Watcher() {
             @Override

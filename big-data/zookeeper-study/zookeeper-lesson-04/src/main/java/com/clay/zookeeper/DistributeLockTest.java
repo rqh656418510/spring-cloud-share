@@ -47,7 +47,7 @@ public class DistributeLockTest {
             @Override
             public void run() {
                 try {
-                    // 获取锁
+                    // 抢占锁
                     lock1.acquire();
                     System.out.println("Thread 1 获得锁");
                     Thread.sleep(10000);
@@ -69,7 +69,7 @@ public class DistributeLockTest {
             @Override
             public void run() {
                 try {
-                    // 获取锁
+                    // 抢占锁
                     lock2.acquire();
                     System.out.println("Thread 2 获得锁");
                     Thread.sleep(10000);
