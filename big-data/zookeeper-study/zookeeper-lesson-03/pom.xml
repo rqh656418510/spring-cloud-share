@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>zookeeper-lesson-03</artifactId>
-    <description>使用 ZooKeeper 原生 API 实现分布式锁的案例</description>
+    <description>使用 ZooKeeper 原生 API 实现分布式锁</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

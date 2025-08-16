@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * 基于 Redisson，实现分布式锁
+ * 基于 Redis + Redisson 框架实现分布式锁
  */
 @RestController
 public class GoodsController {
