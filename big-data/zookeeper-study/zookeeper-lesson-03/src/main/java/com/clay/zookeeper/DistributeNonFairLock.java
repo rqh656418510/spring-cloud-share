@@ -1,6 +1,7 @@
 package com.clay.zookeeper;
 
 import org.apache.zookeeper.CreateMode;
+import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooDefs;
@@ -12,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * 基于 ZooKeeper 的临时节点实现分布式锁（非公平锁），直接抢占锁，容易造成 "饥饿问题" 和 "惊群效应"
- * 特别注意：代码缺乏健壮性和可用性（尤其是对网络抖动的处理），仅供参考，不适用于生产环境
+ * 特别注意：代码缺乏健壮性和可用性（尤其是对网络抖动、可重入、会话过期的处理），仅供参考，不适用于生产环境
  */
 public class DistributeNonFairLock {
 
@@ -51,7 +52,7 @@ public class DistributeNonFairLock {
     /**
      * 获取一个分布式锁
      */
-    public boolean acquireDistributedLock(String lockId, long waitTimeMs) {
+    public boolean tryLock(String lockId, long waitTimeMs) {
         String path = ROOT_LOCK_PATH + "/" + LOCK_PREFIX + lockId;
         try {
             // 尝试创建临时节点（抢占锁），若失败会抛出异常
@@ -75,16 +76,20 @@ public class DistributeNonFairLock {
                     // 判断节点是否存在，并给该节点注册一个监听器，负责监听该节点被删除
                     Stat stat = zk.exists(path, new NodeDeletedWatcher(path, waitLatch));
 
-                    // 节点已存在，阻塞等待该节点被删除
+                    // 如果节点已存在，阻塞等待该节点被删除
                     if (stat != null) {
-                        boolean signaled = waitLatch.await(remaining, TimeUnit.MILLISECONDS);
-                        // 如果阻塞等待超时了，直接放弃继续抢占锁
-                        if (!signaled) {
-                            return false;
+                        // 双重检查，再次判断节点是否存在，防止线程死等
+                        if (zk.exists(path, false) != null) {
+                            // 阻塞等待节点被删除
+                            boolean signaled = waitLatch.await(remaining, TimeUnit.MILLISECONDS);
+                            // 如果阻塞等待超时了，直接放弃继续抢占锁
+                            if (!signaled) {
+                                return false;
+                            }
                         }
                     }
 
-                    // 被唤醒后，再次尝试创建临时节点（抢占锁），若失败会抛出异常
+                    // 如果节点不存在或者阻塞等待被唤醒，则再次尝试创建临时节点（抢占锁），若失败会抛出异常
                     zk.create(path, "".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL);
 
                     System.out.println("acquire the lock for [id=" + lockId + "].");
@@ -100,11 +105,14 @@ public class DistributeNonFairLock {
     /**
      * 释放掉一个分布式锁
      */
-    public void releaseDistributedLock(String lockId) {
+    public void unlock(String lockId) {
         String path = ROOT_LOCK_PATH + "/" + LOCK_PREFIX + lockId;
         try {
+            // 删除节点（如果指定的版本为 -1，则它与该节点的任何版本匹配）
             zk.delete(path, -1);
             System.out.println("release the lock for [id=" + lockId + "].");
+        } catch (KeeperException.NoNodeException ignored) {
+            // 节点不存在是正常情况，可忽略异常信息
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -113,12 +121,10 @@ public class DistributeNonFairLock {
     /**
      * ZK 连接事件的 Watcher
      */
-    private class ConnectWatcher implements Watcher {
+    static class ConnectWatcher implements Watcher {
 
         @Override
         public void process(WatchedEvent event) {
-            System.out.println("Receive watched state: " + event.getState());
-
             // 处理客户端连接状态事件
             if (Event.KeeperState.SyncConnected == event.getState()) {
                 CONNECTED_LATCH.countDown();
@@ -130,7 +136,7 @@ public class DistributeNonFairLock {
     /**
      * ZK 节点被删除事件的 Watcher
      */
-    class NodeDeletedWatcher implements Watcher {
+    static class NodeDeletedWatcher implements Watcher {
 
         private final String path;
         private final CountDownLatch latch;
@@ -150,17 +156,6 @@ public class DistributeNonFairLock {
     }
 
     /**
-     * 睡眠一段时间
-     */
-    private void sleepQuiet(long mills) {
-        try {
-            Thread.sleep(mills);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
-    }
-
-    /**
      * 关闭 ZK 连接
      */
     public void close() {
@@ -170,6 +165,17 @@ public class DistributeNonFairLock {
             }
         } catch (Exception ignored) {
 
+        }
+    }
+
+    /**
+     * 睡眠一段时间
+     */
+    private void sleepQuiet(long mills) {
+        try {
+            Thread.sleep(mills);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
         }
     }
 
