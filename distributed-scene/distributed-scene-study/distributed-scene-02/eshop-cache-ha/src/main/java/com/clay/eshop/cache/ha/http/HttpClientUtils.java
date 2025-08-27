@@ -22,7 +22,6 @@ import org.apache.http.util.EntityUtils;
 
 /**
  * HttpClient工具类
- * @author lixuerui
  *
  */
 @SuppressWarnings("deprecation")

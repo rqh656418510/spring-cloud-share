@@ -8,8 +8,6 @@ import com.clay.eshop.cache.ha.http.HttpClientUtils;
 
 /**
  * 缓存服务的接口
- * @author Administrator
- *
  */
 @Controller
 public class CacheController {

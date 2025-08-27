@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * 商品服务的接口
- * @author Administrator
- *
  */
 @Controller
 public class ProductController {
