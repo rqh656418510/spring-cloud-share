@@ -18,7 +18,8 @@ public class GetCityNameCommand extends HystrixCommand<String> {
         super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("GetCityNameGroup"))
             .andCommandKey(HystrixCommandKey.Factory.asKey("GetCityNameCommand"))
             .andCommandPropertiesDefaults(HystrixCommandProperties.Setter()
-                .withExecutionIsolationStrategy(HystrixCommandProperties.ExecutionIsolationStrategy.SEMAPHORE)));
+                .withExecutionIsolationStrategy(HystrixCommandProperties.ExecutionIsolationStrategy.SEMAPHORE)
+                .withExecutionIsolationSemaphoreMaxConcurrentRequests(20)));
         this.cityId = cityId;
     }
 

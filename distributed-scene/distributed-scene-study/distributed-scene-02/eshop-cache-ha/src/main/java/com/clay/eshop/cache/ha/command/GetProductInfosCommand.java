@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.clay.eshop.cache.ha.http.HttpClientUtils;
 import com.clay.eshop.cache.ha.model.ProductInfo;
 import com.netflix.hystrix.HystrixCommandGroupKey;
+import com.netflix.hystrix.HystrixCommandKey;
 import com.netflix.hystrix.HystrixObservableCommand;
 import rx.Observable;
 import rx.Subscriber;
@@ -17,7 +18,8 @@ public class GetProductInfosCommand extends HystrixObservableCommand<ProductInfo
     private final String[] productIds;
 
     public GetProductInfosCommand(String[] productId) {
-        super(HystrixCommandGroupKey.Factory.asKey("ProductServiceGroup"));
+        super(HystrixObservableCommand.Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("ProductServiceGroup"))
+            .andCommandKey(HystrixCommandKey.Factory.asKey("GetProductInfosCommand")));
         this.productIds = productId;
     }
 
