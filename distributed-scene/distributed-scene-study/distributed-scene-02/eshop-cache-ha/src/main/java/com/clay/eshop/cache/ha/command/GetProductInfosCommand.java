@@ -17,7 +17,7 @@ public class GetProductInfosCommand extends HystrixObservableCommand<ProductInfo
     private final String[] productIds;
 
     public GetProductInfosCommand(String[] productId) {
-        super(HystrixCommandGroupKey.Factory.asKey("GetProductInfoGroup"));
+        super(HystrixCommandGroupKey.Factory.asKey("ProductServiceGroup"));
         this.productIds = productId;
     }
 

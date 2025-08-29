@@ -3,6 +3,7 @@ package com.clay.eshop.cache.ha.command;
 import com.clay.eshop.cache.ha.local.LocationCache;
 import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;
+import com.netflix.hystrix.HystrixCommandKey;
 import com.netflix.hystrix.HystrixCommandProperties;
 
 /**
@@ -15,6 +16,7 @@ public class GetCityNameCommand extends HystrixCommand<String> {
     public GetCityNameCommand(Long cityId) {
         // 配置隔离策略为信号量隔离
         super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("GetCityNameGroup"))
+            .andCommandKey(HystrixCommandKey.Factory.asKey("GetCityNameCommand"))
             .andCommandPropertiesDefaults(HystrixCommandProperties.Setter()
                 .withExecutionIsolationStrategy(HystrixCommandProperties.ExecutionIsolationStrategy.SEMAPHORE)));
         this.cityId = cityId;

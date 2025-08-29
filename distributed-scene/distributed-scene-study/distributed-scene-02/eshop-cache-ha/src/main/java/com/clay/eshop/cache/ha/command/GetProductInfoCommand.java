@@ -5,6 +5,7 @@ import com.clay.eshop.cache.ha.http.HttpClientUtils;
 import com.clay.eshop.cache.ha.model.ProductInfo;
 import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;
+import com.netflix.hystrix.HystrixCommandKey;
 
 /**
  * 获取单个商品的信息
@@ -14,7 +15,8 @@ public class GetProductInfoCommand extends HystrixCommand<ProductInfo> {
     private final Long productId;
 
     public GetProductInfoCommand(Long productId) {
-        super(HystrixCommandGroupKey.Factory.asKey("GetProductInfoGroup"));
+        super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("ProductServiceGroup"))
+            .andCommandKey(HystrixCommandKey.Factory.asKey("GetProductInfoCommand")));
         this.productId = productId;
     }
 
