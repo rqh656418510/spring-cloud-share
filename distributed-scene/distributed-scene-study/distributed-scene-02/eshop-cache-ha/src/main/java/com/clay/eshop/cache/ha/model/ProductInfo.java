@@ -14,6 +14,8 @@ public class ProductInfo {
     private String size;
     private Long shopId;
     private Date modifiedTime;
+    private Long cityId;
+    private String cityName;
 
     public Long getId() {
         return id;
@@ -95,4 +97,19 @@ public class ProductInfo {
         this.modifiedTime = modifiedTime;
     }
 
+    public Long getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(Long cityId) {
+        this.cityId = cityId;
+    }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
 }
