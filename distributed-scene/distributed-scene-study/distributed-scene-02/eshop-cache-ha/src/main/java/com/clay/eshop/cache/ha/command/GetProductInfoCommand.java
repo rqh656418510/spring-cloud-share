@@ -6,6 +6,7 @@ import com.clay.eshop.cache.ha.model.ProductInfo;
 import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;
 import com.netflix.hystrix.HystrixCommandKey;
+import com.netflix.hystrix.HystrixCommandProperties;
 import com.netflix.hystrix.HystrixRequestCache;
 import com.netflix.hystrix.HystrixThreadPoolProperties;
 import com.netflix.hystrix.strategy.concurrency.HystrixConcurrencyStrategyDefault;
@@ -24,9 +25,15 @@ public class GetProductInfoCommand extends HystrixCommand<ProductInfo> {
     public GetProductInfoCommand(Long productId) {
         super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("ProductServiceGroup"))
             .andCommandKey(COMMAND_KEY)
+            // 线程池的配置
             .andThreadPoolPropertiesDefaults(HystrixThreadPoolProperties.Setter()
                 .withCoreSize(20)
-                .withQueueSizeRejectionThreshold(20)));
+                .withQueueSizeRejectionThreshold(20))
+            // 断路器的配置
+            .andCommandPropertiesDefaults(HystrixCommandProperties.Setter()
+                .withCircuitBreakerRequestVolumeThreshold(20)
+                .withCircuitBreakerErrorThresholdPercentage(60)
+                .withCircuitBreakerSleepWindowInMilliseconds(6000)));
         this.productId = productId;
     }
 

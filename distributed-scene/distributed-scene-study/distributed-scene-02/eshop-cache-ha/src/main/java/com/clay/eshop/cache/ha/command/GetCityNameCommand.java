@@ -14,9 +14,9 @@ public class GetCityNameCommand extends HystrixCommand<String> {
     private final Long cityId;
 
     public GetCityNameCommand(Long cityId) {
-        // 配置隔离策略为信号量隔离
         super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("GetCityNameGroup"))
             .andCommandKey(HystrixCommandKey.Factory.asKey("GetCityNameCommand"))
+            // 信号量隔离的配置
             .andCommandPropertiesDefaults(HystrixCommandProperties.Setter()
                 .withExecutionIsolationStrategy(HystrixCommandProperties.ExecutionIsolationStrategy.SEMAPHORE)
                 .withExecutionIsolationSemaphoreMaxConcurrentRequests(20)));

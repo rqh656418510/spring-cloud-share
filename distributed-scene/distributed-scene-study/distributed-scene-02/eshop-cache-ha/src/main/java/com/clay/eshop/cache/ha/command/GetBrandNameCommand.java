@@ -17,9 +17,11 @@ public class GetBrandNameCommand extends HystrixCommand<String> {
     public GetBrandNameCommand(Long brandId) {
         super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("BrandServiceGroup"))
             .andCommandKey(HystrixCommandKey.Factory.asKey("GetBrandNameCommand"))
+            // 线程池的配置
             .andThreadPoolPropertiesDefaults(HystrixThreadPoolProperties.Setter()
                 .withCoreSize(20)
                 .withQueueSizeRejectionThreshold(20))
+            // 降级机制的配置
             .andCommandPropertiesDefaults(HystrixCommandProperties.Setter()
                 .withFallbackIsolationSemaphoreMaxConcurrentRequests(10)));
         this.brandId = brandId;
