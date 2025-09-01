@@ -12,7 +12,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import javax.sql.DataSource;
 
 @Configuration
-public class DataSourceConfig {
+public class DataSourceConfiguration {
 
     @Bean
     @ConfigurationProperties(prefix = "spring.datasource")

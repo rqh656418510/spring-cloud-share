@@ -6,7 +6,9 @@ import com.clay.eshop.cache.ha.model.ProductInfo;
 import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;
 import com.netflix.hystrix.HystrixCommandKey;
+import com.netflix.hystrix.HystrixRequestCache;
 import com.netflix.hystrix.HystrixThreadPoolProperties;
+import com.netflix.hystrix.strategy.concurrency.HystrixConcurrencyStrategyDefault;
 
 /**
  * 获取单个商品的信息
@@ -14,6 +16,8 @@ import com.netflix.hystrix.HystrixThreadPoolProperties;
 public class GetProductInfoCommand extends HystrixCommand<ProductInfo> {
 
     private final Long productId;
+
+    private static final String KEY_PREFIX = "product_info_";
 
     public GetProductInfoCommand(Long productId) {
         super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("ProductServiceGroup"))
@@ -29,7 +33,24 @@ public class GetProductInfoCommand extends HystrixCommand<ProductInfo> {
         // 调用商品服务的接口，获取商品ID对应的商品的最新数据，用HttpClient去调用商品服务的Http接口
         String url = "http://127.0.0.1:9092/product/info?productId=" + productId;
         String response = HttpClientUtils.sendGetRequest(url);
+        System.out.println("Send request by " + url);
         return JSONObject.parseObject(response, ProductInfo.class);
+    }
+
+    /**
+     * 指定请求缓存的Key
+     */
+    @Override
+    protected String getCacheKey() {
+        return KEY_PREFIX + this.productId;
+    }
+
+    /**
+     * 清理指定的请求缓存
+     */
+    public static void cleanCache(Long productId) {
+        HystrixRequestCache.getInstance(HystrixCommandKey.Factory.asKey("GetProductInfoCommand"),
+            HystrixConcurrencyStrategyDefault.getInstance()).clear(KEY_PREFIX + productId);
     }
 
 }

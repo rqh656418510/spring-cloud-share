@@ -64,4 +64,19 @@ public class CacheController {
         return "Products cache update success";
     }
 
+    /**
+     * 更新多个商品的缓存数据（基于Hystrix的请求缓存）
+     */
+    @RequestMapping("/change/products2")
+    @ResponseBody
+    public String changeProducts2(String productIds) {
+        String[] ids = productIds.split(",");
+        for (String id : ids) {
+            GetProductInfoCommand command = new GetProductInfoCommand(Long.valueOf(id));
+            ProductInfo productInfo = command.execute();
+            System.out.println(JSON.toJSONString(productInfo));
+        }
+        return "Products cache update success";
+    }
+
 }
