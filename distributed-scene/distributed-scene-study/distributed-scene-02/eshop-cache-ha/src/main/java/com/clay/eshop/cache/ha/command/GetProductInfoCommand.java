@@ -19,9 +19,11 @@ public class GetProductInfoCommand extends HystrixCommand<ProductInfo> {
 
     private static final String KEY_PREFIX = "product_info_";
 
+    private static final HystrixCommandKey COMMAND_KEY = HystrixCommandKey.Factory.asKey("GetProductInfoCommand");
+
     public GetProductInfoCommand(Long productId) {
         super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("ProductServiceGroup"))
-            .andCommandKey(HystrixCommandKey.Factory.asKey("GetProductInfoCommand"))
+            .andCommandKey(COMMAND_KEY)
             .andThreadPoolPropertiesDefaults(HystrixThreadPoolProperties.Setter()
                 .withCoreSize(20)
                 .withQueueSizeRejectionThreshold(20)));
@@ -49,8 +51,7 @@ public class GetProductInfoCommand extends HystrixCommand<ProductInfo> {
      * 清理指定的请求缓存
      */
     public static void cleanCache(Long productId) {
-        HystrixRequestCache.getInstance(HystrixCommandKey.Factory.asKey("GetProductInfoCommand"),
-            HystrixConcurrencyStrategyDefault.getInstance()).clear(KEY_PREFIX + productId);
+        HystrixRequestCache.getInstance(COMMAND_KEY, HystrixConcurrencyStrategyDefault.getInstance()).clear(KEY_PREFIX + productId);
     }
 
 }
