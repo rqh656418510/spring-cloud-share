@@ -17,7 +17,7 @@ public class GetBrandNameCommand extends HystrixCommand<String> {
     public GetBrandNameCommand(Long brandId) {
         super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("BrandServiceGroup"))
             .andCommandKey(HystrixCommandKey.Factory.asKey("GetBrandNameCommand"))
-            // 线程池的配置
+            // 线程池的配置（默认使用线程池隔离策略）
             .andThreadPoolPropertiesDefaults(HystrixThreadPoolProperties.Setter()
                 .withCoreSize(20)
                 .withQueueSizeRejectionThreshold(20))

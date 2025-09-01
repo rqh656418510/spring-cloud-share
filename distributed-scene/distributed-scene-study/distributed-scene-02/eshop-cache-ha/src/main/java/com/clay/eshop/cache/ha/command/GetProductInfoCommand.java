@@ -25,7 +25,7 @@ public class GetProductInfoCommand extends HystrixCommand<ProductInfo> {
     public GetProductInfoCommand(Long productId) {
         super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("ProductServiceGroup"))
             .andCommandKey(COMMAND_KEY)
-            // 线程池的配置
+            // 线程池的配置（默认使用线程池隔离策略）
             .andThreadPoolPropertiesDefaults(HystrixThreadPoolProperties.Setter()
                 .withCoreSize(20)
                 .withQueueSizeRejectionThreshold(20))
@@ -41,7 +41,7 @@ public class GetProductInfoCommand extends HystrixCommand<ProductInfo> {
 
     @Override
     protected ProductInfo run() throws Exception {
-        // 验证熔断机制
+        // 用于触发熔断机制
         if (this.productId == -1L) {
             throw new RuntimeException();
         }

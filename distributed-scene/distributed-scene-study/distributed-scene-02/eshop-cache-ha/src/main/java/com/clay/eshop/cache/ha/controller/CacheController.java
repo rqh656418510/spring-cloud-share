@@ -49,7 +49,7 @@ public class CacheController {
     }
 
     /**
-     * 更新单个商品的缓存数据
+     * 更新单个商品的缓存数据（用于验证熔断机制）
      */
     @RequestMapping("/get/product")
     @ResponseBody
