@@ -1,6 +1,7 @@
 package com.clay.eshop.cache.ha.service;
 
 import com.alibaba.fastjson.JSON;
+import com.clay.eshop.cache.ha.command.GetBrandNameCommand;
 import com.clay.eshop.cache.ha.command.GetCityNameCommand;
 import com.clay.eshop.cache.ha.command.GetProductInfoCommand;
 import com.clay.eshop.cache.ha.command.GetProductInfosCommand;
@@ -19,10 +20,15 @@ public class CacheService {
         GetProductInfoCommand infoCommand = new GetProductInfoCommand(productId);
         ProductInfo productInfo = infoCommand.execute();
 
-        // 从本地缓存获取城市名称
+        // 从本地缓存获取城市名称（使用信号量隔离）
         GetCityNameCommand cityCommand = new GetCityNameCommand(productInfo.getCityId());
         String cityName = cityCommand.execute();
         productInfo.setCityName(cityName);
+
+        // 获取品牌名称（使用降级机制）
+        GetBrandNameCommand brandCommand = new GetBrandNameCommand(productInfo.getBrandId());
+        String brandName = brandCommand.execute();
+        productInfo.setBrandName(brandName);
 
         System.out.println(JSON.toJSONString(productInfo));
         return true;

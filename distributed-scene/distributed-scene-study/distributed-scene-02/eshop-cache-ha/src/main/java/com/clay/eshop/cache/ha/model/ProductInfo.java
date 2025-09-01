@@ -16,6 +16,8 @@ public class ProductInfo {
     private Date modifiedTime;
     private Long cityId;
     private String cityName;
+    private Long brandId;
+    private String brandName;
 
     public Long getId() {
         return id;
@@ -111,5 +113,21 @@ public class ProductInfo {
 
     public void setCityName(String cityName) {
         this.cityName = cityName;
+    }
+
+    public Long getBrandId() {
+        return brandId;
+    }
+
+    public void setBrandId(Long brandId) {
+        this.brandId = brandId;
+    }
+
+    public String getBrandName() {
+        return brandName;
+    }
+
+    public void setBrandName(String brandName) {
+        this.brandName = brandName;
     }
 }

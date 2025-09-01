@@ -8,6 +8,9 @@ import java.util.Map;
  */
 public class LocationCache {
 
+    /**
+     * 本地缓存（模拟Ehcache）
+     */
     private static Map<Long, String> cityMap = new HashMap<Long, String>();
 
     static {
