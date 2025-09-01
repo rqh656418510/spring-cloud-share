@@ -29,13 +29,12 @@ public class GetProductInfoCommand extends HystrixCommand<ProductInfo> {
             .andThreadPoolPropertiesDefaults(HystrixThreadPoolProperties.Setter()
                 .withCoreSize(20)
                 .withQueueSizeRejectionThreshold(20))
-            // 熔断机制的配置
             .andCommandPropertiesDefaults(HystrixCommandProperties.Setter()
+                // 熔断机制的配置
                 .withCircuitBreakerRequestVolumeThreshold(15)
                 .withCircuitBreakerErrorThresholdPercentage(40)
-                .withCircuitBreakerSleepWindowInMilliseconds(6000))
-            // 降级机制的配置
-            .andCommandPropertiesDefaults(HystrixCommandProperties.Setter()
+                .withCircuitBreakerSleepWindowInMilliseconds(6000)
+                // 降级机制的配置
                 .withFallbackIsolationSemaphoreMaxConcurrentRequests(10)));
         this.productId = productId;
     }
