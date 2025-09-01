@@ -1,5 +1,6 @@
 package com.clay.eshop.cache.ha.controller;
 
+import com.clay.eshop.cache.ha.model.ProductInfo;
 import com.clay.eshop.cache.ha.service.CacheService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,6 +46,15 @@ public class CacheController {
     public String changeProducts2(String productIds) {
         cacheService.changeProducts2(productIds);
         return "Products cache update success";
+    }
+
+    /**
+     * 更新单个商品的缓存数据
+     */
+    @RequestMapping("/get/product")
+    @ResponseBody
+    public ProductInfo getProductInfo(Long productId) {
+        return cacheService.getProductInfo(productId);
     }
 
 }

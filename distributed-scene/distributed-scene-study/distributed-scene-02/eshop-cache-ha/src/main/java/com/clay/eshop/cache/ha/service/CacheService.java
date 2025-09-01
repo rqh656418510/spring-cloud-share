@@ -74,4 +74,12 @@ public class CacheService {
         return true;
     }
 
+    /**
+     * 获取商品信息
+     */
+    public ProductInfo getProductInfo(Long productId) {
+        GetProductInfoCommand infoCommand = new GetProductInfoCommand(productId);
+        return infoCommand.execute();
+    }
+
 }

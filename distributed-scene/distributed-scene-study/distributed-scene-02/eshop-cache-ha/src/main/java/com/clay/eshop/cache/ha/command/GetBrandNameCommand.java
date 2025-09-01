@@ -29,7 +29,7 @@ public class GetBrandNameCommand extends HystrixCommand<String> {
 
     @Override
     protected String run() throws Exception {
-        // 直接抛出异常，触发降级机制
+        // 直接抛出异常（模拟远程调用失败），触发降级机制
         throw new RuntimeException();
     }
 

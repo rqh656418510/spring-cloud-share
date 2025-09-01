@@ -29,21 +29,40 @@ public class GetProductInfoCommand extends HystrixCommand<ProductInfo> {
             .andThreadPoolPropertiesDefaults(HystrixThreadPoolProperties.Setter()
                 .withCoreSize(20)
                 .withQueueSizeRejectionThreshold(20))
-            // 断路器的配置
+            // 熔断机制的配置
             .andCommandPropertiesDefaults(HystrixCommandProperties.Setter()
-                .withCircuitBreakerRequestVolumeThreshold(20)
-                .withCircuitBreakerErrorThresholdPercentage(60)
-                .withCircuitBreakerSleepWindowInMilliseconds(6000)));
+                .withCircuitBreakerRequestVolumeThreshold(15)
+                .withCircuitBreakerErrorThresholdPercentage(40)
+                .withCircuitBreakerSleepWindowInMilliseconds(6000))
+            // 降级机制的配置
+            .andCommandPropertiesDefaults(HystrixCommandProperties.Setter()
+                .withFallbackIsolationSemaphoreMaxConcurrentRequests(10)));
         this.productId = productId;
     }
 
     @Override
     protected ProductInfo run() throws Exception {
+        // 验证熔断机制
+        if (this.productId == -1L) {
+            throw new RuntimeException();
+        }
+
         // 调用商品服务的接口，获取商品ID对应的商品的最新数据，用HttpClient去调用商品服务的Http接口
         String url = "http://127.0.0.1:9092/product/info?productId=" + productId;
         System.out.println("Send request by " + url);
         String response = HttpClientUtils.sendGetRequest(url);
         return JSONObject.parseObject(response, ProductInfo.class);
+    }
+
+    /**
+     * 降级逻辑
+     */
+    @Override
+    protected ProductInfo getFallback() {
+        ProductInfo productInfo = new ProductInfo();
+        productInfo.setId(0L);
+        productInfo.setName("降级商品");
+        return productInfo;
     }
 
     /**
