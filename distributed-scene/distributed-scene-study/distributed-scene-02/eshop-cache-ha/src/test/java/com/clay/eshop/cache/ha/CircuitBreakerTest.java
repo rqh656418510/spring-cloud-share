@@ -2,6 +2,9 @@ package com.clay.eshop.cache.ha;
 
 import com.clay.eshop.cache.ha.http.HttpClientUtils;
 
+/**
+ * 测试Hystrix的断路器
+ */
 public class CircuitBreakerTest {
 
     public static void main(String[] args) throws InterruptedException {

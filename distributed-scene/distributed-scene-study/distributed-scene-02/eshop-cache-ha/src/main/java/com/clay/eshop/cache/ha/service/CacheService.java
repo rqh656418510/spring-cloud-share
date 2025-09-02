@@ -75,7 +75,7 @@ public class CacheService {
     }
 
     /**
-     * 获取商品信息
+     * 获取单个商品的数据（用于验证熔断机制）
      */
     public ProductInfo getProductInfo(Long productId) {
         GetProductInfoCommand infoCommand = new GetProductInfoCommand(productId);

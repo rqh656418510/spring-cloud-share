@@ -35,7 +35,9 @@ public class GetProductInfoCommand extends HystrixCommand<ProductInfo> {
                 .withCircuitBreakerErrorThresholdPercentage(40)
                 .withCircuitBreakerSleepWindowInMilliseconds(6000)
                 // 降级机制的配置
-                .withFallbackIsolationSemaphoreMaxConcurrentRequests(10)));
+                .withFallbackIsolationSemaphoreMaxConcurrentRequests(10)
+                // 超时机制配置
+                .withExecutionTimeoutInMilliseconds(2000)));
         this.productId = productId;
     }
 

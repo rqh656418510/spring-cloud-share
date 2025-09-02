@@ -21,9 +21,11 @@ public class GetBrandNameCommand extends HystrixCommand<String> {
             .andThreadPoolPropertiesDefaults(HystrixThreadPoolProperties.Setter()
                 .withCoreSize(20)
                 .withQueueSizeRejectionThreshold(20))
-            // 降级机制的配置
             .andCommandPropertiesDefaults(HystrixCommandProperties.Setter()
-                .withFallbackIsolationSemaphoreMaxConcurrentRequests(10)));
+                // 降级机制的配置
+                .withFallbackIsolationSemaphoreMaxConcurrentRequests(10)
+                // 超时机制配置
+            .withExecutionTimeoutInMilliseconds(2000)));
         this.brandId = brandId;
     }
 
