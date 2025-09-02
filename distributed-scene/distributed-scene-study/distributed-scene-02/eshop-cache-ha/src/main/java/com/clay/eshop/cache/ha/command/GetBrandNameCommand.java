@@ -19,13 +19,14 @@ public class GetBrandNameCommand extends HystrixCommand<String> {
             .andCommandKey(HystrixCommandKey.Factory.asKey("GetBrandNameCommand"))
             // 线程池的配置（默认使用线程池隔离策略）
             .andThreadPoolPropertiesDefaults(HystrixThreadPoolProperties.Setter()
-                .withCoreSize(20)
-                .withQueueSizeRejectionThreshold(20))
+                .withCoreSize(10)
+                .withMaxQueueSize(10)
+                .withQueueSizeRejectionThreshold(8))
             .andCommandPropertiesDefaults(HystrixCommandProperties.Setter()
                 // 降级机制的配置
                 .withFallbackIsolationSemaphoreMaxConcurrentRequests(10)
                 // 超时机制配置
-            .withExecutionTimeoutInMilliseconds(2000)));
+                .withExecutionTimeoutInMilliseconds(3000)));
         this.brandId = brandId;
     }
 

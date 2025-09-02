@@ -3,7 +3,7 @@ package com.clay.eshop.cache.ha;
 import com.clay.eshop.cache.ha.http.HttpClientUtils;
 
 /**
- * 测试Hystrix的断路器
+ * 测试Hystrix的断路器（熔断机制）
  */
 public class CircuitBreakerTest {
 

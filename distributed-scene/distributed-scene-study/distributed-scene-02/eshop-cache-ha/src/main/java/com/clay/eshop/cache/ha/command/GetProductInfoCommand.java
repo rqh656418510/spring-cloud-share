@@ -27,8 +27,9 @@ public class GetProductInfoCommand extends HystrixCommand<ProductInfo> {
             .andCommandKey(COMMAND_KEY)
             // 线程池的配置（默认使用线程池隔离策略）
             .andThreadPoolPropertiesDefaults(HystrixThreadPoolProperties.Setter()
-                .withCoreSize(20)
-                .withQueueSizeRejectionThreshold(20))
+                .withCoreSize(10)
+                .withMaxQueueSize(10)
+                .withQueueSizeRejectionThreshold(8))
             .andCommandPropertiesDefaults(HystrixCommandProperties.Setter()
                 // 熔断机制的配置
                 .withCircuitBreakerRequestVolumeThreshold(15)
@@ -37,7 +38,7 @@ public class GetProductInfoCommand extends HystrixCommand<ProductInfo> {
                 // 降级机制的配置
                 .withFallbackIsolationSemaphoreMaxConcurrentRequests(10)
                 // 超时机制配置
-                .withExecutionTimeoutInMilliseconds(2000)));
+                .withExecutionTimeoutInMilliseconds(3000)));
         this.productId = productId;
     }
 
@@ -46,6 +47,11 @@ public class GetProductInfoCommand extends HystrixCommand<ProductInfo> {
         // 用于触发熔断机制
         if (this.productId == -1L) {
             throw new RuntimeException();
+        }
+
+        // 用于触发限流机制
+        if (this.productId == -2L) {
+            Thread.sleep(2000);
         }
 
         // 调用商品服务的接口，获取商品ID对应的商品的最新数据，用HttpClient去调用商品服务的Http接口
