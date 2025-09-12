@@ -15,7 +15,7 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <artifactId>distributed-scene-02</artifactId>
-    <description>构建缓存服务和商品服务，并使用Hystrix实现高可用</description>
+    <description>构建缓存服务和商品服务，并使用Hystrix实现高可用（主要演示如何使用 Hystrix 的核心功能）</description>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
