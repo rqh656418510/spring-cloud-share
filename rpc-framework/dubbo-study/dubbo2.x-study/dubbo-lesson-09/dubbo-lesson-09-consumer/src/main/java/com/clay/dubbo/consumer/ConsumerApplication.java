@@ -102,7 +102,7 @@ public class ConsumerApplication {
         header[2] = (byte) 0xc6;
         // 响应状态（1 个字节）
         header[3] = 0x00;
-        // 	请求 ID（8 个字节）
+        // 请求 ID（8 个字节）
         byte[] requestId = Bytes.long2bytes(1);
         System.arraycopy(requestId, 0, header, 4, 8);
         // 消息体的长度（4 个字节）
@@ -114,7 +114,7 @@ public class ConsumerApplication {
         System.arraycopy(header, 0, request, 0, header.length);
         System.arraycopy(body, 0, request, header.length, body.length);
 
-        // 发送请求
+        // 发送 RPC 请求
         dubboClient.write(ByteBuffer.wrap(request));
 
         // 获取响应结果
