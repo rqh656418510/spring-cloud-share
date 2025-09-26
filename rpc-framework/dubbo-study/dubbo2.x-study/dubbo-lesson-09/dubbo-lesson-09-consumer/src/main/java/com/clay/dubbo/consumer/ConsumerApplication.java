@@ -75,7 +75,7 @@ public class ConsumerApplication {
         SocketChannel dubboClient = SocketChannel.open();
         dubboClient.connect(new InetSocketAddress(host, port));
 
-        // 发送的数据（消息体）
+        // 发送的数据（消息体），基于 FastJSON 序列化协议
         StringBuffer bodyString = new StringBuffer();
         // Dubbo 协议的版本
         bodyString.append(JSON.toJSONString("2.0.2")).append("\r\n");
