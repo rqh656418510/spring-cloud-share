@@ -56,7 +56,7 @@ public class ConsumerApplication {
         List<String> providerUrls = zkClient.getChildren().forPath(SERVICE_PATH);
 
         if (providerUrls.size() == 0) {
-            System.out.println("服务列表为空，客户端退出");
+            System.out.println("服务地址列表为空，客户端退出");
             System.exit(0);
         }
 
