@@ -16,6 +16,10 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * 根据 Dubbo 协议的报文格式手写 Dubbo 客户端
+ * <p> 为了方便演示，服务提供者（Provider）使用的通信协议为 Dubbo 协议，而序列化协议为 FastJSON，注册中心使用 ZooKeeper。
+ */
 public class ConsumerApplication {
 
     // ZooKeeper 连接地址（多个集群节点使用逗号分割）
@@ -71,20 +75,20 @@ public class ConsumerApplication {
 
         // 获取 Provider 的信息
         URL url = URL.valueOf(decodeUrl);
-        String protocol = url.getProtocol();
-        String host = url.getHost();
-        int port = url.getPort();
-        String path = url.getPath();
+        String protocol = url.getProtocol(); // dubbo
+        String host = url.getHost(); // 192.168.233.1
+        int port = url.getPort(); // 20880
+        String path = url.getPath(); // com.clay.dubbo.service.DemoService
 
         // 创建 TCP 客户端
         SocketChannel dubboClient = SocketChannel.open();
         dubboClient.connect(new InetSocketAddress(host, port));
 
-        // 发送的数据（消息体），基于 FastJSON 序列化协议
+        // 发送的数据（消息体），基于 FastJSON 序列化协议，以下内容必须按顺序组织
         StringBuffer bodyString = new StringBuffer();
         // Dubbo 协议的版本
         bodyString.append(JSON.toJSONString("2.0.2")).append("\r\n");
-        // 接口地址
+        // 接口名称
         bodyString.append(JSON.toJSONString(path)).append("\r\n");
         // 接口版本
         bodyString.append(JSON.toJSONString("0.0.0")).append("\r\n");
