@@ -55,6 +55,11 @@ public class ConsumerApplication {
         CuratorFramework zkClient = getCuratorFramework();
         List<String> providerUrls = zkClient.getChildren().forPath(SERVICE_PATH);
 
+        if (providerUrls.size() == 0) {
+            System.out.println("服务列表为空，客户端退出");
+            System.exit(0);
+        }
+
         // 随机选取一个服务地址
         int index = new Random().nextInt(providerUrls.size());
         String providerUrl = providerUrls.get(index);
