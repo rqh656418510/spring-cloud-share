@@ -37,7 +37,7 @@ services:
 ```
 
 - Nacos 控制台界面的访问地址：`http://127.0.0.1:8848/nacos`，可以是宿主机的 IP 地址
-- Dubbo Admin 控制台界面的访问地址：`http://127.0.0.1:38080`，可以是宿主机的 IP 地址
+- Dubbo Admin 控制台界面的访问地址：`http://127.0.0.1:38080`，可以是宿主机的 IP 地址，登录用户名和密码是 `root / root`
 
 ## Docker Compose 部署 ZooKeeper + Dubbo Admin
 
@@ -76,4 +76,4 @@ services:
 ```
 
 - ZooKeeper 的访问地址：`127.0.0.1:2181`，可以是宿主机的 IP 地址
-- Dubbo Admin 控制台界面的访问地址：`http://127.0.0.1:38080`，可以是宿主机的 IP 地址
+- Dubbo Admin 控制台界面的访问地址：`http://127.0.0.1:38080`，可以是宿主机的 IP 地址，登录用户名和密码是 `root / root`
