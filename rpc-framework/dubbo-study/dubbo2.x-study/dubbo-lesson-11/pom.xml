@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <name>dubbo-lesson-04</name>
-    <description>Mock 结合 Dubbo-Admin + Nacos 使用，实现动态服务降级</description>
+    <description>Mock 结合 Dubbo-Admin + Nacos 使用，实现动态服务降级，Nacos Server 的版本要求 2.5.0 左右</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
