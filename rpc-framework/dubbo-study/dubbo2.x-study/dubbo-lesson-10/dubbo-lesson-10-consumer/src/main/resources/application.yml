@@ -12,6 +12,11 @@ dubbo:
   # 注册中心地址
   registry:
     address: zookeeper://192.168.2.235:2181
+  # 配置中心地址
+  config-center:
+    address: zookeeper://192.168.2.235:2181
+    # 允许动态刷新配置
+    dynamic: true
   # 元数据中心地址
   metadata-report:
     address: zookeeper://192.168.2.235:2181
