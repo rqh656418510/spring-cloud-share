@@ -45,7 +45,7 @@ services:
 version: '3.5'
 services:
   zookeeper:
-    image: zookeeper:3.8.4
+    image: zookeeper:3.5.7
     container_name: zookeeper
     restart: always
     environment:

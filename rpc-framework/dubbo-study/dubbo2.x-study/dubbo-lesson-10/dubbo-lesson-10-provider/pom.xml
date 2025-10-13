@@ -49,7 +49,7 @@
             <artifactId>dubbo-spring-boot-starter</artifactId>
             <version>${dubbo.version}</version>
         </dependency>
-        <!-- ZooKeeper -->
+        <!-- ZooKeeper Server 的版本要求 3.8.4 左右 -->
         <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-registry-zookeeper</artifactId>

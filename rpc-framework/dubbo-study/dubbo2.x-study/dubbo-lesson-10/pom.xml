@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <name>dubbo-lesson-04</name>
-    <description>Mock 结合 Dubbo-Admin + ZooKeeper 使用，实现动态服务降级</description>
+    <description>Mock 结合 Dubbo-Admin + ZooKeeper 使用，实现动态服务降级，ZooKeeper Server 的版本要求 3.8.4 左右</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
