@@ -14,10 +14,7 @@ dubbo:
     qos-accept-foreign-ip: false
   # 注册中心地址
   registry:
-    address: zookeeper://192.168.2.235:2181
-  # 元数据中心地址
-  metadata-report:
-    address: zookeeper://192.168.2.235:2181
+    address: zookeeper://192.168.2.140:2181
   # 服务提供者的协议
   protocol:
     name: dubbo
