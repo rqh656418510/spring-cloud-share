@@ -18,6 +18,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <spring-boot.version>2.7.18</spring-boot.version>
         <dubbo-springboot.version>2.7.23</dubbo-springboot.version>
+        <dubbo-mock-admin.version>3.0.0</dubbo-mock-admin.version>
         <curator.version>5.5.0</curator.version>
     </properties>
 
@@ -48,6 +49,12 @@
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-spring-boot-starter</artifactId>
             <version>${dubbo-springboot.version}</version>
+        </dependency>
+        <!-- Dubbo Mock + Dubbo Admin -->
+        <dependency>
+            <groupId>org.apache.dubbo.extensions</groupId>
+            <artifactId>dubbo-mock-admin</artifactId>
+            <version>${dubbo-mock-admin.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.curator</groupId>

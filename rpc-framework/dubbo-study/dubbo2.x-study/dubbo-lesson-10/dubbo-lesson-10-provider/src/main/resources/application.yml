@@ -12,10 +12,14 @@ dubbo:
   # 注册中心地址
   registry:
     address: zookeeper://192.168.2.235:2181
+  # 元数据中心地址
+  metadata-report:
+    address: zookeeper://192.168.2.235:2181
   # 服务提供者的协议
   protocol:
     name: dubbo
     port: 20880
+    host: 192.168.2.140   # 指定暴露服务时的主机 IP，可选（解决容器运行问题）
   # 扫描 Dubbo 相关的注解
   scan:
     base-packages: com.clay.dubbo.provider

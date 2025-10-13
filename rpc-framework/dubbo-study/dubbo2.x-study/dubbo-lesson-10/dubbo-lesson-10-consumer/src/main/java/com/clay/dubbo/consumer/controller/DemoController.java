@@ -19,6 +19,7 @@ public class DemoController {
      * <p> 超时毫秒数 timeout 可以统一在 application.yml 进行配置，也可以在具体服务上做个性化配置
      */
     @DubboReference(loadbalance = "random")
+    // @DubboReference(loadbalance = "random", mock="force:return fake")
     private DemoService demoService;
 
     @GetMapping("/sayHello/{name}")

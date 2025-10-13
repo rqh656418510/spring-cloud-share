@@ -15,7 +15,12 @@
     - [Dubbo 2 巩固教程之一](https://www.techgrow.cn/posts/ef04d10a.html)
     - [Dubbo 2 巩固教程之二](https://www.techgrow.cn/posts/b6d5fbb8.html)
 
-## 版本说明
+## 中间件的版本说明
+
+- Nacos Server `2.5.0`  作为注册中心
+- Dubbo Admin `0.6.0`  用于治理 Dubbo 服务
+
+## Maven 坐标的版本说明
 
 - 案例代码兼容的高版本（依赖 JDK 1.8+）
 
