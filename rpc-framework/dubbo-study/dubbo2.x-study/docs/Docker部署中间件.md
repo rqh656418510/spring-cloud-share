@@ -26,7 +26,7 @@ services:
       - dubbo.application.name=dubbo-admin
       - dubbo.registry.address=nacos://127.0.0.1::8848
       - spring.h2.console.enabled=true
-      - spring.datasource.url=jdbc:h2:file:/dubbo-admin/data/dubbo-admin-db;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=TRUE
+      - spring.datasource.url=jdbc:h2:file:/dubbo-admin/data/dubbo-admin-db;MODE=MYSQL;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=TRUE
       - spring.datasource.driver-class-name=org.h2.Driver
       - spring.datasource.username=sa
       - spring.datasource.password=
