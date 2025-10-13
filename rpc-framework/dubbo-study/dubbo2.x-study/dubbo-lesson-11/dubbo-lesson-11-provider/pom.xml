@@ -5,20 +5,19 @@
 
     <parent>
         <groupId>com.clay.dubbo</groupId>
-        <artifactId>dubbo-lesson-10</artifactId>
+        <artifactId>dubbo-lesson-11</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>dubbo-lesson-10-provider</artifactId>
-    <name>dubbo-lesson-10-provider</name>
+    <artifactId>dubbo-lesson-11-provider</artifactId>
+    <name>dubbo-lesson-11-provider</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <spring-boot.version>2.7.18</spring-boot.version>
-        <dubbo-springboot.version>2.7.23</dubbo-springboot.version>
-        <curator.version>5.5.0</curator.version>
+        <dubbo.version>2.7.23</dubbo.version>
     </properties>
 
     <dependencyManagement>
@@ -37,7 +36,7 @@
     <dependencies>
         <dependency>
             <groupId>com.clay.dubbo</groupId>
-            <artifactId>dubbo-lesson-10-api</artifactId>
+            <artifactId>dubbo-lesson-11-api</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
@@ -48,13 +47,13 @@
         <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-spring-boot-starter</artifactId>
-            <version>${dubbo-springboot.version}</version>
+            <version>${dubbo.version}</version>
         </dependency>
-        <!-- ZooKeeper -->
+        <!-- Nacos -->
         <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-recipes</artifactId>
-            <version>${curator.version}</version>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-registry-nacos</artifactId>
+            <version>${dubbo.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>

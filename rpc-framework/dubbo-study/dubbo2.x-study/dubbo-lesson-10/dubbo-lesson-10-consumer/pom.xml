@@ -45,6 +45,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <!-- Dubbo -->
         <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-spring-boot-starter</artifactId>
@@ -56,6 +57,7 @@
             <artifactId>dubbo-mock-admin</artifactId>
             <version>${dubbo-mock-admin.version}</version>
         </dependency>
+        <!-- ZooKeeper -->
         <dependency>
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-recipes</artifactId>

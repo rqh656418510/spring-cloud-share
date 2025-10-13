@@ -18,6 +18,7 @@
 ## 中间件的版本说明
 
 - Nacos Server `2.5.0`  作为注册中心
+- ZooKeeper Server `3.5.7` 作为注册中心
 - Dubbo Admin `0.6.0`  用于治理 Dubbo 服务
 
 ## Maven 坐标的版本说明
