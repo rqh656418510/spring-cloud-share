@@ -14,7 +14,7 @@ dubbo:
     qos-accept-foreign-ip: false
   # 注册中心地址
   registry:
-    address: nacos://192.168.2.235:8848
+    address: nacos://192.168.2.140:8848
   # 服务提供者的协议
   protocol:
     name: dubbo
