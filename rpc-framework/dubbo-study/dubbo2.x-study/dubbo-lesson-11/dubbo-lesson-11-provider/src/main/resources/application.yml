@@ -9,12 +9,15 @@ dubbo:
   # 服务信息
   application:
     name: ${spring.application.name}
+    qos-enable: false
+    qos-port: 22222
+    qos-accept-foreign-ip: false
   # 注册中心地址
   registry:
-    address: nacos://192.168.2.235:8848
+    address: nacos://192.168.2.140:8848
   # 元数据中心地址
   metadata-report:
-    address: nacos://192.168.2.235:8848
+    address: nacos://192.168.2.140:8848
   # 服务提供者的协议
   protocol:
     name: dubbo
