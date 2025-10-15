@@ -9,7 +9,7 @@
     <packaging>pom</packaging>
 
     <name>dubbo-lesson-12</name>
-    <description>Dubbo 高级特性使用（基于 Spring + SpringMVC + Dubbo 注解），包括延迟暴露、并发控制、连接控制、令牌验证、调用结果缓存</description>
+    <description>Dubbo 高级特性使用（基于 Spring + SpringMVC + Dubbo 注解），包括延迟暴露、线程池、连接控制、令牌验证、调用结果缓存</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
