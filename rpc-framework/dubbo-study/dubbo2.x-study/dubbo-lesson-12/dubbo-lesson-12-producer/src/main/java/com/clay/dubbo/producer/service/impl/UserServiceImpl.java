@@ -7,13 +7,8 @@ import org.apache.dubbo.config.annotation.DubboService;
 /**
  * 暴露 Dubbo 服务
  */
-@DubboService
+@DubboService(executes = 2)
 public class UserServiceImpl implements UserService {
-
-    @Override
-    public String sayHello(String name) {
-        return "Hello " + name;
-    }
 
     @Override
     public User getById(Long id) {

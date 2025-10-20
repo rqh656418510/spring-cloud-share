@@ -15,13 +15,8 @@ public class UserController {
     /**
      * 引用 Dubbo 服务
      */
-    @DubboReference
+    @DubboReference(actives = 2)
     private UserService userService;
-
-    @GetMapping("/sayHello/{name}")
-    public String sayHello(@PathVariable("name") String name) {
-        return userService.sayHello(name);
-    }
 
     @GetMapping("/getById/{id}")
     public User getById(@PathVariable("id") Long id) {
