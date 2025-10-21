@@ -11,13 +11,13 @@ import java.util.concurrent.Executors;
 public class ConcurrentTest {
 
     public static void main(String[] args) throws Exception {
-        concurrent();
+        multiThreadTest();
     }
 
     /**
-     * 并发控制测试
+     * 多个线程测试
      */
-    public static void concurrent() throws Exception {
+    public static void multiThreadTest() throws Exception {
         ExecutorService pool = Executors.newFixedThreadPool(10);
         CountDownLatch latch = new CountDownLatch(10);
 

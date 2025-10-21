@@ -26,6 +26,9 @@
     <!-- 配置服务协议，添加并发控制的配置 -->
     <dubbo:protocol name="dubbo" port="20880" dispatcher="all" threadpool="fixed" threads="100"/>
 
+    <!-- 连接控制，限制 Provider 端的最大连接数 -->
+    <dubbo:provider accepts="5"/>
+
     <!-- 开启 Dubbo 的注解扫描 -->
     <dubbo:annotation package="com.clay.dubbo.producer"/>
 

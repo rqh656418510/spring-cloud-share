@@ -15,7 +15,8 @@ public class UserController {
     /**
      * 引用 Dubbo 服务
      */
-    @DubboReference(actives = 2)
+    // @DubboReference(actives = 2)  // 并发控制
+    @DubboReference(connections = 2, sticky = true)  // 连接控制
     private UserService userService;
 
     @GetMapping("/getById/{id}")
