@@ -9,13 +9,13 @@ dubbo:
   # 服务信息
   application:
     name: ${spring.application.name}
-  # 注册中心地址
+  # 注册中心地址（直连）
   registry:
-    address: zookeeper://192.168.2.235:2181
+    address: N/A
   # 服务提供者的协议
   protocol:
-    name: dubbo
-    port: 20880
+    name: rmi
+    port: 1099
   # 扫描 Dubbo 相关的注解
   scan:
     base-packages: com.clay.dubbo.provider
