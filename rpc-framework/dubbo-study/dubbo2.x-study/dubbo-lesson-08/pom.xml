@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <name>dubbo-lesson-08</name>
-    <description>Dubbo 支持 REST 协议（基于 SpringBoot）</description>
+    <description>Dubbo 使用 REST 通信协议（基于 SpringBoot）</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

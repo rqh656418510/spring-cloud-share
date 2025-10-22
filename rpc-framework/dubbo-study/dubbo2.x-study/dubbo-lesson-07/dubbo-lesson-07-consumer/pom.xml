@@ -57,7 +57,7 @@
             <artifactId>dubbo</artifactId>
             <version>${dubbo.version}</version>
         </dependency>
-        <!--Dubbo 支持 REST 协议-->
+        <!--Dubbo 使用 REST 通信协议-->
         <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-rpc-rest</artifactId>
