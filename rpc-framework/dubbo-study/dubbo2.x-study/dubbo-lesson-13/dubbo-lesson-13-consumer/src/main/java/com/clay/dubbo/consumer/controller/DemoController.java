@@ -18,7 +18,7 @@ public class DemoController {
      * <p> 重试次数 retries 可以统一在 application.yml 进行配置，但是对于增删改等非幂等操作，建议不要重试
      * <p> 超时毫秒数 timeout 可以统一在 application.yml 进行配置，也可以在具体服务上做个性化配置
      */
-    @DubboReference(url = "rmi://127.0.0.1:1099")
+    @DubboReference
     private DemoService demoService;
 
     @GetMapping("/sayHello/{name}")
