@@ -4,10 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.clay.dubbo</groupId>
-    <artifactId>dubbo-study</artifactId>
+    <artifactId>dubbo-lesson-14</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>dubbo-study</name>
+
+    <name>dubbo-lesson-14</name>
+    <description>Dubbo 使用 Thrift 通信协议</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -16,20 +18,9 @@
     </properties>
 
     <modules>
-        <module>dubbo-lesson-01</module>
-        <module>dubbo-lesson-02</module>
-        <module>dubbo-lesson-03</module>
-        <module>dubbo-lesson-04</module>
-        <module>dubbo-lesson-05</module>
-        <module>dubbo-lesson-06</module>
-        <module>dubbo-lesson-07</module>
-        <module>dubbo-lesson-08</module>
-        <module>dubbo-lesson-09</module>
-        <module>dubbo-lesson-10</module>
-        <module>dubbo-lesson-11</module>
-        <module>dubbo-lesson-12</module>
-        <module>dubbo-lesson-13</module>
-        <module>dubbo-lesson-14</module>
+        <module>dubbo-lesson-14-api</module>
+        <module>dubbo-lesson-14-provider</module>
+        <module>dubbo-lesson-14-consumer</module>
     </modules>
 
 </project>
