@@ -1,8 +1,9 @@
 package com.clay.dubbo.consumer.controller;
 
-import com.clay.dubbo.service.DemoService;
+import com.clay.dubbo.thrift.DemoThrift;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;
+import org.apache.thrift.TException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,10 +20,10 @@ public class DemoController {
      * <p> 超时毫秒数 timeout 可以统一在 application.yml 进行配置，也可以在具体服务上做个性化配置
      */
     @DubboReference
-    private DemoService demoService;
+    private DemoThrift.Iface demoService;
 
     @GetMapping("/sayHello/{name}")
-    public String sayHello(@PathVariable("name") String name) {
+    public String sayHello(@PathVariable("name") String name) throws TException {
         String result = demoService.sayHello(name);
         log.info("===> " + result);
         return result;

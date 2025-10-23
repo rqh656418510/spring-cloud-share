@@ -16,6 +16,15 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <dubbo.version>2.7.23</dubbo.version>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-rpc-thrift</artifactId>
+            <version>${dubbo.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>
