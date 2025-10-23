@@ -24,7 +24,18 @@
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-rpc-thrift</artifactId>
             <version>${dubbo.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.dubbo</groupId>
+                    <artifactId>dubbo-common</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.dubbo</groupId>
+                    <artifactId>dubbo-remoting-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
+
     </dependencies>
 
 </project>

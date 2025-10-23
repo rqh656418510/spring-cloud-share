@@ -16,7 +16,6 @@ dubbo:
   protocol:
     name: thrift
     port: 3030
-    host: 192.168.2.140
   # 扫描 Dubbo 相关的注解
   scan:
     base-packages: com.clay.dubbo.provider
