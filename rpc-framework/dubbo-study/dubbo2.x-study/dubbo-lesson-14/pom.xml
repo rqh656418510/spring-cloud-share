@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <name>dubbo-lesson-14</name>
-    <description>Dubbo 使用 Thrift 通信协议</description>
+    <description>Dubbo 使用 Thrift 通信协议（尚未通过测试验证，RPC 调用会出现超时问题）</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
