@@ -17,3 +17,4 @@
     - [Dubbo 2 巩固教程之一](https://www.techgrow.cn/posts/ef04d10a.html)
     - [Dubbo 2 巩固教程之二](https://www.techgrow.cn/posts/b6d5fbb8.html)
     - [Dubbo 2 巩固教程之三](https://www.techgrow.cn/posts/ea9ce835.html)
+    - [Dubbo 2 巩固教程之四](https://www.techgrow.cn/posts/a64e842b.html)
