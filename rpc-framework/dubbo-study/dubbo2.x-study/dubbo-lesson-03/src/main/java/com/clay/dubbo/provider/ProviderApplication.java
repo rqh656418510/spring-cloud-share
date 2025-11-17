@@ -4,6 +4,7 @@ import com.clay.dubbo.provider.service.DemoServiceImpl;
 import com.clay.dubbo.service.DemoService;
 import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.ProtocolConfig;
+import org.apache.dubbo.config.ProviderConfig;
 import org.apache.dubbo.config.RegistryConfig;
 import org.apache.dubbo.config.ServiceConfig;
 
@@ -35,6 +36,9 @@ public class ProviderApplication {
         protocolConfig.setPort(20880);
         protocolConfig.setThreads(200);
 
+        // 服务提供者的全局配置（默认配置）
+        ProviderConfig providerConfig = new ProviderConfig();
+
         // 服务配置
         // ServiceConfig 内部封装了与注册中心的连接，以及开启服务端口
         // ServiceConfig 实例很重，请自行缓存，否则可能会造成内存和连接泄漏
@@ -42,6 +46,7 @@ public class ProviderApplication {
         service.setApplication(applicationConfig);
         service.setRegistry(registryConfig);
         service.setProtocol(protocolConfig);
+        service.setProvider(providerConfig);
         service.setInterface(DemoService.class);
         service.setRef(demoService);
         service.setVersion("1.0.0");
