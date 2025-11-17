@@ -9,8 +9,8 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>dubbo-lesson-16-provider</artifactId>
-    <name>dubbo-lesson-16-provider</name>
+    <artifactId>dubbo-lesson-16-provider-02</artifactId>
+    <name>dubbo-lesson-16-provider-02</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

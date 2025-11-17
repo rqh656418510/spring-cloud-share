@@ -28,4 +28,11 @@ public class DemoController {
         return result;
     }
 
+    @GetMapping("/sayHi/{name}")
+    public String sayHi(@PathVariable("name") String name) {
+        String result = demoService.sayHi(name);
+        log.info("===> " + result);
+        return result;
+    }
+
 }

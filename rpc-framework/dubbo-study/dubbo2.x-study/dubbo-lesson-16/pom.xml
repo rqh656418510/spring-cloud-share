@@ -19,8 +19,9 @@
 
     <modules>
         <module>dubbo-lesson-16-api</module>
-        <module>dubbo-lesson-16-provider</module>
         <module>dubbo-lesson-16-consumer</module>
+        <module>dubbo-lesson-16-provider-01</module>
+        <module>dubbo-lesson-16-provider-02</module>
     </modules>
 
 </project>
