@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <name>dubbo-lesson-04</name>
-    <description>Dubbo 路由规则使用，并通过 Dubbo Admin 实现动态路由</description>
+    <description>Dubbo 条件路由规则、标签路由规则的使用，并通过 Dubbo Admin 实现路由规则的动态调整</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
