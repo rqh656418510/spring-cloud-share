@@ -46,8 +46,8 @@ class ReadWriteTest {
      */
     @Test
     public void testLoadBalance() {
-        List<User> users1 = userMapper.selectList(null); // 执行第一次查询，路由到 slave1 库
-        List<User> users2 = userMapper.selectList(null); // 执行第二次查询，路由到 slave2 库
+        List<User> users1 = userMapper.selectList(null); // 采用轮询负载均衡算法时，执行第一次查询会路由到 slave1 库
+        List<User> users2 = userMapper.selectList(null); // 采用轮询负载均衡算法时，执行第二次查询会路由到 slave2 库
     }
 
 }
