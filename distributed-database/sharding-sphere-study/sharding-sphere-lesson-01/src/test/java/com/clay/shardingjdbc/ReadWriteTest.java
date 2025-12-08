@@ -28,8 +28,8 @@ class ReadWriteTest {
     }
 
     /**
-     * 事务测试 <p>
-     * 当使用 @Transactional 事务注解后，所有 SQL 语句（包括读和写）都只在主库执行
+     * 事务一致性测试 <p>
+     * 当使用 @Transactional 事务注解后，所有 SQL 语句（包括读和写）都是在主库（master）执行
      */
     @Test
     @Transactional
