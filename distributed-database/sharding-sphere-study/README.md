@@ -6,6 +6,5 @@
 
 ## 博客教程
 
-- ShardingSphere 入门教程
-    - [ShardingSphere 入门教程之一](https://www.techgrow.cn/posts/8bb72991.html)
-    - [ShardingSphere 入门教程之二](https://www.techgrow.cn/posts/8dc5e7ed.html)
+- [ShardingSphere 入门教程之一](https://www.techgrow.cn/posts/8bb72991.html)
+- [ShardingSphere 入门教程之二](https://www.techgrow.cn/posts/8dc5e7ed.html)
