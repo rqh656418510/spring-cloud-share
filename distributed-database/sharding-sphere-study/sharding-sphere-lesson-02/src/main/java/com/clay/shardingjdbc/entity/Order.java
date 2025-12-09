@@ -7,7 +7,7 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 
-@TableName("t_order")
+@TableName("t_order") // 逻辑表名
 @Data
 public class Order {
 

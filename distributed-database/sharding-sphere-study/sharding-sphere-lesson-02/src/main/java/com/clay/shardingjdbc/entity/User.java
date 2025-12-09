@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
-@TableName("t_user")
+@TableName("t_user") // 逻辑表名
 @Data
 public class User {
 
