@@ -10,6 +10,7 @@
 
     <modules>
         <module>sharding-sphere-lesson-01</module>
+        <module>sharding-sphere-lesson-02</module>
     </modules>
 
 </project>

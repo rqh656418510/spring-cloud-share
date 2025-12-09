@@ -1,8 +1,5 @@
-## 数据库初始化
+-- 在 MySQL 主库（`Master`）中，执行以下 SQL 语句：
 
-- 在 MySQL 主库（`master`）中，执行以下 SQL 语句：
-
-``` sql
 -- 创建数据库
 CREATE DATABASE db_user;
 
@@ -19,4 +16,3 @@ CREATE TABLE t_user (
 -- 插入表数据
 INSERT INTO t_user(uname) VALUES('zhang3');
 INSERT INTO t_user(uname) VALUES(@@hostname);
-```
