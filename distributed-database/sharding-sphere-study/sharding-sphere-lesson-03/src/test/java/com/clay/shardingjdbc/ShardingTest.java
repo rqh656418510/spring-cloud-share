@@ -19,7 +19,7 @@ class ShardingTest {
      */
     @Test
     public void testInsertOrder() {
-        for (int i = 1; i <= 2; i++) {
+        for (int i = 1; i <= 5; i++) {
             Order order = new Order();
             order.setOrderNo("0001");
             order.setUserId((long) i);
