@@ -19,11 +19,13 @@ class ShardingTest {
      */
     @Test
     public void testInsertOrder() {
-        Order order = new Order();
-        order.setOrderNo("0001");
-        order.setUserId(1L);
-        order.setAmount(new BigDecimal(100));
-        orderMapper.insert(order);
+        for (int i = 1; i <= 2; i++) {
+            Order order = new Order();
+            order.setOrderNo("0001");
+            order.setUserId((long) i);
+            order.setAmount(new BigDecimal(100));
+            orderMapper.insert(order);
+        }
     }
 
 }
