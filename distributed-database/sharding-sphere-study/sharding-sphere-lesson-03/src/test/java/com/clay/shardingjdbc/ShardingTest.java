@@ -21,7 +21,7 @@ class ShardingTest {
     public void testInsertOrder() {
         for (int i = 1; i <= 5; i++) {
             Order order = new Order();
-            order.setOrderNo("0001");
+            order.setOrderNo("000" + i);
             order.setUserId((long) i);
             order.setAmount(new BigDecimal(100));
             orderMapper.insert(order);
