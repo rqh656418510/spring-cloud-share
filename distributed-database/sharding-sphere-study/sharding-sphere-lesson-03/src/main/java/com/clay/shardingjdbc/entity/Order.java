@@ -11,8 +11,11 @@ import java.math.BigDecimal;
 @Data
 public class Order {
 
-    // 使用分布式全局唯一 ID 作为主键
-    @TableId(type = IdType.ASSIGN_ID)
+    /**
+     * 当项目中配置了 ShardingSphere-JDBC 的分布式序列策略时，会自动使用 ShardingSphere-JDBC 的分布式序列策略
+     * 当项目中没有配置 ShardingSphere-JDBC 的分布式序列策略时，自动依赖数据库的主键自增策略
+     */
+    @TableId(type = IdType.AUTO)
     private Long id;
 
     private String orderNo;
