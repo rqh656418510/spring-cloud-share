@@ -19,19 +19,17 @@ class ShardingTest {
      */
     @Test
     public void testInsertBroadcast() {
-
         Dict dict = new Dict();
-        dict.setDictType("type1");
+        dict.setDictType("BeiJing");
         dictMapper.insert(dict);
     }
 
     /**
-     * 水平分库之广播表：查询操作，只从一个节点获取数据（基于随机负载均衡规则）
+     * 水平分库之广播表：查询 t_dict 表中的所有数据，只从任意一个节点查询数据（基于随机负载均衡规则）
      */
     @Test
     public void testSelectBroadcast() {
         List<Dict> dicts = dictMapper.selectList(null);
-        dicts.forEach(System.out::println);
     }
 
 }
