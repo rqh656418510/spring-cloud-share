@@ -6,7 +6,7 @@ CREATE DATABASE db_order;
 -- 切换数据库
 USE db_order;
 
--- 创建表（不能使用数据库的自增主键，否则不同库不同表之间会发生主键冲突）
+-- 创建表（水平分库时不能使用数据库的自增主键，否则不同库不同表之间会发生主键冲突）
 CREATE TABLE t_order0 (
   id BIGINT,
   order_no VARCHAR(30),
@@ -15,7 +15,7 @@ CREATE TABLE t_order0 (
   PRIMARY KEY(id) 
 );
 
--- 创建表（不能使用数据库的自增主键，否则不同库不同表之间会发生主键冲突）
+-- 创建表（水平分库时不能使用数据库的自增主键，否则不同库不同表之间会发生主键冲突）
 CREATE TABLE t_order1 (
   id BIGINT,
   order_no VARCHAR(30),
@@ -24,7 +24,7 @@ CREATE TABLE t_order1 (
   PRIMARY KEY(id) 
 );
 
--- 创建表（不能使用数据库的自增主键，否则不同库不同表之间会发生主键冲突）
+-- 创建表（水平分库时不能使用数据库的自增主键，否则不同库不同表之间会发生主键冲突）
 CREATE TABLE t_order_item0(
     id BIGINT,
     order_no VARCHAR(30),
@@ -34,7 +34,7 @@ CREATE TABLE t_order_item0(
     PRIMARY KEY(id)
 );
 
--- 创建表（不能使用数据库的自增主键，否则不同库不同表之间会发生主键冲突）
+-- 创建表（水平分库时不能使用数据库的自增主键，否则不同库不同表之间会发生主键冲突）
 CREATE TABLE t_order_item1(
     id BIGINT,
     order_no VARCHAR(30),
@@ -52,7 +52,7 @@ CREATE DATABASE db_order;
 -- 切换数据库
 USE db_order;
 
--- 创建表（不能使用数据库的自增主键，否则不同库不同表之间会发生主键冲突）
+-- 创建表（水平分库时不能使用数据库的自增主键，否则不同库不同表之间会发生主键冲突）
 CREATE TABLE t_order0 (
   id BIGINT,
   order_no VARCHAR(30),
@@ -61,7 +61,7 @@ CREATE TABLE t_order0 (
   PRIMARY KEY(id) 
 );
 
--- 创建表（不能使用数据库的自增主键，否则不同库不同表之间会发生主键冲突）
+-- 创建表（水平分库时不能使用数据库的自增主键，否则不同库不同表之间会发生主键冲突）
 CREATE TABLE t_order1 (
   id BIGINT,
   order_no VARCHAR(30),
@@ -70,7 +70,7 @@ CREATE TABLE t_order1 (
   PRIMARY KEY(id) 
 );
 
--- 创建表（不能使用数据库的自增主键，否则不同库不同表之间会发生主键冲突）
+-- 创建表（水平分库时不能使用数据库的自增主键，否则不同库不同表之间会发生主键冲突）
 CREATE TABLE t_order_item0(
     id BIGINT,
     order_no VARCHAR(30),
@@ -80,7 +80,7 @@ CREATE TABLE t_order_item0(
     PRIMARY KEY(id)
 );
 
--- 创建表（不能使用数据库的自增主键，否则不同库不同表之间会发生主键冲突）
+-- 创建表（水平分库时不能使用数据库的自增主键，否则不同库不同表之间会发生主键冲突）
 CREATE TABLE t_order_item1(
     id BIGINT,
     order_no VARCHAR(30),

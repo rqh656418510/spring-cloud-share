@@ -13,6 +13,8 @@
         <module>sharding-sphere-lesson-02</module>
         <module>sharding-sphere-lesson-03</module>
         <module>sharding-sphere-lesson-04</module>
+        <module>sharding-sphere-lesson-05</module>
+        <module>sharding-sphere-lesson-06</module>
     </modules>
 
 </project>
