@@ -20,7 +20,8 @@ class ShardingTest {
     OrderItemMapper orderItemMapper;
 
     /**
-     * 水平分库之多表关联：插入数据测试
+     * 水平分库之多表关联：插入数据测试 <p>
+     * 同一个用户的订单表和订单详情表中的数据会插入到同一个数据源中，这样可以避免跨库关联
      */
     @Test
     public void testInsertOrder() {
