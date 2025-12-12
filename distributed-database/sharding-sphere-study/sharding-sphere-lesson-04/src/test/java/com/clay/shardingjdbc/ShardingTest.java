@@ -1,14 +1,14 @@
 package com.clay.shardingjdbc;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.clay.shardingjdbc.entity.Order;
+import com.clay.shardingjdbc.entity.OrderItem;
+import com.clay.shardingjdbc.mapper.OrderItemMapper;
 import com.clay.shardingjdbc.mapper.OrderMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 @SpringBootTest
 class ShardingTest {
@@ -16,38 +16,29 @@ class ShardingTest {
     @Autowired
     OrderMapper orderMapper;
 
+    @Autowired
+    OrderItemMapper orderItemMapper;
+
     /**
-     * 水平分库：插入数据测试
+     * 水平分库之多表关联：插入数据测试
      */
     @Test
     public void testInsertOrder() {
-        for (int i = 1; i <= 5; i++) {
+        for (int i = 1; i <= 3; i++) {
             Order order = new Order();
             order.setOrderNo("000" + i);
             order.setUserId((long) i);
-            order.setAmount(new BigDecimal(100));
             orderMapper.insert(order);
+
+            for (int j = 1; j <= 2; j++) {
+                OrderItem orderItem = new OrderItem();
+                orderItem.setOrderNo("000" + i);
+                orderItem.setUserId((long) i);
+                orderItem.setPrice(new BigDecimal(10));
+                orderItem.setCount(2);
+                orderItemMapper.insert(orderItem);
+            }
         }
-    }
-
-    /**
-     * 水平分库：查询所有数据 <br>
-     * 查询了两个数据源，每个数据源中使用 UNION ALL 连接两个表
-     */
-    @Test
-    public void testShardingSelectAll() {
-        List<Order> orders = orderMapper.selectList(null);
-    }
-
-    /**
-     * 水平分库：根据 user_id 查询记录 <br>
-     * 查询了一个数据源，每个数据源中使用 UNION ALL 连接两个表
-     */
-    @Test
-    public void testShardingSelectByUserId() {
-        QueryWrapper<Order> orderQueryWrapper = new QueryWrapper<>();
-        orderQueryWrapper.eq("user_id", 1L);
-        List<Order> orders = orderMapper.selectList(orderQueryWrapper);
     }
 
 }

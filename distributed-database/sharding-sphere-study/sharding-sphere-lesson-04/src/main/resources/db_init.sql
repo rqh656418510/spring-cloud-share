@@ -24,6 +24,26 @@ CREATE TABLE t_order1 (
   PRIMARY KEY(id) 
 );
 
+-- 创建表（不能使用数据库的自增主键，否则不同库不同表之间会发生主键冲突）
+CREATE TABLE t_order_item0(
+    id BIGINT,
+    order_no VARCHAR(30),
+    user_id BIGINT,
+    price DECIMAL(10,2),
+    `count` INT,
+    PRIMARY KEY(id)
+);
+
+-- 创建表（不能使用数据库的自增主键，否则不同库不同表之间会发生主键冲突）
+CREATE TABLE t_order_item1(
+    id BIGINT,
+    order_no VARCHAR(30),
+    user_id BIGINT,
+    price DECIMAL(10,2),
+    `count` INT,
+    PRIMARY KEY(id)
+);
+
 -- 在订单数据库服务器二（server-order1）中，执行以下 SQL 语句：
 
 -- 创建数据库
@@ -49,3 +69,24 @@ CREATE TABLE t_order1 (
   amount DECIMAL(10,2),
   PRIMARY KEY(id) 
 );
+
+-- 创建表（不能使用数据库的自增主键，否则不同库不同表之间会发生主键冲突）
+CREATE TABLE t_order_item0(
+    id BIGINT,
+    order_no VARCHAR(30),
+    user_id BIGINT,
+    price DECIMAL(10,2),
+    `count` INT,
+    PRIMARY KEY(id)
+);
+
+-- 创建表（不能使用数据库的自增主键，否则不同库不同表之间会发生主键冲突）
+CREATE TABLE t_order_item1(
+    id BIGINT,
+    order_no VARCHAR(30),
+    user_id BIGINT,
+    price DECIMAL(10,2),
+    `count` INT,
+    PRIMARY KEY(id)
+);
+
