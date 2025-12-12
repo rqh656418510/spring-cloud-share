@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
-@TableName("t_dict") // 逻辑表名
+@TableName("t_dict") // 真实表名
 @Data
 public class Dict {
 
@@ -16,6 +16,22 @@ public class Dict {
     @TableId(type = IdType.ASSIGN_ID)
     private Long id;
 
+    /**
+     * 字典类型 <br>
+     * 例如: gender / order_status
+     */
     private String dictType;
+
+    /**
+     * 字典编码 <br>
+     * 例如: male / pending
+     */
+    private String dictCode;
+
+    /**
+     * 字典显示值 <br>
+     * 例如: 男 / 待支付
+     */
+    private String dictValue;
 
 }

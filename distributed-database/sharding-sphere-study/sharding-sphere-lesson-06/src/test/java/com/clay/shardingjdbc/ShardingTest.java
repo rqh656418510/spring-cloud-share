@@ -20,7 +20,9 @@ class ShardingTest {
     @Test
     public void testInsertBroadcast() {
         Dict dict = new Dict();
-        dict.setDictType("BeiJing");
+        dict.setDictType("gender");
+        dict.setDictCode("male");
+        dict.setDictValue("男");
         dictMapper.insert(dict);
     }
 

@@ -10,6 +10,8 @@ USE db_order;
 CREATE TABLE t_dict(
     id BIGINT,
     dict_type VARCHAR(200),
+    dict_code VARCHAR(100),
+    dict_value VARCHAR(200),
     PRIMARY KEY(id)
 );
 
@@ -25,5 +27,7 @@ USE db_order;
 CREATE TABLE t_dict(
     id BIGINT,
     dict_type VARCHAR(200),
+    dict_code VARCHAR(100),
+    dict_value VARCHAR(200),
     PRIMARY KEY(id)
 );
