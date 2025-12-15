@@ -10,6 +10,7 @@
 
     <modules>
         <module>shardingsphere-proxy-lesson-01</module>
+        <module>shardingsphere-proxy-lesson-02</module>
     </modules>
 
 </project>
