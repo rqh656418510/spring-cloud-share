@@ -4,12 +4,17 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.distributed.db</groupId>
-    <artifactId>sharding-sphere-proxy-study</artifactId>
+    <artifactId>shardingsphere-jdbc-study</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>sharding-sphere-lesson-07</module>
+        <module>shardingsphere-jdbc-lesson-01</module>
+        <module>shardingsphere-jdbc-lesson-02</module>
+        <module>shardingsphere-jdbc-lesson-03</module>
+        <module>shardingsphere-jdbc-lesson-04</module>
+        <module>shardingsphere-jdbc-lesson-05</module>
+        <module>shardingsphere-jdbc-lesson-06</module>
     </modules>
 
 </project>

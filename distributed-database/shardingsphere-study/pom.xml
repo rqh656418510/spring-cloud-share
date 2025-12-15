@@ -4,13 +4,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.distributed.db</groupId>
-    <artifactId>sharding-sphere-study</artifactId>
+    <artifactId>shardingsphere-study</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>sharding-sphere-jdbc-study</module>
-        <module>sharding-sphere-proxy-study</module>
+        <module>shardingsphere-jdbc-study</module>
+        <module>shardingsphere-proxy-study</module>
     </modules>
 
 </project>

@@ -4,10 +4,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.distributed.db</groupId>
-    <artifactId>sharding-sphere-lesson-04</artifactId>
+    <artifactId>shardingsphere-jdbc-lesson-02</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>sharding-sphere-lesson-04</name>
-    <description>ShardingSphere-JDBC 水平分库之多表关联使用（多表关联数据插入）</description>
+    <name>shardingsphere-jdbc-lesson-02</name>
+    <description>ShardingSphere-JDBC 实现垂直分库</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
