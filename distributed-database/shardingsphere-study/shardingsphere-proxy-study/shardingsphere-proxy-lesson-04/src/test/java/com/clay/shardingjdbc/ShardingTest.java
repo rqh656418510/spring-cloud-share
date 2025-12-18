@@ -25,7 +25,7 @@ class ShardingTest {
      */
     @Test
     public void testInsertOrder() {
-        for (int i = 1; i <= 3; i++) {
+        for (int i = 1; i <= 2; i++) {
             Order order = new Order();
             order.setOrderNo("000" + i);
             order.setUserId((long) i);
