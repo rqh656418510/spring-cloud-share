@@ -21,3 +21,6 @@
 
 - [ShardingSphere-Proxy 入门教程之一](https://www.techgrow.cn/posts/f1aa7409.html)
 - [ShardingSphere-Proxy 入门教程之二](https://www.techgrow.cn/posts/d1af7n03.html)
+  [ShardingSphere-Proxy 入门教程之三](https://www.techgrow.cn/posts/dc701860.html)
+- [ShardingSphere-Proxy 入门教程之四](https://www.techgrow.cn/posts/90a2747e.html)
+- [ShardingSphere-Proxy 入门教程之五](https://www.techgrow.cn/posts/8d40163b.html)
