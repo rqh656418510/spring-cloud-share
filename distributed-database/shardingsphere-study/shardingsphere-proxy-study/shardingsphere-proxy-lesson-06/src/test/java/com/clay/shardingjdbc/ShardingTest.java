@@ -34,6 +34,7 @@ class ShardingTest {
     @Test
     public void testSelectBroadcast() {
         List<Dict> dicts = dictMapper.selectList(null);
+        dicts.forEach(System.out::println);
     }
 
 }

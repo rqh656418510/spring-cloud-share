@@ -14,6 +14,7 @@
         <module>shardingsphere-proxy-lesson-03</module>
         <module>shardingsphere-proxy-lesson-04</module>
         <module>shardingsphere-proxy-lesson-05</module>
+        <module>shardingsphere-proxy-lesson-06</module>
     </modules>
 
 </project>
