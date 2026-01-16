@@ -1,0 +1,17 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: eureka-server
+
+eureka:
+  instance:
+    hostname: localhost               # Eureka服务端的实例名称
+  server:
+    enable-self-preservation: false   # 是否开启 Eureka Server 的自我保护机制
+  client:
+    register-with-eureka: false       # 是否将自己注册到 Eureka Server
+    fetch-registry: false             # 是否从 Eureka Server 拉取注册表信息
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/   # Eureka Server 提供的注册地址

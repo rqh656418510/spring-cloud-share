@@ -1,0 +1,14 @@
+server:
+  port: 9092
+
+spring:
+  application:
+    name: fencai-hmily-money-to-app
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9090/eureka
+  instance:
+    instance-id: ${spring.application.name}-${server.port}    # 自定义服务名称
+    prefer-ip-address: true                                   # 将IP注册到Eureka Server上，若不配置默认使用机器的主机名
