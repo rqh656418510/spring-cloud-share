@@ -4,6 +4,19 @@ server:
 spring:
   application:
     name: fencai-hmily-money-from-app
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.56.112:3307/account_from?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=false
+    username: root
+    password: "123456"
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml  # 指定 Mapper XML 文件位置
+  type-aliases-package: com.distributed.transaction.entity  # 指定 Mapper 接口的包路径
+  configuration:
+    map-underscore-to-camel-case: true  # 开启驼峰命名自动映射
+    use-generated-keys: true  # 获取数据库自增主键值
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  # 控制台打印SQL
 
 eureka:
   client:
