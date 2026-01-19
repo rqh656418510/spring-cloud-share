@@ -14,9 +14,19 @@ public class AccountServiceImpl implements AccountService {
     private AccountMapper accountMapper;
 
     @Override
-    public boolean updateBalance(Long id, BigDecimal delta) {
-        int row = accountMapper.updateBalance(id, delta);
-        return row > 0;
+    public void tryUpdateBalance(Long id, BigDecimal delta) {
+        System.out.println("入账 开始");
+    }
+
+    @Override
+    public void confirmUpdateBalance(Long id, BigDecimal delta) {
+        System.out.println("入账 确认");
+        accountMapper.updateBalance(id, delta);
+    }
+
+    @Override
+    public void cancelUpdateBalance(Long id, BigDecimal delta) {
+        System.out.println("入账 取消");
     }
 
 }

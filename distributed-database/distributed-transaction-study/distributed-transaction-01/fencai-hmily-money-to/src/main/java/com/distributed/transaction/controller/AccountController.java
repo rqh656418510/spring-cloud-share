@@ -25,8 +25,10 @@ public class AccountController {
      * @return true 成功，false 失败
      */
     @GetMapping("/account/{id}/{transMoney}")
-    public boolean transfer(@PathVariable("id") Long id, @PathVariable("transMoney") BigDecimal transMoney) {
-        return accountService.updateBalance(id, transMoney);
+    public String transfer(@PathVariable("id") Long id, @PathVariable("transMoney") BigDecimal transMoney) {
+        // 调用 try 方法（TCC 的三大方法之一）
+        accountService.tryUpdateBalance(id, transMoney);
+        return "success";
     }
 
 }

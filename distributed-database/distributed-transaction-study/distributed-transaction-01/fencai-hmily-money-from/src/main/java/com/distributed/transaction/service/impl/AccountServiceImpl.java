@@ -18,14 +18,25 @@ public class AccountServiceImpl implements AccountService {
     private AccountClient accountClient;
 
     @Override
-    public boolean updateBalance(Long id, BigDecimal delta) {
-        // 扣钱操作
-        int row = accountMapper.updateBalance(id, delta);
+    public void tryUpdateBalance(Long fromId, BigDecimal delta, Long toId) {
+        System.out.println("出账 开始");
+        // 扣钱
+        accountMapper.updateBalance(fromId, delta);
 
-        // 加钱操作
-        accountClient.transfer(id, delta.abs());
+        // 通过 Feign 远程调用加钱服务的 try 方法（TCC 的三大方法之一）
+        accountClient.transfer(toId, delta.negate());
+    }
 
-        return row > 0;
+    @Override
+    public void confirmUpdateBalance(Long fromId, BigDecimal delta, Long toId) {
+        System.out.println("出账 确认");
+    }
+
+    @Override
+    public void cancelUpdateBalance(Long fromId, BigDecimal delta, Long toId) {
+        System.out.println("出账 取消");
+        // 还钱（任意一个 try 方法执行失败时）
+        accountMapper.updateBalance(fromId, delta.negate());
     }
 
 }

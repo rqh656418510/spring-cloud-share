@@ -32,6 +32,18 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!-- MyBatis -->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>1.2.0</version>
+            </dependency>
+            <!-- Hmily -->
+            <dependency>
+                <groupId>org.dromara</groupId>
+                <artifactId>hmily-spring-boot-starter-springcloud</artifactId>
+                <version>2.0.5-RELEASE</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

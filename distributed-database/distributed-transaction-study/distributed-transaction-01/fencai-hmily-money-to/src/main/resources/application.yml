@@ -4,12 +4,14 @@ server:
 spring:
   application:
     name: fencai-hmily-money-to
+  # 数据源配置
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://192.168.56.112:3307/account_to?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=false
     username: root
     password: "123456"
 
+# MyBatis 配置
 mybatis:
   mapper-locations: classpath:mapper/*.xml  # 指定 Mapper XML 文件位置
   type-aliases-package: com.distributed.transaction.entity  # 指定 Mapper 接口的包路径
@@ -18,6 +20,40 @@ mybatis:
     use-generated-keys: true  # 获取数据库自增主键值
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  # 控制台打印SQL
 
+# Hmily 配置
+org:
+  dromara:
+    hmily:
+      # 序列化方式，推荐使用 kryo；支持 hessian、protostuff、jdk；测试表现：kryo > hessian > protostuff > jdk
+      serializer: kryo
+      # 定时任务延迟时间（秒），默认 120，必须大于 RPC 调用的超时时间
+      recoverDelayTime: 128
+      # 最大重试次数，默认 3 次，业务服务宕机时定时任务在 retryMax 次内执行 cancel 或 confirm
+      retryMax: 30
+      # 事务恢复定时任务的执行间隔时间（秒）
+      scheduledDelay: 128
+      # 定时任务线程池最大线程数，高并发场景下可适当调大
+      scheduledThreadMax: 10
+      # 异步执行 confirm 和 cancel 的线程池大小，高并发场景下建议调大
+      asyncThreads: 10
+      # Disruptor 缓冲区大小，高并发时可调大，建议为 2 的幂次方
+      bufferSize: 4096
+      # 事务日志存储方式，推荐顺序：mongodb > redis 集群 > mysql > zookeeper
+      repositorySupport: db
+      # 是否启用 hmily，特别注意：事务发起方必须设为 true，事务参与方必须设为 false
+      started: false
+      # Hmily 数据库配置
+      hmilyDbConfig:
+        # 数据库驱动类
+        driverClassName: com.mysql.jdbc.Driver
+        # 事务日志数据库连接地址
+        url: jdbc:mysql://192.168.0.240:3306/tcc?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=false
+        # 数据库用户名
+        username: root
+        # 数据库密码
+        password: "123456"
+
+# Eureka 配置
 eureka:
   client:
     service-url:
