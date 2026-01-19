@@ -40,7 +40,7 @@ org:
       bufferSize: 4096
       # 事务日志存储方式，推荐顺序：mongodb > redis 集群 > mysql > zookeeper
       repositorySupport: db
-      # 是否启用 hmily，特别注意：事务发起方必须设为 true，事务参与方必须设为 false
+      # 是否启用 hmily，特别注意：分布式事务发起方必须设为 true，分布式事务参与方必须设为 false
       started: false
       # Hmily 数据库配置
       hmilyDbConfig:
