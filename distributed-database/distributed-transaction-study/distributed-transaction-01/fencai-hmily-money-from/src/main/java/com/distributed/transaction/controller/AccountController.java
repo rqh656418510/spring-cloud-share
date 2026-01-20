@@ -27,8 +27,7 @@ public class AccountController {
     @GetMapping("/account/{fromId}/{transMoney}/{toId}")
     public boolean transfer(@PathVariable("fromId") Long fromId, @PathVariable("transMoney") BigDecimal transMoney, @PathVariable("toId") Long toId) {
         // 调用本地的 try 方法（TCC 的三大方法之一）
-        accountService.tryUpdateBalance(fromId, transMoney.negate(), toId);
-        return Boolean.TRUE;
+        return accountService.tryUpdateBalance(fromId, transMoney.negate(), toId);
     }
 
 }
