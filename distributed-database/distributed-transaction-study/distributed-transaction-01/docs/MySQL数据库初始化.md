@@ -1,9 +1,6 @@
 - 创建数据库
 
 ``` sql
--- 创建 TCC 数据库
-CREATE DATABASE tcc DEFAULT CHARACTER SET utf8;
-
 -- 创建扣钱数据库
 CREATE DATABASE account_from DEFAULT CHARACTER SET utf8;
 
@@ -44,5 +41,5 @@ CREATE TABLE `t_account` (
 );
 
 -- 插入数据
-INSERT INTO account_to.t_account(id, name, balance) VALUES(1, '李四', 100);
+INSERT INTO account_to.t_account(id, name, balance) VALUES(2, '李四', 100);
 ```

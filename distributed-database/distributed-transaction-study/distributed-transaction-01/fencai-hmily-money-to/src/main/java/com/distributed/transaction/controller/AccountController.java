@@ -21,14 +21,14 @@ public class AccountController {
      * 转账操作
      *
      * @param id         账户ID
-     * @param transMoney 转账金额（正数：增加余额；负数：减少余额）
+     * @param transMoney 转账金额（正数）
      * @return true 成功，false 失败
      */
     @GetMapping("/account/{id}/{transMoney}")
-    public String transfer(@PathVariable("id") Long id, @PathVariable("transMoney") BigDecimal transMoney) {
+    public boolean transfer(@PathVariable("id") Long id, @PathVariable("transMoney") BigDecimal transMoney) {
         // 调用本地的 try 方法（TCC 的三大方法之一）
         accountService.tryUpdateBalance(id, transMoney);
-        return "success";
+        return Boolean.TRUE;
     }
 
 }
