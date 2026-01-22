@@ -53,7 +53,7 @@ repository:
   # 数据库相关配置
   database:
     # JDBC 驱动类名
-    driverClassName: com.mysql.jdbc.Driver
+    driverClassName: com.mysql.cj.jdbc.Driver
     # 数据库连接 URL
     url: jdbc:mysql://192.168.56.112:3307/hmily?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=false
     # 数据库用户名
