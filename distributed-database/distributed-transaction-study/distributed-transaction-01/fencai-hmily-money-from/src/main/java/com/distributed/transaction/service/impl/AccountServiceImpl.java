@@ -32,6 +32,9 @@ public class AccountServiceImpl implements AccountService {
         // 通过 Feign 远程调用加钱服务的 try 方法（TCC 的三大方法之一）
         accountClient.transfer(toId, delta.negate());
 
+        // 故意抛出运行时异常，验证 Cancel 方法是否会被执行（回滚操作）
+        // int num = 10 / 0;
+
         return Boolean.TRUE;
     }
 
