@@ -19,7 +19,8 @@ public class AccountServiceImpl implements AccountService {
     private AccountClient accountClient;
 
     /**
-     * 添加 @HmilyTCC 注解
+     * 添加 @HmilyTCC 注解 <p>
+     * 注解 @HmilyTCC 必须指定 confirmMethod 和 cancelMethod 参数
      */
     @Override
     @HmilyTCC(confirmMethod = "confirmUpdateBalance", cancelMethod = "cancelUpdateBalance")
