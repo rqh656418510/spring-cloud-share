@@ -1,0 +1,72 @@
+# Hmily 服务端相关配置
+hmily:
+  # Hmily Server 配置
+  server:
+    # 配置模式：local 表示本地配置模式
+    configMode: local
+    # 当前应用名称（Hmily Server 使用）
+    appName: account-sc
+
+  # 只有 server.configMode 为 local 时才会读取以下配置
+  config:
+    # 当前应用名称（业务侧使用）
+    appName: account-sc
+    # 序列化方式，推荐使用 kryo；支持 hessian、protostuff、jdk；测试表现：kryo > hessian > protostuff > jdk
+    serializer: kryo
+    # 上下文传递模式（threadLocal / transmittableThreadLocal）
+    contextTransmittalMode: threadLocal
+    # 定时任务线程池最大线程数，高并发场景下可适当调大
+    scheduledThreadMax: 16
+    # 恢复任务首次延迟时间（秒）
+    scheduledRecoveryDelay: 60
+    # 清理任务执行间隔（秒）
+    scheduledCleanDelay: 60
+    # 物理删除任务执行间隔（秒）
+    scheduledPhyDeletedDelay: 600
+    # 定时任务初始化延迟时间（秒）
+    scheduledInitDelay: 30
+    # 事务恢复延迟时间（秒），强烈建议大于 RPC 调用的超时时间，否则可能误触发补偿；比如设置为：≥ RPC 超时 + 网络抖动余量
+    recoverDelayTime: 60
+    # 清理延迟时间（秒）
+    cleanDelayTime: 180
+    # 单次处理事务的最大数量限制
+    limit: 200
+    # 最大重试次数，默认 10 次，业务服务宕机时定时任务在 retryMax 次内执行 cancel 或 confirm
+    retryMax: 10
+    # Disruptor 缓冲区大小，高并发时可调大，建议为 2 的幂次方
+    bufferSize: 8192
+    # 消费者线程数
+    consumerThreads: 16
+    # 是否启用异步事务日志存储
+    asyncRepository: true
+    # 是否自动建表（仅关系型数据库有效）
+    autoSql: true
+    # 是否启用物理删除
+    phyDeleted: true
+    # 事务数据保留天数
+    storeDays: 3
+    # 事务日志存储类型（mysql / postgresql / mongodb / redis / zookeeper / file 等）
+    repository: mysql
+
+# Hmily 仓库相关配置
+repository:
+  # 数据库相关配置
+  database:
+    # JDBC 驱动类名
+    driverClassName: com.mysql.cj.jdbc.Driver
+    # 数据库连接 URL
+    url: jdbc:mysql://192.168.56.112:3306/hmily?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=false
+    # 数据库用户名
+    username: root
+    # 数据库密码
+    password: 123456
+    # 连接池最大连接数
+    maxActive: 20
+    # 连接池最小空闲连接数
+    minIdle: 10
+    # 获取连接超时时间（毫秒）
+    connectionTimeout: 30000
+    # 连接空闲超时时间（毫秒）
+    idleTimeout: 600000
+    # 连接最大生命周期（毫秒）
+    maxLifetime: 1800000

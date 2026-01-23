@@ -7,7 +7,7 @@
     <artifactId>distributed-transaction-01</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-    <description>基于 SpringCloud + Hmily 实战 TCC 分布式事务解决方案</description>
+    <description>基于 SpringCloud + Hmily 实战账户系统 TCC 分布式事务</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

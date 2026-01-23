@@ -1,0 +1,44 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: springcloud-eureka
+
+# Eureka 服务端配置
+eureka:
+  instance:
+    # 实例主机名，使用环境变量 hostname，默认为 localhost
+    hostname: ${hostname:localhost}
+    # 优先使用 IP 地址而非主机名进行注册和通信
+    preferIpAddress: true
+    # 客户端向服务端发送心跳续约的间隔时间（秒），用于保持注册状态
+    lease-renewal-interval-in-seconds: 2
+    # 服务端在收到最后一次心跳后等待的时间（秒），超时后将实例标记为下线
+    lease-expiration-duration-in-seconds: 6
+  server:
+    # 更新 Eureka 集群节点列表的时间间隔（毫秒）
+    peerEurekaNodesUpdateIntervalMs: 60000
+    # 是否开启自我保护模式，关闭后当大量实例异常时会直接剔除
+    enableSelfPreservation: false
+    # 服务端清理失效实例的任务执行间隔（毫秒）
+    evictionIntervalTimerInMs: 5000
+  client:
+    # 是否将本实例注册到 Eureka 服务器，单机模式通常设为 false
+    registerWithEureka: false
+    # 是否从 Eureka 服务器获取注册表信息，单机模式通常设为 false
+    fetchRegistry: false
+    # Eureka 服务器的服务地址，默认指向本地 8761 端口
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+    # 是否启用健康检查机制
+    healthcheck:
+      enabled: true
+    # 轮询更新 Eureka 服务地址列表的时间间隔（秒）
+    eurekaServiceUrlPollIntervalSeconds: 60
+
+# Spring Boot Actuator 端点配置
+endpoints:
+  health:
+    # 是否对健康端点进行敏感信息保护，设为 false 允许无鉴权访问
+    sensitive: false

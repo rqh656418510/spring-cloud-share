@@ -10,6 +10,7 @@
 
     <modules>
         <module>distributed-transaction-01</module>
+        <module>distributed-transaction-02</module>
     </modules>
 
 </project>
