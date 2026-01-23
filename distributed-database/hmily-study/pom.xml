@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.distributed.transaction</groupId>
-    <artifactId>distributed-transaction-study</artifactId>
+    <artifactId>hmily-study</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
