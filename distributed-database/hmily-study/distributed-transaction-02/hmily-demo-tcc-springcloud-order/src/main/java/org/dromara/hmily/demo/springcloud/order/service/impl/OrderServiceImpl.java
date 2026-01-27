@@ -39,13 +39,6 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public String testOrderPay(Integer count, BigDecimal amount) {
-        Order order = saveOrder(count, amount);
-        paymentService.testMakePayment(order);
-        return "success";
-    }
-
-    @Override
     public String mockInventoryWithTryException(Integer count, BigDecimal amount) {
         Order order = saveOrder(count, amount);
         return paymentService.mockPaymentInventoryWithTryException(order);

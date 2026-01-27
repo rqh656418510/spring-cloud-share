@@ -10,7 +10,6 @@ import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.builders.ResponseMessageBuilder;
 import springfox.documentation.schema.ModelRef;
 import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -19,6 +18,10 @@ import java.time.LocalDate;
 
 import static com.google.common.collect.Lists.newArrayList;
 
+/**
+ * Swagger UI: http://127.0.0.1:8090/swagger-ui.html
+ * Swagger JSON 接口：http://127.0.0.1:8090/v2/api-docs
+ */
 @Configuration
 @EnableSwagger2
 @SuppressWarnings("all")

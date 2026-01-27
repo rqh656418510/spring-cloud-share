@@ -19,15 +19,6 @@ public interface OrderService {
     String orderPay(Integer count, BigDecimal amount);
 
     /**
-     * Test order pay string.
-     *
-     * @param count  the count
-     * @param amount the amount
-     * @return the string
-     */
-    String testOrderPay(Integer count, BigDecimal amount);
-
-    /**
      * 模拟在订单支付操作中，库存在try阶段中的库存异常.
      *
      * @param count  购买数量

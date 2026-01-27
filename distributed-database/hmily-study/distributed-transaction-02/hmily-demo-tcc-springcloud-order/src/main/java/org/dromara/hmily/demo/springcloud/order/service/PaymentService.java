@@ -6,21 +6,14 @@ import org.dromara.hmily.demo.common.order.entity.Order;
  * PaymentService.
  */
 public interface PaymentService {
-    
+
     /**
      * 订单支付.
      *
      * @param order 订单实体
      */
     void makePayment(Order order);
-    
-    /**
-     * Test make payment.
-     *
-     * @param order the order
-     */
-    void testMakePayment(Order order);
-    
+
     /**
      * mock订单支付的时候库存异常.
      *
@@ -28,7 +21,7 @@ public interface PaymentService {
      * @return String string
      */
     String mockPaymentInventoryWithTryException(Order order);
-    
+
     /**
      * Mock payment account with try exception string.
      *
@@ -36,7 +29,7 @@ public interface PaymentService {
      * @return the string
      */
     String mockPaymentAccountWithTryException(Order order);
-    
+
     /**
      * mock订单支付的时候库存超时.
      *
@@ -44,7 +37,7 @@ public interface PaymentService {
      * @return String string
      */
     String mockPaymentInventoryWithTryTimeout(Order order);
-    
+
     /**
      * Mock payment account with try timeout string.
      *
@@ -52,7 +45,7 @@ public interface PaymentService {
      * @return the string
      */
     String mockPaymentAccountWithTryTimeout(Order order);
-    
+
     /**
      * Make payment with nested.
      *
@@ -60,7 +53,7 @@ public interface PaymentService {
      * @return the string
      */
     String makePaymentWithNested(Order order);
-    
+
     /**
      * Make payment with nested exception.
      *

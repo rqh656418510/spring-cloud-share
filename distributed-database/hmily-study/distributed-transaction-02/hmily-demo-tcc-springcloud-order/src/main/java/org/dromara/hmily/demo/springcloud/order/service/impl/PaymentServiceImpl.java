@@ -21,7 +21,7 @@ import java.math.BigDecimal;
 @Service
 @SuppressWarnings("all")
 public class PaymentServiceImpl implements PaymentService {
-    
+
     private static final Logger LOGGER = LoggerFactory.getLogger(PaymentServiceImpl.class);
 
     private final OrderMapper orderMapper;
@@ -55,16 +55,7 @@ public class PaymentServiceImpl implements PaymentService {
         accountClient.payment(buildAccountDTO(order));
         inventoryClient.decrease(buildInventoryDTO(order));
     }
-    
-    @Override
-    public void testMakePayment(Order order) {
-        updateOrderStatus(order, OrderStatusEnum.PAYING);
-        //扣除用户余额
-        accountClient.testPayment(buildAccountDTO(order));
-        //进入扣减库存操作
-        inventoryClient.testDecrease(buildInventoryDTO(order));
-    }
-    
+
     @Override
     @HmilyTCC(confirmMethod = "confirmOrderStatus", cancelMethod = "cancelOrderStatus")
     public String mockPaymentInventoryWithTryException(Order order) {
@@ -75,7 +66,7 @@ public class PaymentServiceImpl implements PaymentService {
         inventoryClient.mockWithTryException(buildInventoryDTO(order));
         return "success";
     }
-    
+
     @Override
     @HmilyTCC(confirmMethod = "confirmOrderStatus", cancelMethod = "cancelOrderStatus")
     public String mockPaymentAccountWithTryException(Order order) {
@@ -83,7 +74,7 @@ public class PaymentServiceImpl implements PaymentService {
         accountClient.mockWithTryException(buildAccountDTO(order));
         return "success";
     }
-    
+
     @Override
     @HmilyTCC(confirmMethod = "confirmOrderStatus", cancelMethod = "cancelOrderStatus")
     public String mockPaymentInventoryWithTryTimeout(Order order) {
@@ -93,7 +84,7 @@ public class PaymentServiceImpl implements PaymentService {
         inventoryClient.mockWithTryTimeout(buildInventoryDTO(order));
         return "success";
     }
-    
+
     @Override
     @HmilyTCC(confirmMethod = "confirmOrderStatus", cancelMethod = "cancelOrderStatus")
     public String mockPaymentAccountWithTryTimeout(Order order) {
@@ -101,7 +92,7 @@ public class PaymentServiceImpl implements PaymentService {
         accountClient.mockWithTryTimeout(buildAccountDTO(order));
         return "success";
     }
-    
+
     @Override
     @HmilyTCC(confirmMethod = "confirmOrderStatus", cancelMethod = "cancelOrderStatus")
     public String makePaymentWithNested(Order order) {
@@ -113,7 +104,7 @@ public class PaymentServiceImpl implements PaymentService {
         accountClient.paymentWithNested(buildAccountNestedDTO(order));
         return "success";
     }
-    
+
     @Override
     @HmilyTCC(confirmMethod = "confirmOrderStatus", cancelMethod = "cancelOrderStatus")
     public String makePaymentWithNestedException(Order order) {
@@ -125,36 +116,36 @@ public class PaymentServiceImpl implements PaymentService {
         accountClient.paymentWithNestedException(buildAccountNestedDTO(order));
         return "success";
     }
-    
+
     public void confirmOrderStatus(Order order) {
         updateOrderStatus(order, OrderStatusEnum.PAY_SUCCESS);
         LOGGER.info("=========进行订单confirm操作完成================");
     }
-    
+
     public void cancelOrderStatus(Order order) {
         updateOrderStatus(order, OrderStatusEnum.PAY_FAIL);
         LOGGER.info("=========进行订单cancel操作完成================");
     }
-    
+
     private void updateOrderStatus(Order order, OrderStatusEnum orderStatus) {
         order.setStatus(orderStatus.getCode());
         orderMapper.update(order);
     }
-    
+
     private AccountDTO buildAccountDTO(Order order) {
         AccountDTO accountDTO = new AccountDTO();
         accountDTO.setAmount(order.getTotalAmount());
         accountDTO.setUserId(order.getUserId());
         return accountDTO;
     }
-    
+
     private InventoryDTO buildInventoryDTO(Order order) {
         InventoryDTO inventoryDTO = new InventoryDTO();
         inventoryDTO.setCount(order.getCount());
         inventoryDTO.setProductId(order.getProductId());
         return inventoryDTO;
     }
-    
+
     private AccountNestedDTO buildAccountNestedDTO(Order order) {
         AccountNestedDTO nestedDTO = new AccountNestedDTO();
         nestedDTO.setAmount(order.getTotalAmount());
