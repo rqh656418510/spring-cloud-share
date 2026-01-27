@@ -43,15 +43,17 @@ public class PaymentServiceImpl implements PaymentService {
     @HmilyTCC(confirmMethod = "confirmOrderStatus", cancelMethod = "cancelOrderStatus")
     public void makePayment(Order order) {
         updateOrderStatus(order, OrderStatusEnum.PAYING);
-//        //检查数据
-//        final BigDecimal accountInfo = accountClient.findByUserId(order.getUserId());
-//        final Integer inventoryInfo = inventoryClient.findByProductId(order.getProductId());
-//        if (accountInfo.compareTo(order.getTotalAmount()) < 0) {
-//            throw new HmilyRuntimeException("余额不足！");
-//        }
-//        if (inventoryInfo < order.getCount()) {
-//            throw new HmilyRuntimeException("库存不足！");
-//        }
+        // 检查数据
+        /**
+         final BigDecimal accountInfo = accountClient.findByUserId(order.getUserId());
+         final Integer inventoryInfo = inventoryClient.findByProductId(order.getProductId());
+         if (accountInfo.compareTo(order.getTotalAmount()) < 0) {
+            throw new HmilyRuntimeException("余额不足！");
+         }
+         if (inventoryInfo < order.getCount()) {
+            throw new HmilyRuntimeException("库存不足！");
+         }
+         */
         accountClient.payment(buildAccountDTO(order));
         inventoryClient.decrease(buildInventoryDTO(order));
     }

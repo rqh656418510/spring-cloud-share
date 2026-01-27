@@ -37,6 +37,7 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- SpringCloud -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -44,11 +45,13 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!-- Hmily -->
             <dependency>
                 <groupId>org.dromara</groupId>
                 <artifactId>hmily-spring-boot-starter-springcloud</artifactId>
                 <version>${hmily.version}</version>
             </dependency>
+            <!-- Swagger -->
             <dependency>
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-swagger2</artifactId>
@@ -64,6 +67,7 @@
                 <artifactId>springfox-bean-validators</artifactId>
                 <version>${springfox.version}</version>
             </dependency>
+            <!-- MyBatis -->
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter</artifactId>
