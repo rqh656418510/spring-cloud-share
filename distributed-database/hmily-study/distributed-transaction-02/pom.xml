@@ -30,7 +30,7 @@
         <jdk.version>11</jdk.version>
         <spring-cloud.version>Hoxton.SR9</spring-cloud.version>
         <springfox.version>2.6.1</springfox.version>
-        <mysql.version>5.1.47</mysql.version>
+        <mysql.version>8.0.22</mysql.version>
         <mybatis.version>1.1.1</mybatis.version>
         <hmily.version>2.1.1</hmily.version>
     </properties>

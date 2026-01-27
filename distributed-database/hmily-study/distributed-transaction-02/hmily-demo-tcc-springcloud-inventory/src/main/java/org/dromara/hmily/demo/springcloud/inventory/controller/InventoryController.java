@@ -23,11 +23,6 @@ public class InventoryController {
     public Boolean decrease(@RequestBody InventoryDTO inventoryDTO) {
         return inventoryService.decrease(inventoryDTO);
     }
-    
-    @RequestMapping("/testDecrease")
-    public Boolean testDecrease(@RequestBody InventoryDTO inventoryDTO) {
-        return inventoryService.testDecrease(inventoryDTO);
-    }
 
     @RequestMapping("/findByProductId")
     public Integer findByProductId(@RequestParam("productId") String productId) {
@@ -43,4 +38,5 @@ public class InventoryController {
     public Boolean mockWithTryTimeout(@RequestBody InventoryDTO inventoryDTO) {
         return inventoryService.mockWithTryTimeout(inventoryDTO);
     }
+
 }

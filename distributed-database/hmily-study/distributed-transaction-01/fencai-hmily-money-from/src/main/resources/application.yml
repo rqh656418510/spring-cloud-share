@@ -32,4 +32,5 @@ eureka:
 # 日志打印
 logging:
   level:
+    root: info
     org.dromara.hmily: DEBUG

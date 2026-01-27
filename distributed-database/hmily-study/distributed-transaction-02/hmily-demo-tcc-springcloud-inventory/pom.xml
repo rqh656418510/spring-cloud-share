@@ -58,7 +58,7 @@
         <!-- Hmily -->
         <dependency>
             <groupId>org.dromara</groupId>
-            <artifactId>hmily-springcloud</artifactId>
+            <artifactId>hmily-spring-boot-starter-springcloud</artifactId>
             <version>${hmily.version}</version>
             <exclusions>
                 <exclusion>
@@ -70,6 +70,10 @@
                     <artifactId>log4j</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-openfeign-core</artifactId>
         </dependency>
     </dependencies>
 

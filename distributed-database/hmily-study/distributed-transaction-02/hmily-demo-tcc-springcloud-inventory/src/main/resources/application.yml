@@ -24,7 +24,8 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
   instance:
-    prefer-ip-address: true
+    instance-id: ${spring.application.name}-${server.port}    # 自定义服务名称
+    prefer-ip-address: true                                   # 将IP注册到Eureka Server上，若不配置默认使用机器的主机名
 
 # Ribbon 的负载均衡策略
 ribbon:
@@ -32,8 +33,7 @@ ribbon:
 
 logging:
   level:
-    root: error
-    org.springframework.web: info
+    root: info
     org.apache.ibatis: debug
     org.dromara.hmily.demo.bonuspoint: debug
     org.dromara.hmily.demo.lottery: debug

@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service("inventoryService")
 public class InventoryServiceImpl implements InventoryService {
-    
+
     private static final Logger LOGGER = LoggerFactory.getLogger(InventoryServiceImpl.class);
 
     private final InventoryMapper inventoryMapper;
@@ -25,6 +25,17 @@ public class InventoryServiceImpl implements InventoryService {
     @Autowired(required = false)
     public InventoryServiceImpl(InventoryMapper inventoryMapper) {
         this.inventoryMapper = inventoryMapper;
+    }
+
+    /**
+     * 获取商品库存信息.
+     *
+     * @param productId 商品id
+     * @return InventoryDO
+     */
+    @Override
+    public InventoryDO findByProductId(String productId) {
+        return inventoryMapper.findByProductId(productId);
     }
 
     /**
@@ -40,23 +51,6 @@ public class InventoryServiceImpl implements InventoryService {
         LOGGER.info("==========try扣减库存decrease===========");
         inventoryMapper.decrease(inventoryDTO);
         return true;
-    }
-    
-    @Override
-    public Boolean testDecrease(InventoryDTO inventoryDTO) {
-        inventoryMapper.testDecrease(inventoryDTO);
-        return true;
-    }
-    
-    /**
-     * 获取商品库存信息.
-     *
-     * @param productId 商品id
-     * @return InventoryDO
-     */
-    @Override
-    public InventoryDO findByProductId(String productId) {
-        return inventoryMapper.findByProductId(productId);
     }
 
     @Override
@@ -85,6 +79,11 @@ public class InventoryServiceImpl implements InventoryService {
         return true;
     }
 
+    public Boolean confirmMethod(InventoryDTO inventoryDTO) {
+        LOGGER.info("==========confirmMethod库存确认方法===========");
+        return inventoryMapper.confirm(inventoryDTO) > 0;
+    }
+
     @Transactional(rollbackFor = Exception.class)
     public Boolean confirmMethodTimeout(InventoryDTO inventoryDTO) {
         try {
@@ -108,14 +107,10 @@ public class InventoryServiceImpl implements InventoryService {
         return true;
         // throw new TccRuntimeException("库存扣减确认异常！");
     }
-    
-    public Boolean confirmMethod(InventoryDTO inventoryDTO) {
-        LOGGER.info("==========confirmMethod库存确认方法===========");
-        return inventoryMapper.confirm(inventoryDTO) > 0;
-    }
 
     public Boolean cancelMethod(InventoryDTO inventoryDTO) {
         LOGGER.info("==========cancelMethod库存取消方法===========");
         return inventoryMapper.cancel(inventoryDTO) > 0;
     }
+
 }
