@@ -27,15 +27,6 @@ public interface AccountClient {
     Boolean payment(@RequestBody AccountDTO accountDO);
 
     /**
-     * Test payment boolean.
-     *
-     * @param accountDO the account do
-     * @return the boolean
-     */
-    @RequestMapping("/account-service/account/testPayment")
-    Boolean testPayment(@RequestBody AccountDTO accountDO);
-
-    /**
      * 获取用户账户信息.
      *
      * @param userId 用户id
