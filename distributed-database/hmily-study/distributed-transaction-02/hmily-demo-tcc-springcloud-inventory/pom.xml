@@ -84,7 +84,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>org.dromara.hmily.demo.springcloud.inventory.SpringCloudHmilyInventoryApplication</mainClass>
+                    <mainClass>org.dromara.hmily.demo.springcloud.inventory.HmilyInventoryApplication</mainClass>
                     <executable>true</executable>
                 </configuration>
             </plugin>

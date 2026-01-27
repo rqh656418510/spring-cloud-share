@@ -41,8 +41,7 @@ feign:
 
 logging:
   level:
-    root: error
-    org.springframework.web: info
+    root: info
     org.apache.ibatis: debug
     org.dromara.hmily.demo.bonuspoint: debug
     org.dromara.hmily.demo.lottery: debug

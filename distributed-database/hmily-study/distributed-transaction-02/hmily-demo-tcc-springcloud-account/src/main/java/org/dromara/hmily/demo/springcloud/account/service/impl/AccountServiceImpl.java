@@ -48,13 +48,7 @@ public class AccountServiceImpl implements AccountService {
         accountMapper.update(accountDTO);
         return Boolean.TRUE;
     }
-    
-    @Override
-    public boolean testPayment(AccountDTO accountDTO) {
-        accountMapper.testUpdate(accountDTO);
-        return Boolean.TRUE;
-    }
-    
+
     @Override
     @HmilyTCC(confirmMethod = "confirm", cancelMethod = "cancel")
     public boolean mockWithTryException(AccountDTO accountDTO) {

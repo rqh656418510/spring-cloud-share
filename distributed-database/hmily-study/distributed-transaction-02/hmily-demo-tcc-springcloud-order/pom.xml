@@ -105,7 +105,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>org.dromara.hmily.demo.springcloud.order.SpringCloudHmilyOrderApplication</mainClass>
+                    <mainClass>org.dromara.hmily.demo.springcloud.order.HmilyOrderApplication</mainClass>
                     <executable>true</executable>
                 </configuration>
             </plugin>

@@ -18,14 +18,6 @@ public interface AccountService {
     boolean payment(AccountDTO accountDTO);
     
     /**
-     * Test payment boolean.
-     *
-     * @param accountDTO the account dto
-     * @return the boolean
-     */
-    boolean testPayment(AccountDTO accountDTO);
-    
-    /**
      * Mock with try exception boolean.
      *
      * @param accountDTO the account dto

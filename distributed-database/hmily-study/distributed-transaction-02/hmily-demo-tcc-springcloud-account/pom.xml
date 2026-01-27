@@ -55,7 +55,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>org.dromara.hmily.demo.springcloud.account.SpringCloudHmilyAccountApplication</mainClass>
+                    <mainClass>org.dromara.hmily.demo.springcloud.account.HmilyAccountApplication</mainClass>
                     <executable>true</executable>
                 </configuration>
             </plugin>
