@@ -1,4 +1,5 @@
 -- 账户库
+
 CREATE DATABASE IF NOT EXISTS `hmily_account` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin ;
 
 USE `hmily_account`;
@@ -18,6 +19,7 @@ CREATE TABLE `account` (
 insert  into `account`(`id`,`user_id`,`balance`,`freeze_amount`,`create_time`,`update_time`) values(1,'10000', 10000000,0,'2017-09-18 14:54:22',NULL);
 
 -- 库存库
+
 CREATE DATABASE IF NOT EXISTS `hmily_stock` DEFAULT CHARACTER SET utf8mb4;
 
 USE `hmily_stock`;
@@ -35,6 +37,7 @@ CREATE TABLE `inventory` (
 insert  into `inventory`(`id`,`product_id`,`total_inventory`,`lock_inventory`) values(1,'1',10000000,0);
 
 -- 订单库
+
 CREATE DATABASE IF NOT EXISTS `hmily_order` DEFAULT CHARACTER SET utf8mb4;
 
 USE `hmily_order`;

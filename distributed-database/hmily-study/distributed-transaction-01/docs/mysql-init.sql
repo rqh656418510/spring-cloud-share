@@ -1,20 +1,11 @@
-- 创建数据库
+-- 扣钱数据库
 
-``` sql
--- 创建扣钱数据库
-CREATE DATABASE account_from DEFAULT CHARACTER SET utf8;
+CREATE DATABASE `account_from` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
 
--- 创建加钱数据库
-CREATE DATABASE account_to DEFAULT CHARACTER SET utf8;
-```
+USE `account_from`;
 
-- 创建数据库表（`account_from.t_account`）
+DROP TABLE IF EXISTS `t_account`;
 
-``` sql
--- 切换数据库
-USE account_from;
-
--- 创建数据库表
 CREATE TABLE `t_account` (
     `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '物理主键',
     `name` varchar(256) NOT NULL DEFAULT '' COMMENT '用户名称',
@@ -22,17 +13,16 @@ CREATE TABLE `t_account` (
     PRIMARY KEY (`id`)
 );
 
--- 插入数据
 INSERT INTO account_from.t_account(id, name, balance) VALUES(1, '张三', 100);
-```
 
-- 创建数据库表（`account_to.t_account`）
+-- 加钱数据库
 
-``` sql
--- 切换数据库
-USE account_to;
+CREATE DATABASE `account_to` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
 
--- 创建数据库表
+USE `account_to`;
+
+DROP TABLE IF EXISTS `t_account`;
+
 CREATE TABLE `t_account` (
     `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '物理主键',
     `name` varchar(256) NOT NULL DEFAULT '' COMMENT '用户名称',
@@ -40,6 +30,4 @@ CREATE TABLE `t_account` (
     PRIMARY KEY (`id`)
 );
 
--- 插入数据
 INSERT INTO account_to.t_account(id, name, balance) VALUES(2, '李四', 100);
-```
