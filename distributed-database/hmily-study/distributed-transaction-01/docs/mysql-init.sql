@@ -11,7 +11,7 @@ CREATE TABLE `t_account` (
     `name` varchar(256) NOT NULL DEFAULT '' COMMENT '用户名称',
     `balance` decimal(20,2) NOT NULL DEFAULT '0.00' COMMENT '账户余额',
     PRIMARY KEY (`id`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 INSERT INTO account_from.t_account(id, name, balance) VALUES(1, '张三', 100);
 
@@ -28,6 +28,6 @@ CREATE TABLE `t_account` (
     `name` varchar(256) NOT NULL DEFAULT '' COMMENT '用户名称',
     `balance` decimal(20,2) NOT NULL DEFAULT '0.00' COMMENT '账户余额',
     PRIMARY KEY (`id`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 INSERT INTO account_to.t_account(id, name, balance) VALUES(2, '李四', 100);
