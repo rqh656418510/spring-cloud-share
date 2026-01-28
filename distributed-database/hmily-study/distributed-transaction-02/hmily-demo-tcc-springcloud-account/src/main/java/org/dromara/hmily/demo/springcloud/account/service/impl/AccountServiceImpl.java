@@ -74,6 +74,7 @@ public class AccountServiceImpl implements AccountService {
     @Override
     @HmilyTCC(confirmMethod = "confirmNested", cancelMethod = "cancelNested")
     public boolean paymentWithNested(AccountNestedDTO nestedDTO) {
+        LOGGER.info("============执行tryNested付款接口===============");
         accountMapper.update(buildAccountDTO(nestedDTO));
         inventoryClient.decrease(buildInventoryDTO(nestedDTO));
         return Boolean.TRUE;

@@ -42,6 +42,7 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     @HmilyTCC(confirmMethod = "confirmOrderStatus", cancelMethod = "cancelOrderStatus")
     public void makePayment(Order order) {
+        LOGGER.info("===========执行springcloud makePayment 扣减资金接口==========");
         updateOrderStatus(order, OrderStatusEnum.PAYING);
         // 检查数据
         /**
@@ -61,7 +62,7 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     @HmilyTCC(confirmMethod = "confirmOrderStatus", cancelMethod = "cancelOrderStatus")
     public String mockPaymentInventoryWithTryException(Order order) {
-        LOGGER.debug("===========执行springcloud  mockPaymentInventoryWithTryException 扣减资金接口==========");
+        LOGGER.info("===========执行springcloud  mockPaymentInventoryWithTryException 扣减资金接口==========");
         updateOrderStatus(order, OrderStatusEnum.PAYING);
         //扣除用户余额
         accountClient.payment(buildAccountDTO(order));
@@ -72,6 +73,7 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     @HmilyTCC(confirmMethod = "confirmOrderStatus", cancelMethod = "cancelOrderStatus")
     public String mockPaymentAccountWithTryException(Order order) {
+        LOGGER.info("===========执行springcloud  mockPaymentAccountWithTryException 扣减资金接口==========");
         updateOrderStatus(order, OrderStatusEnum.PAYING);
         accountClient.mockWithTryException(buildAccountDTO(order));
         return "success";
@@ -80,7 +82,7 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     @HmilyTCC(confirmMethod = "confirmOrderStatus", cancelMethod = "cancelOrderStatus")
     public String mockPaymentInventoryWithTryTimeout(Order order) {
-        LOGGER.debug("===========执行springcloud  mockPaymentInventoryWithTryTimeout 扣减资金接口==========");
+        LOGGER.info("===========执行springcloud  mockPaymentInventoryWithTryTimeout 扣减资金接口==========");
         updateOrderStatus(order, OrderStatusEnum.PAYING);
         accountClient.payment(buildAccountDTO(order));
         inventoryClient.mockWithTryTimeout(buildInventoryDTO(order));
