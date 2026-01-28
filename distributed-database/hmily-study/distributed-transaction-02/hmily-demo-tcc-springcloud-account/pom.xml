@@ -20,6 +20,11 @@
             <artifactId>hmily-demo-common</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <!-- Web支持 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
         <!-- Eureka -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
