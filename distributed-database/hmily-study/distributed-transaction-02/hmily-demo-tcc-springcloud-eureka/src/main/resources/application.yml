@@ -24,9 +24,9 @@ eureka:
     # 服务端清理失效实例的任务执行间隔（毫秒）
     eviction-interval-timer-in-ms: 60000
   client:
-    # 是否将本实例注册到 Eureka 服务器，单机模式通常设为 false
+    # 是否将本实例注册到 Eureka 服务器，单机模式通常设为 false，集群模式必须设置为 true
     register-with-eureka: false
-    # 是否从 Eureka 服务器获取注册表信息，单机模式通常设为 false
+    # 是否从 Eureka 服务器获取注册表信息，单机模式通常设为 false，集群模式必须设置为 true
     fetch-registry: false
     # Eureka 服务器的服务地址
     service-url:
