@@ -68,6 +68,7 @@ public class GrayReleaseFilter extends ZuulFilter {
     @Override
     public Object run() {
         activeGrayRelease();
+        // randomGrayRelease();
         return null;
     }
 
