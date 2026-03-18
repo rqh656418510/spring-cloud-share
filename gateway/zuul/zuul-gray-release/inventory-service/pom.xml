@@ -10,6 +10,7 @@
 
     <artifactId>inventory-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <description>库存服务一，用于模拟旧版本的库存服务</description>
 
     <dependencies>
         <dependency>

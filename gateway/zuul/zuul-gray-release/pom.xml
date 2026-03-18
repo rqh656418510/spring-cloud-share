@@ -8,7 +8,7 @@
     <artifactId>zuul-gray-release</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <description>Zuul 网关实现灰度发布功能</description>
+    <description>Eureka + Zuul 实现网关动态路由和网关灰度发布</description>
 
     <modules>
         <module>eureka-server</module>

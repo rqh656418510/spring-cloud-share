@@ -10,6 +10,7 @@
 
     <artifactId>inventory-service2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <description>库存服务二，用于模拟新版本的库存服务</description>
 
     <dependencies>
         <dependency>

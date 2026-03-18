@@ -10,6 +10,7 @@
 
     <artifactId>zuul-gateway</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <description>基于 Zuul 的网关服务</description>
 
     <dependencies>
         <dependency>
