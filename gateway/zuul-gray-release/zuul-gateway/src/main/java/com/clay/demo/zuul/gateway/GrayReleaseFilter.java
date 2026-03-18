@@ -51,9 +51,15 @@ public class GrayReleaseFilter extends ZuulFilter {
             }
         }
 
+        System.out.println("不启用灰度发布功能, URI : " + requestURI);
+        RibbonFilterContextHolder.getCurrentContext().add("version", "current");
+
         return false;
     }
 
+    /**
+     * 只有 shouldFilter() 返回 true 后，才会执行 run()
+     */
     @Override
     public Object run() {
         activeGrayRelease();
@@ -69,7 +75,7 @@ public class GrayReleaseFilter extends ZuulFilter {
 
         // 命中 10% 灰度
         if (percent < 10) {
-            RibbonFilterContextHolder.getCurrentContext().add("version", "new");
+            RibbonFilterContextHolder.getCurrentContext().add("version", "newest");
         } else {
             RibbonFilterContextHolder.getCurrentContext().add("version", "current");
         }
@@ -84,7 +90,7 @@ public class GrayReleaseFilter extends ZuulFilter {
         String gray = request.getParameter("gray");
 
         if ("true".equals(gray)) {
-            RibbonFilterContextHolder.getCurrentContext().add("version", "new");
+            RibbonFilterContextHolder.getCurrentContext().add("version", "newest");
         } else {
             RibbonFilterContextHolder.getCurrentContext().add("version", "current");
         }

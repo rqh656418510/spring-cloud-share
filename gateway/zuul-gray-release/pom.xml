@@ -14,8 +14,7 @@
         <module>eureka-server</module>
         <module>inventory-api</module>
         <module>inventory-service</module>
-        <module>wms-api</module>
-        <module>wms-service</module>
+        <module>inventory-service2</module>
         <module>zuul-gateway</module>
     </modules>
 

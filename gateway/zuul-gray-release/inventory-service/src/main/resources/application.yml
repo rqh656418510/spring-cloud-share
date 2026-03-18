@@ -8,6 +8,8 @@ spring:
 eureka:
   instance:
     hostname: localhost
+    metadata-map:
+      version: current   # 用于网关灰度发布
   client:
     serviceUrl:
       defaultZone: http://127.0.0.1:8761/eureka

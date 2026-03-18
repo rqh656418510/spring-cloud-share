@@ -13,7 +13,7 @@ public class InventoryController implements InventoryApi {
     @Override
     @RequestMapping(value = "/deduct/{productId}/{stock}", method = RequestMethod.POST)
     public String deductStock(@PathVariable("productId") Long productId, @PathVariable("stock") Long stock) {
-        System.out.println("库存服务一，对商品【productId=" + productId + "】扣减库存：" + stock);
+        System.out.println("库存服务二，对商品【productId=" + productId + "】扣减库存：" + stock);
         return "{'msg': 'success'}";
     }
 

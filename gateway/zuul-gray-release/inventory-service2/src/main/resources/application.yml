@@ -3,13 +3,15 @@ server:
   
 spring:
   application:
-    name: wms-service
+    name: inventory-service
           
 eureka:
   instance:
     hostname: localhost
+    metadata-map:
+      version: newest   # 用于网关灰度发布
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://127.0.0.1:8761/eureka
     registryFetchIntervalSeconds: 3
     leaseRenewalIntervalInSeconds: 3
