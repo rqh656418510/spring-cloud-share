@@ -23,3 +23,12 @@ CREATE TABLE `gateway_api_route` (
   `update_time` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='网关API路由配置表';
+
+-- 插入测试数据
+INSERT INTO zuul_gateway.gateway_api_route (id,`path`,service_id,url,strip_prefix,retryable,enabled,create_time,update_time) VALUES
+('1','/inventory/**','inventory-service','/inventory-service/inventory',1,1,1,'2026-03-18 08:31:31.0','2026-03-18 08:46:14.0');
+
+-- 插入测试数据
+INSERT INTO zuul_gateway.gateway_gray_release_config (service_id,`path`,enable_gray_release) VALUES
+('inventory-service','/inventory/deduct',1),
+('inventory-service','/inventory/increase',0);
