@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * 灰度发布配置规则管理器
+ * 网关灰度发布配置规则管理器
  */
 @Component
 @Configuration
@@ -28,7 +28,7 @@ public class GrayReleaseConfigManager {
     @Scheduled(fixedRate = 30 * 1000)
     private void refreshRoute() {
         List<GrayReleaseConfig> results = jdbcTemplate.query(
-            "select * from gray_release_config",
+            "select * from gateway_gray_release_config",
             new BeanPropertyRowMapper<>(GrayReleaseConfig.class));
 
         for (GrayReleaseConfig grayReleaseConfig : results) {

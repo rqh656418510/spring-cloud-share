@@ -42,7 +42,7 @@ public class GrayReleaseFilter extends ZuulFilter {
 
         Map<String, GrayReleaseConfig> grayReleaseConfigs = grayReleaseConfigManager.getGrayReleaseConfigs();
         for (String path : grayReleaseConfigs.keySet()) {
-            // 匹配 URI，获取对应的灰度发布配置
+            // 匹配 URI，获取对应的网关灰度发布配置
             if (requestURI.contains(path)) {
                 GrayReleaseConfig grayReleaseConfig = grayReleaseConfigs.get(path);
                 if (grayReleaseConfig.getEnableGrayRelease() == 1) {

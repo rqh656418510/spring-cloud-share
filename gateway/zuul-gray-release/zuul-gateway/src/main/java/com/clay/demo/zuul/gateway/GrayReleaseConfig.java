@@ -3,7 +3,7 @@ package com.clay.demo.zuul.gateway;
 import java.io.Serializable;
 
 /**
- * 灰度发布配置规则
+ * 网关灰度发布配置规则
  */
 public class GrayReleaseConfig implements Serializable {
 
