@@ -25,10 +25,7 @@ public class GrayReleaseConfigManager {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    /**
-     * 定时刷新灰度发布配置规则
-     */
-    @Scheduled(fixedRate = 1000)
+    @Scheduled(fixedRate = 60 * 1000)
     private void refreshRoute() {
         List<GrayReleaseConfig> results = jdbcTemplate.query(
             "select * from gray_release_config",

@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 动态路由定位器
+ * 动态路由加载器
  */
 public class DynamicRouteLocator extends SimpleRouteLocator implements RefreshableRouteLocator {
 
