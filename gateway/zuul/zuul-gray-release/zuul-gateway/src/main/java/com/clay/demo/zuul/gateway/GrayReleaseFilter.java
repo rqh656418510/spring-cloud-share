@@ -3,6 +3,7 @@ package com.clay.demo.zuul.gateway;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import io.jmnarloch.spring.cloud.ribbon.support.RibbonFilterContextHolder;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.Resource;
@@ -92,7 +93,7 @@ public class GrayReleaseFilter extends ZuulFilter {
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
         String gray = request.getParameter("gray");
-        if ("true".equals(gray)) {
+        if (StringUtils.isNotBlank(gray) && "true".equals(gray)) {
             RibbonFilterContextHolder.getCurrentContext().add("version", "newest");
         } else {
             RibbonFilterContextHolder.getCurrentContext().add("version", "current");
