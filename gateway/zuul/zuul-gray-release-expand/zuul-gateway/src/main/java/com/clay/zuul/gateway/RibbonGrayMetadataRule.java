@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Ribbon 负载均衡规则
+ * Ribbon 负载均衡策略
  */
 public class RibbonGrayMetadataRule extends AbstractLoadBalancerRule {
 
