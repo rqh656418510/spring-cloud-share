@@ -9,10 +9,13 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+/**
+ * 定时刷新网关API路由规则
+ */
 @Component
 @Configuration
 @EnableScheduling
-public class RefreshRouteTask {
+public class RefreshApiRouteTask {
 
     @Autowired
     private ApplicationEventPublisher publisher;
@@ -20,9 +23,6 @@ public class RefreshRouteTask {
     @Autowired
     private RouteLocator routeLocator;
 
-    /**
-     * 定时刷新网关API路由规则
-     */
     @Scheduled(fixedRate = 5000)
     private void refreshRoute() {
         RoutesRefreshedEvent routesRefreshedEvent = new RoutesRefreshedEvent(routeLocator);
