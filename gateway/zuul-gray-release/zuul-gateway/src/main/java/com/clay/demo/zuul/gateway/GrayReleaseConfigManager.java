@@ -25,7 +25,7 @@ public class GrayReleaseConfigManager {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    @Scheduled(fixedRate = 60 * 1000)
+    @Scheduled(fixedRate = 30 * 1000)
     private void refreshRoute() {
         List<GrayReleaseConfig> results = jdbcTemplate.query(
             "select * from gray_release_config",

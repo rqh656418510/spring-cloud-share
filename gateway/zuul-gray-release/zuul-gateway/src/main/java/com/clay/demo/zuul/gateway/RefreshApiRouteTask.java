@@ -23,7 +23,7 @@ public class RefreshApiRouteTask {
     @Autowired
     private RouteLocator routeLocator;
 
-    @Scheduled(fixedRate = 60 * 1000)
+    @Scheduled(fixedRate = 30 * 1000)
     private void refreshRoute() {
         RoutesRefreshedEvent routesRefreshedEvent = new RoutesRefreshedEvent(routeLocator);
         publisher.publishEvent(routesRefreshedEvent);
