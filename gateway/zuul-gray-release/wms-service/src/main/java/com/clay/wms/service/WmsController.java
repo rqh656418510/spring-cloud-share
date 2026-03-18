@@ -12,7 +12,7 @@ import com.clay.wms.api.WmsApi;
 public class WmsController implements WmsApi {
 
 	@Override
-	@RequestMapping(value = "/delivery/{productId}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/delivery/{productId}", method = RequestMethod.POST)
 	public String delivery(@PathVariable("productId") Long productId) {
 		System.out.println("对商品【productId=" + productId + "】进行发货");    
 		return "{'msg': 'success'}";

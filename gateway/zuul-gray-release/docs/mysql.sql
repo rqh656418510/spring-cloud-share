@@ -5,7 +5,7 @@ CREATE DATABASE zuul_gateway DEFAULT CHARACTER SET utf8mb4;
 CREATE TABLE `gray_release_config` (
   `id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
   `service_id` VARCHAR(255) DEFAULT NULL COMMENT '服务ID（注册中心中的服务名）',
-  `path` VARCHAR(255) DEFAULT NULL COMMENT '路由路径（如 /api/**）',
+  `path` VARCHAR(255) DEFAULT NULL COMMENT '路由路径（如 /api/order/get）',
   `enable_gray_release` TINYINT(11) DEFAULT NULL COMMENT '是否开启灰度发布（1-开启，0-关闭）',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='灰度发布配置表';

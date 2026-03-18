@@ -3,6 +3,7 @@ package com.clay.demo.zuul.gateway;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import io.jmnarloch.spring.cloud.ribbon.support.RibbonFilterContextHolder;
+import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,7 @@ import static org.springframework.cloud.netflix.zuul.filters.support.FilterConst
 /**
  * 灰度发布过滤器
  */
+@Configuration
 public class GrayReleaseFilter extends ZuulFilter {
 
     @Resource

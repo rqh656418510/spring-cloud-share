@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class InventoryController implements InventoryApi {
 
     @Override
-    @RequestMapping(value = "/deduct/{productId}/{stock}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/deduct/{productId}/{stock}", method = RequestMethod.POST)
     public String deductStock(@PathVariable("productId") Long productId, @PathVariable("stock") Long stock) {
         System.out.println("对商品【productId=" + productId + "】扣减库存：" + stock);
         return "{'msg': 'success'}";
