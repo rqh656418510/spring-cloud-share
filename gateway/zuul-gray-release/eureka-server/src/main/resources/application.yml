@@ -11,5 +11,5 @@ eureka:
       defaultZone: http://127.0.0.1:8761/eureka/
   server:
     enableSelfPreservation: false
-    responseCacheUpdateIntervalMs: 1000
-    evictionIntervalTimerInMs: 1000
+    responseCacheUpdateIntervalMs: 3000
+    evictionIntervalTimerInMs: 3000

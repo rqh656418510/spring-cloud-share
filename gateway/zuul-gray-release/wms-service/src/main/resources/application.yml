@@ -11,5 +11,5 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka
-    registryFetchIntervalSeconds: 1
-    leaseRenewalIntervalInSeconds: 1
+    registryFetchIntervalSeconds: 3
+    leaseRenewalIntervalInSeconds: 3
