@@ -74,10 +74,9 @@ public class GrayReleaseFilter extends ZuulFilter {
      * 随机触发灰度发布
      */
     void randomGrayRelease() {
+        // 定制 Ribbon 的负载均衡策略，比如：灰度的概率为 10%
         Random random = new Random();
         int percent = random.nextInt(100);  //  [0, 99]
-
-        // 命中 10% 灰度
         if (percent < 10) {
             RibbonFilterContextHolder.getCurrentContext().add("version", "newest");
         } else {
@@ -89,10 +88,10 @@ public class GrayReleaseFilter extends ZuulFilter {
      * 根据请求参数主动触发灰度发布
      */
     void activeGrayRelease() {
+        // 定制 Ribbon 的负载均衡策略，比如：根据请求参数决定是否灰度
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
         String gray = request.getParameter("gray");
-
         if ("true".equals(gray)) {
             RibbonFilterContextHolder.getCurrentContext().add("version", "newest");
         } else {
