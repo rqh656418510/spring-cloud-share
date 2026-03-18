@@ -1,6 +1,11 @@
 package com.clay.demo.zuul.gateway;
 
-public class GrayReleaseConfig {
+import java.io.Serializable;
+
+/**
+ * 灰度发布配置规则
+ */
+public class GrayReleaseConfig implements Serializable {
 
     private int id;
     private String serviceId;

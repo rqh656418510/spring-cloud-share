@@ -7,10 +7,14 @@ import io.jmnarloch.spring.cloud.ribbon.support.RibbonFilterContextHolder;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
+import java.util.Random;
 
 import static org.springframework.cloud.netflix.zuul.filters.support.FilterConstants.PRE_DECORATION_FILTER_ORDER;
 import static org.springframework.cloud.netflix.zuul.filters.support.FilterConstants.PRE_TYPE;
 
+/**
+ * 灰度发布过滤器
+ */
 public class GrayReleaseFilter extends ZuulFilter {
 
     @Resource
@@ -30,17 +34,16 @@ public class GrayReleaseFilter extends ZuulFilter {
     public boolean shouldFilter() {
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
+
+        // 获取当前请求的 URI，比如 http://localhost:9000/order/get?xxxx
         String requestURI = request.getRequestURI();
 
-        // http://localhost:9000/order/order?xxxx
-
-        Map<String, GrayReleaseConfig> grayReleaseConfigs =
-            grayReleaseConfigManager.getGrayReleaseConfigs();
+        Map<String, GrayReleaseConfig> grayReleaseConfigs = grayReleaseConfigManager.getGrayReleaseConfigs();
         for (String path : grayReleaseConfigs.keySet()) {
             if (requestURI.contains(path)) {
                 GrayReleaseConfig grayReleaseConfig = grayReleaseConfigs.get(path);
                 if (grayReleaseConfig.getEnableGrayRelease() == 1) {
-                    System.out.println("启用灰度发布功能");
+                    System.out.println("启用灰度发布功能, URI : " + requestURI);
                     return true;
                 }
             }
@@ -51,15 +54,29 @@ public class GrayReleaseFilter extends ZuulFilter {
 
     @Override
     public Object run() {
-//		Random random = new Random();
-//		int seed = random.nextInt() * 100;
-//
-//        if (seed == 50) {
-//            RibbonFilterContextHolder.getCurrentContext().add("version", "new");
-//        }  else {
-//            RibbonFilterContextHolder.getCurrentContext().add("version", "current");
-//        }
+        activeGrayRelease();
+        return null;
+    }
 
+    /**
+     * 随机触发灰度发布
+     */
+    void randomGrayRelease() {
+        Random random = new Random();
+        int percent = random.nextInt(100);  //  [0, 99]
+
+        // 命中 10% 灰度
+        if (percent < 10) {
+            RibbonFilterContextHolder.getCurrentContext().add("version", "new");
+        } else {
+            RibbonFilterContextHolder.getCurrentContext().add("version", "current");
+        }
+    }
+
+    /**
+     * 根据请求参数主动触发灰度发布
+     */
+    void activeGrayRelease() {
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
         String gray = request.getParameter("gray");
@@ -69,7 +86,6 @@ public class GrayReleaseFilter extends ZuulFilter {
         } else {
             RibbonFilterContextHolder.getCurrentContext().add("version", "current");
         }
-
-        return null;
     }
+
 }

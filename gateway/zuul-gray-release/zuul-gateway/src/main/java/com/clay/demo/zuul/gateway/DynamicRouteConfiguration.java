@@ -7,6 +7,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+/**
+ * 动态路由配置
+ */
 @Configuration
 public class DynamicRouteConfiguration {
 

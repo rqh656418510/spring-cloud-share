@@ -12,18 +12,22 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 动态路由定位器
+ */
 public class DynamicRouteLocator extends SimpleRouteLocator implements RefreshableRouteLocator {
 
     private JdbcTemplate jdbcTemplate;
-    private ZuulProperties properties;
 
-    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
+    private ZuulProperties properties;
 
     public DynamicRouteLocator(String servletPath, ZuulProperties properties) {
         super(servletPath, properties);
         this.properties = properties;
+    }
+
+    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
     }
 
     @Override
@@ -31,15 +35,18 @@ public class DynamicRouteLocator extends SimpleRouteLocator implements Refreshab
         doRefresh();
     }
 
+    /**
+     * 加载路由规则
+     */
     @Override
     protected Map<String, ZuulProperties.ZuulRoute> locateRoutes() {
         LinkedHashMap<String, ZuulProperties.ZuulRoute> routesMap = new LinkedHashMap<>();
-        // 加载application.yml中的路由表
+        // 加载application.yml中的路由规则
         routesMap.putAll(super.locateRoutes());
-        // 加载db中的路由表
+        // 加载数据库中的路由规则
         routesMap.putAll(locateRoutesFromDB());
 
-        // 统一处理一下路由path的格式
+        // 统一处理一下路由path的格式，统一以 / 为前缀
         LinkedHashMap<String, ZuulProperties.ZuulRoute> values = new LinkedHashMap<>();
         for (Map.Entry<String, ZuulProperties.ZuulRoute> entry : routesMap.entrySet()) {
             String path = entry.getKey();
@@ -58,6 +65,9 @@ public class DynamicRouteLocator extends SimpleRouteLocator implements Refreshab
         return values;
     }
 
+    /**
+     * 加载数据库中的路由规则
+     */
     private Map<String, ZuulProperties.ZuulRoute> locateRoutesFromDB() {
         Map<String, ZuulProperties.ZuulRoute> routes = new LinkedHashMap<>();
 
@@ -75,10 +85,10 @@ public class DynamicRouteLocator extends SimpleRouteLocator implements Refreshab
             ZuulProperties.ZuulRoute zuulRoute = new ZuulProperties.ZuulRoute();
             try {
                 BeanUtils.copyProperties(result, zuulRoute);
+                routes.put(zuulRoute.getPath(), zuulRoute);
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            routes.put(zuulRoute.getPath(), zuulRoute);
         }
 
         return routes;

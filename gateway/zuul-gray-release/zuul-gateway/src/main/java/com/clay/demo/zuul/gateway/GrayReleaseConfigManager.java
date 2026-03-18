@@ -12,30 +12,35 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * 灰度发布配置规则管理器
+ */
 @Component
-@Configuration      
-@EnableScheduling 
+@Configuration
+@EnableScheduling
 public class GrayReleaseConfigManager {
-	
-	private Map<String, GrayReleaseConfig> grayReleaseConfigs = 
-			new ConcurrentHashMap<String, GrayReleaseConfig>();
-	
-	@Autowired
-	private JdbcTemplate jdbcTemplate;
-	
-	@Scheduled(fixedRate = 1000) 
+
+    private Map<String, GrayReleaseConfig> grayReleaseConfigs = new ConcurrentHashMap<String, GrayReleaseConfig>();
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
+    /**
+     * 定时刷新灰度发布配置规则
+     */
+    @Scheduled(fixedRate = 1000)
     private void refreshRoute() {
-		List<GrayReleaseConfig> results = jdbcTemplate.query(
-        		"select * from gray_release_config", 
-        		new BeanPropertyRowMapper<>(GrayReleaseConfig.class));
-		
-		for(GrayReleaseConfig grayReleaseConfig : results) {
-			grayReleaseConfigs.put(grayReleaseConfig.getPath(), grayReleaseConfig);
-		}
-	}
-	
-	public Map<String, GrayReleaseConfig> getGrayReleaseConfigs() {
-		return grayReleaseConfigs;
-	}
+        List<GrayReleaseConfig> results = jdbcTemplate.query(
+            "select * from gray_release_config",
+            new BeanPropertyRowMapper<>(GrayReleaseConfig.class));
+
+        for (GrayReleaseConfig grayReleaseConfig : results) {
+            grayReleaseConfigs.put(grayReleaseConfig.getPath(), grayReleaseConfig);
+        }
+    }
+
+    public Map<String, GrayReleaseConfig> getGrayReleaseConfigs() {
+        return grayReleaseConfigs;
+    }
 
 }

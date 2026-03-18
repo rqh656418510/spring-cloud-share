@@ -1,11 +1,25 @@
 -- 创建数据库
-CREATE DATABASE zuul_gateway DEFAULT CHARACTER SET utf8;
+CREATE DATABASE zuul_gateway DEFAULT CHARACTER SET utf8mb4;
 
 -- 创建灰度发布配置表
 CREATE TABLE `gray_release_config` (
-   `id` int(11) NOT NULL AUTO_INCREMENT,
-   `service_id` varchar(255) DEFAULT NULL,
-   `path` varchar(255) DEFAULT NULL,
-   `enable_gray_release` int(11) DEFAULT NULL,
-   PRIMARY KEY (`id`)
- ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `service_id` VARCHAR(255) DEFAULT NULL COMMENT '服务ID（注册中心中的服务名）',
+  `path` VARCHAR(255) DEFAULT NULL COMMENT '路由路径（如 /api/**）',
+  `enable_gray_release` TINYINT(11) DEFAULT NULL COMMENT '是否开启灰度发布（1-开启，0-关闭）',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='灰度发布配置表';
+
+-- 创建网关API路由配置表
+CREATE TABLE `gateway_api_route` (
+  `id` VARCHAR(64) NOT NULL COMMENT '主键ID',
+  `path` VARCHAR(255) NOT NULL COMMENT '路由路径，如 /api/**',
+  `service_id` VARCHAR(128) DEFAULT NULL COMMENT '服务ID（注册中心中的服务名）',
+  `url` VARCHAR(512) DEFAULT NULL COMMENT '直连URL（与service_id二选一）',
+  `strip_prefix` TINYINT(1) NOT NULL DEFAULT 1 COMMENT '是否去除前缀（1-是，0-否）',
+  `retryable` TINYINT(1) DEFAULT NULL COMMENT '是否支持重试（1-是，0-否）',
+  `enabled` TINYINT(1) DEFAULT 1 COMMENT '是否启用（1-启用，0-禁用）',
+  `create_time` DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='网关API路由配置表';

@@ -20,6 +20,9 @@ public class RefreshRouteTask {
     @Autowired
     private RouteLocator routeLocator;
 
+    /**
+     * 定时刷新网关API路由规则
+     */
     @Scheduled(fixedRate = 5000)
     private void refreshRoute() {
         RoutesRefreshedEvent routesRefreshedEvent = new RoutesRefreshedEvent(routeLocator);

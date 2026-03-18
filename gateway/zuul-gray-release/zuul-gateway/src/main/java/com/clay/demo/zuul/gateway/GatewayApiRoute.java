@@ -1,14 +1,19 @@
 package com.clay.demo.zuul.gateway;
 
-public class GatewayApiRoute {
+import java.io.Serializable;
+
+/**
+ * 网关API路由规则
+ */
+public class GatewayApiRoute implements Serializable {
 
     private String id;
     private String path;
     private String serviceId;
     private String url;
-    private boolean stripPrefix = true;
-    private Boolean retryable;
-    private Boolean enabled;
+    private int stripPrefix = 1;
+    private int retryable;
+    private int enabled;
 
     public String getId() {
         return id;
@@ -42,28 +47,27 @@ public class GatewayApiRoute {
         this.url = url;
     }
 
-    public boolean isStripPrefix() {
+    public int getStripPrefix() {
         return stripPrefix;
     }
 
-    public void setStripPrefix(boolean stripPrefix) {
+    public void setStripPrefix(int stripPrefix) {
         this.stripPrefix = stripPrefix;
     }
 
-    public Boolean getRetryable() {
+    public int getRetryable() {
         return retryable;
     }
 
-    public void setRetryable(Boolean retryable) {
+    public void setRetryable(int retryable) {
         this.retryable = retryable;
     }
 
-    public Boolean getEnabled() {
+    public int getEnabled() {
         return enabled;
     }
 
-    public void setEnabled(Boolean enabled) {
+    public void setEnabled(int enabled) {
         this.enabled = enabled;
     }
-
 }
