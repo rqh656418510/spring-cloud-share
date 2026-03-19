@@ -26,9 +26,12 @@ CREATE TABLE `gateway_api_route` (
 
 -- 插入测试数据
 INSERT INTO zuul_gateway.gateway_api_route (id,`path`,service_id,url,strip_prefix,retryable,enabled,create_time,update_time) VALUES
-('1','/inventory/**','inventory-service','/inventory-service/inventory',1,1,1,'2026-03-18 08:31:31.0','2026-03-18 08:46:14.0');
+('1','/inventory/**','inventory-service','/inventory-service/inventory',1,1,1,'2018-05-18 20:31:31.0','2018-05-18 20:31:31.0'),
+('2','/wms/**','wms-service','/wms-service/ws',1,1,1,'2018-05-18 20:31:31.0','2026-03-19 08:11:13.0');
 
 -- 插入测试数据
 INSERT INTO zuul_gateway.gateway_gray_release_config (service_id,`path`,enable_gray_release) VALUES
 ('inventory-service','/inventory/deduct',1),
-('inventory-service','/inventory/increase',0);
+('inventory-service','/inventory/increase',0),
+('wms-service','/wms/stock/deduct',1),
+('wms-service','/wms/stock/increase',0);
