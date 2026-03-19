@@ -25,6 +25,11 @@ ribbon:
   MaxAutoRetries: 0                # 当前实例最大重试次数（0表示不重试）
   MaxAutoRetriesNextServer: 0      # 切换到其他实例的重试次数（0表示不重试）
 
+# 为特定的服务指定Ribbon负载均衡策略
+inventory-service:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.clay.wms.rule.RibbonGrayMetadataRule
+
 feign:
   hystrix:
     enabled: false                 # 是否开启Hystrix熔断

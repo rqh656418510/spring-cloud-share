@@ -32,6 +32,9 @@ ribbon:
   MaxAutoRetriesNextServer: 0      # 切换到其他实例的重试次数（0表示不重试）
 
 # 为特定的服务指定Ribbon负载均衡策略
+wms-service:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.clay.zuul.gateway.rule.RibbonGrayMetadataRule
 inventory-service:
   ribbon:
     NFLoadBalancerRuleClassName: com.clay.zuul.gateway.rule.RibbonGrayMetadataRule
