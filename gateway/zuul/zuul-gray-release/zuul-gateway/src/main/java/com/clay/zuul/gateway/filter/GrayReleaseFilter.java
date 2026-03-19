@@ -57,8 +57,8 @@ public class GrayReleaseFilter extends ZuulFilter {
 
         System.out.println("不启用灰度发布功能, URI : " + requestURI);
 
-        // 不启用灰度发布时，默认会将请求轮询分发到对应的多个服务，包括标记为 newest 的服务（新服务）
-        // 不启用灰度发布时，如果希望将请求只转发到标记为 current 的服务（旧服务），可以取消注释以下代码
+        // 当没有配置是否启用灰度发布时，默认会将请求轮询分发到对应的多个服务，包括标记为 newest 的服务（新服务）
+        // 当没有配置是否启用灰度发布时，如果希望将请求只转发到标记为 current 的服务（旧服务），可以取消注释以下代码
         // RibbonFilterContextHolder.getCurrentContext().add("version", "current");
 
         return false;

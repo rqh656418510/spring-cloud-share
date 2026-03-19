@@ -24,22 +24,18 @@ zuul:
   
 ribbon:
   eager-load:
-    enabled: true
-  ConnectTimeout: 1000
-  ReadTimeout: 1000
-  OkToRetryOnAllOperations: true
-  MaxAutoRetries: 1
-  MaxAutoRetriesNextServer: 1
+    enabled: true                  # 启动时预加载服务列表，减少首次调用延迟
+  ConnectTimeout: 1000             # 建立连接超时时间（毫秒）
+  ReadTimeout: 3000                # 读取响应超时时间（毫秒），相当于最大业务处理时间
+  OkToRetryOnAllOperations: false  # 是否对所有请求开启重试（开启后要求接口实现幂等）
+  MaxAutoRetries: 0                # 当前实例最大重试次数（0表示不重试）
+  MaxAutoRetriesNextServer: 0      # 切换到其他实例的重试次数（0表示不重试）
 
-# 为特定的服务指定Ribbon负载均衡策略
-inventory-service:
-  ribbon:
-    NFLoadBalancerRuleClassName: com.clay.zuul.gateway.RibbonGrayMetadataRule
-
-hystrix:
-  command:
-    default:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 10000
+feign:
+  hystrix:
+    enabled: false                 # 是否开启Hystrix熔断
+  client:
+    config:
+      default:
+        connectTimeout: 1000       # Feign连接超时时间（毫秒）
+        readTimeout: 3000          # Feign读取超时时间（毫秒）

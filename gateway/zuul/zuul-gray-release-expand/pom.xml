@@ -8,14 +8,17 @@
     <artifactId>zuul-gray-release-expand</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <description>Eureka + Zuul 实现网关动态路由和网关灰度发布，不依赖 io.jmnarloch 第三方包</description>
+    <description>Eureka + Zuul 实现网关动态路由和网关灰度发布，不依赖 io.jmnarloc 第三方包</description>
 
     <modules>
         <module>eureka-server</module>
+        <module>wms-api</module>
+        <module>wms-service</module>
+        <module>wms-service2</module>
+        <module>zuul-gateway</module>
         <module>inventory-api</module>
         <module>inventory-service</module>
         <module>inventory-service2</module>
-        <module>zuul-gateway</module>
     </modules>
 
     <properties>
