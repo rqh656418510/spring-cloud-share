@@ -31,30 +31,34 @@ public class RibbonGrayMetadataRule extends AbstractLoadBalancerRule {
         ILoadBalancer lb = getLoadBalancer();
         List<Server> servers = lb.getAllServers();
 
+        // 匹配的服务实例列表
+        List<Server> matchedList = new ArrayList<>();
+
         // 从 Header 获取灰度发布的版本标记
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         String version = request.getHeader("version");
 
-        // 匹配的服务实例列表（根据 Eureka 的 metadata 过滤服务实例）
-        List<Server> matched = new ArrayList<>();
-        for (Server server : servers) {
-            if (server instanceof DiscoveryEnabledServer) {
-                DiscoveryEnabledServer ds = (DiscoveryEnabledServer) server;
-                String metaVersion = ds.getInstanceInfo().getMetadata().get("version");
-                if (StringUtils.isNotBlank(version) && version.equals(metaVersion)) {
-                    matched.add(server);
+        // 根据 Eureka 的 metadata 过滤服务实例
+        if (StringUtils.isNotBlank(version)) {
+            for (Server server : servers) {
+                if (server instanceof DiscoveryEnabledServer) {
+                    DiscoveryEnabledServer ds = (DiscoveryEnabledServer) server;
+                    String metaVersion = ds.getInstanceInfo().getMetadata().get("version");
+                    if (version.equals(metaVersion)) {
+                        matchedList.add(server);
+                    }
                 }
             }
         }
 
         // Fallback 处理
-        if (matched.isEmpty()) {
+        if (matchedList.isEmpty()) {
             // 随机负载均衡算法
             return servers.get(new Random().nextInt(servers.size()));
         }
 
         // 随机负载均衡算法
-        return matched.get(new Random().nextInt(matched.size()));
+        return matchedList.get(new Random().nextInt(matchedList.size()));
     }
 
     @Override
