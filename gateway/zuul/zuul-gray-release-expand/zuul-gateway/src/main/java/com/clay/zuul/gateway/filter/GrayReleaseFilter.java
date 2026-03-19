@@ -4,7 +4,6 @@ import com.clay.zuul.gateway.domain.GrayReleaseConfig;
 import com.clay.zuul.gateway.task.GrayReleaseConfigManager;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
-import io.jmnarloch.spring.cloud.ribbon.support.RibbonFilterContextHolder;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Component;
 
@@ -84,14 +83,8 @@ public class GrayReleaseFilter extends ZuulFilter {
 
         // 指定灰度的概率为 10%
         if (percent < 10) {
-            // 定制 Ribbon 的负载均衡策略，按标签筛选择服务实例
-            RibbonFilterContextHolder.getCurrentContext().add("version", "newest");
-            // Header 透传，让灰度标记贯穿整个调用链路
             ctx.addZuulRequestHeader("version", "newest");
         } else {
-            // 定制 Ribbon 的负载均衡策略，按标签筛选择服务实例
-            RibbonFilterContextHolder.getCurrentContext().add("version", "current");
-            // Header 透传，让灰度标记贯穿整个调用链路
             ctx.addZuulRequestHeader("version", "current");
         }
     }
@@ -106,14 +99,8 @@ public class GrayReleaseFilter extends ZuulFilter {
 
         // 根据请求参数决定是否灰度
         if (StringUtils.isNotBlank(gray) && "true".equals(gray)) {
-            // 定制 Ribbon 的负载均衡策略，按标签筛选择服务实例
-            RibbonFilterContextHolder.getCurrentContext().add("version", "newest");
-            // Header 透传，让灰度标记贯穿整个调用链路（传递给下游服务）
             ctx.addZuulRequestHeader("version", "newest");
         } else {
-            // 定制 Ribbon 的负载均衡策略，按标签筛选择服务实例
-            RibbonFilterContextHolder.getCurrentContext().add("version", "current");
-            // Header 透传，让灰度标记贯穿整个调用链路（传递给下游服务）
             ctx.addZuulRequestHeader("version", "current");
         }
     }
