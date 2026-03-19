@@ -1,4 +1,4 @@
-package com.clay.demo.zuul.gateway;
+package com.clay.zuul.gateway;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.cloud.netflix.zuul.filters.RefreshableRouteLocator;

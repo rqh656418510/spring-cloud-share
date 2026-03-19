@@ -1,4 +1,4 @@
-package com.clay.demo.zuul.gateway;
+package com.clay.zuul.gateway;
 
 import java.io.Serializable;
 

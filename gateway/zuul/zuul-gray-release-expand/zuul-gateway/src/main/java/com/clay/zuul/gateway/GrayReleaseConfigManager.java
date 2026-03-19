@@ -20,20 +20,25 @@ import java.util.concurrent.ConcurrentHashMap;
 @EnableScheduling
 public class GrayReleaseConfigManager {
 
-    private Map<String, GrayReleaseConfig> grayReleaseConfigs = new ConcurrentHashMap<String, GrayReleaseConfig>();
+    private volatile Map<String, GrayReleaseConfig> grayReleaseConfigs = new ConcurrentHashMap<>();
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
     @Scheduled(fixedRate = 30 * 1000)
     private void refreshRoute() {
+        // 获取最新的网关灰度发布配置规则
         List<GrayReleaseConfig> results = jdbcTemplate.query(
             "select * from gateway_gray_release_config",
             new BeanPropertyRowMapper<>(GrayReleaseConfig.class));
 
-        for (GrayReleaseConfig grayReleaseConfig : results) {
-            grayReleaseConfigs.put(grayReleaseConfig.getPath(), grayReleaseConfig);
+        Map<String, GrayReleaseConfig> newConfigs = new ConcurrentHashMap<>();
+        for (GrayReleaseConfig config : results) {
+            newConfigs.put(config.getPath(), config);
         }
+
+        // 原子替换旧的数据
+        grayReleaseConfigs = newConfigs;
     }
 
     public Map<String, GrayReleaseConfig> getGrayReleaseConfigs() {
