@@ -13,9 +13,9 @@ CREATE TABLE `gateway_gray_release_config` (
 -- 创建网关API路由配置表
 CREATE TABLE `gateway_api_route` (
   `id` VARCHAR(64) NOT NULL COMMENT '主键ID',
-  `path` VARCHAR(255) NOT NULL COMMENT '路由路径，如 /api/order/get',
+  `path` VARCHAR(255) NOT NULL COMMENT '路由路径，如 /api/order/**',
   `service_id` VARCHAR(128) DEFAULT NULL COMMENT '服务ID（注册中心中的服务名）',
-  `url` VARCHAR(512) DEFAULT NULL COMMENT '直连URL（与service_id二选一）',
+  `url` VARCHAR(512) DEFAULT NULL COMMENT '直连URL（与service_id二选一，比如 http://127.0.0.1:8080）',
   `strip_prefix` TINYINT(1) NOT NULL DEFAULT 1 COMMENT '是否去除前缀（1-是，0-否）',
   `retryable` TINYINT(1) DEFAULT NULL COMMENT '是否支持重试（1-是，0-否）',
   `enabled` TINYINT(1) DEFAULT 1 COMMENT '是否启用（1-启用，0-禁用）',
@@ -26,8 +26,8 @@ CREATE TABLE `gateway_api_route` (
 
 -- 插入测试数据
 INSERT INTO zuul_gateway.gateway_api_route (id,`path`,service_id,url,strip_prefix,retryable,enabled,create_time,update_time) VALUES
-('1','/inventory/**','inventory-service','/inventory-service/inventory',1,1,1,'2018-05-18 20:31:31.0','2018-05-18 20:31:31.0'),
-('2','/wms/**','wms-service','/wms-service/ws',1,1,1,'2018-05-18 20:31:31.0','2026-03-19 08:11:13.0');
+('1','/inventory/**','inventory-service','',1,1,1,'2018-05-18 20:31:31.0','2018-05-18 20:31:31.0'),
+('2','/wms/**','wms-service','',1,1,1,'2018-05-18 20:31:31.0','2018-05-18 20:31:31.0');
 
 -- 插入测试数据
 INSERT INTO zuul_gateway.gateway_gray_release_config (service_id,`path`,enable_gray_release) VALUES
