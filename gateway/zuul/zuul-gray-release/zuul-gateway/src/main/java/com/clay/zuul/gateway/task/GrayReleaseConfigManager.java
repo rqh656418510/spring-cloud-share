@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * 网关灰度发布配置规则管理器
+ * 定时刷新网关灰度发布配置规则
  */
 @Component
 @Configuration
