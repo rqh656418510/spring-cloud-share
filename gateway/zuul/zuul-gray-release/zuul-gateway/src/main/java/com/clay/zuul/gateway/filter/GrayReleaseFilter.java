@@ -1,5 +1,7 @@
-package com.clay.zuul.gateway;
+package com.clay.zuul.gateway.filter;
 
+import com.clay.zuul.gateway.domain.GrayReleaseConfig;
+import com.clay.zuul.gateway.task.GrayReleaseConfigManager;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import io.jmnarloch.spring.cloud.ribbon.support.RibbonFilterContextHolder;
@@ -38,12 +40,12 @@ public class GrayReleaseFilter extends ZuulFilter {
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
 
-        // 获取当前请求的 URI，比如 http://localhost:9000/order/get?xxxx
+        // 获取当前请求的 URI，比如 /wms/inventory/deduct
         String requestURI = request.getRequestURI();
 
         Map<String, GrayReleaseConfig> grayReleaseConfigs = grayReleaseConfigManager.getGrayReleaseConfigs();
         for (String path : grayReleaseConfigs.keySet()) {
-            // 匹配 URI，获取对应的网关灰度发布配置
+            // 匹配 URI，获取对应的网关灰度发布配置（可按实际需要更改匹配策略）
             if (requestURI.contains(path)) {
                 GrayReleaseConfig grayReleaseConfig = grayReleaseConfigs.get(path);
                 if (grayReleaseConfig.getEnableGrayRelease() == 1) {

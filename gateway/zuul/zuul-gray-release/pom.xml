@@ -12,10 +12,13 @@
 
     <modules>
         <module>eureka-server</module>
+        <module>wms-api</module>
+        <module>wms-service</module>
+        <module>wms-service2</module>
+        <module>zuul-gateway</module>
         <module>inventory-api</module>
         <module>inventory-service</module>
         <module>inventory-service2</module>
-        <module>zuul-gateway</module>
     </modules>
 
     <properties>

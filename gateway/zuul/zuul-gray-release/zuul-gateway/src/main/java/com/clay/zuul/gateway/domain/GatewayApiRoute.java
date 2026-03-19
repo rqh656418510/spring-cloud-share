@@ -1,4 +1,4 @@
-package com.clay.zuul.gateway;
+package com.clay.zuul.gateway.domain;
 
 import java.io.Serializable;
 

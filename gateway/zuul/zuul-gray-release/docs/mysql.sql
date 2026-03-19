@@ -13,7 +13,7 @@ CREATE TABLE `gateway_gray_release_config` (
 -- 创建网关API路由配置表
 CREATE TABLE `gateway_api_route` (
   `id` VARCHAR(64) NOT NULL COMMENT '主键ID',
-  `path` VARCHAR(255) NOT NULL COMMENT '路由路径，如 /api/**',
+  `path` VARCHAR(255) NOT NULL COMMENT '路由路径，如 /api/order/get',
   `service_id` VARCHAR(128) DEFAULT NULL COMMENT '服务ID（注册中心中的服务名）',
   `url` VARCHAR(512) DEFAULT NULL COMMENT '直连URL（与service_id二选一）',
   `strip_prefix` TINYINT(1) NOT NULL DEFAULT 1 COMMENT '是否去除前缀（1-是，0-否）',

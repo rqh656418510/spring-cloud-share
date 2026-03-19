@@ -1,5 +1,6 @@
-package com.clay.zuul.gateway;
+package com.clay.zuul.gateway.task;
 
+import com.clay.zuul.gateway.domain.GrayReleaseConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;

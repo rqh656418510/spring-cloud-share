@@ -1,5 +1,6 @@
-package com.clay.zuul.gateway;
+package com.clay.zuul.gateway.config;
 
+import com.clay.zuul.gateway.route.DynamicRouteLocator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.cloud.netflix.zuul.filters.ZuulProperties;

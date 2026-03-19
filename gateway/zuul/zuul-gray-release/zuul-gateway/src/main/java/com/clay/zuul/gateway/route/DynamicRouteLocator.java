@@ -1,5 +1,6 @@
-package com.clay.zuul.gateway;
+package com.clay.zuul.gateway.route;
 
+import com.clay.zuul.gateway.domain.GatewayApiRoute;
 import org.springframework.beans.BeanUtils;
 import org.springframework.cloud.netflix.zuul.filters.RefreshableRouteLocator;
 import org.springframework.cloud.netflix.zuul.filters.SimpleRouteLocator;
