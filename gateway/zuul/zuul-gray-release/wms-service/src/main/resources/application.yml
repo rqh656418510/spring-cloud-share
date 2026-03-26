@@ -27,7 +27,7 @@ ribbon:
 
 feign:
   hystrix:
-    enabled: false                 # 是否开启Hystrix熔断
+    enabled: false                 # 是否启用Hystrix
   client:
     config:
       default:
