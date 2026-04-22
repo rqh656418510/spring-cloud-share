@@ -11,7 +11,7 @@
 
     <artifactId>rocketmq-lesson-02</artifactId>
     <name>rocketmq-lesson-02</name>
-    <description>消费者消费消息</description>
+    <description>消费者消费普通消息</description>
 
     <dependencies>
         <dependency>

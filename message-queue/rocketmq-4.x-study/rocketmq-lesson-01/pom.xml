@@ -11,7 +11,7 @@
 
     <artifactId>rocketmq-lesson-01</artifactId>
     <name>rocketmq-lesson-01</name>
-    <description>生产者发送消息（同步发送、异步发送、单向发送）</description>
+    <description>生产者发送普通消息（同步发送、异步发送、单向发送）</description>
 
     <dependencies>
         <dependency>
