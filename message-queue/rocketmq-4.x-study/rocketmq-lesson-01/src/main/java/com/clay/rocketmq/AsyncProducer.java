@@ -29,7 +29,7 @@ public class AsyncProducer {
         // 消息数量
         final int size = 10;
 
-        // 计数器
+        // 消息发送计数器
         CountDownLatch countDownLatch = new CountDownLatch(size);
 
         // 生产并发送 10 条消息
