@@ -9,7 +9,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 生产者异步发送消息
+ * 生产者异步发送普通消息
  */
 public class AsyncProducer {
 

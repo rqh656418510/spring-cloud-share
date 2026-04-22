@@ -4,7 +4,7 @@ import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.common.message.Message;
 
 /**
- * 单向发送消息
+ * 生产者单向发送普通消息
  */
 public class OnewayProducer {
 

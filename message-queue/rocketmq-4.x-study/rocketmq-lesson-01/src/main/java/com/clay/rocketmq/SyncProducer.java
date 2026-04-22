@@ -5,7 +5,7 @@ import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.common.message.Message;
 
 /**
- * 生产者同步发送消息
+ * 生产者同步发送普通消息
  */
 public class SyncProducer {
 
