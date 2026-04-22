@@ -4,15 +4,30 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.clay.rocketmq</groupId>
-    <artifactId>rocketmq-study</artifactId>
+    <artifactId>rocketmq-4.x-study</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>rocketmq-study</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <rocketmq.version>4.8.0</rocketmq.version>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- RocketMQ 客户端，对应 RocketMQ Server 4.9.0 版本 -->
+            <dependency>
+                <groupId>org.apache.rocketmq</groupId>
+                <artifactId>rocketmq-client</artifactId>
+                <version>${rocketmq.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <modules>
+        <module>rocketmq-lesson-01</module>
+    </modules>
 
 </project>
