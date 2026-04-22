@@ -60,7 +60,7 @@ public class MessageConsumer {
         consumer.start();
 
         // 等待消费者消费完
-        TimeUnit.SECONDS.sleep(5);
+        TimeUnit.SECONDS.sleep(15);
 
         // 关闭消费者
         consumer.shutdown();
