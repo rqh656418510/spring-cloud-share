@@ -28,6 +28,7 @@
 
     <modules>
         <module>rocketmq-lesson-01</module>
+        <module>rocketmq-lesson-02</module>
     </modules>
 
 </project>

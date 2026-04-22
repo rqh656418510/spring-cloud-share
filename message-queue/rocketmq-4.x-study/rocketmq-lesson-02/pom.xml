@@ -9,9 +9,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>rocketmq-lesson-01</artifactId>
-    <name>rocketmq-lesson-01</name>
-    <description>生产者发送消息（同步发送、异步发送、单向发送）</description>
+    <artifactId>rocketmq-lesson-02</artifactId>
+    <name>rocketmq-lesson-02</name>
+    <description>消费者消费消息</description>
 
     <dependencies>
         <dependency>
