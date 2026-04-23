@@ -34,7 +34,7 @@ public class DelayProducer {
             Message msg = new Message("MyTopic", "MyTag", body);
             // 为消息指定 Key
             msg.setKeys("key-" + i);
-            // 指定消息延迟等级为 4，即（延迟 30 秒）
+            // 指定消息延迟等级为 4（即消息延迟 30 秒才会被消费）
             msg.setDelayTimeLevel(4);
             // 同步发送消息
             SendResult sendResult = producer.send(msg);
