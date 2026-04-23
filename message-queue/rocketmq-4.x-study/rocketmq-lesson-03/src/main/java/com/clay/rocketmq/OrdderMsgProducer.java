@@ -17,7 +17,7 @@ import org.apache.rocketmq.common.message.MessageQueue;
 import java.util.List;
 
 /**
- * 生产者自定义 Queue 选择器（为了实现消息的有序发送和消费）
+ * 生产者自定义 Queue 选择器（为了实现 Queue 内消息的有序发送和消费）
  */
 public class OrdderMsgProducer {
 

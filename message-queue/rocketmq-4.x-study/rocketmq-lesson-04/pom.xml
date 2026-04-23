@@ -9,9 +9,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>rocketmq-lesson-01</artifactId>
-    <name>rocketmq-lesson-01</name>
-    <description>生产者发送普通消息（同步发送、异步发送、单向发送）</description>
+    <artifactId>rocketmq-lesson-04</artifactId>
+    <name>rocketmq-lesson-04</name>
+    <description>延迟消息的生产与消费</description>
 
     <dependencies>
         <dependency>
