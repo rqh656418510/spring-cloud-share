@@ -13,3 +13,4 @@
 - [RocketMQ 4.x 入门教程之五](https://www.techgrow.cn/posts/270d5bd1.html)
 - [RocketMQ 4.x 入门教程之六](https://www.techgrow.cn/posts/211493d2.html)
 - [RocketMQ 4.x 入门教程之七](https://www.techgrow.cn/posts/96e8bc94.html)
+- [RocketMQ 4.x 入门教程之八](https://www.techgrow.cn/posts/c87736e7.html)
