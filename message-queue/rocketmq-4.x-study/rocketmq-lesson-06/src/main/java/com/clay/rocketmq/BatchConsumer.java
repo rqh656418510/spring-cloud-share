@@ -32,11 +32,11 @@ public class BatchConsumer {
         // 指定消费模式，默认为 "集群消费模式"
         consumer.setMessageModel(MessageModel.CLUSTERING);
 
-        // 指定每次消费的最大消息数量，默认值是 1
-        consumer.setConsumeMessageBatchMaxSize(20);
-
         // 指定消费者每次从 Broker 拉取的最大消息数量，默认值是 32
         consumer.setPullBatchSize(40);
+
+        // 指定每次消费的最大消息数量，默认值是 1，不能超过 pullBatchSize 的值
+        consumer.setConsumeMessageBatchMaxSize(20);
 
         // 注册消息监听器
         consumer.registerMessageListener(new MessageListenerConcurrently() {
