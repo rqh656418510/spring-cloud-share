@@ -79,6 +79,7 @@ public class MessageListSplitter implements Iterator<List<Message>> {
 
             // 判断当前消息本身是否大于 4MB
             if (msgSize > sizeLimit) {
+                // 打印日志信息
                 System.out.printf("Single message size exceeded limit, topic=%s, size=%d%n", message.getTopic(), msgSize);
                 // 如果当前批次还没有任何消息，强行塞一条消息
                 if (nextIndex == currIndex) {
