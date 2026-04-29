@@ -20,6 +20,7 @@
         <module>rocketmq-lesson-03</module>
         <module>rocketmq-lesson-04</module>
         <module>rocketmq-lesson-05</module>
+        <module>rocketmq-lesson-06</module>
     </modules>
 
 </project>
