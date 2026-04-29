@@ -44,7 +44,9 @@ public class BatchConsumer {
             // 一旦 Broker 中有了其订阅的消息就会触发该方法的执行，其返回值为当前 Consumer 消费的状态
             @Override
             public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs, ConsumeConcurrentlyContext context) {
-                System.out.println("Message Size: " + msgs.size());
+                // 打印一次消费的消息数量
+                System.out.println("Batch consume size: " + msgs.size());
+
                 // 遍历消息
                 for (MessageExt msg : msgs) {
                     System.out.println(msg);
