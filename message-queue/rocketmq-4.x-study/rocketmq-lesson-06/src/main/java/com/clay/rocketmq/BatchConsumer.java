@@ -33,7 +33,7 @@ public class BatchConsumer {
         consumer.setMessageModel(MessageModel.CLUSTERING);
 
         // 指定每次消费的最大消息数量，默认值是 1
-        consumer.setConsumeMessageBatchMaxSize(10);
+        consumer.setConsumeMessageBatchMaxSize(20);
 
         // 指定消费者每次从 Broker 拉取的最大消息数量，默认值是 32
         consumer.setPullBatchSize(40);
@@ -44,6 +44,7 @@ public class BatchConsumer {
             // 一旦 Broker 中有了其订阅的消息就会触发该方法的执行，其返回值为当前 Consumer 消费的状态
             @Override
             public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs, ConsumeConcurrentlyContext context) {
+                System.out.println("Message Size: " + msgs.size());
                 // 遍历消息
                 for (MessageExt msg : msgs) {
                     System.out.println(msg);
